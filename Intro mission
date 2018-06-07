@@ -1,0 +1,540 @@
+:INTRO_11468
+04FA: reset_sky_colors_with_fade 0 
+02EA: end_cutscene 
+0296: unload_special_actor 1 
+0296: unload_special_actor 2 
+0296: unload_special_actor 3 
+0296: unload_special_actor 4 
+0296: unload_special_actor 5 
+0296: unload_special_actor 6 
+0296: unload_special_actor 7 
+0296: unload_special_actor 8 
+Model.Destroy(#CUTOBJ01)
+Model.Destroy(#CUTOBJ02)
+Model.Destroy(#CUTOBJ03)
+Model.Destroy(#CUTOBJ04)
+Model.Destroy(#DOC_CRANEEGGS04)
+Model.Destroy(#DOC_CRANE_CAB04)
+Model.Destroy(#DOCKFUEL07)
+wait 0 
+
+:INTRO_11542
+044D: load_splash 'INTRO4' 
+0169: set_fade_color 2 2 2 
+if 
+  $13 == 2 // integer values 
+else_jump @INTRO_11611 
+fade 0 1000 
+00BE: text_clear_all 
+
+:INTRO_11587
+if 
+fading 
+else_jump @INTRO_11611 
+wait 0 
+jump @INTRO_11587 
+
+:INTRO_11611
+01B7: release_weather 
+00C0: set_current_time 21 0 
+02EA: end_cutscene 
+04FA: reset_sky_colors_with_fade 0 
+select_interior 0 
+0296: unload_special_actor 1 
+0296: unload_special_actor 2 
+0296: unload_special_actor 3 
+0296: unload_special_actor 4 
+0296: unload_special_actor 5 
+0296: unload_special_actor 6 
+0296: unload_special_actor 7 
+0296: unload_special_actor 8 
+0296: unload_special_actor 9 
+0296: unload_special_actor 10 
+0296: unload_special_actor 11 
+0296: unload_special_actor 12 
+0296: unload_special_actor 13 
+0296: unload_special_actor 14 
+0296: unload_special_actor 15 
+0296: unload_special_actor 16 
+0296: unload_special_actor 17 
+0296: unload_special_actor 18 
+0296: unload_special_actor 19 
+0296: unload_special_actor 20 
+0296: unload_special_actor 21 
+Model.Destroy(#CUTOBJ01)
+Model.Destroy(#CUTOBJ02)
+Model.Destroy(#CUTOBJ03)
+Model.Destroy(#CUTOBJ04)
+Model.Destroy(#CUTOBJ05)
+Model.Destroy(#DOC_CRANEEGGS04)
+Model.Destroy(#DOC_CRANE_CAB04)
+Model.Destroy(#DOCKFUEL07)
+Model.Destroy(#AP_RADAR1_01)
+Model.Destroy(#VEG_PALM04)
+0363: toggle_model_render_at 231.4 -1277.7 19.0 radius 50.0 object #MOB_MOBROOM2 0 
+0363: toggle_model_render_at 231.4 -1277.7 19.0 radius 50.0 object #MOB_DETAILSB 0 
+wait 0 
+01B7: release_weather 
+00C0: set_current_time 21 0 
+3@ = 0 // integer values 
+4@ = 0 // integer values 
+5@ = 0 // integer values 
+6@ = 0 // integer values 
+02A3: enable_widescreen 1 
+Player.CanMove($PLAYER_CHAR) = False
+01F7: set_player $PLAYER_CHAR ignored_by_cops_state_to 1 
+03BF: set_player $PLAYER_CHAR ignored_by_everyone_to 1 
+03CF: load_wav 'INTRO1' as 1 
+03CF: load_wav 'INTRO2' as 2 
+
+:INTRO_11899
+if or
+83D0:   not wav 1 loaded 
+83D0:   not wav 2 loaded 
+else_jump @INTRO_11929 
+wait 0 
+jump @INTRO_11899 
+
+:INTRO_11929
+Model.Load(#PCJ600)
+Model.Load(#ADMIRAL)
+023C: load_special_actor 10 'IGKEN' 
+038B: load_requested_models 
+
+:INTRO_11953
+if or
+   not Model.Available(#PCJ600)
+   not Model.Available(#ADMIRAL)
+823D:   not special_actor 10 loaded 
+else_jump @INTRO_11989 
+wait 0 
+jump @INTRO_11953 
+
+:INTRO_11989
+0395: clear_area 0 at 114.2 -823.3 range 9.7 1.0 
+04E4: unknown_refresh_game_renderer_at 86.428 -852.238 
+Camera.SetAtPos(114.2, -823.3, 9.7)
+0395: clear_area 1 at 86.428 -852.238 range 9.325 50.0 
+03DE: set_pedestrians_density_multiplier_to 0.0 
+01EB: set_traffic_density_multiplier_to 0.0 
+0055: put_player $PLAYER_CHAR at 86.428 -852.238 9.325 
+0395: clear_area 1 at 86.485 -851.933 range 10.0 10.0 
+0@ = Car.Create(#PCJ600, 83.54, -851.669, 10.0)
+Car.SetImmunities(0@, 1, 1, 1, 1, 1)
+Car.Angle(0@) = 330.0
+01D4: actor $PLAYER_ACTOR go_to_car 0@ and_enter_it_as_a_passenger 
+0129: 2@ = create_actor 4 #SPECIAL10 in_car 0@ driverseat 
+01ED: clear_actor 2@ threat_search 
+02AB: set_actor 2@ immunities BP 1 FP 1 EP 1 CP 1 MP 1 
+Car.SetToNormalDriver(0@)
+0229: set_car 0@ color_to 84 84 
+1@ = Car.Create(#ADMIRAL, 127.4, -818.5, 9.5)
+Car.Angle(1@) = 250.6
+041E: set_radio_station 9 -1 
+Model.Destroy(#PCJ600)
+Model.Destroy(#ADMIRAL)
+
+:INTRO_12275
+if 
+   not Actor.Driving($PLAYER_ACTOR)
+else_jump @INTRO_12318 
+wait 0 
+if 
+   Car.Wrecked(0@)
+else_jump @INTRO_12311 
+
+:INTRO_12311
+jump @INTRO_12275 
+
+:INTRO_12318
+fade 1 1000 
+0395: clear_area 1 at 116.583 -796.821 range 11.423 1.0 
+Camera.SetPosition(116.583, -796.821, 11.423, 0.0, 0.0, 0.0)
+Camera.PointAt(116.573, -797.821, 11.414, 2)
+if 
+   not Car.Wrecked(0@)
+else_jump @INTRO_12470 
+04BA: set_car 0@ speed_instantly 20.0 
+Car.DriveTo(0@, 103.1, -832.3, 9.317)
+Car.SetMaxSpeed(0@, 30.0)
+00AE: set_vehicle 0@ traffic_behavior_to 2 
+4@ = 1 // integer values 
+
+:INTRO_12470
+16@ = 0 // integer values 
+17@ = 0 // integer values 
+
+:INTRO_12484
+if or
+   not 3@ == 8 // integer values 
+   not 4@ == 4 // integer values 
+else_jump @INTRO_13565 
+wait 0 
+if 
+   Car.Wrecked(0@)
+else_jump @INTRO_12536 
+jump @INTRO_12964 
+
+:INTRO_12536
+if 
+  4@ == 1 // integer values 
+else_jump @INTRO_12674 
+if 
+  17@ >= 30000 // integer values 
+else_jump @INTRO_12674 
+if 
+   not Car.Wrecked(0@)
+else_jump @INTRO_12674 
+if 
+81AF:   not car 0@ 0 132.6 -818.278 9.446 radius 3.0 3.0 4.0 
+else_jump @INTRO_12674 
+4@ = 3 // integer values 
+Car.PutAt(0@, 132.6, -818.278, 9.446)
+Car.Angle(0@) = 206.0214
+
+:INTRO_12674
+if 
+  4@ == 1 // integer values 
+else_jump @INTRO_12767 
+if 
+01AF:   car 0@ 0 103.1 -832.3 9.317 radius 4.0 4.0 4.0 
+else_jump @INTRO_12767 
+Car.DriveTo(0@, 113.371, -819.078, 9.317)
+4@ = 2 // integer values 
+
+:INTRO_12767
+if 
+  4@ == 2 // integer values 
+else_jump @INTRO_12860 
+if 
+01AF:   car 0@ 0 113.371 -819.078 9.317 radius 4.0 4.0 4.0 
+else_jump @INTRO_12860 
+Car.DriveTo(0@, 132.6, -818.278, 9.446)
+4@ = 3 // integer values 
+
+:INTRO_12860
+if 
+  4@ == 3 // integer values 
+else_jump @INTRO_12964 
+if 
+01AF:   car 0@ 0 132.6 -818.278 9.446 radius 3.0 3.0 4.0 
+else_jump @INTRO_12964 
+if 
+   not Car.Wrecked(0@)
+else_jump @INTRO_12964 
+Car.SetMaxSpeed(0@, 0.0)
+Car.SetToNormalDriver(0@)
+4@ = 4 // integer values 
+
+:INTRO_12964
+if 
+   Actor.Dead(2@)
+else_jump @INTRO_12980 
+
+:INTRO_12980
+if 
+  3@ == 0 // integer values 
+else_jump @INTRO_13038 
+03D1: play_wav 1 
+00BC: text_highpriority 'INTRO1' 10000 ms 1  // I poke my head out of the gutter for one freakin' second and fate shovels shit in my face!
+16@ = 0 // integer values 
+17@ = 0 // integer values 
+3@ = 1 // integer values 
+
+:INTRO_13038
+if 
+  6@ == 0 // integer values 
+else_jump @INTRO_13164 
+if 
+  17@ >= 2000 // integer values 
+else_jump @INTRO_13164 
+0395: clear_area 0 at 104.88 -808.433 range 12.108 1.0 
+Camera.SetPosition(104.88, -808.433, 12.108, 0.0, 0.0, 0.0)
+Camera.PointAt(105.771, -808.888, 12.091, 2)
+17@ = 0 // integer values 
+6@ = 1 // integer values 
+
+:INTRO_13164
+if 
+  3@ == 1 // integer values 
+else_jump @INTRO_13252 
+if 
+03D2:   wav 1 ended 
+else_jump @INTRO_13252 
+03D5: remove_text 'INTRO1'  // I poke my head out of the gutter for one freakin' second and fate shovels shit in my face!
+if 
+  16@ >= 1000 // integer values 
+else_jump @INTRO_13252 
+03D1: play_wav 2 
+00BC: text_highpriority 'INTRO2' 10000 ms 1  // Go get some sleep.
+3@ = 2 // integer values 
+
+:INTRO_13252
+if 
+  3@ == 2 // integer values 
+else_jump @INTRO_13289 
+03CF: load_wav 'INTRO3' as 1 
+3@ = 3 // integer values 
+
+:INTRO_13289
+if 
+  3@ == 3 // integer values 
+else_jump @INTRO_13339 
+if 
+03D2:   wav 2 ended 
+else_jump @INTRO_13339 
+03D5: remove_text 'INTRO2'  // Go get some sleep.
+3@ = 4 // integer values 
+
+:INTRO_13339
+if 
+  3@ == 4 // integer values 
+else_jump @INTRO_13398 
+if 
+03D0:   wav 1 loaded 
+else_jump @INTRO_13398 
+03CF: load_wav 'INTRO4' as 2 
+16@ = 0 // integer values 
+3@ = 5 // integer values 
+
+:INTRO_13398
+if 
+  3@ == 5 // integer values 
+else_jump @INTRO_13461 
+if 
+  16@ >= 900 // integer values 
+else_jump @INTRO_13461 
+03D1: play_wav 1 
+00BC: text_highpriority 'INTRO3' 10000 ms 1  // What are you gonna do?
+3@ = 6 // integer values 
+
+:INTRO_13461
+if 
+  3@ == 6 // integer values 
+else_jump @INTRO_13511 
+if 
+03D2:   wav 1 ended 
+else_jump @INTRO_13511 
+03D5: remove_text 'INTRO3'  // What are you gonna do?
+3@ = 7 // integer values 
+
+:INTRO_13511
+if 
+  3@ == 7 // integer values 
+else_jump @INTRO_13558 
+if 
+03D0:   wav 2 loaded 
+else_jump @INTRO_13558 
+16@ = 0 // integer values 
+3@ = 8 // integer values 
+
+:INTRO_13558
+jump @INTRO_12484 
+
+:INTRO_13565
+if 
+  300 > 16@ // integer values 
+else_jump @INTRO_13627 
+wait 0 
+if 
+   Car.Wrecked(0@)
+else_jump @INTRO_13604 
+
+:INTRO_13604
+if 
+   Actor.Dead(2@)
+else_jump @INTRO_13620 
+
+:INTRO_13620
+jump @INTRO_13565 
+
+:INTRO_13627
+03D1: play_wav 2 
+00BC: text_highpriority 'INTRO4' 10000 ms 1  // I'll drop by your office tomorrow and we can start sorting this mess out.
+wait 400 
+if 
+   Car.Wrecked(0@)
+else_jump @INTRO_13667 
+
+:INTRO_13667
+if 
+   Actor.Dead(2@)
+else_jump @INTRO_13683 
+
+:INTRO_13683
+if 
+83D2:   not wav 2 ended 
+else_jump @INTRO_13741 
+wait 0 
+if 
+   Car.Wrecked(0@)
+else_jump @INTRO_13718 
+
+:INTRO_13718
+if 
+   Actor.Dead(2@)
+else_jump @INTRO_13734 
+
+:INTRO_13734
+jump @INTRO_13683 
+
+:INTRO_13741
+03D5: remove_text 'INTRO4'  // I'll drop by your office tomorrow and we can start sorting this mess out.
+if 
+   not Car.Wrecked(0@)
+else_jump @INTRO_13791 
+if 
+   not Actor.Dead(2@)
+else_jump @INTRO_13791 
+01D3: actor 2@ leave_car 0@ 
+
+:INTRO_13791
+if 
+   not Actor.Dead(2@)
+else_jump @INTRO_13866 
+
+:INTRO_13807
+if 
+   Actor.Driving(2@)
+else_jump @INTRO_13866 
+wait 0 
+if 
+   Car.Wrecked(0@)
+else_jump @INTRO_13843 
+
+:INTRO_13843
+if 
+   Actor.Dead(2@)
+else_jump @INTRO_13859 
+
+:INTRO_13859
+jump @INTRO_13807 
+
+:INTRO_13866
+if 
+   not Actor.Dead(2@)
+else_jump @INTRO_13904 
+0211: actor 2@ walk_to 125.809 -815.263 
+0319: set_actor 2@ running 1 
+
+:INTRO_13904
+16@ = 0 // integer values 
+
+:INTRO_13911
+if 
+  1500 > 16@ // integer values 
+else_jump @INTRO_13957 
+wait 0 
+if 
+   not Actor.Dead(2@)
+else_jump @INTRO_13950 
+
+:INTRO_13950
+jump @INTRO_13911 
+
+:INTRO_13957
+0395: clear_area 0 at 113.655 -815.814 range 11.029 1.0 
+Camera.SetPosition(113.655, -815.814, 11.029, 0.0, 0.0, 0.0)
+Camera.PointAt(114.307, -816.57, 11.083, 2)
+if 
+   not Actor.Dead(2@)
+else_jump @INTRO_14078 
+009F: set_actor 2@ idle 
+011C: actor 2@ clear_objective 
+Actor.PutAt(2@, 125.809, -815.263, 9.444)
+
+:INTRO_14078
+if 
+   not Actor.Dead(2@)
+else_jump @INTRO_14123 
+0211: actor 2@ walk_to 116.269 -825.438 
+0319: set_actor 2@ running 1 
+5@ = 1 // integer values 
+
+:INTRO_14123
+if 
+   not Actor.Driving($PLAYER_ACTOR)
+else_jump @INTRO_14176 
+Actor.PutAt($PLAYER_ACTOR, 136.457, -817.37, 9.44)
+Actor.Angle($PLAYER_ACTOR) = 225.495
+jump @INTRO_14196 
+
+:INTRO_14176
+0362: put_actor $PLAYER_ACTOR at 136.457 -817.37 9.44 and_remove_from_car 
+
+:INTRO_14196
+if 
+   not Actor.Driving($PLAYER_ACTOR)
+else_jump @INTRO_14222 
+Actor.Angle($PLAYER_ACTOR) = 225.495
+
+:INTRO_14222
+17@ = 0 // integer values 
+
+:INTRO_14229
+Car.PutAt(0@, 1000.0, 1000.0, -9.0)
+if 
+  1350 > 17@ // integer values 
+else_jump @INTRO_14295 
+wait 0 
+if 
+   not Actor.Dead(2@)
+else_jump @INTRO_14288 
+
+:INTRO_14288
+jump @INTRO_14229 
+
+:INTRO_14295
+Camera.SetBehindPlayer
+Camera.Restore_WithJumpCut
+03D5: remove_text 'INTRO4'  // I'll drop by your office tomorrow and we can start sorting this mess out.
+041E: set_radio_station 1 -1 
+03BF: set_player $PLAYER_CHAR ignored_by_everyone_to 0 
+01F7: set_player $PLAYER_CHAR ignored_by_cops_state_to 0 
+03AD: set_rubbish 1 
+Player.CanMove($PLAYER_CHAR) = True
+02A3: enable_widescreen 0 
+Car.RemoveReferences(0@)
+Car.RemoveReferences(1@)
+014C: set_parked_car_generator $1912 cars_to_generate_to 101 
+Actor.DestroyInstantly(2@)
+$220 = 1 // integer values 
+$ONMISSION = 0 // integer values 
+if 
+   not Car.Wrecked(0@)
+else_jump @INTRO_14411 
+Car.SetImmunities(0@, 0, 0, 0, 0, 0)
+
+:INTRO_14411
+0296: unload_special_actor 10 
+Model.Destroy(#ADMIRAL)
+Model.Destroy(#PCJ600)
+03DE: set_pedestrians_density_multiplier_to 1.0 
+01EB: set_traffic_density_multiplier_to 1.0 
+044D: load_splash 'SPLASH1' 
+0169: set_fade_color 0 0 0 
+mission_cleanup 
+end_thread 
+return 
+
+:INTRO_14463
+if 
+  $13 == 0 // integer values 
+else_jump @INTRO_14511 
+if and
+80E1:   not player 0 pressed_button 16 
+80E1:   not player 0 pressed_button 12 
+else_jump @INTRO_14511 
+$13 = 1 // integer values 
+
+:INTRO_14511
+if 
+  $13 == 1 // integer values 
+else_jump @INTRO_14549 
+if 
+056A:   has_cutscene_been_interrupted 
+else_jump @INTRO_14549 
+$13 = 2 // integer values 
+
+:INTRO_14549
+return
