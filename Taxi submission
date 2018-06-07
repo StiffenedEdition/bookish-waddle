@@ -1,0 +1,1310 @@
+//-------------Mission 75---------------
+// Originally: TAXI DRIVER
+
+:TAXI
+gosub @TAXI_16 
+gosub @TAXI_6966 
+end_thread 
+
+:TAXI_16
+thread 'TAXI' 
+set_wb_check_to 0 
+$ONMISSION = 1 // integer values 
+$314 = 1 // integer values 
+$6710 = 0 // integer values 
+$6714 = 0 // integer values 
+$6712 = 0 // integer values 
+$6715 = 0 // integer values 
+$6711 = -1 // integer values 
+$6708 = 0 // integer values 
+$6713 = 0 // integer values 
+$6724 = 5 // integer values 
+$6723 = 500 // integer values 
+054C: use_GXT_table 'TAXI1' 
+wait 0 
+03C4: set_status_text_to $6712 0 'FARES'  // FARES:
+if 
+   not Player.Defined($PLAYER_CHAR)
+else_jump @TAXI_160 
+jump @TAXI_6551 
+
+:TAXI_160
+if 
+00E0:   player $PLAYER_CHAR driving 
+else_jump @TAXI_191 
+00DA: $6709 = player $PLAYER_CHAR car 
+jump @TAXI_198 
+
+:TAXI_191
+jump @TAXI_6551 
+
+:TAXI_198
+Car.ToggleTaxiLight($6709) = True
+00BC: text_highpriority 'TAXI1' 1500 ms 1  // ~g~Look for a fare.
+wait 0 
+
+:TAXI_224
+if 
+  $375 == 0 // integer values 
+else_jump @TAXI_259 
+03E5: text_box 'TAXIH1'  // Stop near a highlighted pedestrian to pick them up then drive them to their destination before the time runs out.
+$375 = 1 // integer values 
+
+:TAXI_259
+$6721 = 0 // integer values 
+if 
+   not Player.Defined($PLAYER_CHAR)
+else_jump @TAXI_289 
+jump @TAXI_6551 
+
+:TAXI_289
+if 
+   Car.Wrecked($6709)
+else_jump @TAXI_312 
+jump @TAXI_6551 
+
+:TAXI_312
+if 
+80DC:   not player $PLAYER_CHAR driving $6709 
+else_jump @TAXI_338 
+jump @TAXI_6551 
+
+:TAXI_338
+if 
+   not $18 == 3 // integer values 
+else_jump @TAXI_393 
+if and
+8443:   not player $PLAYER_CHAR in_a_car 
+  $ONMISSION == 1 // integer values 
+else_jump @TAXI_386 
+jump @TAXI_6347 
+
+:TAXI_386
+jump @TAXI_424 
+
+:TAXI_393
+if and
+00E1:   player 0 pressed_button 14 
+  $ONMISSION == 1 // integer values 
+else_jump @TAXI_424 
+jump @TAXI_6347 
+
+:TAXI_424
+if and
+  $6710 == 1 // integer values 
+  $6714 == 0 // integer values 
+else_jump @TAXI_456 
+jump @TAXI_6551 
+
+:TAXI_456
+02DD: get_random_actor $6711 in_zone 'VICE_C' 1 1 1 
+if 
+  $6711 == -1 // integer values 
+else_jump @TAXI_504 
+wait 0 
+jump @TAXI_224 
+
+:TAXI_504
+009F: set_actor $6711 idle 
+01ED: clear_actor $6711 threat_search 
+0291: set_actor $6711 attack_when_provoked 0 
+$6706 = Marker.CreateAboveActor($6711)
+0365: set_actor $6711 objective_to-29 
+
+:TAXI_534
+if or
+80FD:   not player $PLAYER_CHAR 0 $6711 in_car radius 7.0 7.0 2.0 
+81C1:   not car $6709 stopped 
+else_jump @TAXI_915 
+wait 0 
+if 
+   not Player.Defined($PLAYER_CHAR)
+else_jump @TAXI_602 
+jump @TAXI_6551 
+
+:TAXI_602
+wait 0 
+if 
+   Car.Wrecked($6709)
+else_jump @TAXI_629 
+jump @TAXI_6551 
+
+:TAXI_629
+if 
+   Actor.Dead($6711)
+else_jump @TAXI_652 
+jump @TAXI_6485 
+
+:TAXI_652
+if 
+80DC:   not player $PLAYER_CHAR driving $6709 
+else_jump @TAXI_678 
+jump @TAXI_6551 
+
+:TAXI_678
+if 
+80FD:   not player $PLAYER_CHAR 0 $6711 in_car radius 90.0 90.0 20.0 
+else_jump @TAXI_721 
+jump @TAXI_6485 
+
+:TAXI_721
+if 
+   not $18 == 3 // integer values 
+else_jump @TAXI_776 
+if and
+8443:   not player $PLAYER_CHAR in_a_car 
+  $ONMISSION == 1 // integer values 
+else_jump @TAXI_769 
+jump @TAXI_6347 
+
+:TAXI_769
+jump @TAXI_807 
+
+:TAXI_776
+if and
+00E1:   player 0 pressed_button 14 
+  $ONMISSION == 1 // integer values 
+else_jump @TAXI_807 
+jump @TAXI_6347 
+
+:TAXI_807
+if and
+  $6710 == 1 // integer values 
+  $6714 == 0 // integer values 
+else_jump @TAXI_839 
+jump @TAXI_6551 
+
+:TAXI_839
+if and
+0185:   car $6709 health >= 400 
+  $6708 == 1 // integer values 
+else_jump @TAXI_884 
+Marker.Disable($374)
+$6708 = 0 // integer values 
+$6713 = 0 // integer values 
+
+:TAXI_884
+if 
+   not Actor.Dead($6711)
+else_jump @TAXI_908 
+020F: actor $6711 look_at_player $PLAYER_CHAR 
+
+:TAXI_908
+jump @TAXI_534 
+
+:TAXI_915
+if 
+8185:   not car $6709 health >= 400 
+else_jump @TAXI_1296 
+00BC: text_highpriority 'TAXI7' 4000 ms 1  // ~r~Your car is trashed, get it repaired.
+if or
+0121:   player $PLAYER_CHAR in_zone 'BEACH1'  // Ocean Beach
+0121:   player $PLAYER_CHAR in_zone 'BEACH2'  // Washington Beach
+0121:   player $PLAYER_CHAR in_zone 'STARI'  // Starfish Island
+else_jump @TAXI_1026 
+Marker.Disable($374)
+02A8: $374 = create_marker 27 at -3.8 -1265.8 12.0 
+
+:TAXI_1026
+if or
+0121:   player $PLAYER_CHAR in_zone 'BEACH3'  // Vice Point
+0121:   player $PLAYER_CHAR in_zone 'PORNI'  // Prawn Island
+0121:   player $PLAYER_CHAR in_zone 'GOLFC'  // Leaf Links
+else_jump @TAXI_1103 
+Marker.Disable($374)
+02A8: $374 = create_marker 27 at 319.0 441.3 12.0 
+
+:TAXI_1103
+if or
+0121:   player $PLAYER_CHAR in_zone 'DOCKS'  // Viceport
+0121:   player $PLAYER_CHAR in_zone 'A_PORT'  // Escobar International
+else_jump @TAXI_1167 
+Marker.Disable($374)
+02A8: $374 = create_marker 27 at -903.0 -1261.1 12.0 
+
+:TAXI_1167
+if or
+0121:   player $PLAYER_CHAR in_zone 'HAITI'  // Little Haiti
+0121:   player $PLAYER_CHAR in_zone 'HAVANA'  // Little Havana
+0121:   player $PLAYER_CHAR in_zone 'DTOWN'  // Downtown
+0121:   player $PLAYER_CHAR in_zone 'JUNKY'  // Junk Yard
+else_jump @TAXI_1257 
+Marker.Disable($374)
+02A8: $374 = create_marker 27 at -876.2 -105.5 12.0 
+
+:TAXI_1257
+if 
+  $6708 == 0 // integer values 
+else_jump @TAXI_1289 
+$6708 = 1 // integer values 
+$6713 = 1 // integer values 
+
+:TAXI_1289
+jump @TAXI_6485 
+
+:TAXI_1296
+0319: set_actor $6711 running 1 
+01D4: actor $6711 go_to_car $6709 and_enter_it_as_a_passenger 
+
+:TAXI_1311
+if 
+   not Actor.InCar($6711, $6709)
+else_jump @TAXI_1678 
+wait 0 
+if 
+   not Player.Defined($PLAYER_CHAR)
+else_jump @TAXI_1357 
+jump @TAXI_6551 
+
+:TAXI_1357
+if 
+   Car.Wrecked($6709)
+else_jump @TAXI_1380 
+jump @TAXI_6551 
+
+:TAXI_1380
+if 
+   Actor.Dead($6711)
+else_jump @TAXI_1403 
+jump @TAXI_6485 
+
+:TAXI_1403
+if 
+80DC:   not player $PLAYER_CHAR driving $6709 
+else_jump @TAXI_1429 
+jump @TAXI_6551 
+
+:TAXI_1429
+if 
+80FD:   not player $PLAYER_CHAR 0 $6711 in_car radius 90.0 90.0 20.0 
+else_jump @TAXI_1472 
+jump @TAXI_6485 
+
+:TAXI_1472
+if 
+   not $18 == 3 // integer values 
+else_jump @TAXI_1527 
+if and
+8443:   not player $PLAYER_CHAR in_a_car 
+  $ONMISSION == 1 // integer values 
+else_jump @TAXI_1520 
+jump @TAXI_6347 
+
+:TAXI_1520
+jump @TAXI_1558 
+
+:TAXI_1527
+if and
+00E1:   player 0 pressed_button 14 
+  $ONMISSION == 1 // integer values 
+else_jump @TAXI_1558 
+jump @TAXI_6347 
+
+:TAXI_1558
+if and
+  $6710 == 1 // integer values 
+  $6714 == 0 // integer values 
+else_jump @TAXI_1590 
+jump @TAXI_6551 
+
+:TAXI_1590
+if and
+0185:   car $6709 health >= 400 
+  $6708 == 1 // integer values 
+else_jump @TAXI_1628 
+Marker.Disable($374)
+$6708 = 0 // integer values 
+
+:TAXI_1628
+if 
+80FD:   not player $PLAYER_CHAR 0 $6711 in_car radius 7.0 7.0 2.0 
+else_jump @TAXI_1671 
+jump @TAXI_534 
+
+:TAXI_1671
+jump @TAXI_1311 
+
+:TAXI_1678
+Actor.StorePos($6711, $6731, $6732, $6733)
+Marker.Disable($6706)
+Car.ToggleTaxiLight($6709) = False
+
+:TAXI_1704
+wait 0 
+if 
+   not Player.Defined($PLAYER_CHAR)
+else_jump @TAXI_1731 
+jump @TAXI_6551 
+
+:TAXI_1731
+0209: $372 = random_int_in_ranges 1 16 
+if 
+   not Player.Defined($PLAYER_CHAR)
+else_jump @TAXI_1763 
+jump @TAXI_6551 
+
+:TAXI_1763
+if or
+0121:   player $PLAYER_CHAR in_zone 'DTOWN'  // Downtown
+0121:   player $PLAYER_CHAR in_zone 'A_PORT'  // Escobar International
+0121:   player $PLAYER_CHAR in_zone 'JUNKY'  // Junk Yard
+0121:   player $PLAYER_CHAR in_zone 'DOCKS'  // Viceport
+0121:   player $PLAYER_CHAR in_zone 'HAVANA'  // Little Havana
+0121:   player $PLAYER_CHAR in_zone 'HAITI'  // Little Haiti
+else_jump @TAXI_3269 
+if 
+  $372 == 1 // integer values 
+else_jump @TAXI_1946 
+if 
+0121:   player $PLAYER_CHAR in_zone 'DTOWN'  // Downtown
+else_jump @TAXI_1901 
+jump @TAXI_1704 
+
+:TAXI_1901
+00BC: text_highpriority 'MFARE1' 5000 ms 1  // ~g~Destination ~w~'Ammu-Nation' ~g~in Downtown.
+$6725 = -679.1 // floating-point values 
+$6726 = 1193.5 // floating-point values 
+$6727 = 9.4 // floating-point values 
+
+:TAXI_1946
+if 
+  $372 == 2 // integer values 
+else_jump @TAXI_2040 
+if 
+0121:   player $PLAYER_CHAR in_zone 'A_PORT'  // Escobar International
+else_jump @TAXI_1995 
+jump @TAXI_1704 
+
+:TAXI_1995
+00BC: text_highpriority 'MFARE2' 5000 ms 1  // ~g~Destination ~w~'the Terminal' ~g~at Escobar International Airport.
+$6725 = -1457.7 // floating-point values 
+$6726 = -825.1 // floating-point values 
+$6727 = 13.1 // floating-point values 
+
+:TAXI_2040
+if 
+  $372 == 3 // integer values 
+else_jump @TAXI_2134 
+if 
+0121:   player $PLAYER_CHAR in_zone 'HAVANA'  // Little Havana
+else_jump @TAXI_2089 
+jump @TAXI_1704 
+
+:TAXI_2089
+00BC: text_highpriority 'WFARE3' 5000 ms 1  // ~g~Destination ~w~'Sunshine Autos' ~g~in Little Havana.
+$6725 = -1009.0 // floating-point values 
+$6726 = -880.9 // floating-point values 
+$6727 = 11.9 // floating-point values 
+
+:TAXI_2134
+if 
+  $372 == 4 // integer values 
+else_jump @TAXI_2228 
+if 
+0121:   player $PLAYER_CHAR in_zone 'HAITI'  // Little Haiti
+else_jump @TAXI_2183 
+jump @TAXI_1704 
+
+:TAXI_2183
+00BC: text_highpriority 'WFARE4' 5000 ms 1  // ~g~Destination ~w~'Kaufman Cabs' ~g~in Little Haiti.
+$6725 = -1018.4 // floating-point values 
+$6726 = 195.9 // floating-point values 
+$6727 = 10.1 // floating-point values 
+
+:TAXI_2228
+if 
+  $372 == 5 // integer values 
+else_jump @TAXI_2322 
+if 
+0121:   player $PLAYER_CHAR in_zone 'HAVANA'  // Little Havana
+else_jump @TAXI_2277 
+jump @TAXI_1704 
+
+:TAXI_2277
+00BC: text_highpriority 'WFARE5' 5000 ms 1  // ~g~Destination ~w~'The Hardware store' ~g~in Little Havana.
+$6725 = -971.2 // floating-point values 
+$6726 = -677.2 // floating-point values 
+$6727 = 10.4 // floating-point values 
+
+:TAXI_2322
+if 
+  $372 == 6 // integer values 
+else_jump @TAXI_2416 
+if 
+0121:   player $PLAYER_CHAR in_zone 'DTOWN'  // Downtown
+else_jump @TAXI_2371 
+jump @TAXI_1704 
+
+:TAXI_2371
+00BC: text_highpriority 'WFARE6' 5000 ms 1  // ~g~Destination ~w~'Howlin Petes Bike Emporium' ~g~in Downtown.
+$6725 = -600.6 // floating-point values 
+$6726 = 667.3 // floating-point values 
+$6727 = 9.9 // floating-point values 
+
+:TAXI_2416
+if 
+  $372 == 7 // integer values 
+else_jump @TAXI_2510 
+if 
+0121:   player $PLAYER_CHAR in_zone 'HAVANA'  // Little Havana
+else_jump @TAXI_2465 
+jump @TAXI_1704 
+
+:TAXI_2465
+00BC: text_highpriority 'WFARE7' 5000 ms 1  // ~g~Destination ~w~'Police Station' ~g~in Little Havana.
+$6725 = -865.6 // floating-point values 
+$6726 = -677.0 // floating-point values 
+$6727 = 10.0 // floating-point values 
+
+:TAXI_2510
+if 
+  $372 == 8 // integer values 
+else_jump @TAXI_2604 
+if 
+0121:   player $PLAYER_CHAR in_zone 'DTOWN'  // Downtown
+else_jump @TAXI_2559 
+jump @TAXI_1704 
+
+:TAXI_2559
+00BC: text_highpriority 'WFARE8' 5000 ms 1  // ~g~Destination ~w~'Police Station' ~g~in Downtown.
+$6725 = -661.7 // floating-point values 
+$6726 = 755.7 // floating-point values 
+$6727 = 9.8 // floating-point values 
+
+:TAXI_2604
+if 
+  $372 == 9 // integer values 
+else_jump @TAXI_2698 
+if 
+0121:   player $PLAYER_CHAR in_zone 'DTOWN'  // Downtown
+else_jump @TAXI_2653 
+jump @TAXI_1704 
+
+:TAXI_2653
+00BC: text_highpriority 'WFARE9' 5000 ms 1  // ~g~Destination ~w~'Hospital' ~g~in Downtown.
+$6725 = -800.4 // floating-point values 
+$6726 = 1167.8 // floating-point values 
+$6727 = 9.6 // floating-point values 
+
+:TAXI_2698
+if 
+  $372 == 10 // integer values 
+else_jump @TAXI_2792 
+if 
+0121:   player $PLAYER_CHAR in_zone 'HAVANA'  // Little Havana
+else_jump @TAXI_2747 
+jump @TAXI_1704 
+
+:TAXI_2747
+00BC: text_highpriority 'WFARE10' 5000 ms 1  // ~g~Destination ~w~'Hospital' ~g~in Little Havana.
+$6725 = -871.9 // floating-point values 
+$6726 = -467.2 // floating-point values 
+$6727 = 9.8 // floating-point values 
+
+:TAXI_2792
+if 
+  $372 == 11 // integer values 
+else_jump @TAXI_2886 
+if 
+0121:   player $PLAYER_CHAR in_zone 'DTOWN'  // Downtown
+else_jump @TAXI_2841 
+jump @TAXI_1704 
+
+:TAXI_2841
+00BC: text_highpriority 'WFARE11' 5000 ms 1  // ~g~Destination ~w~'The Stadium' ~g~in Downtown.
+$6725 = -1024.6 // floating-point values 
+$6726 = 1332.8 // floating-point values 
+$6727 = 7.4 // floating-point values 
+
+:TAXI_2886
+if 
+  $372 == 12 // integer values 
+else_jump @TAXI_2980 
+if 
+0121:   player $PLAYER_CHAR in_zone 'HAITI'  // Little Haiti
+else_jump @TAXI_2935 
+jump @TAXI_1704 
+
+:TAXI_2935
+00BC: text_highpriority 'WFARE12' 5000 ms 1  // ~g~Destination ~w~'Pizza Restaurant' ~g~in Little Haiti.
+$6725 = -1064.6 // floating-point values 
+$6726 = 84.0 // floating-point values 
+$6727 = 10.2 // floating-point values 
+
+:TAXI_2980
+if 
+  $372 == 13 // integer values 
+else_jump @TAXI_3074 
+if 
+0121:   player $PLAYER_CHAR in_zone 'DTOWN'  // Downtown
+else_jump @TAXI_3029 
+jump @TAXI_1704 
+
+:TAXI_3029
+00BC: text_highpriority 'WFARE13' 5000 ms 1  // ~g~Destination ~w~'Pizza Restaurant' ~g~in Downtown.
+$6725 = -878.6 // floating-point values 
+$6726 = 795.7 // floating-point values 
+$6727 = 10.0 // floating-point values 
+
+:TAXI_3074
+if 
+  $372 == 14 // integer values 
+else_jump @TAXI_3168 
+if 
+0121:   player $PLAYER_CHAR in_zone 'DOCKS'  // Viceport
+else_jump @TAXI_3123 
+jump @TAXI_1704 
+
+:TAXI_3123
+00BC: text_highpriority 'WFARE14' 5000 ms 1  // ~g~Destination ~w~'Docks' ~g~in Viceport.
+$6725 = -745.0 // floating-point values 
+$6726 = -1264.0 // floating-point values 
+$6727 = 10.1 // floating-point values 
+
+:TAXI_3168
+if 
+  $372 == 15 // integer values 
+else_jump @TAXI_3262 
+if 
+0121:   player $PLAYER_CHAR in_zone 'HAITI'  // Little Haiti
+else_jump @TAXI_3217 
+jump @TAXI_1704 
+
+:TAXI_3217
+00BC: text_highpriority 'WFARE15' 5000 ms 1  // ~g~Destination ~w~'Chemist' ~g~in Little Haiti.
+$6725 = -850.6 // floating-point values 
+$6726 = -92.4 // floating-point values 
+$6727 = 10.1 // floating-point values 
+
+:TAXI_3262
+jump @TAXI_4679 
+
+:TAXI_3269
+if 
+  $372 == 1 // integer values 
+else_jump @TAXI_3363 
+if 
+0121:   player $PLAYER_CHAR in_zone 'BEACH1'  // Ocean Beach
+else_jump @TAXI_3318 
+jump @TAXI_1704 
+
+:TAXI_3318
+00BC: text_highpriority 'FARE1' 5000 ms 1  // ~g~Destination ~w~'The Pole Position Club' ~g~in Ocean Beach.
+$6725 = 100.7 // floating-point values 
+$6726 = -1476.8 // floating-point values 
+$6727 = 9.4 // floating-point values 
+
+:TAXI_3363
+if 
+  $372 == 2 // integer values 
+else_jump @TAXI_3457 
+if 
+0121:   player $PLAYER_CHAR in_zone 'BEACH3'  // Vice Point
+else_jump @TAXI_3412 
+jump @TAXI_1704 
+
+:TAXI_3412
+00BC: text_highpriority 'FARE2' 5000 ms 1  // ~g~Destination ~w~'The Malibu club' ~g~in Vice Point.
+$6725 = 505.8 // floating-point values 
+$6726 = -93.9 // floating-point values 
+$6727 = 9.4 // floating-point values 
+
+:TAXI_3457
+if 
+  $372 == 3 // integer values 
+else_jump @TAXI_3551 
+if 
+0121:   player $PLAYER_CHAR in_zone 'BEACH1'  // Ocean Beach
+else_jump @TAXI_3506 
+jump @TAXI_1704 
+
+:TAXI_3506
+00BC: text_highpriority 'FARE3' 5000 ms 1  // ~g~Destination ~w~'The Marina' ~g~in Ocean Beach.
+$6725 = -244.7 // floating-point values 
+$6726 = -1301.8 // floating-point values 
+$6727 = 6.9 // floating-point values 
+
+:TAXI_3551
+if 
+  $372 == 4 // integer values 
+else_jump @TAXI_3645 
+if 
+0121:   player $PLAYER_CHAR in_zone 'BEACH1'  // Ocean Beach
+else_jump @TAXI_3600 
+jump @TAXI_1704 
+
+:TAXI_3600
+00BC: text_highpriority 'FARE4' 5000 ms 1  // ~g~Destination ~w~'Ammu-Nation' ~g~in Ocean Beach.
+$6725 = -53.5 // floating-point values 
+$6726 = -1481.7 // floating-point values 
+$6727 = 8.1 // floating-point values 
+
+:TAXI_3645
+if 
+  $372 == 5 // integer values 
+else_jump @TAXI_3739 
+if 
+0121:   player $PLAYER_CHAR in_zone 'BEACH2'  // Washington Beach
+else_jump @TAXI_3694 
+jump @TAXI_1704 
+
+:TAXI_3694
+00BC: text_highpriority 'FARE5' 5000 ms 1  // ~g~Destination ~w~'The Hardware store' ~g~in Washington Beach.
+$6725 = 201.6 // floating-point values 
+$6726 = -491.7 // floating-point values 
+$6727 = 10.3 // floating-point values 
+
+:TAXI_3739
+if 
+  $372 == 6 // integer values 
+else_jump @TAXI_3833 
+if 
+0121:   player $PLAYER_CHAR in_zone 'BEACH3'  // Vice Point
+else_jump @TAXI_3788 
+jump @TAXI_1704 
+
+:TAXI_3788
+00BC: text_highpriority 'FARE6' 5000 ms 1  // ~g~Destination ~w~'The North Point Mall' ~g~in Vice Point.
+$6725 = 483.3 // floating-point values 
+$6726 = 1124.3 // floating-point values 
+$6727 = 15.4 // floating-point values 
+
+:TAXI_3833
+if 
+  $372 == 7 // integer values 
+else_jump @TAXI_3927 
+if 
+0121:   player $PLAYER_CHAR in_zone 'BEACH3'  // Vice Point
+else_jump @TAXI_3882 
+jump @TAXI_1704 
+
+:TAXI_3882
+00BC: text_highpriority 'FARE7' 5000 ms 1  // ~g~Destination ~w~'The Jewelers' ~g~in Vice Point.
+$6725 = 394.8 // floating-point values 
+$6726 = 203.8 // floating-point values 
+$6727 = 9.9 // floating-point values 
+
+:TAXI_3927
+if 
+  $372 == 8 // integer values 
+else_jump @TAXI_4021 
+if 
+0121:   player $PLAYER_CHAR in_zone 'BEACH1'  // Ocean Beach
+else_jump @TAXI_3976 
+jump @TAXI_1704 
+
+:TAXI_3976
+00BC: text_highpriority 'FARE8' 5000 ms 1  // ~g~Destination ~w~'The Beach' ~g~in Ocean Beach.
+$6725 = 482.3 // floating-point values 
+$6726 = -1218.7 // floating-point values 
+$6727 = 9.7 // floating-point values 
+
+:TAXI_4021
+if 
+  $372 == 9 // integer values 
+else_jump @TAXI_4115 
+if 
+0121:   player $PLAYER_CHAR in_zone 'BEACH2'  // Washington Beach
+else_jump @TAXI_4070 
+jump @TAXI_1704 
+
+:TAXI_4070
+00BC: text_highpriority 'FARE9' 5000 ms 1  // ~g~Destination ~w~'The Beach' ~g~in Washington Beach.
+$6725 = 600.0 // floating-point values 
+$6726 = -618.2 // floating-point values 
+$6727 = 11.2 // floating-point values 
+
+:TAXI_4115
+if 
+  $372 == 10 // integer values 
+else_jump @TAXI_4209 
+if 
+0121:   player $PLAYER_CHAR in_zone 'BEACH3'  // Vice Point
+else_jump @TAXI_4164 
+jump @TAXI_1704 
+
+:TAXI_4164
+00BC: text_highpriority 'FARE10' 5000 ms 1  // ~g~Destination ~w~'The Beach' ~g~in Vice Point.
+$6725 = 736.2 // floating-point values 
+$6726 = 493.1 // floating-point values 
+$6727 = 10.9 // floating-point values 
+
+:TAXI_4209
+if 
+  $372 == 11 // integer values 
+else_jump @TAXI_4303 
+if 
+0121:   player $PLAYER_CHAR in_zone 'BEACH1'  // Ocean Beach
+else_jump @TAXI_4258 
+jump @TAXI_1704 
+
+:TAXI_4258
+00BC: text_highpriority 'FARE11' 5000 ms 1  // ~g~Destination ~w~'Hospital' ~g~in Ocean Beach.
+$6725 = -99.7 // floating-point values 
+$6726 = -975.7 // floating-point values 
+$6727 = 9.4 // floating-point values 
+
+:TAXI_4303
+if 
+  $372 == 12 // integer values 
+else_jump @TAXI_4397 
+if 
+0121:   player $PLAYER_CHAR in_zone 'BEACH3'  // Vice Point
+else_jump @TAXI_4352 
+jump @TAXI_1704 
+
+:TAXI_4352
+00BC: text_highpriority 'FARE12' 5000 ms 1  // ~g~Destination ~w~'Hospital' ~g~in Vice Point.
+$6725 = 431.1 // floating-point values 
+$6726 = 705.3 // floating-point values 
+$6727 = 10.4 // floating-point values 
+
+:TAXI_4397
+if 
+  $372 == 13 // integer values 
+else_jump @TAXI_4491 
+if 
+0121:   player $PLAYER_CHAR in_zone 'BEACH2'  // Washington Beach
+else_jump @TAXI_4446 
+jump @TAXI_1704 
+
+:TAXI_4446
+00BC: text_highpriority 'FARE13' 5000 ms 1  // ~g~Destination ~w~'Police Station' ~g~in Washington Beach.
+$6725 = 403.9 // floating-point values 
+$6726 = -467.5 // floating-point values 
+$6727 = 9.1 // floating-point values 
+
+:TAXI_4491
+if 
+  $372 == 14 // integer values 
+else_jump @TAXI_4585 
+if 
+0121:   player $PLAYER_CHAR in_zone 'BEACH3'  // Vice Point
+else_jump @TAXI_4540 
+jump @TAXI_1704 
+
+:TAXI_4540
+00BC: text_highpriority 'FARE14' 5000 ms 1  // ~g~Destination ~w~'Police Station' ~g~in Vice Point.
+$6725 = 520.7 // floating-point values 
+$6726 = 507.5 // floating-point values 
+$6727 = 10.1 // floating-point values 
+
+:TAXI_4585
+if 
+  $372 == 15 // integer values 
+else_jump @TAXI_4679 
+if 
+0121:   player $PLAYER_CHAR in_zone 'BEACH3'  // Vice Point
+else_jump @TAXI_4634 
+jump @TAXI_1704 
+
+:TAXI_4634
+00BC: text_highpriority 'FARE15' 5000 ms 1  // ~g~Destination ~w~'Pizza Restaurant' ~g~in Vice Point.
+$6725 = 433.0 // floating-point values 
+$6726 = 68.1 // floating-point values 
+$6727 = 10.0 // floating-point values 
+
+:TAXI_4679
+018A: $6707 = create_checkpoint_at $6725 $6726 $6727 
+018B: show_on_radar $6707 2 
+if 
+   Car.Wrecked($6709)
+else_jump @TAXI_4723 
+jump @TAXI_6551 
+
+:TAXI_4723
+0086: $6734 = $6731 // floating-point values only 
+0061: $6734 -= $6728 // floating-point values 
+0086: $6735 = $6732 // floating-point values only 
+0061: $6735 -= $6729 // floating-point values 
+0086: $6736 = $6734 // floating-point values only 
+0069: $6736 *= $6734 // floating-point values 
+0086: $6737 = $6735 // floating-point values only 
+0069: $6737 *= $6735 // floating-point values 
+0086: $6738 = $6736 // floating-point values only 
+0059: $6738 += $6737 // floating-point values 
+01FB: $6739 = square_root $6738 
+008C: $6716 = float_to_integer $6739 
+0084: $6717 = $6716 // integer values and handles 
+if or
+0121:   player $PLAYER_CHAR in_zone 'DTOWN'  // Downtown
+0121:   player $PLAYER_CHAR in_zone 'A_PORT'  // Escobar International
+0121:   player $PLAYER_CHAR in_zone 'JUNKY'  // Junk Yard
+0121:   player $PLAYER_CHAR in_zone 'DOCKS'  // Viceport
+0121:   player $PLAYER_CHAR in_zone 'HAVANA'  // Little Havana
+0121:   player $PLAYER_CHAR in_zone 'HAITI'  // Little Haiti
+else_jump @TAXI_5194 
+if 
+  $6712 == 0 // integer values 
+else_jump @TAXI_4941 
+$6716 *= 80 // integer values 
+
+:TAXI_4941
+if 
+  $6712 == 1 // integer values 
+else_jump @TAXI_4966 
+$6716 *= 75 // integer values 
+
+:TAXI_4966
+if 
+  $6712 == 2 // integer values 
+else_jump @TAXI_4991 
+$6716 *= 70 // integer values 
+
+:TAXI_4991
+if 
+  $6712 == 3 // integer values 
+else_jump @TAXI_5016 
+$6716 *= 69 // integer values 
+
+:TAXI_5016
+if 
+  $6712 == 4 // integer values 
+else_jump @TAXI_5041 
+$6716 *= 68 // integer values 
+
+:TAXI_5041
+if 
+  $6712 == 5 // integer values 
+else_jump @TAXI_5066 
+$6716 *= 66 // integer values 
+
+:TAXI_5066
+if and
+  $6712 > 5 // integer values 
+  10 >= $6712 // integer values 
+else_jump @TAXI_5098 
+$6716 *= 65 // integer values 
+
+:TAXI_5098
+if and
+  $6712 > 11 // integer values 
+  20 >= $6712 // integer values 
+else_jump @TAXI_5130 
+$6716 *= 60 // integer values 
+
+:TAXI_5130
+if and
+  $6712 > 20 // integer values 
+  50 >= $6712 // integer values 
+else_jump @TAXI_5162 
+$6716 *= 55 // integer values 
+
+:TAXI_5162
+if 
+  $6712 > 50 // integer values 
+else_jump @TAXI_5187 
+$6716 *= 50 // integer values 
+
+:TAXI_5187
+jump @TAXI_5465 
+
+:TAXI_5194
+if 
+  $6712 == 0 // integer values 
+else_jump @TAXI_5219 
+$6716 *= 90 // integer values 
+
+:TAXI_5219
+if 
+  $6712 == 1 // integer values 
+else_jump @TAXI_5244 
+$6716 *= 85 // integer values 
+
+:TAXI_5244
+if 
+  $6712 == 2 // integer values 
+else_jump @TAXI_5269 
+$6716 *= 80 // integer values 
+
+:TAXI_5269
+if 
+  $6712 == 3 // integer values 
+else_jump @TAXI_5294 
+$6716 *= 79 // integer values 
+
+:TAXI_5294
+if 
+  $6712 == 4 // integer values 
+else_jump @TAXI_5319 
+$6716 *= 78 // integer values 
+
+:TAXI_5319
+if 
+  $6712 == 5 // integer values 
+else_jump @TAXI_5344 
+$6716 *= 76 // integer values 
+
+:TAXI_5344
+if and
+  $6712 > 5 // integer values 
+  10 >= $6712 // integer values 
+else_jump @TAXI_5376 
+$6716 *= 75 // integer values 
+
+:TAXI_5376
+if and
+  $6712 > 11 // integer values 
+  20 >= $6712 // integer values 
+else_jump @TAXI_5408 
+$6716 *= 70 // integer values 
+
+:TAXI_5408
+if and
+  $6712 > 20 // integer values 
+  50 >= $6712 // integer values 
+else_jump @TAXI_5440 
+$6716 *= 65 // integer values 
+
+:TAXI_5440
+if 
+  $6712 > 50 // integer values 
+else_jump @TAXI_5465 
+$6716 *= 60 // integer values 
+
+:TAXI_5465
+0058: $6714 += $6716 // integer values 
+0084: $6722 = $6716 // integer values and handles 
+$6722 /= 100 // integer values 
+$6722 *= 65 // integer values 
+17@ = 0 // integer values 
+if 
+  $6710 == 0 // integer values 
+else_jump @TAXI_5542 
+03C3: set_timer_with_text_to $6714 type 1 text 'SEG3_1'  // TIME:
+$6710 = 1 // integer values 
+
+:TAXI_5542
+if 
+  $6712 == 0 // integer values 
+else_jump @TAXI_5568 
+$6714 += 5000 // integer values 
+
+:TAXI_5568
+if or
+80FA:   not player $PLAYER_CHAR stopped 1 $6725 $6726 $6727 radius 4.0 4.0 4.0 
+80DC:   not player $PLAYER_CHAR driving $6709 
+else_jump @TAXI_5969 
+wait 0 
+if 
+   not Player.Defined($PLAYER_CHAR)
+else_jump @TAXI_5645 
+jump @TAXI_6551 
+
+:TAXI_5645
+if 
+   Car.Wrecked($6709)
+else_jump @TAXI_5668 
+jump @TAXI_6551 
+
+:TAXI_5668
+if 
+80DC:   not player $PLAYER_CHAR driving $6709 
+else_jump @TAXI_5694 
+jump @TAXI_6551 
+
+:TAXI_5694
+0293: $18 = get_controller_mode 
+if 
+   not $18 == 3 // integer values 
+else_jump @TAXI_5754 
+if and
+8443:   not player $PLAYER_CHAR in_a_car 
+  $ONMISSION == 1 // integer values 
+else_jump @TAXI_5747 
+jump @TAXI_6347 
+
+:TAXI_5747
+jump @TAXI_5785 
+
+:TAXI_5754
+if and
+00E1:   player 0 pressed_button 14 
+  $ONMISSION == 1 // integer values 
+else_jump @TAXI_5785 
+jump @TAXI_6347 
+
+:TAXI_5785
+if 
+  $6714 == 0 // integer values 
+else_jump @TAXI_5810 
+jump @TAXI_6271 
+
+:TAXI_5810
+if 
+8185:   not car $6709 health >= 400 
+else_jump @TAXI_5873 
+if 
+  $6708 == 0 // integer values 
+else_jump @TAXI_5873 
+Marker.Disable($374)
+$6708 = 1 // integer values 
+gosub @TAXI_6293 
+jump @TAXI_6485 
+
+:TAXI_5873
+if 
+   not Car.Wrecked($6709)
+else_jump @TAXI_5934 
+if and
+0185:   car $6709 health >= 400 
+  $6708 == 1 // integer values 
+else_jump @TAXI_5934 
+Marker.Disable($374)
+$6708 = 0 // integer values 
+$6713 = 0 // integer values 
+
+:TAXI_5934
+if and
+01F4:   car $6709 flipped 
+01C1:   car $6709 stopped 
+else_jump @TAXI_5962 
+jump @TAXI_6293 
+
+:TAXI_5962
+jump @TAXI_5568 
+
+:TAXI_5969
+if 
+001F:   17@ > $6722 // integer values 
+else_jump @TAXI_6025 
+0084: $6721 = $6717 // integer values and handles 
+$6721 /= 10 // integer values 
+00BA: text_styled 'TAXI4' 5000 ms 5  // Fare complete!
+jump @TAXI_6055 
+
+:TAXI_6025
+0084: $6721 = $6717 // integer values and handles 
+$6721 /= 8 // integer values 
+00BA: text_styled 'TAXI5' 5000 ms 5  // SPEED BONUS!!
+
+:TAXI_6055
+Player.Money($PLAYER_CHAR) += $6721
+01E3: text_1number_styled 'TSCORE2' number $6721 time 6000 style 6  // $~1~
+018C: play_sound 1 at 0.0 0.0 0.0 
+0058: $6715 += $6721 // integer values 
+$369 += 1 // integer values 
+0315: increment_taxi_dropoffs 
+$6712 += 1 // integer values 
+if and
+  $373 == 0 // integer values 
+  $369 > 99 // integer values 
+else_jump @TAXI_6178 
+increment_mission_attempts 
+0595: mission_complete 
+0572: set_taxi_boost_jump 1 
+03E5: text_box 'NITRO'  // All taxi's now have a boost jump! Just press the horn button.
+030C: progress_made += 1 
+$373 = 1 // integer values 
+
+:TAXI_6178
+$6714 += 10000 // integer values 
+gosub @TAXI_6551 
+if 
+003A:   $6712 == $6724 // integer values and handles 
+else_jump @TAXI_6264 
+036D: text_2numbers_styled 'IN_ROW' numbers $6712 $6723 time 5000 style 6  // ~1~ IN A ROW bonus! $~1~
+Player.Money($PLAYER_CHAR) += $6723
+0058: $6715 += $6723 // integer values 
+$6724 += 5 // integer values 
+$6723 += 500 // integer values 
+
+:TAXI_6264
+jump @TAXI_6485 
+
+:TAXI_6271
+00BC: text_highpriority 'TAXI2' 5000 ms 1  // ~r~You're out of time!
+jump @TAXI_6551 
+
+:TAXI_6293
+wait 0 
+00BC: text_highpriority 'TAXI3' 5000 ms 1  // ~r~Your passenger fled in terror!
+if 
+   not Actor.Dead($6711)
+else_jump @TAXI_6333 
+0193: set_actor $6711 objective_to_act_like_ped 
+
+:TAXI_6333
+$6713 = 1 // integer values 
+jump @TAXI_6551 
+
+:TAXI_6347
+0293: $18 = get_controller_mode 
+if 
+   not $18 == 3 // integer values 
+else_jump @TAXI_6427 
+
+:TAXI_6370
+if 
+0443:   player $PLAYER_CHAR in_a_car 
+else_jump @TAXI_6420 
+wait 0 
+if 
+   not Player.Defined($PLAYER_CHAR)
+else_jump @TAXI_6413 
+jump @TAXI_6551 
+
+:TAXI_6413
+jump @TAXI_6370 
+
+:TAXI_6420
+jump @TAXI_6478 
+
+:TAXI_6427
+if 
+00E1:   player 0 pressed_button 14 
+else_jump @TAXI_6478 
+wait 0 
+if 
+   not Player.Defined($PLAYER_CHAR)
+else_jump @TAXI_6471 
+jump @TAXI_6551 
+
+:TAXI_6471
+jump @TAXI_6427 
+
+:TAXI_6478
+jump @TAXI_6551 
+
+:TAXI_6485
+Marker.Disable($6706)
+Marker.Disable($6707)
+Actor.RemoveReferences($6711)
+if 
+   not Car.Wrecked($6709)
+else_jump @TAXI_6523 
+Car.ToggleTaxiLight($6709) = True
+
+:TAXI_6523
+wait 0 
+00BB: text_lowpriority 'TAXI1' 1500 ms 1  // ~g~Look for a fare.
+jump @TAXI_224 
+return 
+
+:TAXI_6551
+if 
+   not Actor.Dead($6711)
+else_jump @TAXI_6831 
+if 
+   not Car.Wrecked($6709)
+else_jump @TAXI_6831 
+if 
+   Actor.InCar($6711, $6709)
+else_jump @TAXI_6831 
+01D3: actor $6711 leave_car $6709 
+if 
+   Player.Defined($PLAYER_CHAR)
+else_jump @TAXI_6633 
+Player.CanMove($PLAYER_CHAR) = False
+
+:TAXI_6633
+if 
+   Actor.InCar($6711, $6709)
+else_jump @TAXI_6831 
+wait 0 
+if or
+   Actor.Dead($6711)
+   Car.Wrecked($6709)
+else_jump @TAXI_6684 
+jump @TAXI_6874 
+
+:TAXI_6684
+if 
+   not Player.Defined($PLAYER_CHAR)
+else_jump @TAXI_6707 
+jump @TAXI_6874 
+
+:TAXI_6707
+if 
+80DC:   not player $PLAYER_CHAR driving $6709 
+else_jump @TAXI_6733 
+jump @TAXI_6874 
+
+:TAXI_6733
+0293: $18 = get_controller_mode 
+if 
+   not $18 == 3 // integer values 
+else_jump @TAXI_6793 
+if and
+8443:   not player $PLAYER_CHAR in_a_car 
+  $ONMISSION == 1 // integer values 
+else_jump @TAXI_6786 
+jump @TAXI_6874 
+
+:TAXI_6786
+jump @TAXI_6824 
+
+:TAXI_6793
+if and
+00E1:   player 0 pressed_button 14 
+  $ONMISSION == 1 // integer values 
+else_jump @TAXI_6824 
+jump @TAXI_6874 
+
+:TAXI_6824
+jump @TAXI_6633 
+
+:TAXI_6831
+if 
+   Player.Defined($PLAYER_CHAR)
+else_jump @TAXI_6854 
+Player.CanMove($PLAYER_CHAR) = True
+
+:TAXI_6854
+if 
+  $6713 == 1 // integer values 
+else_jump @TAXI_6874 
+return 
+
+:TAXI_6874
+wait 0 
+if 
+   not Actor.Dead($6711)
+else_jump @TAXI_6941 
+if 
+   not Car.Wrecked($6709)
+else_jump @TAXI_6941 
+if 
+   not Actor.InCar($6711, $6709)
+else_jump @TAXI_6941 
+009C: set_actor $6711 wander_direction 0 
+Actor.RemoveReferences($6711)
+
+:TAXI_6941
+if 
+   Player.Defined($PLAYER_CHAR)
+else_jump @TAXI_6964 
+Player.CanMove($PLAYER_CHAR) = True
+
+:TAXI_6964
+return 
+
+:TAXI_6966
+014F: stop_timer $6714 
+0151: remove_status_text $6712 
+if 
+   not Car.Wrecked($6709)
+else_jump @TAXI_6999 
+Car.ToggleTaxiLight($6709) = False
+
+:TAXI_6999
+Marker.Disable($6706)
+Marker.Disable($6707)
+Marker.Disable($374)
+Actor.RemoveReferences($6711)
+00BA: text_styled 'TAXI6' 5000 ms 5  // Taxi mission over
+01E3: text_1number_styled 'TSCORE' number $6715 time 6000 style 6  // EARNINGS: $~1~
+0316: save_taxi_earnings_from $6715 
+set_wb_check_to 1 
+$ONMISSION = 0 // integer values 
+$314 = 0 // integer values 
+$371 = 0 // integer values 
+if 
+   Player.Defined($PLAYER_CHAR)
+else_jump @TAXI_7105 
+Player.CanMove($PLAYER_CHAR) = True
+
+:TAXI_7105
+03E6: remove_text_box 
+mission_cleanup 
+return
