@@ -291,6 +291,7 @@ Model.Load(#BARRACKS)
 Model.Load(#ARMY)
 Model.Load(#PATRIOT)
 Model.Load(#RUGER)
+Model.Load(#FLAME) //STIFF
 038B: load_requested_models 
 
 :COL_4_1981
@@ -300,6 +301,7 @@ if or
    not Model.Available(#ARMY)
    not Model.Available(#PATRIOT)
    not Model.Available(#RUGER)
+   not Model.Available(#FLAME) //STIFF
 jf @COL_4_2027 
 wait 0 
 jump @COL_4_1981 
@@ -361,19 +363,19 @@ gosub @COL_4_30995
 $2485 = Actor.Create(CivMale, #ARMY, -686.0, 665.0, 10.1)
 0084: $2472 = $2485 // integer values and handles 
 gosub @COL_4_30995 
-0464: put_actor $2485 into_turret_on_car $2468 at_car_offset 0.4242 -0.0679 1.1322 position 3 angle 270.0 with_weapon 27 
+0464: put_actor $2485 into_turret_on_car $2468 at_car_offset 0.4242 -0.0679 1.1322 position 3 angle 270.0 with_weapon 31 //27 STIFF
 $2486 = Actor.Create(CivMale, #ARMY, -686.0, 664.0, 10.1)
 0084: $2472 = $2486 // integer values and handles 
 gosub @COL_4_30995 
-0464: put_actor $2486 into_turret_on_car $2468 at_car_offset -0.7608 -1.4 1.1138 position 1 angle 270.0 with_weapon 27 
+0464: put_actor $2486 into_turret_on_car $2468 at_car_offset -0.7608 -1.4 1.1138 position 1 angle 270.0 with_weapon 31 //27 
 $2487 = Actor.Create(CivMale, #ARMY, -686.0, 663.0, 10.1)
 0084: $2472 = $2487 // integer values and handles 
 gosub @COL_4_30995 
-0464: put_actor $2487 into_turret_on_car $2468 at_car_offset -0.7595 -3.5704 1.1108 position 2 angle 270.0 with_weapon 27 
+0464: put_actor $2487 into_turret_on_car $2468 at_car_offset -0.7595 -3.5704 1.1108 position 2 angle 270.0 with_weapon 31 //27 
 $2488 = Actor.Create(CivMale, #ARMY, -686.0, 662.0, 10.1)
 0084: $2472 = $2488 // integer values and handles 
 gosub @COL_4_30995 
-0464: put_actor $2488 into_turret_on_car $2468 at_car_offset 0.7158 -3.6996 1.1162 position 2 angle 270.0 with_weapon 27 
+0464: put_actor $2488 into_turret_on_car $2468 at_car_offset 0.7158 -3.6996 1.1162 position 2 angle 270.0 with_weapon 31 //27 
 02C2: car $2468 drive_to_point -848.7084 -1482.733 10.992 
 $2470 = Car.Create(#RHINO, -747.1234, 132.5895, 9.8742)
 Car.Angle($2470) = 167.7853
@@ -391,7 +393,7 @@ gosub @COL_4_30995
 $2493 = Actor.Create(CivMale, #ARMY, -686.0, 662.0, 10.1)
 0084: $2472 = $2493 // integer values and handles 
 gosub @COL_4_30995 
-0464: put_actor $2493 into_turret_on_car $2470 at_car_offset 0.0455 -1.0043 1.9962 position 0 angle 360.0 with_weapon 27 
+0464: put_actor $2493 into_turret_on_car $2470 at_car_offset 0.0455 -1.0043 1.9962 position 0 angle 360.0 with_weapon 31 //27 
 02C2: car $2470 drive_to_point -838.3314 -1492.5 11.0623 
 0506: vehicle_model 163 set_next_variation -1 1 
 $2469 = Car.Create(#BARRACKS, -744.8403, 143.1341, 9.8734)
@@ -409,19 +411,19 @@ gosub @COL_4_30995
 $2489 = Actor.Create(CivMale, #ARMY, -686.0, 665.0, 10.1)
 0084: $2472 = $2489 // integer values and handles 
 gosub @COL_4_30995 
-0464: put_actor $2489 into_turret_on_car $2469 at_car_offset 0.4242 -0.0679 1.1322 position 3 angle 270.0 with_weapon 27 
+0464: put_actor $2489 into_turret_on_car $2469 at_car_offset 0.4242 -0.0679 1.1322 position 3 angle 270.0 with_weapon 31 //27 
 $2490 = Actor.Create(CivMale, #ARMY, -686.0, 664.0, 10.1)
 0084: $2472 = $2490 // integer values and handles 
 gosub @COL_4_30995 
-0464: put_actor $2490 into_turret_on_car $2469 at_car_offset -0.7608 -1.4 1.1138 position 1 angle 270.0 with_weapon 27 
+0464: put_actor $2490 into_turret_on_car $2469 at_car_offset -0.7608 -1.4 1.1138 position 1 angle 270.0 with_weapon 31 //27 
 $2491 = Actor.Create(CivMale, #ARMY, -686.0, 663.0, 10.1)
 0084: $2472 = $2491 // integer values and handles 
 gosub @COL_4_30995 
-0464: put_actor $2491 into_turret_on_car $2469 at_car_offset -0.7595 -3.5704 1.1108 position 2 angle 270.0 with_weapon 27 
+0464: put_actor $2491 into_turret_on_car $2469 at_car_offset -0.7595 -3.5704 1.1108 position 2 angle 270.0 with_weapon 31 //27 
 $2492 = Actor.Create(CivMale, #ARMY, -686.0, 662.0, 10.1)
 0084: $2472 = $2492 // integer values and handles 
 gosub @COL_4_30995 
-0464: put_actor $2492 into_turret_on_car $2469 at_car_offset 0.7158 -3.6996 1.1162 position 2 angle 270.0 with_weapon 27 
+0464: put_actor $2492 into_turret_on_car $2469 at_car_offset 0.7158 -3.6996 1.1162 position 2 angle 270.0 with_weapon 31 //27 
 02C2: car $2469 drive_to_point -856.1463 -1480.377 10.9387 
 0407: create_coordinate $445 $446 $447 from_car $2470 offset 5.0 2.0 0.0 
 $2483 = Actor.Create(CivMale, #ARMY, $445, $446, 10.0)
@@ -1975,7 +1977,7 @@ $2594 += 6000 // integer values
 0360: open_garage $689 
 $2508 = Actor.Create(CivMale, #ARMY, -830.7947, -1500.054, 11.067)
 Actor.Angle($2508) = 2.1778
-01B2: give_actor $2508 weapon 27 ammo 9999 // Load the weapon model before using this 
+01B2: give_actor $2508 weapon 15 {27 STIFF} ammo 9999 // Load the weapon model before using this 
 01ED: clear_actor $2508 threat_search 
 0243: set_actor $2508 ped_stats_to 16 
 02A9: set_actor $2508 immune_to_nonplayer 1 
@@ -1983,7 +1985,7 @@ Actor.Angle($2508) = 2.1778
 0411: set_actor $2508 use_pednode_seek 0 
 $2509 = Actor.Create(CivMale, #ARMY, -824.3466, -1488.274, 10.9186)
 Actor.Angle($2509) = 117.421
-01B2: give_actor $2509 weapon 27 ammo 9999 // Load the weapon model before using this 
+01B2: give_actor $2509 weapon 15 {27 STIFF} ammo 9999 // Load the weapon model before using this 
 01ED: clear_actor $2509 threat_search 
 0243: set_actor $2509 ped_stats_to 16 
 02A9: set_actor $2509 immune_to_nonplayer 1 
@@ -5419,7 +5421,7 @@ jf @COL_4_30993
 return 
 
 :COL_4_30995
-01B2: give_actor $2472 weapon 27 ammo 9999 // Load the weapon model before using this 
+01B2: give_actor $2472 weapon 15 {27 STIFF} ammo 9999 // Load the weapon model before using this 
 01ED: clear_actor $2472 threat_search 
 0243: set_actor $2472 ped_stats_to 16 
 0319: set_actor $2472 running 1 
