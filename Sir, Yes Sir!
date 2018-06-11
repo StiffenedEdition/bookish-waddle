@@ -291,6 +291,7 @@ Model.Load(#BARRACKS)
 Model.Load(#ARMY)
 Model.Load(#PATRIOT)
 Model.Load(#RUGER)
+Model.Load(#MOLOTOV)
 Model.Load(#FLAME) //STIFF
 038B: load_requested_models 
 
@@ -301,6 +302,7 @@ if or
    not Model.Available(#ARMY)
    not Model.Available(#PATRIOT)
    not Model.Available(#RUGER)
+   not Model.Available(#MOLOTOV)
    not Model.Available(#FLAME) //STIFF
 jf @COL_4_2027 
 wait 0 
