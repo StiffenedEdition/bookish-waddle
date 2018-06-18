@@ -457,81 +457,134 @@ $2480 = Actor.Create(CivMale, #ARMY, $445, $446, 10.0)
 0084: $2472 = $2480 // integer values and handles 
 gosub @COL_4_30995
 02A9: set_actor $2480 immune_to_nonplayer 1
-$STIFFactor1 = Actor.Create(CivMale, #ARMY, -888.0, -290.0, 10.8)
+$STIFFactor1 = Actor.Create(CivMale, #ARMY, -914.0, -279.0, 10.8)
 0084: $STIFFgroup1 = $STIFFactor1
 gosub @COL_4_FlameSentries
-$STIFFactor2 = Actor.Create(CivMale, #ARMY, -908.0, -290.0, 10.8)
+$STIFFactor2 = Actor.Create(CivMale, #ARMY, -975.0,	-272.0, 10.8)
 0084: $STIFFgroup1 = $STIFFactor2
 gosub @COL_4_FlameSentries
-$STIFFactor3 = Actor.Create(CivMale, #ARMY, -928.0, -290.0, 10.8)
+$STIFFactor3 = Actor.Create(CivMale, #ARMY, -951.0, -279.0, 10.8)
 0084: $STIFFgroup1 = $STIFFactor3
 gosub @COL_4_FlameSentries
-$STIFFactor4 = Actor.Create(CivMale, #ARMY, -948.0, -290.0, 10.8)
+$STIFFactor4 = Actor.Create(CivMale, #ARMY, -968.0,	-275.0, 10.8)
 0084: $STIFFgroup1 = $STIFFactor4
 gosub @COL_4_FlameSentries
-$STIFFactor5 = Actor.Create(CivMale, #ARMY, -923.0, -290.0, 10.8)
+$STIFFactor5 = Actor.Create(CivMale, #ARMY, -915.0,	-290.0, 10.8)
 0084: $STIFFgroup1 = $STIFFactor5
 gosub @COL_4_FlameSentries
-$STIFFactor6 = Actor.Create(CivMale, #ARMY, -1002.0, -294.0, 10.8)
+$STIFFactor6 = Actor.Create(CivMale, #ARMY, -982.0,	-275.0, 10.8)
 0084: $STIFFgroup1 = $STIFFactor6
 gosub @COL_4_FlameSentries
-$STIFFactor7 = Actor.Create(CivMale, #ARMY, -888.0, -283.5, 10.8)
+$STIFFactor7 = Actor.Create(CivMale, #ARMY, -921.0,	-290.0, 10.8)
 0084: $STIFFgroup1 = $STIFFactor7
 gosub @COL_4_FlameSentries
-$STIFFactor8 = Actor.Create(CivMale, #ARMY, -908.0, -283.5, 10.8)
+$STIFFactor8 = Actor.Create(CivMale, #ARMY, -940.0,	-280.0, 10.8)
 0084: $STIFFgroup1 = $STIFFactor8
 gosub @COL_4_FlameSentries
-$STIFFactor9 = Actor.Create(CivMale, #ARMY, -928.0, -283.5, 10.8)
+$STIFFactor9 = Actor.Create(CivMale, #ARMY, -929.0,	-285.0, 10.8)
 0084: $STIFFgroup1 = $STIFFactor9
 gosub @COL_4_FlameSentries
-$STIFFactor10 = Actor.Create(CivMale, #ARMY, -948.0, -283.5, 10.8)
+$STIFFactor10 = Actor.Create(CivMale, #ARMY, -876.0, -287.0, 10.8)
 0084: $STIFFgroup1 = $STIFFactor10
 gosub @COL_4_FlameSentries
-$STIFFactor11 = Actor.Create(CivMale, #ARMY, -923.0, -283.5, 10.8)
+$STIFFactor11 = Actor.Create(CivMale, #ARMY, -898.0, -276.0, 10.8)
 0084: $STIFFgroup1 = $STIFFactor11
 gosub @COL_4_FlameSentries
-$STIFFactor12 = Actor.Create(CivMale, #ARMY, -1002.0, -287.5, 10.8)
+$STIFFactor12 = Actor.Create(CivMale, #ARMY, -984.0, -282.0, 10.8)
 0084: $STIFFgroup1 = $STIFFactor12
 gosub @COL_4_FlameSentries
-$STIFFactor13 = Actor.Create(CivMale, #ARMY, -898.0, -290.0, 10.8)
+$STIFFactor13 = Actor.Create(CivMale, #ARMY, -968.0, -283.0, 10.8)
 0084: $STIFFgroup1 = $STIFFactor13
 gosub @COL_4_FlameSentries
-$STIFFactor14 = Actor.Create(CivMale, #ARMY, -916.0, -290.0, 10.8)
+$STIFFactor14 = Actor.Create(CivMale, #ARMY, -984.0, -286.0, 10.8)
 0084: $STIFFgroup1 = $STIFFactor14
 gosub @COL_4_FlameSentries
-$STIFFactor15 = Actor.Create(CivMale, #ARMY, -938.0, -290.0, 10.8)
+$STIFFactor15 = Actor.Create(CivMale, #ARMY, -965.0, -289.0, 10.8)
 0084: $STIFFgroup1 = $STIFFactor15
 gosub @COL_4_FlameSentries
-$STIFFactor16 = Actor.Create(CivMale, #ARMY, -958.0, -290.0, 10.8)
+$STIFFactor16 = Actor.Create(CivMale, #ARMY, -881.0, -283.0, 10.8)
 0084: $STIFFgroup1 = $STIFFactor16
 gosub @COL_4_FlameSentries
-$STIFFactor17 = Actor.Create(CivMale, #ARMY, -933.0, -290.0, 10.8)
+$STIFFactor17 = Actor.Create(CivMale, #ARMY, -951.0, -289.0, 10.8)
 0084: $STIFFgroup1 = $STIFFactor17
 gosub @COL_4_FlameSentries
-$STIFFactor18 = Actor.Create(CivMale, #ARMY, -1012.0, -294.0, 10.8)
+$STIFFactor18 = Actor.Create(CivMale, #ARMY, -945.0, -280.0, 10.8)
 0084: $STIFFgroup1 = $STIFFactor18
 gosub @COL_4_FlameSentries
-$STIFFactor19 = Actor.Create(CivMale, #ARMY, -898.0, -283.5, 10.8)
+$STIFFactor19 = Actor.Create(CivMale, #ARMY, -925.0, -281.0, 10.8)
 0084: $STIFFgroup1 = $STIFFactor19
 gosub @COL_4_FlameSentries
-$STIFFactor20 = Actor.Create(CivMale, #ARMY, -916.0, -283.5, 10.8)
+$STIFFactor20 = Actor.Create(CivMale, #ARMY, -930.0, -290.0, 10.8)
 0084: $STIFFgroup1 = $STIFFactor20
 gosub @COL_4_FlameSentries
-$STIFFactor21 = Actor.Create(CivMale, #ARMY, -938.0, -283.5, 10.8)
+$STIFFactor21 = Actor.Create(CivMale, #ARMY, -912.0, -285.0, 10.8)
 0084: $STIFFgroup1 = $STIFFactor21
 gosub @COL_4_FlameSentries
-$STIFFactor22 = Actor.Create(CivMale, #ARMY, -958.0, -283.5, 10.8)
+$STIFFactor22 = Actor.Create(CivMale, #ARMY, -900.0, -290.0, 10.8)
 0084: $STIFFgroup1 = $STIFFactor22
 gosub @COL_4_FlameSentries
-$STIFFactor23 = Actor.Create(CivMale, #ARMY, -933.0, -283.5, 10.8)
+$STIFFactor23 = Actor.Create(CivMale, #ARMY, -888.0, -274.0, 10.8)
 0084: $STIFFgroup1 = $STIFFactor23
 gosub @COL_4_FlameSentries
-$STIFFactor24 = Actor.Create(CivMale, #ARMY, -1012.0, -287.5, 10.8)
+$STIFFactor24 = Actor.Create(CivMale, #ARMY, -899.0, -282.5, 10.9)
 0084: $STIFFgroup1 = $STIFFactor24
-gosub @COL_4_FlameSentries 
+gosub @COL_4_FlameSentries
+0004: $STIFFswitch1 = 0
+0004: $STIFFswitch2 = 0 
+
+:COL_4_GuysOnFire
+wait 0
+if and
+04A3:   $STIFFswitch1 == 0 // == constant 
+00DE:   player $PLAYER_CHAR driving_vehicle_type 162  
+02AD:   player $PLAYER_CHAR in_area -1100.546 -356.4659 11.17 -1075.2703 -549.7865 11.3023 radius 20.0 sphere 1
+jf @COL_4_4011
+jump @COL_4_Madmen
+
+:COL_4_Madmen
+009B: destroy_actor_instantly $STIFFactor1 
+009B: destroy_actor_instantly $STIFFactor2
+009B: destroy_actor_instantly $STIFFactor3
+009B: destroy_actor_instantly $STIFFactor4
+009B: destroy_actor_instantly $STIFFactor5
+009B: destroy_actor_instantly $STIFFactor6
+009B: destroy_actor_instantly $STIFFactor7
+009B: destroy_actor_instantly $STIFFactor8
+009B: destroy_actor_instantly $STIFFactor9
+009B: destroy_actor_instantly $STIFFactor10
+009B: destroy_actor_instantly $STIFFactor11
+009B: destroy_actor_instantly $STIFFactor12
+009B: destroy_actor_instantly $STIFFactor13
+009B: destroy_actor_instantly $STIFFactor14
+009B: destroy_actor_instantly $STIFFactor15
+009B: destroy_actor_instantly $STIFFactor16
+009B: destroy_actor_instantly $STIFFactor17
+009B: destroy_actor_instantly $STIFFactor18
+009B: destroy_actor_instantly $STIFFactor19
+009B: destroy_actor_instantly $STIFFactor20
+009B: destroy_actor_instantly $STIFFactor21
+009B: destroy_actor_instantly $STIFFactor22
+009B: destroy_actor_instantly $STIFFactor23
+009B: destroy_actor_instantly $STIFFactor24
+00DA: $STIFFcar1 = player $PLAYER_CHAR car 
+$STIFFactor25 = Actor.Create(CivMale, #ARMY, -1090.5, -411.8, 20.5)
+0084: $STIFFgroup2 = $STIFFactor25
+gosub @COL_4_Hehehe
+$STIFFactor26 = Actor.Create(CivMale, #ARMY, -1089.6135, -419.6461, 20.5)
+0084: $STIFFgroup2 = $STIFFactor26
+gosub @COL_4_Hehehe
+$STIFFactor27 = Actor.Create(CivMale, #ARMY, -1088.4568, -429.4375, 20.5)
+0084: $STIFFgroup2 = $STIFFactor27
+gosub @COL_4_Hehehe
+$STIFFactor28 = Actor.Create(CivMale, #ARMY, -1087.3387, -439.9843, 20.5)
+0084: $STIFFgroup2 = $STIFFactor28
+gosub @COL_4_Hehehe
+$STIFFactor29 = Actor.Create(CivMale, #ARMY, -234.6349, -1341.8662, 8.113)
+0084: $STIFFgroup2 = $STIFFactor29
+gosub @COL_4_Hehehe 
+$STIFFswitch1 += 1
 
 :COL_4_4011
-wait 0 
 $2565 += 1 // integer values 
 if 
   $2565 > 3 // integer values 
@@ -2591,7 +2644,8 @@ Marker.Disable($2516)
 01E7: remove_forbidden_for_cars_cube -853.397 -149.692 5.0 -773.397 0.308 25.0 
 01E7: remove_forbidden_for_cars_cube -870.656 -594.54 5.0 -810.656 -144.54 25.0 
 01E7: remove_forbidden_for_cars_cube -837.282 -1041.814 5.0 -777.282 -591.814 25.0 
-01E7: remove_forbidden_for_cars_cube -827.532 -1539.617 5.0 -747.532 -1039.617 25.0 
+01E7: remove_forbidden_for_cars_cube -827.532 -1539.617 5.0 -747.532 -1039.617 25.0
+$STIFFswitch2 += 1 
 0084: $2505 = $2470 // integer values and handles 
 021B: set_garage $688 to_accept_car $2505 
 0493: set_tank $2470 contact_explosion 1 
@@ -3631,7 +3685,7 @@ jf @COL_4_21227
 03D5: remove_text 'COL4_24'  // Security protocol Delta India Echo triggered! Vehicle self destruct initiated!
 $2560 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 
 :COL_4_21227
 if 
@@ -3679,7 +3733,7 @@ if
 jf @COL_4_21471 
 $2560 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 jump @COL_4_21478 
 
 :COL_4_21471
@@ -3698,7 +3752,7 @@ jf @COL_4_21560
 03D5: remove_text 'COL4_26'  // Prepare to die Communist scum!
 $2561 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 
 :COL_4_21560
 if 
@@ -3746,7 +3800,7 @@ if
 jf @COL_4_21804 
 $2561 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 jump @COL_4_21811 
 
 :COL_4_21804
@@ -3766,7 +3820,7 @@ jf @COL_4_21900
 03D5: remove_text 'COL4_23'  // Objective completed! Platoon dismissed! - Lets go eat some doughnuts.
 $2562 = 4 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 
 :COL_4_21900
 if 
@@ -3814,7 +3868,7 @@ if
 jf @COL_4_22144 
 $2562 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 jump @COL_4_22151 
 
 :COL_4_22144
@@ -3834,7 +3888,7 @@ jf @COL_4_22240
 03D5: remove_text 'COL4_12'  // Civilian in the TANK! STOP HIM!
 $2563 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 
 :COL_4_22240
 if 
@@ -3882,7 +3936,7 @@ if
 jf @COL_4_22484 
 $2563 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 jump @COL_4_22491 
 
 :COL_4_22484
@@ -3902,7 +3956,7 @@ jf @COL_4_22580
 03D5: remove_text 'COL4_21'  // SNIPER!
 $2567 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 
 :COL_4_22580
 if 
@@ -3950,7 +4004,7 @@ if
 jf @COL_4_22824 
 $2567 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 jump @COL_4_22831 
 
 :COL_4_22824
@@ -3970,7 +4024,7 @@ jf @COL_4_22920
 03D5: remove_text 'COL4_22'  // I'm getting out of here.
 $2568 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 
 :COL_4_22920
 if 
@@ -4018,7 +4072,7 @@ if
 jf @COL_4_23164 
 $2568 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 jump @COL_4_23171 
 
 :COL_4_23164
@@ -4038,7 +4092,7 @@ jf @COL_4_23260
 03D5: remove_text 'COL4_9'  // DEFENSIVE POSITIONS!
 $2564 = 4 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 
 :COL_4_23260
 if 
@@ -4099,7 +4153,7 @@ $2564 = 0 // integer values
 
 :COL_4_23542
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 jump @COL_4_23570 
 
 :COL_4_23563
@@ -4119,7 +4173,7 @@ jf @COL_4_23659
 03D5: remove_text 'COL4_6'  // WE'RE TAKING ENEMY FIRE!
 $2569 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 
 :COL_4_23659
 if 
@@ -4167,7 +4221,7 @@ if
 jf @COL_4_23903 
 $2569 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 jump @COL_4_23910 
 
 :COL_4_23903
@@ -4187,7 +4241,7 @@ jf @COL_4_23999
 03D5: remove_text 'COL4_19'  // Go get some doughnuts, soldier! - Sir, Yes Sir!
 $2570 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 
 :COL_4_23999
 if 
@@ -4235,7 +4289,7 @@ if
 jf @COL_4_24243 
 $2570 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 jump @COL_4_24250 
 
 :COL_4_24243
@@ -4255,7 +4309,7 @@ jf @COL_4_24339
 03D5: remove_text 'COL4_20'  // Target acquired, Sir
 $2571 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 
 :COL_4_24339
 if 
@@ -4303,7 +4357,7 @@ if
 jf @COL_4_24583 
 $2571 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 jump @COL_4_24590 
 
 :COL_4_24583
@@ -4323,7 +4377,7 @@ jf @COL_4_24679
 03D5: remove_text 'COL4_18'  // Someone's on the tank Sir!
 $2573 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 
 :COL_4_24679
 if 
@@ -4371,7 +4425,7 @@ if
 jf @COL_4_24923 
 $2573 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 jump @COL_4_24930 
 
 :COL_4_24923
@@ -4392,7 +4446,7 @@ jf @COL_4_25026
 03D5: remove_text 'COL4_1'  // What's up with the Gunner? - Don't know Sir!
 $2574 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 
 :COL_4_25026
 if 
@@ -4440,7 +4494,7 @@ if
 jf @COL_4_25270 
 $2574 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 jump @COL_4_25277 
 
 :COL_4_25270
@@ -4461,7 +4515,7 @@ jf @COL_4_25373
 03D5: remove_text 'COL4_4'  // Get topside soldier. - Sir, Yes Sir!
 $2584 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 
 :COL_4_25373
 if 
@@ -4509,7 +4563,7 @@ if
 jf @COL_4_25617 
 $2584 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 jump @COL_4_25624 
 
 :COL_4_25617
@@ -4530,7 +4584,7 @@ jf @COL_4_25720
 03D5: remove_text 'COL4_3'  // CONVOY HALT!
 $2576 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 
 :COL_4_25720
 if 
@@ -4578,7 +4632,7 @@ if
 jf @COL_4_25964 
 $2576 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 jump @COL_4_25971 
 
 :COL_4_25964
@@ -4599,7 +4653,7 @@ jf @COL_4_26067
 03D5: remove_text 'COL4_17'  // Ok, PLATOON MOVE IT OUT!
 $2577 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 
 :COL_4_26067
 if 
@@ -4647,7 +4701,7 @@ if
 jf @COL_4_26311 
 $2577 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 jump @COL_4_26318 
 
 :COL_4_26311
@@ -4668,7 +4722,7 @@ jf @COL_4_26414
 03D5: remove_text 'COL4_7'  // Civilian, move away from the tank!
 $2575 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 
 :COL_4_26414
 if 
@@ -4716,7 +4770,7 @@ if
 jf @COL_4_26658 
 $2575 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 jump @COL_4_26665 
 
 :COL_4_26658
@@ -4737,7 +4791,7 @@ jf @COL_4_26761
 03D5: remove_text 'COL4_14'  // Drop him soldier.
 $2579 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 
 :COL_4_26761
 if 
@@ -4785,7 +4839,7 @@ if
 jf @COL_4_27005 
 $2579 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 jump @COL_4_27012 
 
 :COL_4_27005
@@ -4806,7 +4860,7 @@ jf @COL_4_27108
 03D5: remove_text 'COL4_8'  // I SAID, move away, IMMEDIATELY!
 $2580 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 
 :COL_4_27108
 if 
@@ -4854,7 +4908,7 @@ if
 jf @COL_4_27352 
 $2580 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 jump @COL_4_27359 
 
 :COL_4_27352
@@ -4875,7 +4929,7 @@ jf @COL_4_27455
 03D5: remove_text 'COL4_11'  // Get that civilian out of our way soldier! - Sir, Yes Sir!
 $2581 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 
 :COL_4_27455
 if 
@@ -4923,7 +4977,7 @@ if
 jf @COL_4_27699 
 $2581 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 jump @COL_4_27706 
 
 :COL_4_27699
@@ -4944,7 +4998,7 @@ jf @COL_4_27802
 03D5: remove_text 'COL4_13'  // This is a military convoy, do not obstruct our route.
 $2582 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 
 :COL_4_27802
 if 
@@ -4992,7 +5046,7 @@ if
 jf @COL_4_28046 
 $2582 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 jump @COL_4_28053 
 
 :COL_4_28046
@@ -5013,7 +5067,7 @@ jf @COL_4_28149
 03D5: remove_text 'COL4_15'  // Get that civilian vehicle out of our way! - Sir! Moving vehicle Sir!
 $2583 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 
 :COL_4_28149
 if 
@@ -5061,14 +5115,14 @@ if
 jf @COL_4_28393 
 $2583 = 0 // integer values 
 $2607 = 0 // integer values 
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 jump @COL_4_28400 
 
 :COL_4_28393
 $2583 = 0 // integer values 
 
 :COL_4_28400
-jump @COL_4_4011 
+jump @COL_4_GuysOnFire 
 
 :COL_4_28407
 00BA: text_styled 'M_FAIL' 5000 ms 1  // MISSION FAILED!
@@ -5082,7 +5136,7 @@ Player.Money($PLAYER_CHAR) += 2000
 0318: set_latest_mission_passed 'COL_4'  // Sir, Yes Sir!
 030C: progress_made += 1 
 0394: play_music 1 
-Marker.Disable($228)
+Marker.Disable($228) 
 return 
 
 :COL_4_28487
@@ -5495,6 +5549,7 @@ jf @COL_4_30993
 return 
 
 :COL_4_30995
+02A9: set_actor $2472 immune_to_nonplayer 1 
 01B2: give_actor $2472 weapon 15 {27 STIFF} ammo 9999 // Load the weapon model before using this 
 01ED: clear_actor $2472 threat_search 
 0243: set_actor $2472 ped_stats_to 16 
@@ -5502,10 +5557,17 @@ return
 return 
 
 :COL_4_FlameSentries
-02E2: set_actor $STIFFgroup1 weapon_accuracy_to 75 
+02E2: set_actor $STIFFgroup1 weapon_accuracy_to 50 
 0350: set_actor $STIFFgroup1 maintain_position_when_attacked 1  
 01CA: actor $STIFFgroup1 kill_player $PLAYER_CHAR 
 01B2: give_actor $STIFFgroup1 weapon 31 ammo 9999 // Load the weapon model before using this
+return
+
+:COL_4_Hehehe
+0326: $noref = create_actor $STIFFgroup2 fire
+02AB: set_actor $STIFFgroup2 immunities BP 0 FP 1 EP 0 CP 0 MP 0 
+01D5: actor $STIFFgroup2 go_to_and_drive_car $STIFFcar1  
+0319: set_actor $STIFFgroup2 running 1
 return
 
 :COL_4_31026
