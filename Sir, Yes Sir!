@@ -293,6 +293,9 @@ Model.Load(#PATRIOT)
 Model.Load(#RUGER)
 Model.Load(#MOLOTOV)
 Model.Load(#FLAME) //STIFF
+Model.Load(#SKIMMER)
+Model.Load(#PYTHON)
+Model.Load(#SWAT)
 038B: load_requested_models 
 
 :COL_4_1981
@@ -301,12 +304,21 @@ if or
    not Model.Available(#BARRACKS)
    not Model.Available(#ARMY)
    not Model.Available(#PATRIOT)
+jf @COL_4_overmaxconditions 
+wait 0 
+jump @COL_4_1981 
+
+:COL_4_overmaxconditions
+if or
    not Model.Available(#RUGER)
    not Model.Available(#MOLOTOV)
    not Model.Available(#FLAME) //STIFF
-jf @COL_4_2027 
-wait 0 
-jump @COL_4_1981 
+   not Model.Available(#SKIMMER) //STIFF
+   not Model.Available(#PYTHON)
+   not Model.Available(#SWAT)
+jf @COL_4_2027
+wait 0
+jump @COL_4_overmaxconditions
 
 :COL_4_2027
 0169: set_fade_color 0 0 1 
@@ -457,91 +469,162 @@ $2480 = Actor.Create(CivMale, #ARMY, $445, $446, 10.0)
 0084: $2472 = $2480 // integer values and handles 
 gosub @COL_4_30995
 02A9: set_actor $2480 immune_to_nonplayer 1
-$STIFFactor1 = Actor.Create(CivMale, #ARMY, -914.0, -279.0, 10.8)
-0084: $STIFFgroup1 = $STIFFactor1
-gosub @COL_4_FlameSentries
-$STIFFactor2 = Actor.Create(CivMale, #ARMY, -975.0,	-272.0, 10.8)
-0084: $STIFFgroup1 = $STIFFactor2
-gosub @COL_4_FlameSentries
-$STIFFactor3 = Actor.Create(CivMale, #ARMY, -951.0, -279.0, 10.8)
-0084: $STIFFgroup1 = $STIFFactor3
-gosub @COL_4_FlameSentries
-$STIFFactor4 = Actor.Create(CivMale, #ARMY, -968.0,	-275.0, 10.8)
-0084: $STIFFgroup1 = $STIFFactor4
-gosub @COL_4_FlameSentries
-$STIFFactor5 = Actor.Create(CivMale, #ARMY, -915.0,	-290.0, 10.8)
-0084: $STIFFgroup1 = $STIFFactor5
-gosub @COL_4_FlameSentries
-$STIFFactor6 = Actor.Create(CivMale, #ARMY, -982.0,	-275.0, 10.8)
-0084: $STIFFgroup1 = $STIFFactor6
-gosub @COL_4_FlameSentries
-$STIFFactor7 = Actor.Create(CivMale, #ARMY, -921.0,	-290.0, 10.8)
-0084: $STIFFgroup1 = $STIFFactor7
-gosub @COL_4_FlameSentries
-$STIFFactor8 = Actor.Create(CivMale, #ARMY, -940.0,	-280.0, 10.8)
-0084: $STIFFgroup1 = $STIFFactor8
-gosub @COL_4_FlameSentries
-$STIFFactor9 = Actor.Create(CivMale, #ARMY, -929.0,	-285.0, 10.8)
-0084: $STIFFgroup1 = $STIFFactor9
-gosub @COL_4_FlameSentries
-$STIFFactor10 = Actor.Create(CivMale, #ARMY, -876.0, -287.0, 10.8)
-0084: $STIFFgroup1 = $STIFFactor10
-gosub @COL_4_FlameSentries
-$STIFFactor11 = Actor.Create(CivMale, #ARMY, -898.0, -276.0, 10.8)
-0084: $STIFFgroup1 = $STIFFactor11
-gosub @COL_4_FlameSentries
-$STIFFactor12 = Actor.Create(CivMale, #ARMY, -984.0, -282.0, 10.8)
-0084: $STIFFgroup1 = $STIFFactor12
-gosub @COL_4_FlameSentries
-$STIFFactor13 = Actor.Create(CivMale, #ARMY, -968.0, -283.0, 10.8)
-0084: $STIFFgroup1 = $STIFFactor13
-gosub @COL_4_FlameSentries
-$STIFFactor14 = Actor.Create(CivMale, #ARMY, -984.0, -286.0, 10.8)
-0084: $STIFFgroup1 = $STIFFactor14
-gosub @COL_4_FlameSentries
-$STIFFactor15 = Actor.Create(CivMale, #ARMY, -965.0, -289.0, 10.8)
-0084: $STIFFgroup1 = $STIFFactor15
-gosub @COL_4_FlameSentries
-$STIFFactor16 = Actor.Create(CivMale, #ARMY, -881.0, -283.0, 10.8)
-0084: $STIFFgroup1 = $STIFFactor16
-gosub @COL_4_FlameSentries
-$STIFFactor17 = Actor.Create(CivMale, #ARMY, -951.0, -289.0, 10.8)
-0084: $STIFFgroup1 = $STIFFactor17
-gosub @COL_4_FlameSentries
-$STIFFactor18 = Actor.Create(CivMale, #ARMY, -945.0, -280.0, 10.8)
-0084: $STIFFgroup1 = $STIFFactor18
-gosub @COL_4_FlameSentries
-$STIFFactor19 = Actor.Create(CivMale, #ARMY, -925.0, -281.0, 10.8)
-0084: $STIFFgroup1 = $STIFFactor19
-gosub @COL_4_FlameSentries
-$STIFFactor20 = Actor.Create(CivMale, #ARMY, -930.0, -290.0, 10.8)
-0084: $STIFFgroup1 = $STIFFactor20
-gosub @COL_4_FlameSentries
-$STIFFactor21 = Actor.Create(CivMale, #ARMY, -912.0, -285.0, 10.8)
-0084: $STIFFgroup1 = $STIFFactor21
-gosub @COL_4_FlameSentries
-$STIFFactor22 = Actor.Create(CivMale, #ARMY, -900.0, -290.0, 10.8)
-0084: $STIFFgroup1 = $STIFFactor22
-gosub @COL_4_FlameSentries
-$STIFFactor23 = Actor.Create(CivMale, #ARMY, -888.0, -274.0, 10.8)
-0084: $STIFFgroup1 = $STIFFactor23
-gosub @COL_4_FlameSentries
-$STIFFactor24 = Actor.Create(CivMale, #ARMY, -899.0, -282.5, 10.9)
-0084: $STIFFgroup1 = $STIFFactor24
-gosub @COL_4_FlameSentries
 0004: $STIFFswitch1 = 0
-0004: $STIFFswitch2 = 0 
+0004: $STIFFswitch2 = 0
+0004: $STIFFswitch3 = 0
 
 :COL_4_GuysOnFire
 wait 0
+if
+04A3:   $STIFFswitch1 == 0 // == constant
+jf @COL_4_4011
+0054: store_player $PLAYER_CHAR position_to $STIFFx1 $STIFFy1 $STIFFz1
+if
+0020:   $STIFFy1 > -480.0 // floating-point values
+jf @COL_4_LeftSentries
+if
+04A3:   $STIFFswitch2 == 0
+jf @COL_4_FinaleCheck
+if
+04A3:   $STIFFswitch3 == 1
+jf @COL_4_RightHandSwapCheck
+000C: $STIFFswitch3 -= 1
+jump @COL_4_RightHandSwapCheck
+
+:COL_4_RightHandSwapCheck
+gosub @COL_4_RightGuys
+jump @COL_4_FinaleCheck
+
+:COL_4_LeftSentries
+if
+04A3:   $STIFFswitch3 == 0
+jf @COL_4_FinaleCheck
+if
+04A3:   $STIFFswitch2 == 1
+jf @COL_4_LeftHandSwapCheck
+000C: $STIFFswitch2 -= 1
+jump @COL_4_LeftHandSwapCheck
+
+:COL_4_LeftHandSwapCheck
+gosub @COL_4_LeftGuys
+jump @COL_4_FinaleCheck
+
+:COL_4_LeftGuys
+$STIFFswitch3 += 1
+gosub @COL_4_DestroyActors
+$STIFFcar2 = Car.Create(#PATRIOT, -1026.6846, -576.5245, 11.0225)
+Car.Angle($STIFFcar2) = 210.6279
+$STIFFcar3 = Car.Create(#SKIMMER, -1041.0269, -579.3317, 12.0542)
+Car.Angle($STIFFcar3) = 300
+0229: set_car $STIFFcar3 color_to 1 45 
+$STIFFactor1 = Actor.Create(CivMale, #ARMY, -1023.2823, -582.8959, 11.1278)
+0084: $STIFFgroup1 = $STIFFactor1
+gosub @COL_4_FlameSentries
+$STIFFactor2 = Actor.Create(CivMale, #ARMY, -1034.5488, -583.4994, 11.1278)
+0084: $STIFFgroup1 = $STIFFactor2
+gosub @COL_4_FlameSentries
+$STIFFactor3 = Actor.Create(CivMale, #ARMY, -1032.5491, -572.3986, 11.1278)
+0084: $STIFFgroup1 = $STIFFactor3
+gosub @COL_4_FlameSentries
+$STIFFactor4 = Actor.Create(CivMale, #SWAT, -1037.3932, -577.0713, 10.9581)
+02E2: set_actor $STIFFactor4 weapon_accuracy_to 95 
+0350: set_actor $STIFFactor4 maintain_position_when_attacked 1  
+01CA: actor $STIFFactor4 kill_player $PLAYER_CHAR 
+01B2: give_actor $STIFFactor4 weapon 18 ammo 9999 // Load the weapon model before using this             
+$STIFFactor5 = Actor.Create(CivMale, #ARMY, -1047.5103, -570.9866, 11.1278)
+0084: $STIFFgroup1 = $STIFFactor5
+gosub @COL_4_FlameSentries
+$STIFFactor6 = Actor.Create(CivMale, #ARMY, -1047.5826, -582.3556, 10.9581)
+0084: $STIFFgroup1 = $STIFFactor6
+gosub @COL_4_FlameSentries 
+return
+
+:COL_4_RightGuys
+$STIFFswitch2 += 1
+gosub @COL_4_DestroyActors 
+$STIFFcar2 = Car.Create(#PATRIOT, -1054.6672, -329.2534, 11.0106)
+Car.Angle($STIFFcar2) = 238.073
+01EC: make_car $STIFFcar2 very_heavy 1
+$STIFFcar3 = Car.Create(#BARRACKS, -1056.1854, -338.0547, 11.6813)
+Car.Angle($STIFFcar3) = 336.5233
+01EC: make_car $STIFFcar3 very_heavy 1 
+$STIFFactor1 = Actor.Create(CivMale, #ARMY, -1042.4659, -338.774, 10.7753)
+0084: $STIFFgroup1 = $STIFFactor1
+gosub @COL_4_FlameSentries
+$STIFFactor2 = Actor.Create(CivMale, #ARMY, -1051.7058, -340.428, 10.7756)
+0084: $STIFFgroup1 = $STIFFactor2
+gosub @COL_4_FlameSentries
+$STIFFactor3 = Actor.Create(CivMale, #ARMY, -1050.611, -326.8392, 10.9453)
+0084: $STIFFgroup1 = $STIFFactor3
+gosub @COL_4_FlameSentries
+$STIFFactor4 = Actor.Create(CivMale, #ARMY, -1052.9352, -330.2269, 12.4917)
+0084: $STIFFgroup1 = $STIFFactor4
+gosub @COL_4_FlameSentries
+$STIFFactor5 = Actor.Create(CivMale, #ARMY, -1055.991, -332.7933, 10.7756)
+0084: $STIFFgroup1 = $STIFFactor5
+gosub @COL_4_FlameSentries
+$STIFFactor6 = Actor.Create(CivMale, #ARMY, -1053.2006, -335.9407, 12.9707)
+0084: $STIFFgroup1 = $STIFFactor6
+gosub @COL_4_FlameSentries
+$STIFFactor7 = Actor.Create(CivMale, #ARMY, -1060.8446, -332.33, 10.7756)
+0084: $STIFFgroup1 = $STIFFactor7
+gosub @COL_4_FlameSentries
+$STIFFactor8 = Actor.Create(CivMale, #ARMY, -1064.5151, -338.4832, 10.7756)
+0084: $STIFFgroup1 = $STIFFactor8
+gosub @COL_4_FlameSentries
+$STIFFactor9 = Actor.Create(CivMale, #ARMY, -1054.0316, -342.1985, 10.9453)
+0084: $STIFFgroup1 = $STIFFactor9
+gosub @COL_4_FlameSentries
+$STIFFactor10 = Actor.Create(CivMale, #ARMY, -1059.6517, -347.1942, 10.9449)
+0084: $STIFFgroup1 = $STIFFactor10
+gosub @COL_4_FlameSentries
+$STIFFactor11 = Actor.Create(CivMale, #ARMY, -1066.1674, -341.2786, 10.7756)
+0084: $STIFFgroup1 = $STIFFactor11
+gosub @COL_4_FlameSentries
+$STIFFactor12 = Actor.Create(CivMale, #ARMY, -1060.3151, -340.7293, 10.7756)
+0084: $STIFFgroup1 = $STIFFactor12
+gosub @COL_4_FlameSentries
+return
+
+:COL_4_FinaleCheck
 if and
 04A3:   $STIFFswitch1 == 0 // == constant 
 00DE:   player $PLAYER_CHAR driving_vehicle_type 162  
-02AD:   player $PLAYER_CHAR in_area -1100.546 -356.4659 11.17 -1075.2703 -549.7865 11.3023 radius 20.0 sphere 1
-jf @COL_4_4011
+02AD:   player $PLAYER_CHAR in_area -1092.5088 -563.3053 -1120.5104 -359.3715 radius -25.0 sphere 0
+jf @COL_4_4011 
 jump @COL_4_Madmen
 
 :COL_4_Madmen
+$STIFFswitch1 += 1
+gosub @COL_4_DestroyActors
+00DA: $STIFFcar1 = player $PLAYER_CHAR car 
+$STIFFactor25 = Actor.Create(CivMale, #ARMY, -1090.5, -411.8, 20.5)
+0084: $STIFFgroup2 = $STIFFactor25
+gosub @COL_4_Hehehe
+$STIFFactor26 = Actor.Create(CivMale, #ARMY, -1089.6135, -419.6461, 20.5)
+0084: $STIFFgroup2 = $STIFFactor26
+gosub @COL_4_Hehehe
+$STIFFactor27 = Actor.Create(CivMale, #ARMY, -1088.4568, -429.4375, 20.5)
+0084: $STIFFgroup2 = $STIFFactor27
+gosub @COL_4_Hehehe
+$STIFFactor28 = Actor.Create(CivMale, #ARMY, -1062.0288, -532.0168, 12)
+0084: $STIFFgroup2 = $STIFFactor28
+gosub @COL_4_Hehehe
+$STIFFactor29 = Actor.Create(CivMale, #ARMY, -1058.7268, -477.0745, 12)
+0084: $STIFFgroup2 = $STIFFactor29
+gosub @COL_4_Hehehe
+$STIFFactor30 = Actor.Create(CivMale, #ARMY, -1059.969, -479.8707, 12)
+0084: $STIFFgroup2 = $STIFFactor30
+gosub @COL_4_Hehehe
+$STIFFactor31 = Actor.Create(CivMale, #ARMY, -1061.0443, -482.5967, 13)
+0084: $STIFFgroup2 = $STIFFactor31
+gosub @COL_4_Hehehe
+$STIFFactor32 = Actor.Create(CivMale, #ARMY, -1062.1522, -486.7903, 11.1)
+0084: $STIFFgroup2 = $STIFFactor32
+gosub @COL_4_Hehehe
+jump @COL_4_4011 
+
+:COL_4_DestroyActors
 009B: destroy_actor_instantly $STIFFactor1 
 009B: destroy_actor_instantly $STIFFactor2
 009B: destroy_actor_instantly $STIFFactor3
@@ -554,35 +637,9 @@ jump @COL_4_Madmen
 009B: destroy_actor_instantly $STIFFactor10
 009B: destroy_actor_instantly $STIFFactor11
 009B: destroy_actor_instantly $STIFFactor12
-009B: destroy_actor_instantly $STIFFactor13
-009B: destroy_actor_instantly $STIFFactor14
-009B: destroy_actor_instantly $STIFFactor15
-009B: destroy_actor_instantly $STIFFactor16
-009B: destroy_actor_instantly $STIFFactor17
-009B: destroy_actor_instantly $STIFFactor18
-009B: destroy_actor_instantly $STIFFactor19
-009B: destroy_actor_instantly $STIFFactor20
-009B: destroy_actor_instantly $STIFFactor21
-009B: destroy_actor_instantly $STIFFactor22
-009B: destroy_actor_instantly $STIFFactor23
-009B: destroy_actor_instantly $STIFFactor24
-00DA: $STIFFcar1 = player $PLAYER_CHAR car 
-$STIFFactor25 = Actor.Create(CivMale, #ARMY, -1090.5, -411.8, 20.5)
-0084: $STIFFgroup2 = $STIFFactor25
-gosub @COL_4_Hehehe
-$STIFFactor26 = Actor.Create(CivMale, #ARMY, -1089.6135, -419.6461, 20.5)
-0084: $STIFFgroup2 = $STIFFactor26
-gosub @COL_4_Hehehe
-$STIFFactor27 = Actor.Create(CivMale, #ARMY, -1088.4568, -429.4375, 20.5)
-0084: $STIFFgroup2 = $STIFFactor27
-gosub @COL_4_Hehehe
-$STIFFactor28 = Actor.Create(CivMale, #ARMY, -1087.3387, -439.9843, 20.5)
-0084: $STIFFgroup2 = $STIFFactor28
-gosub @COL_4_Hehehe
-$STIFFactor29 = Actor.Create(CivMale, #ARMY, -234.6349, -1341.8662, 8.113)
-0084: $STIFFgroup2 = $STIFFactor29
-gosub @COL_4_Hehehe 
-$STIFFswitch1 += 1
+00A6: destroy_car $STIFFcar2 
+00A6: destroy_car $STIFFcar3 
+return
 
 :COL_4_4011
 $2565 += 1 // integer values 
@@ -2645,10 +2702,8 @@ Marker.Disable($2516)
 01E7: remove_forbidden_for_cars_cube -870.656 -594.54 5.0 -810.656 -144.54 25.0 
 01E7: remove_forbidden_for_cars_cube -837.282 -1041.814 5.0 -777.282 -591.814 25.0 
 01E7: remove_forbidden_for_cars_cube -827.532 -1539.617 5.0 -747.532 -1039.617 25.0
-$STIFFswitch2 += 1 
 0084: $2505 = $2470 // integer values and handles 
 021B: set_garage $688 to_accept_car $2505 
-0493: set_tank $2470 contact_explosion 1 
 $2470 = -1 // integer values 
 $2517 = 1 // integer values 
 $2525 = 1 // integer values 
