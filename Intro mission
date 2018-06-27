@@ -517,7 +517,7 @@ mission_cleanup
 end_thread 
 return 
 
-:INTRO_14463
+:INTRO_14443
 if 
   $13 == 0 // integer values 
 else_jump @INTRO_14511 
