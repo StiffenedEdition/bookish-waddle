@@ -1205,39 +1205,23 @@ Car.SetMaxSpeed($4613, 0.0)
 Car.ImmuneToNonPlayer($4613) = True
 Car.SetImmunities($4613, 1, 1, 1, 1, 1)
 0129: $4607 = create_actor 5 #GDB in_car $4613 driverseat 
-01B2: give_actor $4607 weapon 26 ammo 30000 // Load the weapon model before using this 
-01ED: clear_actor $4607 threat_search 
-0243: set_actor $4607 ped_stats_to 16 
-011A: set_actor $4607 search_threat 1 
-011A: set_actor $4607 search_threat 8192 
-0319: set_actor $4607 running 1 
-02AB: set_actor $4607 immunities BP 1 FP 1 EP 1 CP 1 MP 1 
-02A9: set_actor $4607 immune_to_nonplayer 1 
-Actor.Health($4607) = 150
-$4623 = Marker.CreateAboveActor($4607)
-0291: set_actor $4607 attack_when_provoked 1 
+      $4607 = $STIFFgroup1
+gosub @PROTEC2_GiveRunawaysStuff1
+$4623 = Marker.CreateAboveActor($4607) 
 $4614 = Car.Create(#PCJ600, 357.5, -745.2, 10.0)
 Car.Angle($4614) = 332.8
 00AE: set_vehicle $4614 traffic_behavior_to 3 
 Car.SetMaxSpeed($4614, 0.0)
 Car.ImmuneToNonPlayer($4614) = True
 Car.SetImmunities($4614, 1, 1, 1, 1, 1)
-0129: $4608 = create_actor 5 #GDA in_car $4614 driverseat 
-01B2: give_actor $4608 weapon 26 ammo 30000 // Load the weapon model before using this 
-01ED: clear_actor $4608 threat_search 
-0243: set_actor $4608 ped_stats_to 16 
-011A: set_actor $4608 search_threat 1 
-011A: set_actor $4608 search_threat 8192 
-0319: set_actor $4608 running 1 
-02AB: set_actor $4608 immunities BP 1 FP 1 EP 1 CP 1 MP 1 
-02A9: set_actor $4608 immune_to_nonplayer 1 
-Actor.Health($4607) = 150
+0129: $4608 = create_actor 5 #GDA in_car $4614 driverseat
+      $4608 = $STIFFgroup1
+gosub @PROTEC2_GiveRunawaysStuff1 
 $4624 = Marker.CreateAboveActor($4608)
 04BD: set_car $4613 is_part_of_convoy 1 
 04E0: car $4613 abandon_path_radius 255 
 04BD: set_car $4614 is_part_of_convoy 1 
 04E0: car $4614 abandon_path_radius 255 
-0291: set_actor $4608 attack_when_provoked 1 
 $4619 = Car.Create(#SECURICA, 250.8, -1292.2, 10.0)
 Car.Angle($4619) = 347.7
 00AE: set_vehicle $4619 traffic_behavior_to 2 
@@ -1256,6 +1240,20 @@ if
 else_jump @PROTEC2_7395 
 Car.DriveTo($4613, 368.4, -726.3, 10.1)
 Car.SetMaxSpeed($4613, 25.0)
+jump @PROTEC2_7395
+
+:PROTEC2_GiveRunawaysStuff1
+01B2: give_actor $STIFFgroup1 weapon 26 ammo 30000 // Load the weapon model before using this 
+01ED: clear_actor $STIFFgroup1 threat_search 
+0243: set_actor $STIFFgroup1 ped_stats_to 16 
+011A: set_actor $STIFFgroup1 search_threat 1 
+011A: set_actor $STIFFgroup1 search_threat 8192 
+0319: set_actor $STIFFgroup1 running 1 
+02AB: set_actor $STIFFgroup1 immunities BP 1 FP 1 EP 1 CP 1 MP 1 
+02A9: set_actor $STIFFgroup1 immune_to_nonplayer 1 
+Actor.Health($STIFFgroup1) = 150
+0291: set_actor $STIFFgroup1 attack_when_provoked 1
+return
 
 :PROTEC2_7395
 if 
