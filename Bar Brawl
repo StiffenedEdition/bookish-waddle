@@ -319,6 +319,7 @@ Actor.Angle($4608) = 194.6
 $4624 = Marker.CreateAboveActor($4608)
 0350: set_actor $4608 maintain_position_when_attacked 1 
 03F9: make_actors $4608 $4607 converse_in 86400000 ms 
+032B: $STIFFpickup1 = create_weapon_pickup #BRASSKNUCKLE 15 ammo 1 at -367.7425 -535.5914 17.2819 
 
 :PROTEC2_1961
 wait 0 
@@ -2286,6 +2287,7 @@ Marker.Disable($STIFFmarker2)
 Object.Destroy($4616)
 Object.Destroy($4617)
 Object.Destroy($4618)
+Pickup.Destroy($STIFFpickup1)
 01BD: $CURRENT_TIME_IN_MS = current_time_in_ms 
 mission_cleanup 
 return
