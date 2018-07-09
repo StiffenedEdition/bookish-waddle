@@ -6,7 +6,7 @@ thread 'PROTEC2'
 gosub @PROTEC2_46 
 if 
 wasted_or_busted 
-else_jump @PROTEC2_37 
+jf @PROTEC2_37 
 gosub @PROTEC2_12047 
 
 :PROTEC2_37
@@ -19,7 +19,8 @@ $ONMISSION = 1 // integer values
 increment_mission_attempts 
 wait 0 
 054C: use_GXT_table 'PROT2' 
-058E: set_restart_mission_taxi_destination -288.2 -487.5 9.8 275.0 
+058E: set_restart_mission_taxi_destination -288.2 -487.5 9.8 275.0
+$STIFFswitch1 = -1 
 $4629 = 0 // integer values 
 $4631 = 0 // integer values 
 $4630 = 0 // integer values 
@@ -27,7 +28,7 @@ $61 = 0 // integer values
 $4632 = 0 // integer values 
 $4633 = 0 // integer values 
 $4634 = 0 // integer values 
-$4635 = 301000 // integer values 
+$4635 = 181000 // integer values 
 $4636 = 0 // integer values 
 $4637 = 0 // integer values 
 $4638 = 0 // integer values 
@@ -54,7 +55,7 @@ if or
 823D:   not special_actor 3 loaded 
 823D:   not special_actor 4 loaded 
 823D:   not special_actor 5 loaded 
-else_jump @PROTEC2_365 
+jf @PROTEC2_365 
 wait 0 
 jump @PROTEC2_323 
 
@@ -62,7 +63,7 @@ jump @PROTEC2_323
 if or
    not Model.Available(#CUTOBJ01)
    not Model.Available(#CUTOBJ02)
-else_jump @PROTEC2_397 
+jf @PROTEC2_397 
 wait 0 
 jump @PROTEC2_365 
 
@@ -101,7 +102,7 @@ fade 1 1500
 :PROTEC2_702
 if 
   5914 > $CUT_SCENE_TIME // integer values 
-else_jump @PROTEC2_737 
+jf @PROTEC2_737 
 wait 0 
 02E8: $CUT_SCENE_TIME = cutscenetime 
 jump @PROTEC2_702 
@@ -112,7 +113,7 @@ jump @PROTEC2_702
 :PROTEC2_752
 if 
   7399 > $CUT_SCENE_TIME // integer values 
-else_jump @PROTEC2_787 
+jf @PROTEC2_787 
 wait 0 
 02E8: $CUT_SCENE_TIME = cutscenetime 
 jump @PROTEC2_752 
@@ -123,7 +124,7 @@ jump @PROTEC2_752
 :PROTEC2_802
 if 
   9756 > $CUT_SCENE_TIME // integer values 
-else_jump @PROTEC2_837 
+jf @PROTEC2_837 
 wait 0 
 02E8: $CUT_SCENE_TIME = cutscenetime 
 jump @PROTEC2_802 
@@ -134,7 +135,7 @@ jump @PROTEC2_802
 :PROTEC2_852
 if 
   12705 > $CUT_SCENE_TIME // integer values 
-else_jump @PROTEC2_887 
+jf @PROTEC2_887 
 wait 0 
 02E8: $CUT_SCENE_TIME = cutscenetime 
 jump @PROTEC2_852 
@@ -145,7 +146,7 @@ jump @PROTEC2_852
 :PROTEC2_902
 if 
   16592 > $CUT_SCENE_TIME // integer values 
-else_jump @PROTEC2_937 
+jf @PROTEC2_937 
 wait 0 
 02E8: $CUT_SCENE_TIME = cutscenetime 
 jump @PROTEC2_902 
@@ -156,7 +157,7 @@ jump @PROTEC2_902
 :PROTEC2_952
 if 
   19312 > $CUT_SCENE_TIME // integer values 
-else_jump @PROTEC2_987 
+jf @PROTEC2_987 
 wait 0 
 02E8: $CUT_SCENE_TIME = cutscenetime 
 jump @PROTEC2_952 
@@ -167,7 +168,7 @@ jump @PROTEC2_952
 :PROTEC2_1002
 if 
   21275 > $CUT_SCENE_TIME // integer values 
-else_jump @PROTEC2_1037 
+jf @PROTEC2_1037 
 wait 0 
 02E8: $CUT_SCENE_TIME = cutscenetime 
 jump @PROTEC2_1002 
@@ -178,7 +179,7 @@ jump @PROTEC2_1002
 :PROTEC2_1052
 if 
   22275 > $CUT_SCENE_TIME // integer values 
-else_jump @PROTEC2_1087 
+jf @PROTEC2_1087 
 wait 0 
 02E8: $CUT_SCENE_TIME = cutscenetime 
 jump @PROTEC2_1052 
@@ -189,7 +190,7 @@ jump @PROTEC2_1052
 :PROTEC2_1089
 if 
   22784 > $CUT_SCENE_TIME // integer values 
-else_jump @PROTEC2_1124 
+jf @PROTEC2_1124 
 wait 0 
 02E8: $CUT_SCENE_TIME = cutscenetime 
 jump @PROTEC2_1089 
@@ -201,7 +202,7 @@ fade 0 1500
 :PROTEC2_1133
 if 
 fading 
-else_jump @PROTEC2_1157 
+jf @PROTEC2_1157 
 wait 0 
 jump @PROTEC2_1133 
 
@@ -227,20 +228,24 @@ Camera.SetBehindPlayer
 04E3: unknown_player $PLAYER_CHAR 1 60000 
 Model.Load(#UZI)
 Model.Load(#BRASSKNUCKLE)
+Model.Load(#PYTHON)          
 Model.Load(#M4)
 Model.Load(#PCJ600)
 Model.Load(#OCEANIC)
 Model.Load(#SENTINEL)
+Model.Load(#MAVERICK)
 
 :PROTEC2_1338
 if or
    not Model.Available(#UZI)
    not Model.Available(#BRASSKNUCKLE)
+   not Model.Available(#PYTHON)
    not Model.Available(#M4)
    not Model.Available(#PCJ600)
    not Model.Available(#OCEANIC)
    not Model.Available(#SENTINEL)
-else_jump @PROTEC2_1390 
+   not Model.Available(#MAVERICK)
+jf @PROTEC2_1390 
 wait 0 
 jump @PROTEC2_1338 
 
@@ -248,6 +253,7 @@ jump @PROTEC2_1338
 Model.Load(#GDA)
 Model.Load(#GDB)
 Model.Load(#HMOST)
+Model.Load(#SWAT)
 Model.Load(#SECURICA)
 
 :PROTEC2_1407
@@ -255,15 +261,16 @@ if or
    not Model.Available(#GDA)
    not Model.Available(#GDB)
    not Model.Available(#HMOST)
+   not Model.Available(#SWAT)
    not Model.Available(#SECURICA)
-else_jump @PROTEC2_1446 
+jf @PROTEC2_1446 
 wait 0 
 jump @PROTEC2_1407 
 
 :PROTEC2_1446
 if 
   $ONMISSION == 0 // integer values 
-else_jump @PROTEC2_1484 
+jf @PROTEC2_1484 
 018A: $4628 = create_checkpoint_at 240.9 -1241.8 10.8 
 
 :PROTEC2_1484
@@ -291,7 +298,7 @@ Actor.Angle($4605) = 281.0
 0319: set_actor $4605 running 1 
 $4615 = Car.Create(#SENTINEL, -345.3, -524.6, 11.5)
 fade 1 1500 
-00BC: text_highpriority 'PRO2_01' 11000 ms 1  // ~g~Take out the guards protecting the Front Page Bar and find out who supplied them.
+00BC: text_highpriority 'PRO2_01' 11000 ms 1  // ~g~Go to the Front Page Bar and 'convince' the owner into business, but DON'T KILL HIM.
 0376: $4610 = create_random_actor 236.8 -1244.0 10.9 
 Actor.Angle($4610) = 320.4
 0376: $4611 = create_random_actor 237.5 -1243.0 10.9 
@@ -317,67 +324,67 @@ $4624 = Marker.CreateAboveActor($4608)
 wait 0 
 if 
   $4629 == 1 // integer values 
-else_jump @PROTEC2_2025 
+jf @PROTEC2_2025 
 if 
    not Actor.Dead($4610)
-else_jump @PROTEC2_2004 
+jf @PROTEC2_2004 
 Actor.RemoveReferences($4610)
 
 :PROTEC2_2004
 if 
    not Actor.Dead($4611)
-else_jump @PROTEC2_2025 
+jf @PROTEC2_2025 
 Actor.RemoveReferences($4610)
 
 :PROTEC2_2025
 if 
   $4629 == 0 // integer values 
-else_jump @PROTEC2_2127 
+jf @PROTEC2_2127 
 if 
    not Actor.Dead($4607)
-else_jump @PROTEC2_2085 
+jf @PROTEC2_2085 
 if 
 0457:   player $PLAYER_CHAR aiming_at_actor $4607 
-else_jump @PROTEC2_2085 
+jf @PROTEC2_2085 
 $4629 = 1 // integer values 
 
 :PROTEC2_2085
 if 
    not Actor.Dead($4608)
-else_jump @PROTEC2_2127 
+jf @PROTEC2_2127 
 if 
 0457:   player $PLAYER_CHAR aiming_at_actor $4608 
-else_jump @PROTEC2_2127 
+jf @PROTEC2_2127 
 $4629 = 1 // integer values 
 
 :PROTEC2_2127
 if 
   $4632 == 0 // integer values 
-else_jump @PROTEC2_2353 
+jf @PROTEC2_2353 
 if 
    not Actor.Dead($4604)
-else_jump @PROTEC2_2353 
+jf @PROTEC2_2353 
 if 
 0320:   actor $4604 in_range_of_player $PLAYER_CHAR 
-else_jump @PROTEC2_2353 
+jf @PROTEC2_2353 
 if 
 00E0:   player $PLAYER_CHAR driving 
-else_jump @PROTEC2_2353 
+jf @PROTEC2_2353 
 if 
 8449:   not actor $4604 in_a_car 
-else_jump @PROTEC2_2353 
+jf @PROTEC2_2353 
 if 
 847E:   not player $PLAYER_CHAR driving_a_motorbike 
-else_jump @PROTEC2_2353 
+jf @PROTEC2_2353 
 if 
 84AA:   not player $PLAYER_CHAR driving_heli 
-else_jump @PROTEC2_2353 
+jf @PROTEC2_2353 
 03CF: load_wav 'BUD2_1' as 1 
 
 :PROTEC2_2256
 if 
 83D0:   not wav 1 loaded 
-else_jump @PROTEC2_2282 
+jf @PROTEC2_2282 
 wait 0 
 jump @PROTEC2_2256 
 
@@ -389,7 +396,7 @@ jump @PROTEC2_2256
 if and
 83D2:   not wav 1 ended 
    not Actor.Dead($4604)
-else_jump @PROTEC2_2332 
+jf @PROTEC2_2332 
 wait 0 
 jump @PROTEC2_2301 
 
@@ -401,19 +408,19 @@ $4632 = 1 // integer values
 :PROTEC2_2353
 if 
    not Actor.Dead($4607)
-else_jump @PROTEC2_2467 
+jf @PROTEC2_2467 
 if 
 8184:   not actor $4607 health >= 95 
-else_jump @PROTEC2_2412 
+jf @PROTEC2_2412 
 if 
   $4629 == 0 // integer values 
-else_jump @PROTEC2_2412 
+jf @PROTEC2_2412 
 $4629 = 1 // integer values 
 
 :PROTEC2_2412
 if 
   $4629 == 1 // integer values 
-else_jump @PROTEC2_2460 
+jf @PROTEC2_2460 
 0350: set_actor $4607 maintain_position_when_attacked 0 
 011A: set_actor $4607 search_threat 1 
 011A: set_actor $4607 search_threat 8192 
@@ -425,7 +432,7 @@ jump @PROTEC2_2502
 :PROTEC2_2467
 if 
   $4629 == 0 // integer values 
-else_jump @PROTEC2_2492 
+jf @PROTEC2_2492 
 $4629 = 1 // integer values 
 
 :PROTEC2_2492
@@ -435,26 +442,26 @@ Actor.RemoveReferences($4607)
 :PROTEC2_2502
 if 
    not Actor.Dead($4608)
-else_jump @PROTEC2_2786 
+jf @PROTEC2_2786 
 if 
 8184:   not actor $4608 health >= 95 
-else_jump @PROTEC2_2561 
+jf @PROTEC2_2561 
 if 
   $4629 == 0 // integer values 
-else_jump @PROTEC2_2561 
+jf @PROTEC2_2561 
 $4629 = 1 // integer values 
 
 :PROTEC2_2561
 if 
   $4629 == 1 // integer values 
-else_jump @PROTEC2_2779 
+jf @PROTEC2_2779 
 0350: set_actor $4608 maintain_position_when_attacked 0 
 if 
   $4630 == 0 // integer values 
-else_jump @PROTEC2_2686 
+jf @PROTEC2_2686 
 if 
 80EC:   not actor $4608 0 240.2 -1241.8 radius 1.0 1.0 
-else_jump @PROTEC2_2664 
+jf @PROTEC2_2664 
 0239: actor $4608 run_to 240.2 -1241.8 
 jump @PROTEC2_2686 
 
@@ -465,10 +472,10 @@ $4630 = 1 // integer values
 :PROTEC2_2686
 if 
   $4630 == 1 // integer values 
-else_jump @PROTEC2_2779 
+jf @PROTEC2_2779 
 if 
 80EC:   not actor $4608 0 242.9 -1241.5 radius 1.0 1.0 
-else_jump @PROTEC2_2764 
+jf @PROTEC2_2764 
 0239: actor $4608 run_to 242.9 -1241.5 
 jump @PROTEC2_2779 
 
@@ -482,7 +489,7 @@ jump @PROTEC2_2821
 :PROTEC2_2786
 if 
   $4629 == 0 // integer values 
-else_jump @PROTEC2_2811 
+jf @PROTEC2_2811 
 $4629 = 1 // integer values 
 
 :PROTEC2_2811
@@ -492,22 +499,21 @@ Actor.RemoveReferences($4608)
 :PROTEC2_2821
 if 
    Actor.Dead($4607)
-else_jump @PROTEC2_4680 
+jf @PROTEC2_4680 
 if 
    Actor.Dead($4608)
-else_jump @PROTEC2_4680 
+jf @PROTEC2_4680 
 if 
 00F9:   player $PLAYER_CHAR stopped 1 240.9 -1241.8 10.8 radius 1.0 1.0 2.0 
-else_jump @PROTEC2_4620 
+jf @PROTEC2_4620 
 Player.CanMove($PLAYER_CHAR) = False
 02A3: enable_widescreen 1 
 Marker.Disable($4628)
 03EB: clear_small_messages_only 
 $4606 = Actor.Create(CivMale, #HMOST, 235.6, -1236.0, 13.3)
 01ED: clear_actor $4606 threat_search 
-01D1: actor $4606 follow_actor $PLAYER_ACTOR 
+0239: actor $4606 run_to 235.6368 -1241.0101 
 01BE: set_actor $PLAYER_ACTOR to_look_at_spot 233.1 -1240.6 11.9 
-0568: set_actor $4606 untargetable 1 
 Camera.SetPosition(245.88, -1241.78, 13.24, 0.0, 0.0, 0.0)
 Camera.PointAt(240.75, -1241.51, 11.93, 2)
 16@ = 0 // integer values 
@@ -516,13 +522,13 @@ Camera.PointAt(240.75, -1241.51, 11.93, 2)
 wait 0 
 if 
    not Actor.Dead($4606)
-else_jump @PROTEC2_4606 
+jf @PROTEC2_4606 
 if 
    not Actor.Dead($4604)
-else_jump @PROTEC2_3127 
+jf @PROTEC2_3127 
 if 
 00F3:   actor $4604 near_actor_on_foot $4606 radius 5.0 5.0 0 
-else_jump @PROTEC2_3127 
+jf @PROTEC2_3127 
 01E0: clear_leader $4604 
 0291: set_actor $4604 attack_when_provoked 0 
 0350: set_actor $4604 maintain_position_when_attacked 1 
@@ -530,10 +536,10 @@ else_jump @PROTEC2_3127
 :PROTEC2_3127
 if 
    not Actor.Dead($4605)
-else_jump @PROTEC2_3193 
+jf @PROTEC2_3193 
 if 
 00F3:   actor $4605 near_actor_on_foot $4606 radius 5.0 5.0 0 
-else_jump @PROTEC2_3193 
+jf @PROTEC2_3193 
 01E0: clear_leader $4605 
 0291: set_actor $4605 attack_when_provoked 0 
 0350: set_actor $4605 maintain_position_when_attacked 1 
@@ -542,11 +548,11 @@ else_jump @PROTEC2_3193
 if or
 00F3:   actor $PLAYER_ACTOR near_actor_on_foot $4606 radius 2.0 2.0 0 
   16@ > 2000 // integer values 
-else_jump @PROTEC2_4606 
+jf @PROTEC2_4606 
 wait 500 
 if 
    not Actor.Dead($4606)
-else_jump @PROTEC2_3274 
+jf @PROTEC2_3274 
 011C: actor $4606 clear_objective 
 020F: actor $4606 look_at_player $PLAYER_CHAR 
 020E: actor $PLAYER_ACTOR look_at_actor $4606 
@@ -560,7 +566,7 @@ else_jump @PROTEC2_3274
 if or
 83D0:   not wav 1 loaded 
 83D0:   not wav 2 loaded 
-else_jump @PROTEC2_3338 
+jf @PROTEC2_3338 
 wait 0 
 jump @PROTEC2_3308 
 
@@ -571,14 +577,14 @@ jump @PROTEC2_3308
 :PROTEC2_3357
 if 
 83D2:   not wav 1 ended 
-else_jump @PROTEC2_3464 
+jf @PROTEC2_3464 
 wait 0 
 if 
 00E1:   player 0 pressed_button 16 
-else_jump @PROTEC2_3432 
+jf @PROTEC2_3432 
 if 
   $61 == 1 // integer values 
-else_jump @PROTEC2_3425 
+jf @PROTEC2_3425 
 $61 = 0 // integer values 
 jump @PROTEC2_4411 
 
@@ -588,7 +594,7 @@ jump @PROTEC2_3457
 :PROTEC2_3432
 if 
   $61 == 0 // integer values 
-else_jump @PROTEC2_3457 
+jf @PROTEC2_3457 
 $61 = 1 // integer values 
 
 :PROTEC2_3457
@@ -600,7 +606,7 @@ jump @PROTEC2_3357
 0372: set_actor $PLAYER_ACTOR anim 0 wait_state_time 100 ms 
 if 
    not Actor.Dead($4606)
-else_jump @PROTEC2_3513 
+jf @PROTEC2_3513 
 0372: set_actor $4606 anim 19 wait_state_time 20000 ms 
 
 :PROTEC2_3513
@@ -611,14 +617,14 @@ else_jump @PROTEC2_3513
 if and
 83D2:   not wav 2 ended 
    not Actor.Dead($4606)
-else_jump @PROTEC2_3644 
+jf @PROTEC2_3644 
 wait 0 
 if 
 00E1:   player 0 pressed_button 16 
-else_jump @PROTEC2_3612 
+jf @PROTEC2_3612 
 if 
   $61 == 1 // integer values 
-else_jump @PROTEC2_3605 
+jf @PROTEC2_3605 
 $61 = 0 // integer values 
 jump @PROTEC2_4411 
 
@@ -628,7 +634,7 @@ jump @PROTEC2_3637
 :PROTEC2_3612
 if 
   $61 == 0 // integer values 
-else_jump @PROTEC2_3637 
+jf @PROTEC2_3637 
 $61 = 1 // integer values 
 
 :PROTEC2_3637
@@ -638,13 +644,11 @@ jump @PROTEC2_3532
 040D: unload_wav 2 
 03D5: remove_text 'PRO2_03'  // Aw hell, not again! I don't need this crap!
 03CF: load_wav 'BUD2_4' as 1 
-03CF: load_wav 'BUD2_5' as 2 
 
 :PROTEC2_3682
-if or
+if
 83D0:   not wav 1 loaded 
-83D0:   not wav 2 loaded 
-else_jump @PROTEC2_3712 
+jf @PROTEC2_3712 
 wait 0 
 jump @PROTEC2_3682 
 
@@ -656,14 +660,14 @@ jump @PROTEC2_3682
 if and
 83D2:   not wav 1 ended 
    not Actor.Dead($4606)
-else_jump @PROTEC2_3843 
+jf @PROTEC2_3843 
 wait 0 
 if 
 00E1:   player 0 pressed_button 16 
-else_jump @PROTEC2_3811 
+jf @PROTEC2_3811 
 if 
   $61 == 1 // integer values 
-else_jump @PROTEC2_3804 
+jf @PROTEC2_3804 
 $61 = 0 // integer values 
 jump @PROTEC2_4411 
 
@@ -673,7 +677,7 @@ jump @PROTEC2_3836
 :PROTEC2_3811
 if 
   $61 == 0 // integer values 
-else_jump @PROTEC2_3836 
+jf @PROTEC2_3836 
 $61 = 1 // integer values 
 
 :PROTEC2_3836
@@ -682,42 +686,6 @@ jump @PROTEC2_3731
 :PROTEC2_3843
 040D: unload_wav 1 
 03D5: remove_text 'PRO2_04'  // These idiots operate out of DBP Security around the block.
-00BC: text_highpriority 'PRO2_05' 4000 ms 1  // You guys just sort it out amongst yourselves.
-03D1: play_wav 2 
-
-:PROTEC2_3876
-if and
-83D2:   not wav 2 ended 
-   not Actor.Dead($4606)
-else_jump @PROTEC2_3988 
-wait 0 
-if 
-00E1:   player 0 pressed_button 16 
-else_jump @PROTEC2_3956 
-if 
-  $61 == 1 // integer values 
-else_jump @PROTEC2_3949 
-$61 = 0 // integer values 
-jump @PROTEC2_4411 
-
-:PROTEC2_3949
-jump @PROTEC2_3981 
-
-:PROTEC2_3956
-if 
-  $61 == 0 // integer values 
-else_jump @PROTEC2_3981 
-$61 = 1 // integer values 
-
-:PROTEC2_3981
-jump @PROTEC2_3876 
-
-:PROTEC2_3988
-040D: unload_wav 2 
-03D5: remove_text 'PRO2_05'  // You guys just sort it out amongst yourselves.
-if 
-   not Actor.Dead($4606)
-else_jump @PROTEC2_4027 
 0372: set_actor $4606 anim 0 wait_state_time 100 ms 
 
 :PROTEC2_4027
@@ -729,7 +697,7 @@ else_jump @PROTEC2_4027
 if or
 83D0:   not wav 1 loaded 
 83D0:   not wav 2 loaded 
-else_jump @PROTEC2_4091 
+jf @PROTEC2_4091 
 wait 0 
 jump @PROTEC2_4061 
 
@@ -740,14 +708,14 @@ jump @PROTEC2_4061
 :PROTEC2_4110
 if 
 83D2:   not wav 1 ended 
-else_jump @PROTEC2_4217 
+jf @PROTEC2_4217 
 wait 0 
 if 
 00E1:   player 0 pressed_button 16 
-else_jump @PROTEC2_4185 
+jf @PROTEC2_4185 
 if 
   $61 == 1 // integer values 
-else_jump @PROTEC2_4178 
+jf @PROTEC2_4178 
 $61 = 0 // integer values 
 jump @PROTEC2_4411 
 
@@ -757,7 +725,7 @@ jump @PROTEC2_4210
 :PROTEC2_4185
 if 
   $61 == 0 // integer values 
-else_jump @PROTEC2_4210 
+jf @PROTEC2_4210 
 $61 = 1 // integer values 
 
 :PROTEC2_4210
@@ -769,7 +737,7 @@ jump @PROTEC2_4110
 0372: set_actor $PLAYER_ACTOR anim 0 wait_state_time 100 ms 
 if 
    not Actor.Dead($4606)
-else_jump @PROTEC2_4266 
+jf @PROTEC2_4266 
 0372: set_actor $4606 anim 19 wait_state_time 20000 ms 
 
 :PROTEC2_4266
@@ -780,14 +748,14 @@ else_jump @PROTEC2_4266
 if and
 83D2:   not wav 2 ended 
    not Actor.Dead($4606)
-else_jump @PROTEC2_4397 
+jf @PROTEC2_4397 
 wait 0 
 if 
 00E1:   player 0 pressed_button 16 
-else_jump @PROTEC2_4365 
+jf @PROTEC2_4365 
 if 
   $61 == 1 // integer values 
-else_jump @PROTEC2_4358 
+jf @PROTEC2_4358 
 $61 = 0 // integer values 
 jump @PROTEC2_4411 
 
@@ -797,7 +765,7 @@ jump @PROTEC2_4390
 :PROTEC2_4365
 if 
   $61 == 0 // integer values 
-else_jump @PROTEC2_4390 
+jf @PROTEC2_4390 
 $61 = 1 // integer values 
 
 :PROTEC2_4390
@@ -814,13 +782,13 @@ jump @PROTEC2_4285
 0372: set_actor $PLAYER_ACTOR anim 0 wait_state_time 100 ms 
 if 
    not Actor.Dead($4606)
-else_jump @PROTEC2_4455 
+jf @PROTEC2_4455 
 0372: set_actor $4606 anim 0 wait_state_time 100 ms 
 
 :PROTEC2_4455
 if 
    not Actor.Dead($4604)
-else_jump @PROTEC2_4493 
+jf @PROTEC2_4493 
 0291: set_actor $4604 attack_when_provoked 1 
 0350: set_actor $4604 maintain_position_when_attacked 0 
 01DF: tie_actor $4604 to_player $PLAYER_CHAR 
@@ -828,7 +796,7 @@ else_jump @PROTEC2_4493
 :PROTEC2_4493
 if 
    not Actor.Dead($4605)
-else_jump @PROTEC2_4531 
+jf @PROTEC2_4531 
 0291: set_actor $4605 attack_when_provoked 1 
 0350: set_actor $4605 maintain_position_when_attacked 0 
 01DF: tie_actor $4605 to_player $PLAYER_CHAR 
@@ -837,13 +805,43 @@ else_jump @PROTEC2_4531
 011C: actor $PLAYER_ACTOR clear_objective 
 if 
    not Actor.Dead($4606)
-else_jump @PROTEC2_4557 
+jf @PROTEC2_HeDead 
 011C: actor $4606 clear_objective 
 
 :PROTEC2_4557
 Camera.Restore_WithJumpCut
 Player.CanMove($PLAYER_CHAR) = True
-02A3: enable_widescreen 0 
+02A3: enable_widescreen 0
+jump @PROTEC2_InjureHim1
+
+:PROTEC2_HeDead
+00BC: text_highpriority 'PRO2_05' 5000 ms 1  // ~g~Who's gonna pay up if the owner is dead!?
+0164: disable_marker $STIFFmarker1 
+jump @PROTEC2_12047
+
+:PROTEC2_InjureHim1
+0223: set_actor $4606 health_to 200 
+0187: $STIFFmarker1 = create_marker_above_actor $4606
+01B2: give_actor $4606 weapon 23 ammo 9999 // Load the weapon model before using this
+02E2: set_actor $4606 weapon_accuracy_to 0  
+01CA: actor $4606 kill_player $PLAYER_CHAR 
+
+:PROTEC2_InjureHim2
+wait 0
+if
+8184:   not actor $4606 health >= 70 
+jf @PROTEC2_InjureHim2
+0164: disable_marker $STIFFmarker1
+0332: set_actor $4606 bleeding_to 1 
+011C: actor $4606 clear_objective  
+01B9: set_actor $4606 armed_weapon_to 0
+0372: set_actor $4606 anim 0 wait_state_time 0 ms
+if
+8118:  not actor $4606 dead 
+jf @PROTEC2_CarryOnNormally
+04EB: actor $4606 crouch 1 9999999 ms    
+
+:PROTEC2_CarryOnNormally 
 00BC: text_highpriority 'PRO2_08' 11000 ms 1  // ~g~DBP Security will know you are on your way, go and get them before they clear out.
 014E: start_timer_at $4635 count_in_direction 1 
 $4629 = 0 // integer values 
@@ -856,7 +854,7 @@ jump @PROTEC2_4680
 :PROTEC2_4620
 if 
   $4629 == 1 // integer values 
-else_jump @PROTEC2_4680 
+jf @PROTEC2_4680 
 00BC: text_highpriority 'PRO2_09' 11000 ms 1  // ~g~Go and speak to the Front Page Bar Owner.
 018A: $4628 = create_checkpoint_at 240.9 -1241.8 10.8 
 $4629 = 2 // integer values 
@@ -921,23 +919,26 @@ Actor.Health($4611) = 150
 17@ = 0 // integer values 
 
 :PROTEC2_5253
-wait 0 
+wait 0
+if
+8118:   not actor $4606 dead 
+jf @PROTEC2_HeDead 
 if 
   $4635 == 0 // integer values 
-else_jump @PROTEC2_5297 
+jf @PROTEC2_5297 
 00BC: text_highpriority 'TAXI2' 5000 ms 1  // ~r~You're out of time!
 jump @PROTEC2_12047 
 
 :PROTEC2_5297
 if 
    not Car.Wrecked($4612)
-else_jump @PROTEC2_5426 
+jf @PROTEC2_5426 
 if 
 00DC:   player $PLAYER_CHAR driving $4612 
-else_jump @PROTEC2_5357 
+jf @PROTEC2_5357 
 if 
   $4629 == 0 // integer values 
-else_jump @PROTEC2_5357 
+jf @PROTEC2_5357 
 $4629 = 1 // integer values 
 
 :PROTEC2_5357
@@ -948,29 +949,29 @@ $4629 = 1 // integer values
 :PROTEC2_5426
 if 
    not Actor.Dead($4607)
-else_jump @PROTEC2_5585 
+jf @PROTEC2_5585 
 if 
   16@ > 500 // integer values 
-else_jump @PROTEC2_5494 
+jf @PROTEC2_5494 
 if 
 0123:   actor $4607 spotted_player $PLAYER_CHAR 
-else_jump @PROTEC2_5494 
+jf @PROTEC2_5494 
 $4629 = 1 // integer values 
 17@ = 0 // integer values 
 
 :PROTEC2_5494
 if 
 8184:   not actor $4607 health >= 95 
-else_jump @PROTEC2_5537 
+jf @PROTEC2_5537 
 if 
   $4629 == 0 // integer values 
-else_jump @PROTEC2_5537 
+jf @PROTEC2_5537 
 $4629 = 1 // integer values 
 
 :PROTEC2_5537
 if 
   $4629 == 1 // integer values 
-else_jump @PROTEC2_5578 
+jf @PROTEC2_5578 
 011A: set_actor $4607 search_threat 1 
 011A: set_actor $4607 search_threat 8192 
 01CA: actor $4607 kill_player $PLAYER_CHAR 
@@ -986,19 +987,19 @@ Actor.RemoveReferences($4607)
 :PROTEC2_5602
 if 
    not Actor.Dead($4608)
-else_jump @PROTEC2_5709 
+jf @PROTEC2_5709 
 if 
 8184:   not actor $4608 health >= 95 
-else_jump @PROTEC2_5661 
+jf @PROTEC2_5661 
 if 
   $4629 == 0 // integer values 
-else_jump @PROTEC2_5661 
+jf @PROTEC2_5661 
 $4629 = 1 // integer values 
 
 :PROTEC2_5661
 if 
   $4629 == 1 // integer values 
-else_jump @PROTEC2_5702 
+jf @PROTEC2_5702 
 011A: set_actor $4608 search_threat 1 
 011A: set_actor $4608 search_threat 8192 
 01CA: actor $4608 kill_player $PLAYER_CHAR 
@@ -1014,22 +1015,22 @@ Actor.RemoveReferences($4608)
 :PROTEC2_5726
 if 
    not Actor.Dead($4609)
-else_jump @PROTEC2_5973 
+jf @PROTEC2_5973 
 if 
 8184:   not actor $4609 health >= 95 
-else_jump @PROTEC2_5785 
+jf @PROTEC2_5785 
 if 
   $4629 == 0 // integer values 
-else_jump @PROTEC2_5785 
+jf @PROTEC2_5785 
 $4629 = 1 // integer values 
 
 :PROTEC2_5785
 if 
   $4636 == 0 // integer values 
-else_jump @PROTEC2_5850 
+jf @PROTEC2_5850 
 if 
   $4629 == 1 // integer values 
-else_jump @PROTEC2_5850 
+jf @PROTEC2_5850 
 0350: set_actor $4609 maintain_position_when_attacked 0 
 011A: set_actor $4609 search_threat 1 
 011A: set_actor $4609 search_threat 8192 
@@ -1038,17 +1039,17 @@ $4636 = 1 // integer values
 :PROTEC2_5850
 if 
   $4636 == 1 // integer values 
-else_jump @PROTEC2_5890 
+jf @PROTEC2_5890 
 0239: actor $4609 run_to 355.6 -726.0 
 $4636 = 2 // integer values 
 
 :PROTEC2_5890
 if 
   $4636 == 2 // integer values 
-else_jump @PROTEC2_5966 
+jf @PROTEC2_5966 
 if 
 00EC:   actor $4609 0 355.6 -726.0 radius 2.0 2.0 
-else_jump @PROTEC2_5966 
+jf @PROTEC2_5966 
 011C: actor $4609 clear_objective 
 01CA: actor $4609 kill_player $PLAYER_CHAR 
 $4636 = 3 // integer values 
@@ -1064,22 +1065,22 @@ Actor.RemoveReferences($4609)
 :PROTEC2_5990
 if 
    not Actor.Dead($4610)
-else_jump @PROTEC2_6237 
+jf @PROTEC2_6237 
 if 
 8184:   not actor $4610 health >= 95 
-else_jump @PROTEC2_6049 
+jf @PROTEC2_6049 
 if 
   $4629 == 0 // integer values 
-else_jump @PROTEC2_6049 
+jf @PROTEC2_6049 
 $4629 = 1 // integer values 
 
 :PROTEC2_6049
 if 
   $4637 == 0 // integer values 
-else_jump @PROTEC2_6114 
+jf @PROTEC2_6114 
 if 
   $4629 == 1 // integer values 
-else_jump @PROTEC2_6114 
+jf @PROTEC2_6114 
 0350: set_actor $4610 maintain_position_when_attacked 0 
 011A: set_actor $4610 search_threat 1 
 011A: set_actor $4610 search_threat 8192 
@@ -1088,17 +1089,17 @@ $4637 = 1 // integer values
 :PROTEC2_6114
 if 
   $4637 == 1 // integer values 
-else_jump @PROTEC2_6154 
+jf @PROTEC2_6154 
 0239: actor $4610 run_to 355.6 -726.0 
 $4637 = 2 // integer values 
 
 :PROTEC2_6154
 if 
   $4637 == 2 // integer values 
-else_jump @PROTEC2_6230 
+jf @PROTEC2_6230 
 if 
 00EC:   actor $4610 0 355.6 -726.0 radius 2.0 2.0 
-else_jump @PROTEC2_6230 
+jf @PROTEC2_6230 
 011C: actor $4610 clear_objective 
 01CA: actor $4610 kill_player $PLAYER_CHAR 
 $4637 = 3 // integer values 
@@ -1114,22 +1115,22 @@ Actor.RemoveReferences($4610)
 :PROTEC2_6254
 if 
    not Actor.Dead($4611)
-else_jump @PROTEC2_6501 
+jf @PROTEC2_6501 
 if 
 8184:   not actor $4611 health >= 95 
-else_jump @PROTEC2_6313 
+jf @PROTEC2_6313 
 if 
   $4629 == 0 // integer values 
-else_jump @PROTEC2_6313 
+jf @PROTEC2_6313 
 $4629 = 1 // integer values 
 
 :PROTEC2_6313
 if 
   $4638 == 0 // integer values 
-else_jump @PROTEC2_6378 
+jf @PROTEC2_6378 
 if 
   $4629 == 1 // integer values 
-else_jump @PROTEC2_6378 
+jf @PROTEC2_6378 
 0350: set_actor $4611 maintain_position_when_attacked 0 
 011A: set_actor $4611 search_threat 1 
 011A: set_actor $4611 search_threat 8192 
@@ -1138,17 +1139,17 @@ $4638 = 1 // integer values
 :PROTEC2_6378
 if 
   $4638 == 1 // integer values 
-else_jump @PROTEC2_6418 
+jf @PROTEC2_6418 
 0239: actor $4611 run_to 355.6 -726.0 
 $4638 = 2 // integer values 
 
 :PROTEC2_6418
 if 
   $4638 == 2 // integer values 
-else_jump @PROTEC2_6494 
+jf @PROTEC2_6494 
 if 
 00EC:   actor $4611 0 355.6 -726.0 radius 2.0 2.0 
-else_jump @PROTEC2_6494 
+jf @PROTEC2_6494 
 011C: actor $4611 clear_objective 
 01CA: actor $4611 kill_player $PLAYER_CHAR 
 $4638 = 3 // integer values 
@@ -1164,19 +1165,19 @@ Actor.RemoveReferences($4611)
 :PROTEC2_6518
 if 
    Actor.Dead($4607)
-else_jump @PROTEC2_6617 
+jf @PROTEC2_6617 
 if 
    Actor.Dead($4608)
-else_jump @PROTEC2_6617 
+jf @PROTEC2_6617 
 if 
    Actor.Dead($4609)
-else_jump @PROTEC2_6617 
+jf @PROTEC2_6617 
 if 
    Actor.Dead($4610)
-else_jump @PROTEC2_6617 
+jf @PROTEC2_6617 
 if 
    Actor.Dead($4611)
-else_jump @PROTEC2_6617 
+jf @PROTEC2_6617 
 Car.RemoveReferences($4612)
 $4629 = 0 // integer values 
 jump @PROTEC2_6624 
@@ -1196,7 +1197,8 @@ wait 1000
 020C: create_explosion_with_radius 2 at 366.4 -730.3 9.0 
 020C: create_explosion_with_radius 11 at 366.4 -730.3 9.0 
 020C: create_explosion_with_radius 6 at 366.4 -730.3 9.0 
-039D: scatter_particles 17 0.8 0 0 0 11000 at 366.4 -730.3 9.0 0.1 0.0 0.2 
+039D: scatter_particles 17 0.8 0 0 0 11000 at 366.4 -730.3 9.0 0.1 0.0 0.2
+0003: shake_camera 4000  
 wait 500 
 $4613 = Car.Create(#PCJ600, 359.0, -742.1, 10.0)
 Car.Angle($4613) = 332.8
@@ -1205,7 +1207,7 @@ Car.SetMaxSpeed($4613, 0.0)
 Car.ImmuneToNonPlayer($4613) = True
 Car.SetImmunities($4613, 1, 1, 1, 1, 1)
 0129: $4607 = create_actor 5 #GDB in_car $4613 driverseat 
-      $4607 = $STIFFgroup1
+0084: $STIFFgroup1 = $4607
 gosub @PROTEC2_GiveRunawaysStuff1
 $4623 = Marker.CreateAboveActor($4607) 
 $4614 = Car.Create(#PCJ600, 357.5, -745.2, 10.0)
@@ -1215,31 +1217,69 @@ Car.SetMaxSpeed($4614, 0.0)
 Car.ImmuneToNonPlayer($4614) = True
 Car.SetImmunities($4614, 1, 1, 1, 1, 1)
 0129: $4608 = create_actor 5 #GDA in_car $4614 driverseat
-      $4608 = $STIFFgroup1
+0084: $STIFFgroup1 = $4608
 gosub @PROTEC2_GiveRunawaysStuff1 
 $4624 = Marker.CreateAboveActor($4608)
+$STIFFcar1 = Car.Create(#SECURICA, 348.9427, -715.5304, 10.7403)
+Car.Angle($STIFFcar1) = 332.8
+00AE: set_vehicle $STIFFcar1 traffic_behavior_to 3 
+Car.SetMaxSpeed($STIFFcar1, 0.0)
+Car.ImmuneToNonPlayer($STIFFcar1) = True
+Car.SetImmunities($STIFFcar1, 1, 1, 1, 1, 1)
+0129: $STIFFactor1 = create_actor 5 #GDA in_car $STIFFcar1 driverseat
+0350: set_actor $STIFFactor1 maintain_position_when_attacked 1 
+0084: $STIFFgroup1 = $STIFFactor1
+gosub @PROTEC2_GiveRunawaysStuff1 
+$STIFFmarker1 = Marker.CreateAboveActor($STIFFactor1)
+009A: $STIFFactor3 = create_actor_pedtype 5 model #GDB at 0.0 0.0 8.0 
+0084: $STIFFgroup1 = $STIFFactor3
+gosub @PROTEC2_GiveRunawaysStuff1
+0464: put_actor $STIFFactor3 into_turret_on_car $STIFFcar1 at_car_offset 0.0 0.0 2.0 position 3 angle 90.0 with_weapon 26
+04EB: actor $STIFFactor3 crouch 1 99999999 ms
+0350: set_actor $STIFFactor3 maintain_position_when_attacked 1 
 04BD: set_car $4613 is_part_of_convoy 1 
 04E0: car $4613 abandon_path_radius 255 
 04BD: set_car $4614 is_part_of_convoy 1 
-04E0: car $4614 abandon_path_radius 255 
+04E0: car $4614 abandon_path_radius 255
+04BD: set_car $STIFFcar1 is_part_of_convoy 1 
+04E0: car $STIFFcar1 abandon_path_radius 255
 $4619 = Car.Create(#SECURICA, 250.8, -1292.2, 10.0)
+03CC: car $4619 add_to_stuck_car_check 0.5 = 1000 
 Car.Angle($4619) = 347.7
 00AE: set_vehicle $4619 traffic_behavior_to 2 
 Car.SetMaxSpeed($4619, 0.0)
 04E0: car $4619 abandon_path_radius 15 
 020A: set_car $4619 door_status_to 2 
+009A: $STIFFactor2 = create_actor_pedtype 5 model #SWAT at 0.0 0.0 8.0
+0084: $STIFFgroup1 = $STIFFactor2
+gosub @PROTEC2_GiveRunawaysStuff1
+01B2: give_actor $STIFFactor2 weapon 18 ammo 9999 // Load the weapon model before using this 
+0464: put_actor $STIFFactor2 into_turret_on_car $4619 at_car_offset 0.0 0.0 2.0 position 3 angle 270.0 with_weapon 18
+04EB: actor $STIFFactor2 crouch 1 99999999 ms  
+02E2: set_actor $STIFFactor2 weapon_accuracy_to 100 
 0129: $4620 = create_actor 5 #GDA in_car $4619 driverseat 
 01B2: give_actor $4620 weapon 26 ammo 30000 // Load the weapon model before using this 
 01ED: clear_actor $4620 threat_search 
 0243: set_actor $4620 ped_stats_to 16 
 011A: set_actor $4620 search_threat 1 
 011A: set_actor $4620 search_threat 8192 
-0319: set_actor $4620 running 1 
+0319: set_actor $4620 running 1
+00A5: $STIFFcar2 = create_car #MAVERICK at 291.7695 -1702.1367 15.6988
+0229: set_car $STIFFcar2 color_to 52 53 
+0129: $STIFFactor4 = create_actor 5 #GDA in_car $STIFFcar2 driverseat 
+04A2: heli $STIFFcar2 fly_to 291.7695 -1702.1367 15.6988 speed 0  
+04D0: force_heli $STIFFcar2 looking_angle_to 13.0 
+009A: $STIFFactor5 = create_actor_pedtype 5 model #GDB at 0.0 0.0 8.0
+0464: put_actor $STIFFactor5 into_turret_on_car $STIFFcar2 at_car_offset -1.1 0.3 0.0 position 1 angle 270.0 with_weapon 26
+01CA: actor $STIFFactor5 kill_player $PLAYER_CHAR 
+009A: $STIFFactor6 = create_actor_pedtype 5 model #GDB at 0.0 0.0 8.0
+0464: put_actor $STIFFactor6 into_turret_on_car $STIFFcar2 at_car_offset 1.1 0.3 0.0 position 1 angle 60.0 with_weapon 26
+01CA: actor $STIFFactor6 kill_player $PLAYER_CHAR 
 if 
    not Car.Wrecked($4613)
 else_jump @PROTEC2_7395 
 Car.DriveTo($4613, 368.4, -726.3, 10.1)
-Car.SetMaxSpeed($4613, 25.0)
+Car.SetMaxSpeed($4613, 40.0)
 jump @PROTEC2_7395
 
 :PROTEC2_GiveRunawaysStuff1
@@ -1251,21 +1291,21 @@ jump @PROTEC2_7395
 0319: set_actor $STIFFgroup1 running 1 
 02AB: set_actor $STIFFgroup1 immunities BP 1 FP 1 EP 1 CP 1 MP 1 
 02A9: set_actor $STIFFgroup1 immune_to_nonplayer 1 
-Actor.Health($STIFFgroup1) = 150
+Actor.Health($STIFFgroup1) = 200
 0291: set_actor $STIFFgroup1 attack_when_provoked 1
 return
 
 :PROTEC2_7395
 if 
    not Car.Wrecked($4614)
-else_jump @PROTEC2_7441 
+jf @PROTEC2_7441 
 Car.DriveTo($4614, 368.4, -726.3, 10.1)
-Car.SetMaxSpeed($4614, 15.0)
+Car.SetMaxSpeed($4614, 35.0)
 
 :PROTEC2_7441
 if 
    not Car.Wrecked($4613)
-else_jump @PROTEC2_7466 
+jf @PROTEC2_7466 
 Camera.OnVehicle($4613, 15, 2)
 
 :PROTEC2_7466
@@ -1275,35 +1315,35 @@ Camera.OnVehicle($4613, 15, 2)
 wait 0 
 if 
    not Car.Wrecked($4613)
-else_jump @PROTEC2_7558 
+jf @PROTEC2_7558 
 if 
 01AD:   car $4613 sphere 0 near_point 368.4 -726.3 radius 2.0 2.0 
-else_jump @PROTEC2_7558 
+jf @PROTEC2_7558 
 Car.DriveTo($4613, 391.7, -743.9, 10.9)
 $4633 = 1 // integer values 
 
 :PROTEC2_7558
 if 
    not Car.Wrecked($4614)
-else_jump @PROTEC2_7649 
+jf @PROTEC2_7649 
 if 
 01AD:   car $4614 sphere 0 near_point 368.4 -726.3 radius 2.0 2.0 
-else_jump @PROTEC2_7649 
+jf @PROTEC2_7649 
 Car.DriveTo($4614, 391.7, -743.9, 10.9)
-Car.SetMaxSpeed($4614, 23.0)
+Car.SetMaxSpeed($4613, 33.0)
 $4634 = 1 // integer values 
 
 :PROTEC2_7649
 if and
   $4633 == 1 // integer values 
   $4634 == 1 // integer values 
-else_jump @PROTEC2_7681 
+jf @PROTEC2_7681 
 jump @PROTEC2_7714 
 
 :PROTEC2_7681
 if 
   16@ > 5000 // integer values 
-else_jump @PROTEC2_7707 
+jf @PROTEC2_7707 
 jump @PROTEC2_7714 
 
 :PROTEC2_7707
@@ -1313,13 +1353,13 @@ jump @PROTEC2_7473
 $4629 = 0 // integer values 
 if 
   $4633 == 0 // integer values 
-else_jump @PROTEC2_7759 
+jf @PROTEC2_7759 
 Car.DriveTo($4613, 391.7, -743.9, 10.9)
 
 :PROTEC2_7759
 if 
   $4634 == 0 // integer values 
-else_jump @PROTEC2_7797 
+jf @PROTEC2_7797 
 Car.DriveTo($4614, 391.7, -743.9, 10.9)
 
 :PROTEC2_7797
@@ -1327,31 +1367,54 @@ $4633 = 0 // integer values
 $4634 = 0 // integer values 
 if 
    not Car.Wrecked($4613)
-else_jump @PROTEC2_7842 
+jf @PROTEC2_7842 
 Car.SetImmunities($4613, 0, 0, 0, 0, 0)
 
 :PROTEC2_7842
 if 
    not Car.Wrecked($4614)
-else_jump @PROTEC2_7873 
+jf @PROTEC2_7873 
 Car.SetImmunities($4614, 0, 0, 0, 0, 0)
 
 :PROTEC2_7873
 if 
    not Actor.Dead($4607)
-else_jump @PROTEC2_7904 
-02AB: set_actor $4607 immunities BP 0 FP 0 EP 0 CP 0 MP 0 
+jf @PROTEC2_7904 
+02AB: set_actor $4607 immunities BP 0 FP 0 EP 0 CP 0 MP 0
+02A9: set_actor $4607 immune_to_nonplayer 0
 
 :PROTEC2_7904
 if 
    not Actor.Dead($4608)
-else_jump @PROTEC2_7935 
+jf @PROTEC2_SecuriTurret 
 02AB: set_actor $4608 immunities BP 0 FP 0 EP 0 CP 0 MP 0 
+02A9: set_actor $4608 immune_to_nonplayer 1 
+
+:PROTEC2_SecuriTurret
+if 
+   not Actor.Dead($STIFFactor3)
+jf @PROTEC2_Securiguy1 
+02AB: set_actor $STIFFactor3 immunities BP 0 FP 0 EP 0 CP 0 MP 0
+02A9: set_actor $STIFFactor3 immune_to_nonplayer 1 
+
+:PROTEC2_Securiguy1
+if 
+   not Actor.Dead($STIFFactor1)
+jf @PROTEC2_7935
+02AB: set_actor $STIFFactor1 immunities BP 0 FP 0 EP 0 CP 0 MP 0
+02A9: set_actor $STIFFactor1 immune_to_nonplayer 1 
+if
+   not Car.Wrecked($STIFFcar1)
+jf @PROTEC2_7935
+00AD: set_car $STIFFcar1 max_speed_to 40.0 
+00A8: set_car $STIFFcar1 to_psycho_driver 
+02C2: car $STIFFcar1 drive_to_point 403.5152 -734.8597 10.9071
+$STIFFswitch1 = 0 
 
 :PROTEC2_7935
 wait 2000 
 011C: actor $PLAYER_ACTOR clear_objective 
-00BC: text_highpriority 'PRO2_10' 5000 ms 1  // ~g~Two more have made a run for it. Track them down and finish this.
+00BC: text_highpriority 'PRO2_10' 5000 ms 1  // ~g~Three more have made a run for it. Track them down and finish this.
 0481:  3.5 
 011C: actor $PLAYER_ACTOR clear_objective 
 Camera.Restore_WithJumpCut
@@ -1359,18 +1422,210 @@ Player.CanMove($PLAYER_CHAR) = True
 02A3: enable_widescreen 0 
 if 
    not Car.Wrecked($4619)
-else_jump @PROTEC2_8018 
+jf @PROTEC2_8018 
 Car.SetMaxSpeed($4619, 100.0)
-Car.SetDriverBehaviour($4619, KillThePlayer)
+Car.SetDriverBehaviour($4619, KillThePlayer) 
 
 :PROTEC2_8018
-wait 0 
+wait 0
+if
+03CE:   car $4619 stuck
+jf @PROTEC2_HeliMove
+0407: create_coordinate $STIFFx2 $STIFFy2 $STIFFz2 from_car $4619 offset 0.0 0.0 0.0 
+04D3: get_nearest_car_path_coords_from $STIFFx2 $STIFFy2 $STIFFz2 type 2 store_to $STIFFx3 $STIFFy3 $STIFFz3 
+00AB: put_car $4619 at $STIFFx3 $STIFFy3 $STIFFz3
+
+:PROTEC2_HeliMove
+if
+02AD:   player $PLAYER_CHAR in_area 295.76 -1700.2445 295.9061 -1703.6531 radius 30.0 sphere 0
+jf @PROTEC2_SecuriRoute 
+04A2: heli $STIFFcar2 fly_to 437.3828 -1732.1788 13.4108 speed 70
+04D0: force_heli $STIFFcar2 looking_angle_to 320.0 
+
+:PROTEC2_SecuriRoute
+if
+  not Car.Wrecked($STIFFcar1)
+jf @PROTEC2_CleanUpNewGuy1
+if
+01AD:   car $STIFFcar1 sphere 0 near_point 403.5152 -734.8597 radius 7.0 7.0 
+jf @PROTEC2_SecuricarCheckpoint2
+02C2: car $STIFFcar1 drive_to_point 305.2897 -952.7847 10.8925
+$STIFFswitch1 = 1
+
+:PROTEC2_SecuricarCheckpoint2
+if
+0038:   $STIFFswitch1 == 1 // integer values 
+jf @PROTEC2_SecuricarCheckpoint3
+011C: actor $STIFFactor1 clear_objective 
+02C2: car $STIFFcar1 drive_to_point 305.2897 -952.7847 10.8925
+$STIFFswitch1 = 2
+
+:PROTEC2_SecuricarCheckpoint3
+if
+  not Car.Wrecked($STIFFcar1)
+jf @PROTEC2_CleanUpNewGuy1
+if
+01AD:   car $STIFFcar1 sphere 0 near_point 305.2897 -952.7847 radius 7.0 7.0 
+jf @PROTEC2_SecuricarCheckpoint4
+02C2: car $STIFFcar1 drive_to_point 250.7503 -1295.5635 10.8995
+$STIFFswitch1 = 3
+
+:PROTEC2_SecuricarCheckpoint4
+if
+0038:   $STIFFswitch1 == 3 // integer values 
+jf @PROTEC2_SecuricarCheckpoint5
+011C: actor $STIFFactor1 clear_objective 
+02C2: car $STIFFcar1 drive_to_point 250.7503 -1295.5635 10.8995
+$STIFFswitch1 = 4
+
+:PROTEC2_SecuricarCheckpoint5
+if
+  not Car.Wrecked($STIFFcar1)
+jf @PROTEC2_CleanUpNewGuy1
+if
+01AD:   car $STIFFcar1 sphere 0 near_point 250.7503 -1295.5635 radius 7.0 7.0 
+jf @PROTEC2_SecuricarCheckpoint6
+02C2: car $STIFFcar1 drive_to_point 221.4538 -1312.8359 10.5463
+$STIFFswitch1 = 5
+
+:PROTEC2_SecuricarCheckpoint6
+if
+0038:   $STIFFswitch1 == 5 // integer values 
+jf @PROTEC2_SecuricarCheckpoint7
+011C: actor $STIFFactor1 clear_objective 
+02C2: car $STIFFcar1 drive_to_point 221.4538 -1312.8359 10.5463
+$STIFFswitch1 = 6
+
+:PROTEC2_SecuricarCheckpoint7
+if
+  not Car.Wrecked($STIFFcar1)
+jf @PROTEC2_CleanUpNewGuy1
+if
+01AD:   car $STIFFcar1 sphere 0 near_point 221.4538 -1312.8359 radius 7.0 7.0 
+jf @PROTEC2_SecuricarCheckpoint8
+02C2: car $STIFFcar1 drive_to_point 138.0523 -1315.5245 9
+$STIFFswitch1 = 7
+
+:PROTEC2_SecuricarCheckpoint8
+if
+0038:   $STIFFswitch1 == 7 // integer values 
+jf @PROTEC2_SecuricarCheckpoint9
+011C: actor $STIFFactor1 clear_objective 
+02C2: car $STIFFcar1 drive_to_point 138.0523 -1315.5245 9
+$STIFFswitch1 = 8
+
+:PROTEC2_SecuricarCheckpoint9
+if
+  not Car.Wrecked($STIFFcar1)
+jf @PROTEC2_CleanUpNewGuy1
+if
+01AD:   car $STIFFcar1 sphere 0 near_point 138.0523 -1315.5245 radius 7.0 7.0 
+jf @PROTEC2_SecuricarCheckpoint10
+02C2: car $STIFFcar1 drive_to_point 116.343 -1313.1493 4.4238
+$STIFFswitch1 = 9
+
+:PROTEC2_SecuricarCheckpoint10
+if
+0038:   $STIFFswitch1 == 9 // integer values 
+jf @PROTEC2_CleanUpNewGuy1
+011C: actor $STIFFactor1 clear_objective 
+02C2: car $STIFFcar1 drive_to_point 116.343 -1313.1493 4.4238
+$STIFFswitch1 = 10
+
+:PROTEC2_CleanUpNewGuy1
+if 
+   not Actor.Dead($STIFFactor1)
+jf @PROTEC2_CleanUpNewGuy3 
+if 
+   not Car.Wrecked($STIFFcar1)
+jf @PROTEC2_CleanUpNewGuy2 
+jump @PROTEC2_GetOutAndShoot1
+
+:PROTEC2_CleanUpNewGuy2
+Car.RemoveReferences($STIFFcar1)
+01CC: actor $STIFFactor1 kill_player $PLAYER_CHAR
+jump @PROTEC2_GetOutAndShoot1
+
+:PROTEC2_CleanUpNewGuy3
+Marker.Disable($STIFFmarker1)
+if and
+8038:  not $STIFFswitch1 == 11
+8038:  not $STIFFswitch1 == 12
+   not Actor.Dead($STIFFactor3)
+jf @PROTEC2_GetOutAndShoot1
+01CA: actor $STIFFactor1 kill_player $PLAYER_CHAR
+0465: remove_actor $STIFFactor3 from_turret_mode 
+0407: create_coordinate $STIFFx1 $STIFFy1 $STIFFz1 from_car $STIFFcar1 offset -3.0 0.0 0.0
+00A1: put_actor $STIFFactor3 at $STIFFx1 $STIFFy1 $STIFFz1
+04EB: actor $STIFFactor3 crouch 0 9999999 ms
+$STIFFswitch1 = 12
+$STIFFmarker2 = Marker.CreateAboveActor($STIFFactor3)
+
+:PROTEC2_GetOutAndShoot1
+if and
+0038:   $STIFFswitch1 == 10 // integer values
+01AD:   car $STIFFcar1 sphere 0 near_point 116.343 -1313.1493 radius 12.0 12.0 
+jf @PROTEC2_GetOutAndShoot2
+00AD: set_car $STIFFcar1 max_speed_to 0.0
+03E2: actor $STIFFactor1 exit_car
+020A: set_car $STIFFcar1 door_status_to 0  
+011C: actor $STIFFactor1 clear_objective 
+$STIFFswitch1 = 11
+
+:PROTEC2_GetOutAndShoot2
+if and
+0038:   $STIFFswitch1 == 11 // integer values
+00E9:   player $PLAYER_CHAR 0 $STIFFactor1 radius 25.0 25.0 
+jf @PROTEC2_Walkabout
+01CA: actor $STIFFactor1 kill_player $PLAYER_CHAR
+0465: remove_actor $STIFFactor3 from_turret_mode 
+0407: create_coordinate $STIFFx1 $STIFFy1 $STIFFz1 from_car $STIFFcar1 offset -3.0 0.0 0.0
+00A1: put_actor $STIFFactor3 at $STIFFx1 $STIFFy1 $STIFFz1
+04EB: actor $STIFFactor3 crouch 0 9999999 ms
+if
+8038:  not $STIFFswitch1 == 12
+jf @PROTEC2_Walkabout
+$STIFFmarker2 = Marker.CreateAboveActor($STIFFactor3)
+$STIFFswitch1 = 12 
+
+:PROTEC2_Walkabout
+if
+00E9:   player $PLAYER_CHAR 0 $STIFFactor1 radius 40.0 40.0
+jf @PROTEC2_CleanUpSecuriTurret
+if or
+0038:   $STIFFswitch1 == 11 // integer values
+0038:   $STIFFswitch1 == 12 // integer values
+jf @PROTEC2_CleanUpSecuriTurret
+0350: set_actor $STIFFactor1 maintain_position_when_attacked 0 
+0350: set_actor $STIFFactor3 maintain_position_when_attacked 0 
+
+:PROTEC2_CleanUpSecuriTurret
+if
+   Actor.Dead($STIFFactor3)
+jf @PROTEC2_SecuricarStopped
+Marker.Disable($STIFFmarker2)
+
+:PROTEC2_SecuricarStopped
+if and
+8038:   not $STIFFswitch1 == 12
+01C1:   car $STIFFcar1 stopped
+8118:   not actor $STIFFactor3 dead 
+jf @PROTEC2_UsualChecks
+01CA: actor $STIFFactor1 kill_player $PLAYER_CHAR
+0465: remove_actor $STIFFactor3 from_turret_mode 
+0407: create_coordinate $STIFFx1 $STIFFy1 $STIFFz1 from_car $STIFFcar1 offset -3.0 0.0 0.0
+00A1: put_actor $STIFFactor3 at $STIFFx1 $STIFFy1 $STIFFz1
+04EB: actor $STIFFactor3 crouch 0 9999999 ms
+$STIFFswitch1 = 12
+$STIFFmarker2 = Marker.CreateAboveActor($STIFFactor3)
+
+:PROTEC2_UsualChecks 
 if 
   $4639 == 0 // integer values 
-else_jump @PROTEC2_8108 
+jf @PROTEC2_8108 
 if 
    Car.Wrecked($4619)
-else_jump @PROTEC2_8108 
+jf @PROTEC2_8108 
 01E3: text_1number_styled 'BONUS' number 1000 time 1000 style 1  // ~g~BONUS $~1~
 018C: play_sound 1 at 0.0 0.0 0.0 
 Player.Money($PLAYER_CHAR) += 1000
@@ -1379,14 +1634,14 @@ $4639 = 1 // integer values
 :PROTEC2_8108
 if 
   $4635 == 0 // integer values 
-else_jump @PROTEC2_8148 
+jf @PROTEC2_8148 
 00BC: text_highpriority 'TAXI2' 5000 ms 1  // ~r~You're out of time!
 jump @PROTEC2_12047 
 
 :PROTEC2_8148
 if 
    not Car.Wrecked($4612)
-else_jump @PROTEC2_8233 
+jf @PROTEC2_8233 
 035C: place_object $4616 relative_to_car $4612 offset 0.0 -2.0 0.0 
 035C: place_object $4617 relative_to_car $4612 offset 0.0 -2.2 0.0 
 035C: place_object $4618 relative_to_car $4612 offset 0.0 -2.4 0.0 
@@ -1394,161 +1649,161 @@ else_jump @PROTEC2_8233
 :PROTEC2_8233
 if 
    not Actor.Dead($4607)
-else_jump @PROTEC2_10112 
+jf @PROTEC2_10112 
 if 
    not Car.Wrecked($4613)
-else_jump @PROTEC2_10092 
+jf @PROTEC2_10092 
 if 
    Actor.InCar($4607, $4613)
-else_jump @PROTEC2_9675 
+jf @PROTEC2_9675 
 if 
   $4633 == 0 // integer values 
-else_jump @PROTEC2_8427 
+jf @PROTEC2_8427 
 if 
   $4621 == 1 // integer values 
-else_jump @PROTEC2_8362 
+jf @PROTEC2_8362 
 011C: actor $4607 clear_objective 
 Car.DriveTo($4613, 391.7, -743.9, 10.9)
-Car.SetMaxSpeed($4613, 25.0)
+Car.SetMaxSpeed($4613, 40.0)
 $4621 = 0 // integer values 
 
 :PROTEC2_8362
 if 
 01AD:   car $4613 sphere 0 near_point 391.7 -743.9 radius 7.0 7.0 
-else_jump @PROTEC2_8427 
+jf @PROTEC2_8427 
 02C2: car $4613 drive_to_point 300.3 -955.4 10.8 
 $4633 = 1 // integer values 
 
 :PROTEC2_8427
 if 
   $4633 == 1 // integer values 
-else_jump @PROTEC2_8570 
+jf @PROTEC2_8570 
 if 
   $4621 == 1 // integer values 
-else_jump @PROTEC2_8505 
+jf @PROTEC2_8505 
 011C: actor $4607 clear_objective 
 02C2: car $4613 drive_to_point 300.3 -955.4 10.8 
-Car.SetMaxSpeed($4613, 25.0)
+Car.SetMaxSpeed($4613, 40.0)
 $4621 = 0 // integer values 
 
 :PROTEC2_8505
 if 
 01AD:   car $4613 sphere 0 near_point 300.3 -955.4 radius 7.0 7.0 
-else_jump @PROTEC2_8570 
+jf @PROTEC2_8570 
 02C2: car $4613 drive_to_point 285.3 -1048.8 11.3 
 $4633 = 2 // integer values 
 
 :PROTEC2_8570
 if 
   $4633 == 2 // integer values 
-else_jump @PROTEC2_8713 
+jf @PROTEC2_8713 
 if 
   $4621 == 1 // integer values 
-else_jump @PROTEC2_8648 
+jf @PROTEC2_8648 
 011C: actor $4607 clear_objective 
 02C2: car $4613 drive_to_point 285.3 -1048.8 10.8 
-Car.SetMaxSpeed($4613, 25.0)
+Car.SetMaxSpeed($4613, 40.0)
 $4621 = 0 // integer values 
 
 :PROTEC2_8648
 if 
 01AD:   car $4613 sphere 0 near_point 285.3 -1048.8 radius 7.0 7.0 
-else_jump @PROTEC2_8713 
+jf @PROTEC2_8713 
 02C2: car $4613 drive_to_point 257.9 -1206.8 11.3 
 $4633 = 3 // integer values 
 
 :PROTEC2_8713
 if 
   $4633 == 3 // integer values 
-else_jump @PROTEC2_8856 
+jf @PROTEC2_8856 
 if 
   $4621 == 1 // integer values 
-else_jump @PROTEC2_8791 
+jf @PROTEC2_8791 
 011C: actor $4607 clear_objective 
 02C2: car $4613 drive_to_point 257.9 -1206.8 10.8 
-Car.SetMaxSpeed($4613, 25.0)
+Car.SetMaxSpeed($4613, 60.0)
 $4621 = 0 // integer values 
 
 :PROTEC2_8791
 if 
 01AD:   car $4613 sphere 0 near_point 257.9 -1206.8 radius 7.0 7.0 
-else_jump @PROTEC2_8856 
+jf @PROTEC2_8856 
 02C2: car $4613 drive_to_point 234.4 -1326.1 11.3 
 $4633 = 4 // integer values 
 
 :PROTEC2_8856
 if 
   $4633 == 4 // integer values 
-else_jump @PROTEC2_8999 
+jf @PROTEC2_8999 
 if 
   $4621 == 1 // integer values 
-else_jump @PROTEC2_8934 
+jf @PROTEC2_8934 
 011C: actor $4607 clear_objective 
 02C2: car $4613 drive_to_point 234.4 -1326.1 10.8 
-Car.SetMaxSpeed($4613, 25.0)
+Car.SetMaxSpeed($4613, 60.0)
 $4621 = 0 // integer values 
 
 :PROTEC2_8934
 if 
 01AD:   car $4613 sphere 0 near_point 234.4 -1326.1 radius 7.0 7.0 
-else_jump @PROTEC2_8999 
+jf @PROTEC2_8999 
 02C2: car $4613 drive_to_point 220.7 -1398.6 11.3 
 $4633 = 5 // integer values 
 
 :PROTEC2_8999
 if 
   $4633 == 5 // integer values 
-else_jump @PROTEC2_9142 
+jf @PROTEC2_9142 
 if 
   $4621 == 1 // integer values 
-else_jump @PROTEC2_9077 
+jf @PROTEC2_9077 
 011C: actor $4607 clear_objective 
 02C2: car $4613 drive_to_point 220.7 -1398.6 11.3 
-Car.SetMaxSpeed($4613, 25.0)
+Car.SetMaxSpeed($4613, 60.0)
 $4621 = 0 // integer values 
 
 :PROTEC2_9077
 if 
 01AD:   car $4613 sphere 0 near_point 220.7 -1398.6 radius 7.0 7.0 
-else_jump @PROTEC2_9142 
+jf @PROTEC2_9142 
 02C2: car $4613 drive_to_point 169.0 -1525.2 11.3 
 $4633 = 6 // integer values 
 
 :PROTEC2_9142
 if 
   $4633 == 6 // integer values 
-else_jump @PROTEC2_9285 
+jf @PROTEC2_9285 
 if 
   $4621 == 1 // integer values 
-else_jump @PROTEC2_9220 
+jf @PROTEC2_9220 
 011C: actor $4607 clear_objective 
 02C2: car $4613 drive_to_point 169.0 -1525.2 10.8 
-Car.SetMaxSpeed($4613, 25.0)
+Car.SetMaxSpeed($4613, 60.0)
 $4621 = 0 // integer values 
 
 :PROTEC2_9220
 if 
 01AD:   car $4613 sphere 0 near_point 169.0 -1525.2 radius 7.0 7.0 
-else_jump @PROTEC2_9285 
+jf @PROTEC2_9285 
 02C2: car $4613 drive_to_point 192.8 -1583.0 11.3 
 $4633 = 7 // integer values 
 
 :PROTEC2_9285
 if 
   $4633 == 7 // integer values 
-else_jump @PROTEC2_9438 
+jf @PROTEC2_9438 
 if 
   $4621 == 1 // integer values 
-else_jump @PROTEC2_9363 
+jf @PROTEC2_9363 
 011C: actor $4607 clear_objective 
 02C2: car $4613 drive_to_point 192.8 -1583.0 10.8 
-Car.SetMaxSpeed($4613, 25.0)
+Car.SetMaxSpeed($4613, 40.0)
 $4621 = 0 // integer values 
 
 :PROTEC2_9363
 if 
 01AD:   car $4613 sphere 0 near_point 192.8 -1583.0 radius 7.0 7.0 
-else_jump @PROTEC2_9438 
+jf @PROTEC2_9438 
 02C2: car $4613 drive_to_point 240.5 -1689.2 11.3 
 Car.SetMaxSpeed($4613, 15.0)
 $4633 = 8 // integer values 
@@ -1556,19 +1811,19 @@ $4633 = 8 // integer values
 :PROTEC2_9438
 if 
   $4633 == 8 // integer values 
-else_jump @PROTEC2_9588 
+jf @PROTEC2_9588 
 if 
   $4621 == 1 // integer values 
-else_jump @PROTEC2_9516 
+jf @PROTEC2_9516 
 011C: actor $4607 clear_objective 
 02C2: car $4613 drive_to_point 240.5 -1689.2 10.8 
-Car.SetMaxSpeed($4613, 25.0)
+Car.SetMaxSpeed($4613, 40.0)
 $4621 = 0 // integer values 
 
 :PROTEC2_9516
 if 
 01AD:   car $4613 sphere 0 near_point 240.5 -1689.2 radius 7.0 7.0 
-else_jump @PROTEC2_9588 
+jf @PROTEC2_9588 
 0477: set_car $4613 action 5 time 10000 
 Car.SetMaxSpeed($4613, 0.0)
 Car.ImmuneToNonPlayer($4613) = False
@@ -1577,7 +1832,7 @@ $4633 = 9 // integer values
 :PROTEC2_9588
 if 
   $4633 == 9 // integer values 
-else_jump @PROTEC2_9643 
+jf @PROTEC2_9643 
 01D3: actor $4607 leave_car $4613 
 0239: actor $4607 run_to 258.7 -1703.0 
 16@ = 0 // integer values 
@@ -1586,7 +1841,7 @@ $4633 = 10 // integer values
 :PROTEC2_9643
 if 
   $4633 > 9 // integer values 
-else_jump @PROTEC2_9668 
+jf @PROTEC2_9668 
 $4633 = 9 // integer values 
 
 :PROTEC2_9668
@@ -1595,17 +1850,17 @@ jump @PROTEC2_10085
 :PROTEC2_9675
 if 
   9 > $4633 // integer values 
-else_jump @PROTEC2_9807 
+jf @PROTEC2_9807 
 if 
 00E9:   player $PLAYER_CHAR 0 $4607 radius 10.0 10.0 
-else_jump @PROTEC2_9739 
+jf @PROTEC2_9739 
 01CC: actor $4607 kill_player $PLAYER_CHAR 
 jump @PROTEC2_9793 
 
 :PROTEC2_9739
 if 
 0202:   actor $4607 near_car $4613 radius 30.0 30.0 sphere 0 
-else_jump @PROTEC2_9785 
+jf @PROTEC2_9785 
 01D5: actor $4607 go_to_and_drive_car $4613 
 jump @PROTEC2_9793 
 
@@ -1619,10 +1874,10 @@ jump @PROTEC2_10085
 :PROTEC2_9807
 if 
   $4634 == 9 // integer values 
-else_jump @PROTEC2_9881 
+jf @PROTEC2_9881 
 if 
    Actor.InCar($4607, $4613)
-else_jump @PROTEC2_9852 
+jf @PROTEC2_9852 
 01D3: actor $4607 leave_car $4613 
 
 :PROTEC2_9852
@@ -1633,16 +1888,16 @@ $4634 = 10 // integer values
 :PROTEC2_9881
 if 
   $4633 == 10 // integer values 
-else_jump @PROTEC2_10052 
+jf @PROTEC2_10052 
 if 
 80EC:   not actor $4607 0 454.3 -1727.9 radius 5.0 5.0 
-else_jump @PROTEC2_10033 
+jf @PROTEC2_10033 
 if 
   16@ > 500 // integer values 
-else_jump @PROTEC2_10026 
+jf @PROTEC2_10026 
 if 
 8510:   not unknown_actor $4607 on_path 454.3 -1727.9 9.0 radius 1.0 
-else_jump @PROTEC2_10019 
+jf @PROTEC2_10019 
 009E: set_actor $4607 path 454.3 -1727.9 9.0 unknown 1.0 1 
 
 :PROTEC2_10019
@@ -1659,7 +1914,7 @@ $4633 = 11 // integer values
 :PROTEC2_10052
 if 
   $4633 == 11 // integer values 
-else_jump @PROTEC2_10085 
+jf @PROTEC2_10085 
 01CA: actor $4607 kill_player $PLAYER_CHAR 
 $4633 = 12 // integer values 
 
@@ -1679,142 +1934,142 @@ Marker.Disable($4623)
 :PROTEC2_10117
 if 
    not Actor.Dead($4608)
-else_jump @PROTEC2_11996 
+jf @PROTEC2_11996 
 if 
    not Car.Wrecked($4614)
-else_jump @PROTEC2_11976 
+jf @PROTEC2_11976 
 if 
    Actor.InCar($4608, $4614)
-else_jump @PROTEC2_11559 
+jf @PROTEC2_11559 
 if 
   $4634 == 0 // integer values 
-else_jump @PROTEC2_10311 
+jf @PROTEC2_10311 
 if 
   $4622 == 1 // integer values 
-else_jump @PROTEC2_10246 
+jf @PROTEC2_10246 
 011C: actor $4608 clear_objective 
 Car.DriveTo($4614, 391.7, -743.9, 10.9)
-Car.SetMaxSpeed($4614, 23.0)
+Car.SetMaxSpeed($4613, 38.0)
 $4622 = 0 // integer values 
 
 :PROTEC2_10246
 if 
 01AD:   car $4614 sphere 0 near_point 391.7 -743.9 radius 7.0 7.0 
-else_jump @PROTEC2_10311 
+jf @PROTEC2_10311 
 02C2: car $4614 drive_to_point 300.3 -955.4 10.8 
 $4634 = 1 // integer values 
 
 :PROTEC2_10311
 if 
   $4634 == 1 // integer values 
-else_jump @PROTEC2_10454 
+jf @PROTEC2_10454 
 if 
   $4622 == 1 // integer values 
-else_jump @PROTEC2_10389 
+jf @PROTEC2_10389 
 011C: actor $4608 clear_objective 
 Car.DriveTo($4614, 300.3, -955.4, 10.9)
-Car.SetMaxSpeed($4614, 23.0)
+Car.SetMaxSpeed($4613, 38.0)
 $4622 = 0 // integer values 
 
 :PROTEC2_10389
 if 
 01AD:   car $4614 sphere 0 near_point 300.3 -955.4 radius 7.0 7.0 
-else_jump @PROTEC2_10454 
+jf @PROTEC2_10454 
 02C2: car $4614 drive_to_point 285.3 -1048.8 11.3 
 $4634 = 2 // integer values 
 
 :PROTEC2_10454
 if 
   $4634 == 2 // integer values 
-else_jump @PROTEC2_10597 
+jf @PROTEC2_10597 
 if 
   $4622 == 1 // integer values 
-else_jump @PROTEC2_10532 
+jf @PROTEC2_10532 
 011C: actor $4608 clear_objective 
 Car.DriveTo($4614, 285.3, -1048.8, 10.9)
-Car.SetMaxSpeed($4614, 23.0)
+Car.SetMaxSpeed($4613, 38.0)
 $4622 = 0 // integer values 
 
 :PROTEC2_10532
 if 
 01AD:   car $4614 sphere 0 near_point 285.3 -1048.8 radius 7.0 7.0 
-else_jump @PROTEC2_10597 
+jf @PROTEC2_10597 
 02C2: car $4614 drive_to_point 257.9 -1206.8 11.3 
 $4634 = 3 // integer values 
 
 :PROTEC2_10597
 if 
   $4634 == 3 // integer values 
-else_jump @PROTEC2_10740 
+jf @PROTEC2_10740 
 if 
   $4622 == 1 // integer values 
-else_jump @PROTEC2_10675 
+jf @PROTEC2_10675 
 011C: actor $4608 clear_objective 
 Car.DriveTo($4614, 257.9, -1206.8, 10.9)
-Car.SetMaxSpeed($4614, 23.0)
+Car.SetMaxSpeed($4613, 38.0)
 $4622 = 0 // integer values 
 
 :PROTEC2_10675
 if 
 01AD:   car $4614 sphere 0 near_point 257.9 -1206.8 radius 7.0 7.0 
-else_jump @PROTEC2_10740 
+jf @PROTEC2_10740 
 02C2: car $4614 drive_to_point 234.4 -1326.1 11.3 
 $4634 = 4 // integer values 
 
 :PROTEC2_10740
 if 
   $4634 == 4 // integer values 
-else_jump @PROTEC2_10883 
+jf @PROTEC2_10883 
 if 
   $4622 == 1 // integer values 
-else_jump @PROTEC2_10818 
+jf @PROTEC2_10818 
 011C: actor $4608 clear_objective 
 Car.DriveTo($4614, 234.4, -1326.1, 10.9)
-Car.SetMaxSpeed($4614, 23.0)
+Car.SetMaxSpeed($4613, 38.0)
 $4622 = 0 // integer values 
 
 :PROTEC2_10818
 if 
 01AD:   car $4614 sphere 0 near_point 234.4 -1326.1 radius 7.0 7.0 
-else_jump @PROTEC2_10883 
+jf @PROTEC2_10883 
 02C2: car $4614 drive_to_point 220.7 -1398.6 11.3 
 $4634 = 5 // integer values 
 
 :PROTEC2_10883
 if 
   $4634 == 5 // integer values 
-else_jump @PROTEC2_11026 
+jf @PROTEC2_11026 
 if 
   $4622 == 1 // integer values 
-else_jump @PROTEC2_10961 
+jf @PROTEC2_10961 
 011C: actor $4608 clear_objective 
 Car.DriveTo($4614, 220.7, -1398.6, 10.9)
-Car.SetMaxSpeed($4614, 23.0)
+Car.SetMaxSpeed($4613, 38.0)
 $4622 = 0 // integer values 
 
 :PROTEC2_10961
 if 
 01AD:   car $4614 sphere 0 near_point 220.7 -1398.6 radius 7.0 7.0 
-else_jump @PROTEC2_11026 
+jf @PROTEC2_11026 
 02C2: car $4614 drive_to_point 169.0 -1525.2 11.3 
 $4634 = 6 // integer values 
 
 :PROTEC2_11026
 if 
   $4634 == 6 // integer values 
-else_jump @PROTEC2_11179 
+jf @PROTEC2_11179 
 if 
   $4622 == 1 // integer values 
-else_jump @PROTEC2_11104 
+jf @PROTEC2_11104 
 011C: actor $4608 clear_objective 
 Car.DriveTo($4614, 169.0, -1525.2, 10.9)
-Car.SetMaxSpeed($4614, 23.0)
+Car.SetMaxSpeed($4613, 38.0)
 $4622 = 0 // integer values 
 
 :PROTEC2_11104
 if 
 01AD:   car $4614 sphere 0 near_point 169.0 -1525.2 radius 7.0 7.0 
-else_jump @PROTEC2_11179 
+jf @PROTEC2_11179 
 02C2: car $4614 drive_to_point 192.8 -1583.0 11.3 
 Car.SetMaxSpeed($4614, 15.0)
 $4634 = 7 // integer values 
@@ -1822,29 +2077,29 @@ $4634 = 7 // integer values
 :PROTEC2_11179
 if 
   $4634 == 7 // integer values 
-else_jump @PROTEC2_11322 
+jf @PROTEC2_11322 
 if 
   $4622 == 1 // integer values 
-else_jump @PROTEC2_11257 
+jf @PROTEC2_11257 
 011C: actor $4608 clear_objective 
 Car.DriveTo($4614, 192.8, -1583.0, 10.9)
-Car.SetMaxSpeed($4614, 23.0)
+Car.SetMaxSpeed($4613, 38.0)
 $4622 = 0 // integer values 
 
 :PROTEC2_11257
 if 
 01AD:   car $4614 sphere 0 near_point 192.8 -1583.0 radius 7.0 7.0 
-else_jump @PROTEC2_11322 
+jf @PROTEC2_11322 
 02C2: car $4614 drive_to_point 240.5 -1689.2 11.3 
 $4634 = 8 // integer values 
 
 :PROTEC2_11322
 if 
   $4634 == 8 // integer values 
-else_jump @PROTEC2_11472 
+jf @PROTEC2_11472 
 if 
   $4622 == 1 // integer values 
-else_jump @PROTEC2_11400 
+jf @PROTEC2_11400 
 011C: actor $4608 clear_objective 
 Car.DriveTo($4614, 240.5, -1689.2, 10.9)
 Car.SetMaxSpeed($4614, 15.0)
@@ -1853,7 +2108,7 @@ $4622 = 0 // integer values
 :PROTEC2_11400
 if 
 01AD:   car $4614 sphere 0 near_point 240.5 -1689.2 radius 9.0 9.0 
-else_jump @PROTEC2_11472 
+jf @PROTEC2_11472 
 0477: set_car $4614 action 5 time 10000 
 Car.SetMaxSpeed($4614, 0.0)
 Car.ImmuneToNonPlayer($4614) = False
@@ -1862,7 +2117,7 @@ $4634 = 9 // integer values
 :PROTEC2_11472
 if 
   $4634 == 9 // integer values 
-else_jump @PROTEC2_11527 
+jf @PROTEC2_11527 
 01D3: actor $4608 leave_car $4614 
 0239: actor $4608 run_to 258.7 -1703.0 
 16@ = 0 // integer values 
@@ -1871,7 +2126,7 @@ $4634 = 10 // integer values
 :PROTEC2_11527
 if 
   $4634 > 9 // integer values 
-else_jump @PROTEC2_11552 
+jf @PROTEC2_11552 
 $4634 = 9 // integer values 
 
 :PROTEC2_11552
@@ -1880,17 +2135,17 @@ jump @PROTEC2_11969
 :PROTEC2_11559
 if 
   9 > $4634 // integer values 
-else_jump @PROTEC2_11691 
+jf @PROTEC2_11691 
 if 
 00E9:   player $PLAYER_CHAR 0 $4608 radius 10.0 10.0 
-else_jump @PROTEC2_11623 
+jf @PROTEC2_11623 
 01CC: actor $4608 kill_player $PLAYER_CHAR 
 jump @PROTEC2_11677 
 
 :PROTEC2_11623
 if 
 0202:   actor $4608 near_car $4614 radius 30.0 30.0 sphere 0 
-else_jump @PROTEC2_11669 
+jf @PROTEC2_11669 
 01D5: actor $4608 go_to_and_drive_car $4614 
 jump @PROTEC2_11677 
 
@@ -1904,10 +2159,10 @@ jump @PROTEC2_11969
 :PROTEC2_11691
 if 
   $4634 == 9 // integer values 
-else_jump @PROTEC2_11765 
+jf @PROTEC2_11765 
 if 
    Actor.InCar($4608, $4614)
-else_jump @PROTEC2_11736 
+jf @PROTEC2_11736 
 01D3: actor $4608 leave_car $4614 
 
 :PROTEC2_11736
@@ -1918,16 +2173,16 @@ $4634 = 10 // integer values
 :PROTEC2_11765
 if 
   $4634 == 10 // integer values 
-else_jump @PROTEC2_11936 
+jf @PROTEC2_11936 
 if 
 80EC:   not actor $4608 0 454.3 -1727.9 radius 5.0 5.0 
-else_jump @PROTEC2_11917 
+jf @PROTEC2_11917 
 if 
   16@ > 500 // integer values 
-else_jump @PROTEC2_11910 
+jf @PROTEC2_11910 
 if 
 8510:   not unknown_actor $4608 on_path 454.3 -1727.9 9.0 radius 1.0 
-else_jump @PROTEC2_11903 
+jf @PROTEC2_11903 
 009E: set_actor $4608 path 454.3 -1727.9 9.0 unknown 1.0 1 
 
 :PROTEC2_11903
@@ -1944,7 +2199,7 @@ $4634 = 11 // integer values
 :PROTEC2_11936
 if 
   $4634 == 11 // integer values 
-else_jump @PROTEC2_11969 
+jf @PROTEC2_11969 
 01CA: actor $4608 kill_player $PLAYER_CHAR 
 $4634 = 12 // integer values 
 
@@ -1964,10 +2219,16 @@ Marker.Disable($4624)
 :PROTEC2_12001
 if 
    Actor.Dead($4607)
-else_jump @PROTEC2_12040 
+jf @PROTEC2_12040 
 if 
    Actor.Dead($4608)
-else_jump @PROTEC2_12040 
+jf @PROTEC2_12040 
+if 
+   Actor.Dead($STIFFactor1)
+jf @PROTEC2_12040
+if 
+   Actor.Dead($STIFFactor3)
+jf @PROTEC2_12040 
 jump @PROTEC2_12064 
 
 :PROTEC2_12040
@@ -1980,7 +2241,8 @@ return
 :PROTEC2_12064
 00BE: text_clear_all 
 01E3: text_1number_styled 'M_PASS' number 4000 time 5000 style 1  // MISSION PASSED! $~1~
-0394: play_music 1 
+0394: play_music 1
+Car.SetDriverBehaviour($STIFFcar2, KillThePlayer) 
 Player.ClearWantedLevel($PLAYER_CHAR)
 Player.Money($PLAYER_CHAR) += 4000
 0318: set_latest_mission_passed 'BUD_2'  // Bar Brawl
@@ -1998,14 +2260,17 @@ Player.CanMove($PLAYER_CHAR) = True
 014F: stop_timer $4635 
 Model.Destroy(#UZI)
 Model.Destroy(#BRASSKNUCKLE)
+Model.Destroy(#PYTHON)
 Model.Destroy(#M4)
 Model.Destroy(#PCJ600)
 Model.Destroy(#GDA)
 Model.Destroy(#GDB)
+Model.Destroy(#SWAT)
 Model.Destroy(#HMOST)
 Model.Destroy(#OCEANIC)
 Model.Destroy(#SENTINEL)
 Model.Destroy(#SECURICA)
+Model.Destroy(#MAVERICK)
 Actor.DestroyWithFade($4604)
 Actor.DestroyWithFade($4605)
 0296: unload_special_actor 3 
@@ -2016,6 +2281,8 @@ Marker.Disable($4625)
 Marker.Disable($4626)
 Marker.Disable($4627)
 Marker.Disable($4628)
+Marker.Disable($STIFFmarker1)
+Marker.Disable($STIFFmarker2)
 Object.Destroy($4616)
 Object.Destroy($4617)
 Object.Destroy($4618)
