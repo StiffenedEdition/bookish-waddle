@@ -1434,6 +1434,9 @@ if
 jf @PROTEC2_HeliMove
 0407: create_coordinate $STIFFx2 $STIFFy2 $STIFFz2 from_car $4619 offset 0.0 0.0 0.0 
 04D3: get_nearest_car_path_coords_from $STIFFx2 $STIFFy2 $STIFFz2 type 2 store_to $STIFFx3 $STIFFy3 $STIFFz3 
+if
+81AD:   not car $4619 sphere 0 near_point $STIFFx3 $STIFFy3 $STIFFz3 radius 0.75 0.75
+jf @PROTEC2_HeliMove
 00AB: put_car $4619 at $STIFFx3 $STIFFy3 $STIFFz3
 
 :PROTEC2_HeliMove
