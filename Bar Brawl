@@ -826,6 +826,7 @@ jump @PROTEC2_12047
 01B2: give_actor $4606 weapon 23 ammo 9999 // Load the weapon model before using this
 02E2: set_actor $4606 weapon_accuracy_to 0  
 01CA: actor $4606 kill_player $PLAYER_CHAR 
+00BC: text_highpriority 'PRO2_12' 5000 ms 1 
 
 :PROTEC2_InjureHim2
 wait 0
