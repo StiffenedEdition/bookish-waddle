@@ -525,8 +525,7 @@ Car.Angle($2852) = 58.0
 $2827 = Car.Create(#CADDY, -148.8, 490.1, 14.8)
 Car.Health($2827) = 500
 Car.Angle($2827) = 90.0
-03E5: text_box 'CUNTY' 
-018C: play_sound 1 at 0.0 0.0 0.0 
+03E5: text_box 'HELDROP' 
 
 :BARON2_3106
 wait 0
@@ -1726,7 +1725,7 @@ jf @BARON2_Tabbed
 jump @BARON2_8730
 
 :BARON2_Tabbed
-03E5: text_box 'HELPICK' 
+03E5: text_box 'HELPCK' 
 
 :BARON2_8730
 gosub @BARON2_9118 
