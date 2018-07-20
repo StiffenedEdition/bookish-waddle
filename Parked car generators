@@ -1,4 +1,4 @@
-014B: $1992 = init_car_generator #ADMIRAL 8 8 force_spawn 0 alarm 50 door_lock 0 min_delay 0 max_delay 10000 at -401.2715 -534.6655 11.7534 angle 149.2032 
+014B: $1992 = init_car_generator #ADMIRAL -1 -1 force_spawn 0 alarm 0 door_lock 0 min_delay 0 max_delay 10000 at -401.2715 -534.6655 11.7534 angle 149.2032 
 014C: set_parked_car_generator $1992 cars_to_generate_to 101 
 014B: $1991 = init_car_generator #VICECHEE -1 -1 force_spawn 0 alarm 0 door_lock 0 min_delay 0 max_delay 10000 at -870.4673 -717.2427 10.1069 angle 94.1213 
 014C: set_parked_car_generator $1991 cars_to_generate_to 101 
@@ -76,7 +76,7 @@
 014C: set_parked_car_generator $1903 cars_to_generate_to 101 
 014B: $1911 = init_car_generator #DTN_STADDOORA -1 -1 force_spawn 0 alarm 50 door_lock 0 min_delay 0 max_delay 10000 at 237.2 -1377.5 10.9 angle 170.0 
 014C: set_parked_car_generator $1911 cars_to_generate_to 101 
-014B: $1912 = init_car_generator #ADMIRAL 79 79 force_spawn 0 alarm 0 door_lock 0 min_delay 0 max_delay 10000 at 127.4 -818.5 9.5 angle 250.6 
+014B: $1912 = init_car_generator #ADMIRAL 84 84 force_spawn 0 alarm 0 door_lock 0 min_delay 0 max_delay 10000 at 127.4 -818.5 9.5 angle 250.6 
 014C: set_parked_car_generator $1912 cars_to_generate_to 0 
 014B: $1904 = init_car_generator #FAGGIO -1 -1 force_spawn 0 alarm 0 door_lock 0 min_delay 0 max_delay 10000 at 382.2 -632.8 11.0 angle 9.9 
 014C: set_parked_car_generator $1904 cars_to_generate_to 101 
@@ -333,4 +333,4 @@
 014B: $1939 = init_car_generator #ZEBRA -1 -1 force_spawn 0 alarm 0 door_lock 0 min_delay 0 max_delay 10000 at -1003.1 207.4 11.0 angle 166.6 
 014C: set_parked_car_generator $1939 cars_to_generate_to 0 
 014B: $84 = init_car_generator #POLMAV -1 -1 force_spawn 0 alarm 0 door_lock 0 min_delay 0 max_delay 10000 at -614.0 804.0 30.0 angle 0.0 
-014C: set_parked_car_generator $84 cars_to_generate_to 101 
+014C: set_parked_car_generator $84 cars_to_generate_to 101
