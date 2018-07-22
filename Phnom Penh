@@ -493,6 +493,7 @@ Camera.PointAt(-387.379, -580.692, 40.335, 2)
 041E: set_radio_station 3 -1 
 
 :BARON2_2735
+jump @BARON2_Group5TheBait
 wait 500 
 fade 1 1000 
 wait 5000 
@@ -956,6 +957,9 @@ $PHNOMACCURACY = 0.7 // floating-point values
 
 :BARON2_5787
 wait 0 
+if
+8118:   not actor $LANCE_VANCE dead 
+jf @BARON2_9183
 gosub @BARON2_8478 
 if 
    not Actor.Dead($2828)
@@ -1367,7 +1371,6 @@ $PhnomMarker2832 = Marker.CreateAboveActor($2832)
 01B2: give_actor $2832 weapon 22 ammo 30000 // Load the weapon model before using this 
 Actor.Health($2832) = 50
 $2833 = Actor.Create(Gang3, #SGB, 14.6, 1145.4, -100.0)
-0173: set_actor $2833 z_angle_to -130 
 $PhnomMarker2833 = Marker.CreateAboveActor($2833)
 0243: set_actor $2833 ped_stats_to 16 
 0350: set_actor $2833 maintain_position_when_attacked 1 
@@ -1376,7 +1379,6 @@ $PhnomMarker2833 = Marker.CreateAboveActor($2833)
 01B2: give_actor $2833 weapon 22 ammo 30000 // Load the weapon model before using this 
 Actor.Health($2833) = 50
 $2834 = Actor.Create(Gang3, #SGA, 21.9, 1146.7, -100.0)
-0173: set_actor $2834 z_angle_to -130 
 $PhnomMarker2834 = Marker.CreateAboveActor($2834)
 0243: set_actor $2834 ped_stats_to 16 
 0350: set_actor $2834 maintain_position_when_attacked 1 
@@ -1385,7 +1387,6 @@ $PhnomMarker2834 = Marker.CreateAboveActor($2834)
 01B2: give_actor $2834 weapon 22 ammo 30000 // Load the weapon model before using this 
 Actor.Health($2834) = 50
 $2835 = Actor.Create(Gang3, #SGA, 11.3, 1147.0, 22.5)
-0173: set_actor $2835 z_angle_to -130 
 $PhnomMarker2835 = Marker.CreateAboveActor($2835)
 0243: set_actor $2835 ped_stats_to 16 
 0350: set_actor $2835 maintain_position_when_attacked 1 
@@ -1394,7 +1395,6 @@ $PhnomMarker2835 = Marker.CreateAboveActor($2835)
 01B2: give_actor $2835 weapon 22 ammo 30000 // Load the weapon model before using this 
 Actor.Health($2835) = 50
 $2836 = Actor.Create(Gang3, #SGA, 28.9, 1146.3, 20.5)
-0173: set_actor $2836 z_angle_to -130 
 $PhnomMarker2836 = Marker.CreateAboveActor($2836)
 0243: set_actor $2836 ped_stats_to 16 
 0350: set_actor $2836 maintain_position_when_attacked 1 
@@ -1403,7 +1403,6 @@ $PhnomMarker2836 = Marker.CreateAboveActor($2836)
 01B2: give_actor $2836 weapon 22 ammo 30000 // Load the weapon model before using this 
 Actor.Health($2836) = 50
 $2837 = Actor.Create(Gang3, #SGB, 15.9, 1145.5, 22.5)
-0173: set_actor $2837 z_angle_to -130 
 $PhnomMarker2837 = Marker.CreateAboveActor($2837)
 0243: set_actor $2837 ped_stats_to 16 
 0350: set_actor $2837 maintain_position_when_attacked 1 
@@ -1419,6 +1418,9 @@ $2862 = Object.Create(#BARREL4, -60.8, 1102.7, 29.9)
 
 :BARON2_LoopStartGroup4
 wait 0
+if
+8118:   not actor $LANCE_VANCE dead 
+jf @BARON2_9183
 gosub @BARON2_8478 
 if 
    not Car.Wrecked($2821)
@@ -1502,6 +1504,7 @@ else_jump @BARON2_LoopStartGroup4
 
 :BARON2_Group5TheBait
 Player.CanMove($PLAYER_CHAR, False)
+Car.LockInCurrentPosition($2821, True)
 fade 0 500 
 wait 500 
 Actor.DestroyInstantly($2828)
@@ -1513,7 +1516,7 @@ Actor.DestroyInstantly($2833)
 Actor.DestroyInstantly($2834)
 Actor.DestroyInstantly($2835)
 Actor.DestroyInstantly($2836)
-Actor.DestroyInstantly($2837)
+Actor.DestroyInstantly($2837)                              
 if 
    not Car.Wrecked($2821)
 else_jump @BARON2_9193 
@@ -1552,24 +1555,18 @@ Camera.PointAt(87.8653, 1099.6125, 33.058, 2)
 
 :BARON2_TheChase
 wait 3000
-Car.LockInCurrentPosition($2821, True)
 Car.Create($PhnomGetawayVehicle, #DINGHY, 112.0199, 1103.4331, 6.6478)
-$2839 = Object.Create(#BRIEFCASE, 112.0199, 1103.4331, 7.5)
 011C: actor $2845 clear_objective 
 00A1: put_actor $2845 at 104.0199 1103.4331 25.0
 041D: set_camera_near_clip 0.1 
-Camera.SetPosition(146.5312, 1147.108, 24.001, 0.0, 0.0, 0.0)
-Camera.PointAt(102.0199, 1103.4331, 6.6478, 2)
+Camera.SetPosition(113.0199, 1103.4331, 8.5, 0.0, 0.0, 0.0)
+Camera.PointAt(104.0199, 1103.4331, 25.0, 2)
 
 :BARON2_IsInDinghy
-wait 1000
-Object.Destroy($2839)
-wait 300
-04D8: set_actor $2845 drown 0 
+wait 1300
 036A: put_actor $2845 in_car $PhnomGetawayVehicle 
 02DB: set_boat $PhnomGetawayVehicle speed_to 30.0 
 02D3: boat $PhnomGetawayVehicle drive_to_point 129.4419 866.868 6.0
-04D8: set_actor $2845 drown 1 
 
 :BARON2_BaitAndSwitchCutsceneOvah
 wait 3500 
@@ -1578,8 +1575,9 @@ Player.CanMove($PLAYER_CHAR, True)
 Camera.Restore_WithJumpCut
 Car.LockInCurrentPosition($2821, False)
 03C4: set_status_text_to $PhnomBalance 1 'COK2_24' 
+00BC: text_highpriority 'GETAWAY' 5000 ms 1
 
-:BARON2_DinghyCheckpoints
+:BARON2_DinghyCheckpoints                                          
 wait 0
 if
 8118:   not actor $LANCE_VANCE dead 
@@ -1623,6 +1621,7 @@ if
 01AD:   car $PhnomGetawayVehicle sphere 0 near_point -82.6824 84.2173 radius 3.0 3.0
 jf @BARON2_PlayerIsGarbage
 Car.Destroy($PhnomGetawayVehicle)
+Marker.Disable($PhnomMarkerSP)
 00BA: text_styled 'GARBO' 5000 ms 1 //YOU'RE GARBAGE
 wait 5000
 00BA: text_styled 'BUT...' 2000 ms 1 //but I'll pass you I guess...
@@ -1631,32 +1630,35 @@ jump @BARON2_9210
 
 :BARON2_BigJumps
 Player.CanMove($PLAYER_CHAR, False) 
-02DB: set_boat $PhnomGetawayVehicle speed_to 0.0 
 Car.LockInCurrentPosition($2821, True)
 015D: set_gamespeed 0.3 
+04BA: set_car $PhnomGetawayVehicle speed_instantly 5.0 
+04D8: set_actor $LANCE_VANCE drown 0 
 01C9: actor $LANCE_VANCE kill_actor $2845 
 0350: set_actor $LANCE_VANCE maintain_position_when_attacked 1 
 01B9: set_actor $LANCE_VANCE armed_weapon_to 0 
 0465: remove_actor $LANCE_VANCE from_turret_mode 
-0407: create_coordinate $PhnomJumpLancex $PhnomJumpLancey $PhnomJumpLancez from_car $PhnomGetawayVehicle offset 0.0 0.0 0.5
-00A1: put_actor $LANCE_VANCE at $PhnomJumpLancex $PhnomJumpLancey $PhnomJumpLancez 
-0407: create_coordinate $PhnomJumpCamx $PhnomJumpCamy $PhnomJumpCamz from_car $PhnomGetawayVehicle offset 2.3 5.0 2.0
+Actor.DestroyInstantly($LANCE_VANCE)
+00AB: put_car $PhnomGetawayVehicle at -433.472 282.2309 6.5371
+0407: create_coordinate $PhnomJumpLancex $PhnomJumpLancey $PhnomJumpLancez from_car $PhnomGetawayVehicle offset 0.0 -0.5 3.0
+$LANCE_VANCE = Actor.Create(CivMale, #SPECIAL04, $PhnomJumpLancex, $PhnomJumpLancey, $PhnomJumpLancez)
+0174: $PhnomBoatAngle = car $PhnomGetawayVehicle z_angle 
+0173: set_actor $LANCE_VANCE z_angle_to $PhnomBoatAngle 
+0407: create_coordinate $PhnomJumpHelix $PhnomJumpHeliy $PhnomJumpHeliz from_car $2821 offset 0.0 0.0 6.0
+00AB: put_car $2821 at $PhnomJumpHelix $PhnomJumpHeliy $PhnomJumpHeliz
+0407: create_coordinate $PhnomJumpCamx $PhnomJumpCamy $PhnomJumpCamz from_car $PhnomGetawayVehicle offset 4.3 10.0 2.5
 041D: set_camera_near_clip 0.3 
 015F: set_camera_position $PhnomJumpCamx $PhnomJumpCamy $PhnomJumpCamz 0.0 rotation 0.0 0.0 
-0174: $PhnomBoatAngle = car $PhnomGetawayVehicle z_angle 
 Camera.OnPed($LANCE_VANCE, 15, 2)
-wait 1500
+wait 1300
 
 :BARON2_BigFlops
 02DB: set_boat $PhnomGetawayVehicle speed_to 20.0 
-0407: create_coordinate $PhnomFlopGuyx $PhnomFlopGuyy $PhnomFlopGuyz from_car $PhnomGetawayVehicle offset 0.0 2.0 1.0
+0407: create_coordinate $PhnomFlopGuyx $PhnomFlopGuyy $PhnomFlopGuyz from_car $PhnomGetawayVehicle offset 3.5 0.0 3.0
 03E2: actor $2845 exit_car 
-0175: set_car $PhnomGetawayVehicle z_angle_to $PhnomBoatAngle 
-0407: create_coordinate $PhnomJumpLancex $PhnomJumpLancey $PhnomJumpLancez from_car $PhnomGetawayVehicle offset 0.0 0.0 1.5
+0407: create_coordinate $PhnomJumpLancex $PhnomJumpLancey $PhnomJumpLancez from_car $PhnomGetawayVehicle offset 0.0 0.0 3.0
 00A1: put_actor $LANCE_VANCE at $PhnomJumpLancex $PhnomJumpLancey $PhnomJumpLancez 
-04D8: set_actor $2845 drown 1 
 00A1: put_actor $2845 at $PhnomFlopGuyx $PhnomFlopGuyy $PhnomFlopGuyz
-04D8: set_actor $LANCE_VANCE drown 0 
 wait 1000
 Car.LockInCurrentPosition($2821, False)                 
 015D: set_gamespeed 1.0
@@ -1668,6 +1670,7 @@ Car.LockInCurrentPosition($2821, False)
 wait 2000
 
 :BARON2_WonLegit
+Marker.Disable($PhnomMarkerSP)
 Car.Destroy($PhnomGetawayVehicle)
 Player.CanMove($PLAYER_CHAR, True)
 041D: set_camera_near_clip 0.1 
@@ -1712,6 +1715,7 @@ $PhnomTabPressed = 1
 0151: remove_status_text $PHNOMBALANCE 
 02E2: set_actor $LANCE_VANCE weapon_accuracy_to 80 
 $PhnomLanceMarker = Marker.CreateAboveActor($LANCE_VANCE)
+Marker.SetColor($PhnomLanceMarker, 5)
 $PHNOMLANCEHEALTH = Actor.Health($LANCE_VANCE)
 $PHNOMLANCEHEALTH /= 10.0 // floating-point values 
 03C4: set_status_text_to $PHNOMLANCEHEALTH 1 'BUD1'  // Lances Health:
@@ -1721,7 +1725,7 @@ wait 1000
 if
 0038:   $PhnomTabPressed == 0 // integer values 
 jf @BARON2_Tabbed
-00BC: text_highpriority 'DROPPED' 5000 ms 1 
+03E5: text_box 'DROPPED'
 jump @BARON2_8730
 
 :BARON2_Tabbed
