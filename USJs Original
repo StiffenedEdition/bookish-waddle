@@ -259,7 +259,7 @@ jump @USJ_5369
 :USJ_2046
 if 
 00F7:   player $PLAYER_CHAR sphere 0 near_point_in_car -529.84 830.062 98.717 radius 7.0 3.0 3.0 
-else_jump @USJ_2168 
+else_jump @USJ_2168
 $792 = 12 // integer values 
 $832 = -543.2 // floating-point values 
 $833 = 843.4 // floating-point values 
@@ -285,7 +285,7 @@ jump @USJ_5369
 :USJ_2290
 if 
 00F7:   player $PLAYER_CHAR sphere 0 near_point_in_car -312.447 1109.196 47.741 radius 5.0 3.0 2.5 
-else_jump @USJ_2412 
+else_jump @USJ_2412  
 $792 = 14 // integer values 
 $832 = -292.5 // floating-point values 
 $833 = 1102.7 // floating-point values 
@@ -618,9 +618,16 @@ jump @USJ_298
 :USJ_5369
 $793 = 0 // integer values 
 $794 = 0 // integer values 
-015D: set_gamespeed 0.3 
 Camera.SetPosition($832, $833, $834, 0.0, 0.0, 0.0)
 Camera.OnVehicle($789, 15, 2)
+if
+8038:   not $GSpotTurnUSJsOff == 1 // integer values 
+jf @USJ_GSpot1 
+015D: set_gamespeed 0.3 
+jump @USJ_5425
+
+:USJ_GSpot1
+015D: set_gamespeed 3.0 
 
 :USJ_5425
 if or
