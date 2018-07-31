@@ -357,44 +357,7 @@ else_jump @BANKJO4_2042
 wait 0 
 jump @BANKJO4_2008 
 
-:BANKJO4_2042
-Player.CanMove($PLAYER_CHAR) = False
-02A3: enable_widescreen 1 
-03BF: set_player $PLAYER_CHAR ignored_by_everyone_to 1
-03C8: set_camera_directly_before_player 
-0055: put_player $PLAYER_CHAR at 490.0092 -80.1343 10.4539 
-0171: set_player $PLAYER_CHAR z_angle_to 225.0 
-$4128 = Actor.Create(CivMale, #SPECIAL01, 490.6913, -79.4378, 10.4539)
-Actor.Angle($4128) = 225.0
-01ED: clear_actor $4128 threat_search 
-0243: set_actor $4128 ped_stats_to 16 
-//04F5: unknown_actor $4128 kiss_player $PLAYER_CHAR on 1 
-0446: set_actor $4128 dismemberment_possible 0 
-$4129 = Actor.Create(CivMale, #SPECIAL02, 493.6465, -83.4476, 10.4539)
-Actor.Angle($4129) = 225.0
-01ED: clear_actor $4129 threat_search 
-//04F5: unknown_actor $4129 kiss_player $PLAYER_CHAR on 1 
-0446: set_actor $4129 dismemberment_possible 0 
-$4130 = Actor.Create(CivMale, #SPECIAL03, 491.371, -78.7345, 10.4539)
-Actor.Angle($4130) = 225.0
-01ED: clear_actor $4130 threat_search 
-//04F5: unknown_actor $4130 kiss_player $PLAYER_CHAR on 1 
-0446: set_actor $4130 dismemberment_possible 0 
-//018A: $4191 = create_checkpoint_at -833.0 -348.0 11.0 
-$4134 = 1 // integer values 
-$4212 = 1 // integer values 
-fade 1 750 
-0050: gosub @BANKJO4_WAIT_FOR_FADE
-
-:Fucks_get_in_car
-01D5: actor $4129 go_to_and_drive_car $4135
-0319: set_actor $4129 running 1 
-01D4: actor $4128 go_to_car $4135 and_enter_it_as_a_passenger     
-0319: set_actor $4128 running 1 
-01D4: actor $4130 go_to_car $4135 and_enter_it_as_a_passenger
-0319: set_actor $4130 running 1 
-01D4: actor $PLAYER_ACTOR go_to_car $4135 and_enter_it_as_a_passenger
-0319: set_actor $PLAYER_ACTOR running 1
+0129: $4129 = create_actor 4 #SPECIAL02 in_car 0@ driverseat
 
 :wait_for_fucks_to_get_in
 00D6: if or
