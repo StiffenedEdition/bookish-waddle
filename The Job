@@ -359,24 +359,26 @@ jump @BANKJO4_2008
 
 :BANKJO4_2042
 Player.CanMove($PLAYER_CHAR) = False
+02A3: enable_widescreen 1 
+03BF: set_player $PLAYER_CHAR ignored_by_everyone_to 1
 03C8: set_camera_directly_before_player 
-0055: put_player $PLAYER_CHAR at 491.6465 -80.4476 10.4539 
+0055: put_player $PLAYER_CHAR at 490.0092 -80.1343 10.4539 
 0171: set_player $PLAYER_CHAR z_angle_to 225.0 
 $4128 = Actor.Create(CivMale, #SPECIAL01, 490.6913, -79.4378, 10.4539)
 Actor.Angle($4128) = 225.0
 01ED: clear_actor $4128 threat_search 
 0243: set_actor $4128 ped_stats_to 16 
-04F5: unknown_actor $4128 kiss_player $PLAYER_CHAR on 1 
+//04F5: unknown_actor $4128 kiss_player $PLAYER_CHAR on 1 
 0446: set_actor $4128 dismemberment_possible 0 
-$4129 = Actor.Create(CivMale, #SPECIAL02, 490.0092, -80.1343, 10.4539)
+$4129 = Actor.Create(CivMale, #SPECIAL02, 493.6465, -83.4476, 10.4539)
 Actor.Angle($4129) = 225.0
 01ED: clear_actor $4129 threat_search 
-04F5: unknown_actor $4129 kiss_player $PLAYER_CHAR on 1 
+//04F5: unknown_actor $4129 kiss_player $PLAYER_CHAR on 1 
 0446: set_actor $4129 dismemberment_possible 0 
 $4130 = Actor.Create(CivMale, #SPECIAL03, 491.371, -78.7345, 10.4539)
 Actor.Angle($4130) = 225.0
 01ED: clear_actor $4130 threat_search 
-04F5: unknown_actor $4130 kiss_player $PLAYER_CHAR on 1 
+//04F5: unknown_actor $4130 kiss_player $PLAYER_CHAR on 1 
 0446: set_actor $4130 dismemberment_possible 0 
 //018A: $4191 = create_checkpoint_at -833.0 -348.0 11.0 
 $4134 = 1 // integer values 
@@ -387,7 +389,7 @@ fade 1 750
 :Fucks_get_in_car
 01D5: actor $4129 go_to_and_drive_car $4135
 0319: set_actor $4129 running 1 
-01D4: actor $4128 go_to_car $4135 and_enter_it_as_a_passenger
+01D4: actor $4128 go_to_car $4135 and_enter_it_as_a_passenger     
 0319: set_actor $4128 running 1 
 01D4: actor $4130 go_to_car $4135 and_enter_it_as_a_passenger
 0319: set_actor $4130 running 1 
@@ -396,12 +398,12 @@ fade 1 750
 
 :wait_for_fucks_to_get_in
 00D6: if or
-80DB:   not actor $4129 in_car $4135
-80DB:   not actor $4128 in_car $4135
-80DB:   not actor $4130 in_car $4135
-80DB:   not actor $PLAYER_ACTOR in_car $4135 
-else_jump @fade_out_for_M4_cutscene
-wait 0 
+80DF:   not actor $4129 driving
+80DF:   not actor $4128 driving
+80DF:   not actor $4130 driving
+80DF:   not actor $PLAYER_ACTOR driving 
+else_jump @fade_out_for_taxi_cutscene
+wait 0
 jump @wait_for_fucks_to_get_in
 
 
@@ -582,23 +584,30 @@ jump @BANKJO4_22188
 :BANKJO4_3321
 jump @BANKJO4_2366   */
 
-:fade_out_for_M4_cutscene
+:fade_out_for_taxi_cutscene
+01EB: set_traffic_density_multiplier_to 0.0
+03DE: set_pedestrians_density_multiplier_to 0.0
 fade 0 750 
 0050: gosub @BANKJO4_WAIT_FOR_FADE
 
 :put_car_in_place
-00AB: put_car $4135 at -833.0 -348.0 10.0
-01EB: set_traffic_density_multiplier_to 0.0
-03DE: set_pedestrians_density_multiplier_to 0.0  
+00AB: put_car $4135 at -847.5 -450.0 10.0
+02C2: car $4135 drive_to_point -833.0 -348.0 10.0
+00AD: set_car $4135 max_speed_to 45.0 
+04BA: set_car $4135 speed_instantly 30.0  
 
-fade 1 750 
-0050: gosub @BANKJO4_WAIT_FOR_FADE
+fade 1 750
+0050: gosub @BANKJO4_WAIT_FOR_FADE 
+
+:car_pls_stop
+if
+81C1:   not car $4135 stopped 
+else_jump @BANKJO4_3328
+wait 0 ms
+jump @car_pls_stop
 
 :BANKJO4_3328
-$4212 = 0 // integer values 
-Player.CanMove($PLAYER_CHAR) = False
-02A3: enable_widescreen 1 
-03BF: set_player $PLAYER_CHAR ignored_by_everyone_to 1 
+$4212 = 0 // integer values  
 if 
    not Car.Wrecked($4135)
 else_jump @BANKJO4_3391 
@@ -616,7 +625,7 @@ else_jump @BANKJO4_3432
 :BANKJO4_3432
 Camera.SetPosition($4223, $4224, $4220, 0.0, 0.0, 0.0)
 0407: create_coordinate $4215 $4216 $4217 from_car $4135 offset 0.0 -4.5 0.0 
-0407: create_coordinate $4218 $4219 $4220 from_car $4135 offset 0.0 -4.5 0.0 
+0407: create_coordinate $4218 $4219 $4220 from_car $4135 offset 0.0 -3.5 0.0 
 0407: create_coordinate $4221 $4222 $4220 from_car $4135 offset -1.0 -4.5 0.0 
 0407: create_coordinate $4223 $4224 $4220 from_car $4135 offset 1.0 -4.5 0.0 
 Car.StorePos($4135, $95, $96, $97)
@@ -852,8 +861,10 @@ else_jump @BANKJO4_4855
 01DF: tie_actor $4128 to_player $PLAYER_CHAR 
 
 :BANKJO4_4855
-if 
-80F6:   not player $PLAYER_CHAR 1 -894.0 -331.2 12.45 radius 2.0 2.0 3.0 
+if or 
+80F6:   not player $PLAYER_CHAR 1 -894.0 -331.2 12.45 radius 2.0 2.0 3.0
+80ED:   not actor $4128 0 -894.0 -331.2 radius 10.0 10.0
+80ED:   not actor $4130 0 -894.0 -331.2 radius 10.0 10.0
 else_jump @BANKJO4_4960 
 wait 0 
 gosub @BANKJO4_28829 
@@ -861,8 +872,27 @@ gosub @BANKJO4_28789
 gosub @BANKJO4_24398 
 if 
   $4105 == 1 // integer values 
-else_jump @BANKJO4_4953 
+else_jump @Dont_leave_phil_behind
 jump @BANKJO4_22188 
+
+:Dont_leave_phil_behind
+if 
+80E9:   not player $PLAYER_CHAR 0 $4128 radius 10.0 10.0 
+else_jump @Didnt_leave_phil_behind
+00BC: text_highpriority 'P_HIND' 5000 ms 1  // ~r~You've lost Phil!
+jump @BANKJO4_4953
+
+:Didnt_leave_phil_behind
+00BE: text_clear_all 
+
+:Dont_leave_cam_behind
+if 
+80E9:   not player $PLAYER_CHAR 0 $4130 radius 10.0 10.0 
+else_jump @Didnt_leave_cam_behind
+00BC: text_highpriority 'C_HIND' 5000 ms 1  // ~r~Cam's been left behind!
+
+:Didnt_leave_cam_behind
+00BE: text_clear_all 
 
 :BANKJO4_4953
 gosub @WHY_DID_THE_CHICKEN_CROSS_THE_ROAD
@@ -5216,10 +5246,10 @@ Player.CanMove($PLAYER_CHAR) = True
 return
 
 :BANKJO4_WAIT_FOR_FADE
+wait 0
 if 
 fading 
 else_jump @BANKJO4_WAIT_FOR_FADE_END 
-wait 0
 jump @BANKJO4_WAIT_FOR_FADE
 
 :BANKJO4_WAIT_FOR_FADE_END
