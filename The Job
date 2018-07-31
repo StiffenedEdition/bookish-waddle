@@ -357,7 +357,42 @@ else_jump @BANKJO4_2042
 wait 0 
 jump @BANKJO4_2008 
 
-0129: $4129 = create_actor 4 #SPECIAL02 in_car 0@ driverseat
+:BANKJO4_2042
+Player.CanMove($PLAYER_CHAR) = False
+02A3: enable_widescreen 1 
+03BF: set_player $PLAYER_CHAR ignored_by_everyone_to 1
+//03C8: set_camera_directly_before_player
+0055: put_player $PLAYER_CHAR at 490.0092 -80.1343 10.4539 
+0171: set_player $PLAYER_CHAR z_angle_to 225.0 
+$4128 = Actor.Create(CivMale, #SPECIAL01, 490.6913, -79.4378, 10.4539)
+Actor.Angle($4128) = 225.0
+01ED: clear_actor $4128 threat_search 
+0243: set_actor $4128 ped_stats_to 16 
+//04F5: unknown_actor $4128 kiss_player $PLAYER_CHAR on 1 
+0446: set_actor $4128 dismemberment_possible 0 
+0129: $4129 = create_actor 4 #SPECIAL02 in_car $4135 driverseat
+00AD: set_car $4135 max_speed_to 0.0 
+01ED: clear_actor $4129 threat_search 
+//04F5: unknown_actor $4129 kiss_player $PLAYER_CHAR on 1 
+0446: set_actor $4129 dismemberment_possible 0 
+$4130 = Actor.Create(CivMale, #SPECIAL03, 491.371, -78.7345, 10.4539)
+Actor.Angle($4130) = 225.0
+01ED: clear_actor $4130 threat_search 
+//04F5: unknown_actor $4130 kiss_player $PLAYER_CHAR on 1 
+0446: set_actor $4130 dismemberment_possible 0 
+//018A: $4191 = create_checkpoint_at -833.0 -348.0 11.0 
+$4134 = 1 // integer values 
+$4212 = 1 // integer values
+015F: set_camera_position 468.0 -118.0 20.53 0.0 rotation 0.0 0.0  
+fade 1 1500 
+
+:Fucks_get_in_car 
+01D4: actor $4128 go_to_car $4135 and_enter_it_as_a_passenger     
+0319: set_actor $4128 running 1 
+01D4: actor $4130 go_to_car $4135 and_enter_it_as_a_passenger
+0319: set_actor $4130 running 1 
+01D4: actor $PLAYER_ACTOR go_to_car $4135 and_enter_it_as_a_passenger
+0319: set_actor $PLAYER_ACTOR running 1
 
 :wait_for_fucks_to_get_in
 00D6: if or
@@ -548,18 +583,20 @@ jump @BANKJO4_22188
 jump @BANKJO4_2366   */
 
 :fade_out_for_taxi_cutscene
+00AD: set_car $4135 max_speed_to 45.0
+00A7: car $4135 drive_to 468.0 -118.0 10.53
 01EB: set_traffic_density_multiplier_to 0.0
 03DE: set_pedestrians_density_multiplier_to 0.0
-fade 0 750 
+fade 0 1500 
 0050: gosub @BANKJO4_WAIT_FOR_FADE
 
 :put_car_in_place
 00AB: put_car $4135 at -847.5 -450.0 10.0
 02C2: car $4135 drive_to_point -833.0 -348.0 10.0
-00AD: set_car $4135 max_speed_to 45.0 
+//00AD: set_car $4135 max_speed_to 45.0 
 04BA: set_car $4135 speed_instantly 30.0  
 
-fade 1 750
+fade 1 1500
 0050: gosub @BANKJO4_WAIT_FOR_FADE 
 
 :car_pls_stop
@@ -4167,6 +4204,8 @@ Model.Destroy(#M4)
 Model.Destroy(#MP5LNG)
 Model.Destroy(#TAXI)
 Model.Destroy(#PYTHON)
+Model.Destroy(#MANANA)
+Model.Destroy(#HFOST)
 Model.Destroy(#ENFORCER)
 Model.Destroy(#WFYBU)
 Model.Destroy(#HFYBU)
