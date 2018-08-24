@@ -1,0 +1,812 @@
+//-------------Mission 30---------------
+// Originally: G-spotlight
+
+:PORNO4
+thread 'PORNO4' 
+gosub @PORNO4_46 
+if 
+wasted_or_busted 
+else_jump @PORNO4_37 
+gosub @PORNO4_11334 
+
+:PORNO4_37
+gosub @PORNO4_11598 
+end_thread 
+
+:PORNO4_46
+03D5: remove_text 'M_FAIL'  // MISSION FAILED!
+$ONMISSION = 1 // integer values 
+increment_mission_attempts 
+wait 0 
+054C: use_GXT_table 'PORN4' 
+058E: set_restart_mission_taxi_destination 21.489 966.28 9.5 172.7 
+$GSpotTurnUSJsOff = 1
+$GSpotChaseOn = 0
+$GSpotChaseTurretOffsetx = 0.0
+$GSpotChaseTurretOffsety = -1.0
+$GSpotChaseTurretOffsetz = 3.5
+$GSpotJump1Triggered = 0
+$GSpotJump2Triggered = 0
+$GSpotJump3Triggered = 0
+$GSpotJump4Triggered = 0
+$GSpotJump5Triggered = 0
+$GSpotJump6Triggered = 0
+$GSpotJump7Triggered = 0
+$GSpotJump7StaggerTriggered = 0
+$4525 = 0 // integer values 
+$4526 = 0 // integer values 
+$4527 = 0 // integer values 
+$4528 = 0 // integer values 
+$4529 = 0 // integer values 
+$4530 = 1 // integer values 
+$4531 = 0 // integer values 
+$61 = 0 // integer values 
+$4532 = 0 // integer values 
+$793 = 0 // integer values 
+023C: load_special_actor 1 'CSPLAY' 
+023C: load_special_actor 2 'CSDIREC' 
+023C: load_special_actor 3 'CSCANDY' 
+023C: load_special_actor 4 'CMRAMAN' 
+023C: load_special_actor 5 'MPORNA' 
+02F3: load_object #CUTOBJ01 'CS_CAM' 
+02F3: load_object #CUTOBJ02 'DRCHAIR' 
+Camera.SetAtPos(-86.0, 929.0, 9.764)
+038B: load_requested_models 
+
+:PORNO4_276
+if or
+823D:   not special_actor 1 loaded 
+823D:   not special_actor 2 loaded 
+823D:   not special_actor 3 loaded 
+823D:   not special_actor 4 loaded 
+823D:   not special_actor 5 loaded 
+else_jump @PORNO4_318 
+wait 0 
+jump @PORNO4_276 
+
+:PORNO4_318
+if or
+   not Model.Available(#CUTOBJ01)
+   not Model.Available(#CUTOBJ02)
+else_jump @PORNO4_350 
+wait 0 
+jump @PORNO4_318 
+
+:PORNO4_350
+02E4: load_cutscene_data 'PORN_4' 
+0244: set_cutscene_pos -69.128 920.965 9.764 
+041D: set_camera_near_clip 0.1 
+02E5: $125 = create_cutscene_object #SPECIAL01 
+02E6: set_cutscene_anim $125 'CSPLAY' 
+02E5: $163 = create_cutscene_object #SPECIAL02 
+02E6: set_cutscene_anim $163 'CSDIREC' 
+02E5: $165 = create_cutscene_object #SPECIAL03 
+02E6: set_cutscene_anim $165 'CSCANDY' 
+02E5: $197 = create_cutscene_object #SPECIAL04 
+02E6: set_cutscene_anim $197 'CMRAMAN' 
+02E5: $164 = create_cutscene_object #SPECIAL05 
+02E6: set_cutscene_anim $164 'MPORNA' 
+02E5: $209 = create_cutscene_object #CUTOBJ01 
+02E6: set_cutscene_anim $209 'CS_CAM' 
+02E5: $215 = create_cutscene_object #CUTOBJ02 
+02E6: set_cutscene_anim $215 'DRCHAIR' 
+0395: clear_area 1 at -66.0 933.04 range 10.2 1.0 
+0055: put_player $PLAYER_CHAR at -66.0 933.04 10.2 
+0171: set_player $PLAYER_CHAR z_angle_to 275.6 
+fade 1 1500 
+03AD: set_rubbish 0 
+03AF: set_streaming 1 
+02E7: start_cutscene 
+02E8: $CUT_SCENE_TIME = cutscenetime 
+if 
+859A:   not false 
+else_jump @PORNO4_1716 
+
+:PORNO4_615
+if 
+  47 > $CUT_SCENE_TIME // integer values 
+else_jump @PORNO4_649 
+wait 0 
+02E8: $CUT_SCENE_TIME = cutscenetime 
+jump @PORNO4_615 
+
+:PORNO4_649
+00BC: text_highpriority 'POR4_A' 10000 ms 1  // I'm sorry, but I just can't swallow this right now.
+
+:PORNO4_664
+if 
+  1741 > $CUT_SCENE_TIME // integer values 
+else_jump @PORNO4_699 
+wait 0 
+02E8: $CUT_SCENE_TIME = cutscenetime 
+jump @PORNO4_664 
+
+:PORNO4_699
+00BC: text_highpriority 'POR4_B' 10000 ms 1  // Oh COME ON darling!
+
+:PORNO4_714
+if 
+  3291 > $CUT_SCENE_TIME // integer values 
+else_jump @PORNO4_749 
+wait 0 
+02E8: $CUT_SCENE_TIME = cutscenetime 
+jump @PORNO4_714 
+
+:PORNO4_749
+00BC: text_highpriority 'POR4_C' 10000 ms 1  // He's hung like a sperm whale for pity's sake,
+
+:PORNO4_764
+if 
+  5700 > $CUT_SCENE_TIME // integer values 
+else_jump @PORNO4_799 
+wait 0 
+02E8: $CUT_SCENE_TIME = cutscenetime 
+jump @PORNO4_764 
+
+:PORNO4_799
+00BC: text_highpriority 'POR4_D' 10000 ms 1  // how can you not feel the part?!
+
+:PORNO4_814
+if 
+  7244 > $CUT_SCENE_TIME // integer values 
+else_jump @PORNO4_849 
+wait 0 
+02E8: $CUT_SCENE_TIME = cutscenetime 
+jump @PORNO4_814 
+
+:PORNO4_849
+00BC: text_highpriority 'POR4_E' 10000 ms 1  // But Stevie...
+
+:PORNO4_864
+if 
+  9917 > $CUT_SCENE_TIME // integer values 
+else_jump @PORNO4_899 
+wait 0 
+02E8: $CUT_SCENE_TIME = cutscenetime 
+jump @PORNO4_864 
+
+:PORNO4_899
+00BC: text_highpriority 'POR4_F' 10000 ms 1  // How's my star director?
+
+:PORNO4_914
+if 
+  10414 > $CUT_SCENE_TIME // integer values 
+else_jump @PORNO4_949 
+wait 0 
+02E8: $CUT_SCENE_TIME = cutscenetime 
+jump @PORNO4_914 
+
+:PORNO4_949
+00BC: text_highpriority 'POR4_G' 10000 ms 1  // Oh, man. The struggle between the artistic integrity and
+
+:PORNO4_964
+if 
+  13409 > $CUT_SCENE_TIME // integer values 
+else_jump @PORNO4_999 
+wait 0 
+02E8: $CUT_SCENE_TIME = cutscenetime 
+jump @PORNO4_964 
+
+:PORNO4_999
+00BC: text_highpriority 'POR4_H' 10000 ms 1  // the humping, pumping action continues unabated.
+
+:PORNO4_1014
+if 
+  16161 > $CUT_SCENE_TIME // integer values 
+else_jump @PORNO4_1049 
+wait 0 
+02E8: $CUT_SCENE_TIME = cutscenetime 
+jump @PORNO4_1014 
+
+:PORNO4_1049
+00BC: text_highpriority 'POR4_I' 10000 ms 1  // And before you ask, yes, all four videos will be released by their...
+
+:PORNO4_1064
+if 
+  19667 > $CUT_SCENE_TIME // integer values 
+else_jump @PORNO4_1099 
+wait 0 
+02E8: $CUT_SCENE_TIME = cutscenetime 
+jump @PORNO4_1064 
+
+:PORNO4_1099
+00BC: text_highpriority 'POR4_J' 10000 ms 1  // Honey, can you PLEASE keep the anaconda in the shot,
+
+:PORNO4_1114
+if 
+  22706 > $CUT_SCENE_TIME // integer values 
+else_jump @PORNO4_1149 
+wait 0 
+02E8: $CUT_SCENE_TIME = cutscenetime 
+jump @PORNO4_1114 
+
+:PORNO4_1149
+00BC: text_highpriority 'POR4_K' 10000 ms 1  // he costs more per hour than you do!
+
+:PORNO4_1164
+if 
+  24572 > $CUT_SCENE_TIME // integer values 
+else_jump @PORNO4_1199 
+wait 0 
+02E8: $CUT_SCENE_TIME = cutscenetime 
+jump @PORNO4_1164 
+
+:PORNO4_1199
+00BC: text_highpriority 'POR4_L' 10000 ms 1  // Oh, sorry Steve.
+
+:PORNO4_1214
+if 
+  25843 > $CUT_SCENE_TIME // integer values 
+else_jump @PORNO4_1249 
+wait 0 
+02E8: $CUT_SCENE_TIME = cutscenetime 
+jump @PORNO4_1214 
+
+:PORNO4_1249
+00BC: text_highpriority 'POR4_M' 10000 ms 1  // I was thinking, we need some kind of big stunt to really promote the launch.
+
+:PORNO4_1264
+if 
+  29291 > $CUT_SCENE_TIME // integer values 
+else_jump @PORNO4_1299 
+wait 0 
+02E8: $CUT_SCENE_TIME = cutscenetime 
+jump @PORNO4_1264 
+
+:PORNO4_1299
+00BC: text_highpriority 'POR4_N' 10000 ms 1  // Something that will make a real impact on the City - you got any ideas?
+
+:PORNO4_1314
+if 
+  34272 > $CUT_SCENE_TIME // integer values 
+else_jump @PORNO4_1351 
+wait 0 
+02E8: $CUT_SCENE_TIME = cutscenetime 
+jump @PORNO4_1314 
+
+:PORNO4_1351
+00BC: text_highpriority 'POR4_O' 10000 ms 1  // Well, in the old days they used to have gala events,
+
+:PORNO4_1366
+if 
+  37360 > $CUT_SCENE_TIME // integer values 
+else_jump @PORNO4_1403 
+wait 0 
+02E8: $CUT_SCENE_TIME = cutscenetime 
+jump @PORNO4_1366 
+
+:PORNO4_1403
+00BC: text_highpriority 'POR4_P' 10000 ms 1  // stars, limos, the night sky crisscrossed with searchlights...
+
+:PORNO4_1418
+if 
+  42492 > $CUT_SCENE_TIME // integer values 
+else_jump @PORNO4_1455 
+wait 0 
+02E8: $CUT_SCENE_TIME = cutscenetime 
+jump @PORNO4_1418 
+
+:PORNO4_1455
+00BC: text_highpriority 'POR4_Q' 10000 ms 1  // Searchlights! I've got an idea...
+
+:PORNO4_1470
+if 
+  45162 > $CUT_SCENE_TIME // integer values 
+else_jump @PORNO4_1507 
+wait 0 
+02E8: $CUT_SCENE_TIME = cutscenetime 
+jump @PORNO4_1470 
+
+:PORNO4_1507
+00BC: text_highpriority 'POR4_R' 10000 ms 1  // ...yeah, yeah, yeah. The little sequined numbers, and the limos, oh, premieres
+
+:PORNO4_1522
+if 
+  50224 > $CUT_SCENE_TIME // integer values 
+else_jump @PORNO4_1559 
+wait 0 
+02E8: $CUT_SCENE_TIME = cutscenetime 
+jump @PORNO4_1522 
+
+:PORNO4_1559
+00BC: text_highpriority 'POR4_S' 10000 ms 1  // Oh, yes ma'am, of course ma'am,
+
+:PORNO4_1574
+if 
+  53220 > $CUT_SCENE_TIME // integer values 
+else_jump @PORNO4_1611 
+wait 0 
+02E8: $CUT_SCENE_TIME = cutscenetime 
+jump @PORNO4_1574 
+
+:PORNO4_1611
+fade 0 3000 
+00BC: text_highpriority 'POR4_T' 10000 ms 1  // and the press, and the barrage of lights...
+
+:PORNO4_1633
+if 
+  54220 > $CUT_SCENE_TIME // integer values 
+else_jump @PORNO4_1670 
+wait 0 
+02E8: $CUT_SCENE_TIME = cutscenetime 
+jump @PORNO4_1633 
+
+:PORNO4_1670
+00BE: text_clear_all 
+
+:PORNO4_1672
+if 
+  56064 > $CUT_SCENE_TIME // integer values 
+else_jump @PORNO4_1709 
+wait 0 
+02E8: $CUT_SCENE_TIME = cutscenetime 
+jump @PORNO4_1672 
+
+:PORNO4_1709
+jump @PORNO4_2362 
+
+:PORNO4_1716
+if 
+  194 > $CUT_SCENE_TIME // integer values 
+else_jump @PORNO4_1751 
+wait 0 
+02E8: $CUT_SCENE_TIME = cutscenetime 
+jump @PORNO4_1716 
+
+:PORNO4_1751
+00BC: text_highpriority 'POR4_F' 10000 ms 1  // How's my star director?
+
+:PORNO4_1766
+if 
+  1394 > $CUT_SCENE_TIME // integer values 
+else_jump @PORNO4_1801 
+wait 0 
+02E8: $CUT_SCENE_TIME = cutscenetime 
+jump @PORNO4_1766 
+
+:PORNO4_1801
+00BC: text_highpriority 'POR4_G' 10000 ms 1  // Oh, man. The struggle between the artistic integrity and
+
+:PORNO4_1816
+if 
+  4344 > $CUT_SCENE_TIME // integer values 
+else_jump @PORNO4_1851 
+wait 0 
+02E8: $CUT_SCENE_TIME = cutscenetime 
+jump @PORNO4_1816 
+
+:PORNO4_1851
+00BC: text_highpriority 'POR4_H' 10000 ms 1  // the humping, pumping action continues unabated.
+
+:PORNO4_1866
+if 
+  7178 > $CUT_SCENE_TIME // integer values 
+else_jump @PORNO4_1901 
+wait 0 
+02E8: $CUT_SCENE_TIME = cutscenetime 
+jump @PORNO4_1866 
+
+:PORNO4_1901
+00BC: text_highpriority 'POR4_I' 10000 ms 1  // And before you ask, yes, all four videos will be released by their...
+
+:PORNO4_1916
+if 
+  10656 > $CUT_SCENE_TIME // integer values 
+else_jump @PORNO4_1951 
+wait 0 
+02E8: $CUT_SCENE_TIME = cutscenetime 
+jump @PORNO4_1916 
+
+:PORNO4_1951
+00BC: text_highpriority 'POR4_J' 10000 ms 1  // Honey, can you PLEASE keep the anaconda in the shot,
+
+:PORNO4_1966
+if 
+  13704 > $CUT_SCENE_TIME // integer values 
+else_jump @PORNO4_2001 
+wait 0 
+02E8: $CUT_SCENE_TIME = cutscenetime 
+jump @PORNO4_1966 
+
+:PORNO4_2001
+00BC: text_highpriority 'POR4_K' 10000 ms 1  // he costs more per hour than you do!
+
+:PORNO4_2016
+if 
+  15550 > $CUT_SCENE_TIME // integer values 
+else_jump @PORNO4_2051 
+wait 0 
+02E8: $CUT_SCENE_TIME = cutscenetime 
+jump @PORNO4_2016 
+
+:PORNO4_2051
+00BC: text_highpriority 'POR4_L' 10000 ms 1  // Oh, sorry Steve.
+
+:PORNO4_2066
+if 
+  16828 > $CUT_SCENE_TIME // integer values 
+else_jump @PORNO4_2101 
+wait 0 
+02E8: $CUT_SCENE_TIME = cutscenetime 
+jump @PORNO4_2066 
+
+:PORNO4_2101
+00BC: text_highpriority 'POR4_M' 10000 ms 1  // I was thinking, we need some kind of big stunt to really promote the launch.
+
+:PORNO4_2116
+if 
+  20256 > $CUT_SCENE_TIME // integer values 
+else_jump @PORNO4_2151 
+wait 0 
+02E8: $CUT_SCENE_TIME = cutscenetime 
+jump @PORNO4_2116 
+
+:PORNO4_2151
+00BC: text_highpriority 'POR4_N' 10000 ms 1  // Something that will make a real impact on the City - you got any ideas?
+
+:PORNO4_2166
+if 
+  25295 > $CUT_SCENE_TIME // integer values 
+else_jump @PORNO4_2201 
+wait 0 
+02E8: $CUT_SCENE_TIME = cutscenetime 
+jump @PORNO4_2166 
+
+:PORNO4_2201
+00BC: text_highpriority 'POR4_O' 10000 ms 1  // Well, in the old days they used to have gala events,
+
+:PORNO4_2216
+if 
+  28750 > $CUT_SCENE_TIME // integer values 
+else_jump @PORNO4_2251 
+wait 0 
+02E8: $CUT_SCENE_TIME = cutscenetime 
+jump @PORNO4_2216 
+
+:PORNO4_2251
+00BC: text_highpriority 'POR4_P' 10000 ms 1  // stars, limos, the night sky crisscrossed with searchlights...
+
+:PORNO4_2266
+if 
+  33584 > $CUT_SCENE_TIME // integer values 
+else_jump @PORNO4_2303 
+wait 0 
+02E8: $CUT_SCENE_TIME = cutscenetime 
+jump @PORNO4_2266 
+
+:PORNO4_2303
+00BC: text_highpriority 'POR4_Q' 10000 ms 1  // Searchlights! I've got an idea...
+
+:PORNO4_2318
+if 
+  36184 > $CUT_SCENE_TIME // integer values 
+else_jump @PORNO4_2355 
+wait 0 
+02E8: $CUT_SCENE_TIME = cutscenetime 
+jump @PORNO4_2318 
+
+:PORNO4_2355
+fade 0 3000 
+
+:PORNO4_2362
+00BE: text_clear_all 
+
+:PORNO4_2364
+if 
+fading 
+else_jump @PORNO4_2388 
+wait 0 
+jump @PORNO4_2364 
+
+:PORNO4_2388
+03AD: set_rubbish 1 
+02EA: end_cutscene 
+0296: unload_special_actor 1 
+0296: unload_special_actor 2 
+0296: unload_special_actor 3 
+0296: unload_special_actor 4 
+0296: unload_special_actor 5 
+Model.Destroy(#CUTOBJ01)
+Model.Destroy(#CUTOBJ02)
+01EB: set_traffic_density_multiplier_to 1.0 
+03DE: set_pedestrians_density_multiplier_to 1.0 
+0169: set_fade_color 0 0 0 
+wait 500 
+Camera.SetBehindPlayer
+Camera.SetAtPos(-67.0, 939.297, 10.94)
+00C0: set_current_time 17 0 
+04E3: unknown_player $PLAYER_CHAR 3 60000 
+Model.Load(#HFYBU)
+Model.Load(#WFYBU)
+Model.Load(#WMYBU)
+Model.Load(#WMOBU)
+Model.Load(#PCJ600)
+Model.Load(#GDA)
+Model.Load(#VCNMAV)
+Model.Load(#FREEWAY)
+Model.Load(#COLT45)
+Model.Load(36)
+Model.Load(53)
+
+:PORNO4_2513
+if or
+   not Model.Available(#HFYBU)
+   not Model.Available(#WFYBU)
+   not Model.Available(36)
+   not Model.Available(53)
+   not Model.Available(#WMYBU)
+   not Model.Available(#WMOBU)
+else_jump @PORNO4_2551 
+wait 0 
+jump @PORNO4_2513 
+
+:PORNO4_2551
+if or
+   not Model.Available(#PCJ600)
+   not Model.Available(#GDA)
+   not Model.Available(#VCNMAV)
+   not Model.Available(#FREEWAY)
+   not Model.Available(#COLT45)
+else_jump @PORNO4_2582 
+wait 0 
+jump @PORNO4_2551   //Heli Coords: -526.0219 853.0621 88.0679
+                    //USJ Coords 1: -838.8777 1161.402 31.9382 
+                    //USJ Coords 2: -313.3325 1103.7736 48.8328 
+                    //36 53 67
+                    //Freeway Jump Trig 1: -537.7333 1040.4935 66.3177
+                    //Freeway Jump Trig 2: -597.3781 1112.1663 48.8627
+                    //Freeway Jump Trig 3: -672.2983 1130.6653 42.9831
+                    //Freeway Jump Trig 4: 00F5:   player $PLAYER_CHAR 1 -800.6 1141.7 25.6 radius 20.0 20.0 20.0 
+                    //Freeway Jump Trig 5: -818.0391 1296.7329 27.7185
+                    //Freeway Jump Trigs Checkpoint 1: -537.7333 1040.4935 66.3177
+                    //Freeway Jump Trig 6: -547.8614 1354.6255 25.5724
+                    //Freeway Jump Trig 6 (Staggered): -547.8614 1354.6255 25.5724
+                    //Freeway Jump Trig 7: -278.4184 1301.6211 32.173
+                    //Freeway Jump Trig 7 (Staggered): -278.7516 1217.032 42.4629
+                    //Freeway Jump Trigs Checkpoint 2: -369.33 908.5684 10.8527
+                    //Freeway1 Jump 1: -534.8251 1023.6783 68.0749 Ang: 21.28 
+                    //Freeway1 Jump 2: -576.0984 1110.1736 52.2628 Ang: 69.79 
+                    //Freeway1 Jump 3: -649.1259 1133.7091 32.67 Ang: 81.34 
+                    //Freeway1 Jump 4: -747.2037 1153.3208 32.7541 Ang: 96.69 
+                    //Freeway1 Jump 5: -808.8203 1224.558 19.7569 Ang: 352.55 
+                    //Freeway1 Jump 6: -617.6475 1367.0555 22.2609 Ang: 265.23 
+                    //Freeway1 Jump 7: -301.2426 1274.4814 36.1597 Ang: 253.18 
+                    //Freeway2 Jump 1: -516.4813 1024.5369 68.079 Ang: 28.173 
+                    //Freeway2 Jump 2: -580.8306 1102.088 52.2708 Ang: 63.43 
+                    //Freeway2 Jump 3: -649.9225 1123.5735 32.6716 Ang: 83.06
+                    //Freeway2 Jump 4: -746.0646 1138.6096 32.7446 Ang: 111.21 
+                    //Freeway2 Jump 5: -791.0111 1268.0477 24.8367 Ang: 343.36 
+                    //Freeway2 Jump 6 (Stagger): -573.2802 1358.3687 16.408 Ang: 268.46 
+                    //Freeway2 Jump 7 (Stagger): -204.1384 1234.8289 75.3229 Ang: 125.73 
+
+:PORNO4_2582
+if 
+  $ONMISSION == 0 // integer values 
+else_jump @PORNO4_2640 
+018A: $4522 = create_checkpoint_at -483.5 853.0 9.9 
+018A: $4524 = create_checkpoint_at -526.2 886.2 70.0 
+
+:PORNO4_2640
+$GSpotHeli = Car.Create(#VCNMAV, -526.0219, 853.0621, 87.0679)
+04A2: heli $GSpotHeli fly_to -526.0219 853.0621 88.0679 speed 30 
+04D0: force_heli $GSpotHeli looking_angle_to 270.0 
+$4517 = Car.Create(#PCJ600, -6.4, 957.1, 9.4)
+$4518 = Actor.Create(CivMale, #GDA, 0.3, 958.3, 9.9)
+gosub @PORNO4_CreateChasers1
+gosub @PORNO4_CreateChasers2
+fade 1 1500 
+00BC: text_highpriority 'POR4_01' 5000 ms 1  // ~g~Go ~y~Downtown~g~ and adjust the spotlight on top of the building.
+00BB: text_lowpriority 'POR4_02' 5000 ms 1  // ~g~A fast bike will be needed to jump from roof to roof. The Security Guard usually drives a ~y~PCJ 600~g~ to work...
+018A: $4521 = create_checkpoint_at 6.8 953.5 9.4 
+jump @PORNO4_2744
+
+:PORNO4_CreateChasers1
+$GSpotChaseBike1 = Car.Create(#FREEWAY, -535.6971, 960.712, 75.0)
+Car.Angle($GSpotChaseBike1) = 220.0
+Car.SetMaxSpeed($GSpotChaseBike1, 250.0)
+Car.SetImmunities($GSpotChaseBike1, 0, 0, 0, 1, 1)
+053F: set_car $GSpotChaseBike1 tires_vulnerable 0 
+00AE: set_vehicle $GSpotChaseBike1 traffic_behavior_to 2 
+0129: $GSpotChaser1 = create_actor 4 53 in_car $GSpotChaseBike1 driverseat 
+0084: $GSpotChasers = $GSpotChaser1 // integer values and handles 
+gosub @PORNO4_EquipChasers
+$GSpotChaser2 = Actor.Create(CivMale, #WFYBU, -518.4531, 957.3741, 74.8847)
+0350: set_actor $GSpotChaser2 maintain_position_when_attacked 1 
+Actor.Angle($GSpotChaser2) = 220.0
+0084: $GSpotChasers = $GSpotChaser2 // integer values and handles 
+gosub @PORNO4_EquipChasers
+return
+
+:PORNO4_CreateChasers2
+$GSpotChaseBike2 = Car.Create(#FREEWAY, -517.426, 962.1475, 75.0)
+Car.SetMaxSpeed($GSpotChaseBike2, 250.0)
+Car.Angle($GSpotChaseBike2) = 140.0
+Car.SetImmunities($GSpotChaseBike2, 0, 0, 0, 1, 1)
+053F: set_car $GSpotChaseBike2 tires_vulnerable 0 
+04E0: car $GSpotChaseBike2 abandon_path_radius 15 
+00AE: set_vehicle $GSpotChaseBike2 traffic_behavior_to 2 
+0129: $GSpotChaser3 = create_actor 4 36 in_car $GSpotChaseBike2 driverseat 
+0084: $GSpotChasers = $GSpotChaser3 // integer values and handles 
+gosub @PORNO4_EquipChasers
+Actor.Create($GSpotChaser4, CivMale, 53, -534.094, 951.8527, 74.525)
+0350: set_actor $GSpotChaser4 maintain_position_when_attacked 1 
+Actor.Angle($GSpotChaser4) = 140.0
+0084: $GSpotChasers = $GSpotChaser4 // integer values and handles 
+gosub @PORNO4_EquipChasers
+return
+
+:PORNO4_EquipChasers
+011A: set_actor $GSpotChasers search_threat 1 
+022D: set_actor $GSpotChasers to_look_at_player $PLAYER_CHAR 
+01CA: actor $GSpotChasers kill_player $PLAYER_CHAR 
+0319: set_actor $GSpotChasers running 1 
+01B2: give_actor $GSpotChasers weapon 17 ammo 9999 // Load the weapon model before using this 
+02E2: set_actor $GSpotChasers weapon_accuracy_to 80
+02AB: set_actor $GSpotChasers immunities BP 0 FP 0 EP 0 CP 1 MP 0 
+return
+
+:PORNO4_2744
+wait 0
+
+:PORNO4_DeadChasers1
+if or
+   Car.Wrecked($GSpotChaseBike1)
+   Actor.Dead($GSpotChaser1)
+jf @PORNO4_DeadChasers2
+Car.SetImmunities($GSpotChaseBike1, 0, 0, 0, 0, 0)
+053F: set_car $GSpotChaseBike1 tires_vulnerable 1 
+Car.RemoveReferences($GSpotChaseBike1)
+Actor.DestroyWithFade($GSpotChaser1)
+Actor.DestroyWithFade($GSpotChaser2)
+gosub @PORNO4_CreateChasers1
+
+:PORNO4_DeadChasers2
+if or
+   Car.Wrecked($GSpotChaseBike2)
+   Actor.Dead($GSpotChaser3)
+jf @PORNO4_JumpTrigger1
+Car.SetImmunities($GSpotChaseBike2, 0, 0, 0, 0, 0)
+053F: set_car $GSpotChaseBike2 tires_vulnerable 1 
+Car.RemoveReferences($GSpotChaseBike2)
+Actor.DestroyWithFade($GSpotChaser3)
+Actor.DestroyWithFade($GSpotChaser4)
+gosub @PORNO4_CreateChasers2
+
+:PORNO4_JumpTrigger1
+if
+0443:   player $PLAYER_CHAR in_a_car 
+jf @PORNO4_CheckTurretLady1
+00DA: $GSpotPlayerCar = player $PLAYER_CHAR car 
+053F: set_car $GSpotPlayerCar tires_vulnerable 0 
+if and
+01F3:   car $GSpotPlayerCar airborne 
+0038:   $GSpotJump1Triggered == 0 // integer values 
+00F7:   player $PLAYER_CHAR sphere 0 near_point_in_car -537.7333 1040.4935 66.3177 radius 10.0 10.0 5.0 
+jf @PORNO4_JumpTrigger2
+Car.PutAt($GSpotChaseBike1, -534.8251, 1023.6783, 68.0749)
+Car.Angle($GSpotChaseBike1) = 21.28
+04BA: set_car $GSpotChaseBike1 speed_instantly 50.0
+036A: put_actor $GSpotChaser1 in_car $GSpotChaseBike1
+04E0: car $GSpotChaseBike1 abandon_path_radius 15 
+Car.SetDriverBehaviour($GSpotChaseBike1, KillThePlayer)
+0464: put_actor $GSpotChaser2 into_turret_on_car $GSpotChaseBike1 at_car_offset $GSpotChaseTurretOffsetx $GSpotChaseTurretOffsety $GSpotChaseTurretOffsetz position 0 angle 360.0 with_weapon 17 
+Car.PutAt($GSpotChaseBike2, -516.4813, 1024.5369, 68.079)
+Car.Angle($GSpotChaseBike2) = 28.173
+04BA: set_car $GSpotChaseBike2 speed_instantly 55.0
+036A: put_actor $GSpotChaser3 in_car $GSpotChaseBike2
+04E0: car $GSpotChaseBike2 abandon_path_radius 15 
+Car.SetDriverBehaviour($GSpotChaseBike2, KillThePlayer)
+0464: put_actor $GSpotChaser4 into_turret_on_car $GSpotChaseBike2 at_car_offset $GSpotChaseTurretOffsetx $GSpotChaseTurretOffsety $GSpotChaseTurretOffsetz position 0 angle 360.0 with_weapon 17  
+$GSpotJump1Triggered = 1
+$GSpotJump2Triggered = 0
+$GSpotJump3Triggered = 0
+$GSpotJump4Triggered = 0
+$GSpotJump5Triggered = 0
+$GSpotJump6Triggered = 0
+$GSpotJump7Triggered = 0
+$GSpotJump7StaggerTriggered = 0
+
+:PORNO4_JumpTrigger2
+if and
+01F3:   car $GSpotPlayerCar airborne 
+0038:   $GSpotJump2Triggered == 0 // integer values 
+00F7:   player $PLAYER_CHAR sphere 0 near_point_in_car -597.3781 1112.1663 48.8627 radius 10.0 10.0 5.0 
+jf @PORNO4_JumpTrigger3
+Car.PutAt($GSpotChaseBike1, -576.0984, 1110.1736, 52.2628)
+Car.Angle($GSpotChaseBike1) = 69.79
+04BA: set_car $GSpotChaseBike1 speed_instantly 45.0
+036A: put_actor $GSpotChaser1 in_car $GSpotChaseBike1
+Car.SetDriverBehaviour($GSpotChaseBike1, KillThePlayer)
+0464: put_actor $GSpotChaser2 into_turret_on_car $GSpotChaseBike1 at_car_offset $GSpotChaseTurretOffsetx $GSpotChaseTurretOffsety $GSpotChaseTurretOffsetz position 0 angle 360.0 with_weapon 17 
+Car.PutAt($GSpotChaseBike2, -580.8306, 1102.088, 52.2708)
+Car.Angle($GSpotChaseBike2) = 63.43
+04BA: set_car $GSpotChaseBike2 speed_instantly 40.0
+036A: put_actor $GSpotChaser3 in_car $GSpotChaseBike2
+Car.SetDriverBehaviour($GSpotChaseBike2, KillThePlayer)
+0464: put_actor $GSpotChaser4 into_turret_on_car $GSpotChaseBike2 at_car_offset $GSpotChaseTurretOffsetx $GSpotChaseTurretOffsety $GSpotChaseTurretOffsetz position 0 angle 360.0 with_weapon 17  
+$GSpotJump1Triggered = 0
+$GSpotJump2Triggered = 1
+$GSpotJump3Triggered = 0
+$GSpotJump4Triggered = 0
+$GSpotJump5Triggered = 0
+$GSpotJump6Triggered = 0
+$GSpotJump7Triggered = 0
+$GSpotJump7StaggerTriggered = 0
+
+:PORNO4_JumpTrigger3
+if and
+01F3:   car $GSpotPlayerCar airborne 
+0038:   $GSpotJump3Triggered == 0 // integer values 
+00F7:   player $PLAYER_CHAR sphere 0 near_point_in_car -672.2983 1130.6653 42.9831 radius 25.0 25.0 10.0 
+jf @PORNO4_JumpTrigger4
+Car.PutAt($GSpotChaseBike1, -649.1259, 1133.7091, 32.67)
+Car.Angle($GSpotChaseBike1) = 81.34
+04BA: set_car $GSpotChaseBike1 speed_instantly 55.0
+036A: put_actor $GSpotChaser1 in_car $GSpotChaseBike1
+Car.SetDriverBehaviour($GSpotChaseBike1, KillThePlayer)
+0464: put_actor $GSpotChaser2 into_turret_on_car $GSpotChaseBike1 at_car_offset $GSpotChaseTurretOffsetx $GSpotChaseTurretOffsety $GSpotChaseTurretOffsetz position 0 angle 360.0 with_weapon 17 
+Car.PutAt($GSpotChaseBike2, -649.9225, 1123.5735, 32.6716)
+Car.Angle($GSpotChaseBike2) = 83.06
+04BA: set_car $GSpotChaseBike2 speed_instantly 55.0
+036A: put_actor $GSpotChaser3 in_car $GSpotChaseBike2
+Car.SetDriverBehaviour($GSpotChaseBike2, KillThePlayer)
+0464: put_actor $GSpotChaser4 into_turret_on_car $GSpotChaseBike2 at_car_offset $GSpotChaseTurretOffsetx $GSpotChaseTurretOffsety $GSpotChaseTurretOffsetz position 0 angle 360.0 with_weapon 17  
+$GSpotJump1Triggered = 0
+$GSpotJump2Triggered = 0
+$GSpotJump3Triggered = 1
+$GSpotJump4Triggered = 0
+$GSpotJump5Triggered = 0
+$GSpotJump6Triggered = 0
+$GSpotJump7Triggered = 0
+$GSpotJump7StaggerTriggered = 0
+
+:PORNO4_JumpTrigger4
+if and
+01F3:   car $GSpotPlayerCar airborne 
+0038:   $GSpotJump4Triggered == 0 // integer values 
+00F5:   player $PLAYER_CHAR 0 -800.6 1141.7 25.6 radius 20.0 20.0 20.0 
+jf @PORNO4_CheckTurretLady1
+Car.PutAt($GSpotChaseBike1, -747.2037, 1153.3208, 32.7541)
+Car.Angle($GSpotChaseBike1) = 96.69
+04BA: set_car $GSpotChaseBike1 speed_instantly 50.0
+036A: put_actor $GSpotChaser1 in_car $GSpotChaseBike1
+Car.SetDriverBehaviour($GSpotChaseBike1, KillThePlayer)
+0464: put_actor $GSpotChaser2 into_turret_on_car $GSpotChaseBike1 at_car_offset $GSpotChaseTurretOffsetx $GSpotChaseTurretOffsety $GSpotChaseTurretOffsetz position 0 angle 360.0 with_weapon 17 
+Car.PutAt($GSpotChaseBike2, -746.0646, 1138.6096, 32.7446)
+Car.Angle($GSpotChaseBike2) = 111.21 
+04BA: set_car $GSpotChaseBike2 speed_instantly 50.0
+036A: put_actor $GSpotChaser3 in_car $GSpotChaseBike2
+Car.SetDriverBehaviour($GSpotChaseBike2, KillThePlayer)
+0464: put_actor $GSpotChaser4 into_turret_on_car $GSpotChaseBike2 at_car_offset $GSpotChaseTurretOffsetx $GSpotChaseTurretOffsety $GSpotChaseTurretOffsetz position 0 angle 360.0 with_weapon 17  
+$GSpotJump1Triggered = 0
+$GSpotJump2Triggered = 0
+$GSpotJump3Triggered = 0
+$GSpotJump4Triggered = 1
+$GSpotJump5Triggered = 0
+$GSpotJump6Triggered = 0
+$GSpotJump7Triggered = 0
+$GSpotJump7StaggerTriggered = 0
+
+:PORNO4_CheckTurretLady1
+if
+  Actor.Dead($GSpotChaser2)
+jf @PORNO4_CheckTurretLady2
+0465: remove_actor $GSpotChaser2 from_turret_mode 
+
+:PORNO4_CheckTurretLady2
+if
+  Actor.Dead($GSpotChaser4)
+jf @PORNO4_PlayerStoleBike1
+0465: remove_actor $GSpotChaser4 from_turret_mode 
+
+:PORNO4_PlayerStoleBike1
+if
+0442:   player $PLAYER_CHAR in_car $GSpotChaseBike1 
+jf @PORNO4_PlayerStoleBike2
+0465: remove_actor $GSpotChaser2 from_turret_mode 
+
+:PORNO4_PlayerStoleBike2
+if
+0442:   player $PLAYER_CHAR in_car $GSpotChaseBike2 
+jf @PORNO4_OriginalLoopStart
+0465: remove_actor $GSpotChaser4 from_turret_mode
