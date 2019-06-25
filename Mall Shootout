@@ -278,6 +278,7 @@ Model.Destroy(#LODMAIN_BODY)
 Model.Destroy(#BIG_POLY_TINGS)
 Model.Destroy(#YT_GANGPLNK_TMP)
 04E3: unknown_player $PLAYER_CHAR 0 60000 
+Model.Load(#CADDY)
 Model.Load(#PCJ600)
 Model.Load(#COLT45)
 Model.Load(#UZI)
@@ -289,6 +290,7 @@ Model.Load(#UZI)
 
 :COL2_1525
 if or
+   not Model.Available(#CADDY)
    not Model.Available(#PCJ600)
    not Model.Available(#COLT45)
    not Model.Available(#UZI)
@@ -613,7 +615,7 @@ $2272 = Marker.CreateAboveActor(0@)
 00BC: text_highpriority 'COL2_B2' 10000 ms 1  // ~g~The courier is fleeing with the guidance chips! Don't let him get away!
 5@ = Car.Create(#PCJ600, 41.7295, -897.1017, 9.3919)
 Car.Angle(5@) = 359.1412
-12@ = Car.Create(#PCJ600, 36.1736, -895.8868, 9.3919)
+12@ = Car.Create(#CADDY, 36.1736, -895.8868, 9.3919)
 Car.Angle(12@) = 266.8658
 
 :COL2_3794
@@ -926,6 +928,8 @@ jf @COL2_6162
 if 
 00ED:   actor 0@ 0 1.7873 -928.6034 radius 1.0 1.0 
 jf @COL2_6162 
+Camera.SetPosition(4.1, -892.3, 10.8,0.0,0.0,0.0)
+Camera.PointAt(4.1, -927.7889, 10.8, 2)
 0502: unknown_actor 0@ sprint_to 5.9929 -904.009 
 0411: set_actor 0@ use_pednode_seek 0 
 $2280 = 5 // integer values 
@@ -937,6 +941,8 @@ jf @COL2_6247
 if 
 00ED:   actor 0@ 0 5.9929 -904.009 radius 1.0 1.0 
 jf @COL2_6247 
+Camera.SetPosition(12.5182, -904.9424, 19.0,0.0,0.0,0.0)
+Camera.PointAt(39.023, -898.1171, 10.2, 2)
 0502: unknown_actor 0@ sprint_to 40.2117 -897.6254 
 0411: set_actor 0@ use_pednode_seek 0 
 $2280 = 6 // integer values 
@@ -965,26 +971,6 @@ Camera.Restore_WithJumpCut
 
 :COL2_6348
 if 
-  $2280 == 0 // integer values 
-jf @COL2_DumbCam2                      
-015F: set_camera_position 4.1 -892.3 10.8 0.0 rotation 170 0.0
-
-:COL2_DumbCam2
-if 
-  $2280 == 3 // integer values 
-jf @COL2_DumbCam3                      
-Camera.SetAtPos(4.1, -892.3, 10.8)
-Camera.PointAt(3.8769, -931.8775, 10.459, 2)
-
-:COL2_DumbCam3
-if 
-  $2280 == 5 // integer values 
-jf @COL2_CarriedOn                      
-Camera.SetAtPos(12, -905.022, 14.4319)
-Camera.PointAt(46.1138, -893.3915, 10.4319, 2)
-
-:COL2_CarriedOn
-if 
   $2278 > 13 // integer values 
 jf @COL2_6593 
 if 
@@ -997,7 +983,7 @@ if
    Actor.InCar(0@, 5@)
 jf @COL2_6504 
 Car.DriveTo(5@, 267.4104, 1287.846, 16.1968)
-Car.SetMaxSpeed(5@, 25.0)
+Car.SetMaxSpeed(5@, 15.0)
 00AE: set_vehicle 5@ traffic_behavior_to 2 
 if 
   $2561 == 0 // integer values 
@@ -1149,7 +1135,7 @@ jf @COL2_7346
 if 
    Actor.InCar(0@, 5@)
 jf @COL2_7339 
-Car.SetMaxSpeed(5@, 25.0)
+Car.SetMaxSpeed(5@, 15.0)
 00AE: set_vehicle 5@ traffic_behavior_to 2 
 Car.DriveTo(5@, 267.4104, 1287.846, 16.1968)
 $2280 = 8 // integer values 
@@ -1647,6 +1633,7 @@ Marker.Disable($433)
 Marker.Disable($2272)
 022A: remove_forbidden_for_peds_cube 0.778 -944.7307 14.4913 7.0235 -931.7332 23.0981 
 Model.Destroy(#PCJ600)
+Model.Destroy(#CADDY)
 Model.Destroy(#COLT45)
 Model.Destroy(#UZI)
 0296: unload_special_actor 1 
