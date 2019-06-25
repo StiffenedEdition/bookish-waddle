@@ -950,17 +950,39 @@ $2280 = 6 // integer values
 :COL2_6247
 if 
   $2280 == 6 // integer values 
-jf @COL2_6348 
+jf @COL2_DumbCam 
 if 
 00ED:   actor 0@ 0 40.2117 -897.6254 radius 1.0 1.0 
-jf @COL2_6348 
+jf @COL2_DumbCam 
 if 
    not Car.Wrecked(5@)
-jf @COL2_6348 
+jf @COL2_DumbCam 
+0055: put_player $PLAYER_CHAR at 4.3994 -937.9895 16.116 
 0319: set_actor 0@ running 1 
 0411: set_actor 0@ use_pednode_seek 1 
 01D5: actor 0@ go_to_and_drive_car 5@ 
 $2280 = 7 // integer values
+$MallShootoutDumbCamActive=1
+
+:COL2_DumbCam
+if 
+  $MallShootoutDumbCamActive == 1 // integer values 
+jf @COL2_ResetCam 
+if
+   Actor.InCar(0@, 5@)
+jf @COL2_ResetCam
+Camera.SetPosition(3.8137, -937.9289, 16.116,0.0,0.0,0.0)
+Camera.PointAt(4.3994, -937.9895, 16.116, 2)
+$MallShootoutDumbCamActive=0
+$MallShootoutCamReset = 1
+
+:COL2_ResetCam
+if
+  $MallShootoutCamReset == 1 // integer values 
+jf @COL2_6348
+if
+01AD:   car 5@ sphere 1 near_point 60.2608 -862.4913 radius 3.0 3.0  
+jf @COL2_6348
 Player.CanMove($PLAYER_CHAR) = True
 01BE: set_actor $PLAYER_ACTOR to_look_at_spot -2.3434 -939.0732 15.4658 
 03BF: set_player $PLAYER_CHAR ignored_by_everyone_to 0 
@@ -968,6 +990,7 @@ Player.CanMove($PLAYER_CHAR) = True
 03F4: set_all_vehicles_apply_damage_rules 1 
 Camera.SetBehindPlayer
 Camera.Restore_WithJumpCut
+$MallShootoutCamReset = 0
 
 :COL2_6348
 if 
