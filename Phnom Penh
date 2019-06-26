@@ -5,11 +5,11 @@
 gosub @BARON2_36 
 if 
 wasted_or_busted 
-else_jump @BARON2_27 
-gosub @BARON2_9193 
+jf @BARON2_27 
+gosub @BARON2_12343 
 
 :BARON2_27
-gosub @BARON2_9917 
+gosub @BARON2_13067 
 end_thread 
 
 :BARON2_36
@@ -19,16 +19,16 @@ thread 'BARON2'
 wait 0 
 054C: use_GXT_table 'BARON2' 
 058E: set_restart_mission_taxi_destination -288.2 -487.5 9.8 275.0 
-$PhnomHelisGone = 0
-$PhnomCommitted = 0
+$PHNOMHELISGONE = 0 // integer values 
+$PHNOMCOMMITTED = 0 // integer values 
 $PHNOMLANCEHEALTHSTORED = 1000 // integer values 
 $PHNOMLANCEHASFALLEN = 0 // integer values 
 $PHNOMACCURACY = 0.0 // floating-point values 
 01BD: $PHNOMTIME1 = current_time_in_ms 
-$PhnomThreatSearchBinary = 17
+$PHNOMTHREATSEARCHBINARY = 17 // integer values 
 $PHNOMCONVERSATIONBIT = 1 // integer values 
-$PhnomTabPressed = 0
-gosub @BARON2_10301 
+$PHNOMTABPRESSED = 0 // integer values 
+gosub @BARON2_13436 
 03DE: set_pedestrians_density_multiplier_to 0.0 
 select_interior 2 
 04F9: set_extracolors 8 fade 0 
@@ -42,26 +42,26 @@ Model.Load(#MAVERICK)
 038B: load_requested_models 
 Camera.SetAtPos(-378.3, -591.9, 25.8)
 
-:BARON2_394
+:BARON2_278
 if or
 823D:   not special_actor 1 loaded 
 823D:   not special_actor 2 loaded 
 823D:   not special_actor 3 loaded 
 823D:   not special_actor 4 loaded 
    not Model.Available(#MAVERICK)
-else_jump @BARON2_437 
+jf @BARON2_321 
 wait 0 
-jump @BARON2_394 
+jump @BARON2_278 
 
-:BARON2_437
+:BARON2_321
 if or
    not Model.Available(#CUTOBJ01)
    not Model.Available(#CUTOBJ02)
-else_jump @BARON2_469 
+jf @BARON2_353 
 wait 0 
-jump @BARON2_437 
+jump @BARON2_321 
 
-:BARON2_469
+:BARON2_353
 02E4: load_cutscene_data 'COK_2A' 
 0395: clear_area 1 at -378.6 -552.6 range 25.5 15.0 
 0395: clear_area 1 at -379.0 -564.6 range 19.8 15.0 
@@ -86,191 +86,191 @@ fade 1 1500
 02E7: start_cutscene 
 02E8: $CUT_SCENE_TIME = cutscenetime 
 
-:BARON2_729
+:BARON2_613
 if 
   4424 > $CUT_SCENE_TIME // integer values 
-else_jump @BARON2_764 
+jf @BARON2_648 
 wait 0 
 02E8: $CUT_SCENE_TIME = cutscenetime 
-jump @BARON2_729 
+jump @BARON2_613 
 
-:BARON2_764
+:BARON2_648
 00BC: text_highpriority 'COK2_A' 10000 ms 1  // What kind of incompetent fool are you?
 
-:BARON2_779
+:BARON2_663
 if 
   6836 > $CUT_SCENE_TIME // integer values 
-else_jump @BARON2_814 
+jf @BARON2_698 
 wait 0 
 02E8: $CUT_SCENE_TIME = cutscenetime 
-jump @BARON2_779 
+jump @BARON2_663 
 
-:BARON2_814
+:BARON2_698
 00BC: text_highpriority 'COK2_B' 10000 ms 1  // FOOL! FOOL! FOOL! FOOL!
 
-:BARON2_829
+:BARON2_713
 if 
   12564 > $CUT_SCENE_TIME // integer values 
-else_jump @BARON2_864 
+jf @BARON2_748 
 wait 0 
 02E8: $CUT_SCENE_TIME = cutscenetime 
-jump @BARON2_829 
+jump @BARON2_713 
 
-:BARON2_864
+:BARON2_748
 00BC: text_highpriority 'COK2_C' 10000 ms 1  // Tommy!
 
-:BARON2_879
+:BARON2_763
 if 
   13816 > $CUT_SCENE_TIME // integer values 
-else_jump @BARON2_914 
+jf @BARON2_798 
 wait 0 
 02E8: $CUT_SCENE_TIME = cutscenetime 
-jump @BARON2_879 
+jump @BARON2_763 
 
-:BARON2_914
+:BARON2_798
 00BC: text_highpriority 'COK2_D' 10000 ms 1  // What, Ricardo?
 
-:BARON2_929
+:BARON2_813
 if 
   15862 > $CUT_SCENE_TIME // integer values 
-else_jump @BARON2_964 
+jf @BARON2_848 
 wait 0 
 02E8: $CUT_SCENE_TIME = cutscenetime 
-jump @BARON2_929 
+jump @BARON2_813 
 
-:BARON2_964
+:BARON2_848
 00BC: text_highpriority 'COK2_E' 10000 ms 1  // These idiots - they always trying to screw you.
 
-:BARON2_979
+:BARON2_863
 if 
   17918 > $CUT_SCENE_TIME // integer values 
-else_jump @BARON2_1014 
+jf @BARON2_898 
 wait 0 
 02E8: $CUT_SCENE_TIME = cutscenetime 
-jump @BARON2_979 
+jump @BARON2_863 
 
-:BARON2_1014
+:BARON2_898
 00BC: text_highpriority 'COK2_F' 10000 ms 1  // That's the problem with this business.
 
-:BARON2_1029
+:BARON2_913
 if 
   20021 > $CUT_SCENE_TIME // integer values 
-else_jump @BARON2_1064 
+jf @BARON2_948 
 wait 0 
 02E8: $CUT_SCENE_TIME = cutscenetime 
-jump @BARON2_1029 
+jump @BARON2_913 
 
-:BARON2_1064
+:BARON2_948
 00BC: text_highpriority 'COK2_G' 10000 ms 1  // What do you think you're doing?
 
-:BARON2_1079
+:BARON2_963
 if 
   24585 > $CUT_SCENE_TIME // integer values 
-else_jump @BARON2_1114 
+jf @BARON2_998 
 wait 0 
 02E8: $CUT_SCENE_TIME = cutscenetime 
-jump @BARON2_1079 
+jump @BARON2_963 
 
-:BARON2_1114
+:BARON2_998
 00BC: text_highpriority 'COK2_H' 10000 ms 1  // These pricks have failed me miserably,
 
-:BARON2_1129
+:BARON2_1013
 if 
   27367 > $CUT_SCENE_TIME // integer values 
-else_jump @BARON2_1164 
+jf @BARON2_1048 
 wait 0 
 02E8: $CUT_SCENE_TIME = cutscenetime 
-jump @BARON2_1129 
+jump @BARON2_1013 
 
-:BARON2_1164
+:BARON2_1048
 00BC: text_highpriority 'COK2_I' 10000 ms 1  // Soon any mom and pop will think they can sell gallo in Vice City.
 
-:BARON2_1179
+:BARON2_1063
 if 
   32111 > $CUT_SCENE_TIME // integer values 
-else_jump @BARON2_1214 
+jf @BARON2_1098 
 wait 0 
 02E8: $CUT_SCENE_TIME = cutscenetime 
-jump @BARON2_1179 
+jump @BARON2_1063 
 
-:BARON2_1214
+:BARON2_1098
 00BC: text_highpriority 'COK2_J' 10000 ms 1  // What next, huh? The stinking Mafia?!
 
-:BARON2_1229
+:BARON2_1113
 if 
   35328 > $CUT_SCENE_TIME // integer values 
-else_jump @BARON2_1266 
+jf @BARON2_1150 
 wait 0 
 02E8: $CUT_SCENE_TIME = cutscenetime 
-jump @BARON2_1229 
+jump @BARON2_1113 
 
-:BARON2_1266
+:BARON2_1150
 00BC: text_highpriority 'COK2_K' 10000 ms 1  // That gang place is a fortress at ground level,
 
-:BARON2_1281
+:BARON2_1165
 if 
   39729 > $CUT_SCENE_TIME // integer values 
-else_jump @BARON2_1318 
+jf @BARON2_1202 
 wait 0 
 02E8: $CUT_SCENE_TIME = cutscenetime 
-jump @BARON2_1281 
+jump @BARON2_1165 
 
-:BARON2_1318
+:BARON2_1202
 00BC: text_highpriority 'COK2_L' 10000 ms 1  // so Quentin here - Quentin! QUENTIN!
 
-:BARON2_1333
+:BARON2_1217
 if 
   41796 > $CUT_SCENE_TIME // integer values 
-else_jump @BARON2_1370 
+jf @BARON2_1254 
 wait 0 
 02E8: $CUT_SCENE_TIME = cutscenetime 
-jump @BARON2_1333 
+jump @BARON2_1217 
 
-:BARON2_1370
+:BARON2_1254
 00BC: text_highpriority 'COK2_M' 10000 ms 1  // He'll fly you over the area!
 
-:BARON2_1385
+:BARON2_1269
 if 
   44036 > $CUT_SCENE_TIME // integer values 
-else_jump @BARON2_1422 
+jf @BARON2_1306 
 wait 0 
 02E8: $CUT_SCENE_TIME = cutscenetime 
-jump @BARON2_1385 
+jump @BARON2_1269 
 
-:BARON2_1422
+:BARON2_1306
 00BC: text_highpriority 'COK2_N' 10000 ms 1  // Eradicate them!
 
-:BARON2_1437
+:BARON2_1321
 if 
   45599 > $CUT_SCENE_TIME // integer values 
-else_jump @BARON2_1474 
+jf @BARON2_1358 
 wait 0 
 02E8: $CUT_SCENE_TIME = cutscenetime 
-jump @BARON2_1437 
+jump @BARON2_1321 
 
-:BARON2_1474
+:BARON2_1358
 00BC: text_highpriority 'COK2_O' 10000 ms 1  // What do you think you're doing?
 
-:BARON2_1489
+:BARON2_1373
 if 
   48599 > $CUT_SCENE_TIME // integer values 
-else_jump @BARON2_1526 
+jf @BARON2_1410 
 wait 0 
 02E8: $CUT_SCENE_TIME = cutscenetime 
-jump @BARON2_1489 
+jump @BARON2_1373 
 
-:BARON2_1526
+:BARON2_1410
 00BE: text_clear_all 
 
-:BARON2_1528
+:BARON2_1412
 if 
   49960 > $CUT_SCENE_TIME // integer values 
-else_jump @BARON2_1565 
+jf @BARON2_1449 
 wait 0 
 02E8: $CUT_SCENE_TIME = cutscenetime 
-jump @BARON2_1528 
+jump @BARON2_1412 
 
-:BARON2_1565
+:BARON2_1449
 0296: unload_special_actor 1 
 0296: unload_special_actor 2 
 0296: unload_special_actor 3 
@@ -280,14 +280,14 @@ Model.Destroy(#CUTOBJ02)
 fade 0 1500 
 00BA: text_styled 'COK_2' 15000 ms 2  // Phnom Penh '86
 
-:BARON2_1613
+:BARON2_1497
 if 
 fading 
-else_jump @BARON2_1637 
+jf @BARON2_1521 
 wait 0 
-jump @BARON2_1613 
+jump @BARON2_1497 
 
-:BARON2_1637
+:BARON2_1521
 02EA: end_cutscene 
 03DE: set_pedestrians_density_multiplier_to 0.0 
 023C: load_special_actor 1 'CSPLAY' 
@@ -295,16 +295,16 @@ jump @BARON2_1613
 02F3: load_object #CUTOBJ01 'CSCHOPB' 
 038B: load_requested_models 
 
-:BARON2_1685
+:BARON2_1569
 if or
 823D:   not special_actor 1 loaded 
 823D:   not special_actor 2 loaded 
    not Model.Available(#CUTOBJ01)
-else_jump @BARON2_1720 
+jf @BARON2_1604 
 wait 0 
-jump @BARON2_1685 
+jump @BARON2_1569 
 
-:BARON2_1720
+:BARON2_1604
 select_interior 0 
 Camera.SetAtPos(-380.9, -565.7, 40.0)
 02E4: load_cutscene_data 'COK_2B' 
@@ -322,104 +322,104 @@ fade 1 1500
 02E7: start_cutscene 
 02E8: $CUT_SCENE_TIME = cutscenetime 
 
-:BARON2_1858
+:BARON2_1742
 if 
   130 > $CUT_SCENE_TIME // integer values 
-else_jump @BARON2_1893 
+jf @BARON2_1777 
 wait 0 
 02E8: $CUT_SCENE_TIME = cutscenetime 
-jump @BARON2_1858 
+jump @BARON2_1742 
 
-:BARON2_1893
+:BARON2_1777
 00BC: text_highpriority 'COK2_P' 10000 ms 1  // What are you doing here?
 
-:BARON2_1908
+:BARON2_1792
 if 
   1110 > $CUT_SCENE_TIME // integer values 
-else_jump @BARON2_1943 
+jf @BARON2_1827 
 wait 0 
 02E8: $CUT_SCENE_TIME = cutscenetime 
-jump @BARON2_1908 
+jump @BARON2_1792 
 
-:BARON2_1943
+:BARON2_1827
 00BC: text_highpriority 'COK2_Q' 10000 ms 1  // Hey, I've been asking around and it's obvious
 
-:BARON2_1958
+:BARON2_1842
 if 
   3040 > $CUT_SCENE_TIME // integer values 
-else_jump @BARON2_1993 
+jf @BARON2_1877 
 wait 0 
 02E8: $CUT_SCENE_TIME = cutscenetime 
-jump @BARON2_1958 
+jump @BARON2_1842 
 
-:BARON2_1993
+:BARON2_1877
 00BC: text_highpriority 'COK2_R' 10000 ms 1  // that Diaz jumped the deal and iced my brother.
 
-:BARON2_2008
+:BARON2_1892
 if 
   5010 > $CUT_SCENE_TIME // integer values 
-else_jump @BARON2_2043 
+jf @BARON2_1927 
 wait 0 
 02E8: $CUT_SCENE_TIME = cutscenetime 
-jump @BARON2_2008 
+jump @BARON2_1892 
 
-:BARON2_2043
+:BARON2_1927
 00BC: text_highpriority 'COK2_S' 10000 ms 1  // And he'll kill you, too!
 
-:BARON2_2058
+:BARON2_1942
 if 
   6070 > $CUT_SCENE_TIME // integer values 
-else_jump @BARON2_2093 
+jf @BARON2_1977 
 wait 0 
 02E8: $CUT_SCENE_TIME = cutscenetime 
-jump @BARON2_2058 
+jump @BARON2_1942 
 
-:BARON2_2093
+:BARON2_1977
 00BC: text_highpriority 'COK2_T' 10000 ms 1  // I can take Diaz!
 
-:BARON2_2108
+:BARON2_1992
 if 
   7050 > $CUT_SCENE_TIME // integer values 
-else_jump @BARON2_2143 
+jf @BARON2_2027 
 wait 0 
 02E8: $CUT_SCENE_TIME = cutscenetime 
-jump @BARON2_2108 
+jump @BARON2_1992 
 
-:BARON2_2143
+:BARON2_2027
 00BC: text_highpriority 'COK2_U' 10000 ms 1  // No - listen to me! I'll handle Diaz -
 
-:BARON2_2158
+:BARON2_2042
 if 
   10040 > $CUT_SCENE_TIME // integer values 
-else_jump @BARON2_2193 
+jf @BARON2_2077 
 wait 0 
 02E8: $CUT_SCENE_TIME = cutscenetime 
-jump @BARON2_2158 
+jump @BARON2_2042 
 
-:BARON2_2193
+:BARON2_2077
 00BC: text_highpriority 'COK2_V' 10000 ms 1  // - he's beginning to trust me.
 
-:BARON2_2208
+:BARON2_2092
 if 
   11500 > $CUT_SCENE_TIME // integer values 
-else_jump @BARON2_2243 
+jf @BARON2_2127 
 wait 0 
 02E8: $CUT_SCENE_TIME = cutscenetime 
-jump @BARON2_2208 
+jump @BARON2_2092 
 
-:BARON2_2243
+:BARON2_2127
 00BE: text_clear_all 
 fade 0 1500 
 00BE: text_clear_all 
 
-:BARON2_2254
+:BARON2_2138
 if 
 fading 
-else_jump @BARON2_2278 
+jf @BARON2_2162 
 wait 0 
-jump @BARON2_2254 
+jump @BARON2_2138 
 
-:BARON2_2278
+:BARON2_2162
 03AD: set_rubbish 1 
 02EA: end_cutscene 
 0296: unload_special_actor 1 
@@ -438,7 +438,7 @@ Model.Load(#DINGHY)
 023C: load_special_actor 5 'SGC' 
 038B: load_requested_models 
 
-:BARON2_2353
+:BARON2_2242
 if or
    not Model.Available(#SGA)
    not Model.Available(#SGB)
@@ -446,22 +446,22 @@ if or
    not Model.Available(#TEC9)
    not Model.Available(#BOBCAT)
 823D:   not special_actor 5 loaded 
-else_jump @BARON2_2402 
+jf @BARON2_2291 
 wait 0 
-jump @BARON2_2353 
+jump @BARON2_2242 
 
-:BARON2_2402
+:BARON2_2291
 if or
    not Model.Available(#BARREL4)
    not Model.Available(#RUGER)
    not Model.Available(#SPARROW)
    not Model.Available(#GANGBUR)
    not Model.Available(#DINGHY)
-else_jump @BARON2_2443 
+jf @BARON2_2337 
 wait 0 
-jump @BARON2_2402 
+jump @BARON2_2291 
 
-:BARON2_2443
+:BARON2_2337
 $2821 = Car.Create(#MAVERICK, -391.0, -573.0, -100.0)
 0229: set_car $2821 color_to 3 1 
 Car.Health($2821) = 3000
@@ -474,16 +474,16 @@ Model.Load(#CADDY)
 0482:  2.0 
 if 
    not Car.Wrecked($2821)
-else_jump @BARON2_2735 
+jf @BARON2_2645 
 $2823 = Car.Health($2821)
 $LANCE_VANCE = Actor.Create(CivMale, #SPECIAL04, 0.0, 0.0, 8.0)
-03C4: set_status_text_to $PHNOMBALANCE 1 'COK2_24'  // Heli Health:
-gosub @BARON2_8478 
+03C4: set_status_text_to $PHNOMBALANCE 1 'COK2_24'  // Balance:
+gosub @BARON2_11504 
 0243: set_actor $LANCE_VANCE ped_stats_to 4 
 0446: set_actor $LANCE_VANCE dismemberment_possible 0 
 04F5: unknown_actor $LANCE_VANCE kiss_player $PLAYER_CHAR on 1 
 01B2: give_actor $LANCE_VANCE weapon 32 ammo 9999 // Load the weapon model before using this 
-01B1: give_char $PLAYER_CHAR weapon 32 ammo 1 // Load the weapon model before using this 
+01B1: give_player $PLAYER_CHAR weapon 32 ammo 1 // Load the weapon model before using this 
 0464: put_actor $LANCE_VANCE into_turret_on_car $2821 at_car_offset -1.4 0.7 -0.1 position 1 angle 90.0 with_weapon 32 
 Actor.Health($LANCE_VANCE) = 1000
 04E2: set_player $PLAYER_CHAR suspend_heavy_police_reinforcements 1 
@@ -492,20 +492,19 @@ Camera.SetPosition(-386.772, -581.461, 40.134, 0.0, 0.0, 0.0)
 Camera.PointAt(-387.379, -580.692, 40.335, 2)
 041E: set_radio_station 3 -1 
 
-:BARON2_2735
-jump @BARON2_Group5TheBait
+:BARON2_2645
 wait 500 
 fade 1 1000 
 wait 5000 
 01EB: set_traffic_density_multiplier_to 0.0 
 03DE: set_pedestrians_density_multiplier_to 0.0 
 0169: set_fade_color 1 1 1 
-043C: set_game_sounds_disable_on_fade 0                 
+043C: set_game_sounds_disable_on_fade 0 
 fade 0 500 
 wait 500 
 Camera.Restore_WithJumpCut
 fade 1 250 
-018A: $PhnomWereThere = create_checkpoint_at 63.9584 1092.3954 35.1849 
+018A: $PHNOMWERETHERE = create_checkpoint_at 63.9584 1092.395 35.1849 
 $2840 = Car.Create(#MARQUIS, -363.6, -226.7, 5.5)
 $2840 = Car.Create(#MARQUIS, -211.6, 394.1, 5.5)
 Car.Health($2840) = 500
@@ -526,294 +525,288 @@ Car.Angle($2852) = 58.0
 $2827 = Car.Create(#CADDY, -148.8, 490.1, 14.8)
 Car.Health($2827) = 500
 Car.Angle($2827) = 90.0
-03E5: text_box 'HELDROP' 
+03E5: text_box 'HELDROP'  // Press the ~h~~k~~VEHICLE_HORN~ ~w~Button to ~h~eject Lance~w~ from the Helicopter.
 
-:BARON2_3106
-wait 0
-if
-8118:   not actor $LANCE_VANCE dead 
-jf @BARON2_9183
-gosub @BARON2_8478 
-if
-0038:   $PhnomCommitted == 0 // integer values 
-jf @BARON2_HeliCheck
+:BARON2_3039
+wait 0 
 if 
-02AD:   player $PLAYER_CHAR in_area -2344.8564 32.2444 1529.4386 125.7279 radius 20.0 sphere 0 
-jf @BARON2_3519
-
-:BARON2_SuicidalGuy 
+   not Actor.Dead($LANCE_VANCE)
+jf @BARON2_12313 
+gosub @BARON2_11504 
+if 
+  $PHNOMCOMMITTED == 0 // integer values 
+jf @BARON2_3173 
+if 
+02AD:   player $PLAYER_CHAR in_area -2344.856 32.2444 1529.439 125.7279 radius 20.0 sphere 0 
+jf @BARON2_3433 
 if 
 023D:   special_actor 6 loaded 
-else_jump @BARON2_3519 
+jf @BARON2_3433 
 $2828 = Actor.Create(CivMale, #SPECIAL06, -261.6, 62.4, 26.2)
-$PhnomCommitted = 1
+$PHNOMCOMMITTED = 1 // integer values 
 
-:BARON2_HeliCheck
-if
-0038:   $PhnomHelisGone == 0 // integer values 
-jf @BARON2_OkayWereThere
-if
+:BARON2_3173
+if 
+  $PHNOMHELISGONE == 0 // integer values 
+jf @BARON2_3385 
+if 
 00F7:   player $PLAYER_CHAR sphere 0 near_point_in_car 10.3159 1092.619 34.1145 radius 1250.0 1250.0 100.0 
-jf @BARON2_OkayWereThere
-
-:BARON2_HeliGuys
+jf @BARON2_3385 
 0407: create_coordinate $PHNOMHELIX $PHNOMHELIY $PHNOMHELIZ from_car $2821 offset 0.0 0.0 0.0 
-$PhnomFixedHeli1 = Car.Create(#SEASPAR, -60.662, 898.0049, 43.6645)
-Car.Health($PhnomFixedHeli1) = 500
-0129: $PhnomHeliGuy1 = create_actor 4 #SGA in_car $PhnomFixedHeli1 driverseat 
-04A2: heli $PhnomFixedHeli1 fly_to $PHNOMHELIX $PHNOMHELIY $PHNOMHELIZ speed 20 
-$PhnomFixedHeli2 = Car.Create(#SPARROW, -10.662, 948.0049, 34.1145)
-0129: $PhnomHeliGuy2 = create_actor 4 #SGA in_car $PhnomFixedHeli2 driverseat 
-04A2: heli $PhnomFixedHeli2 fly_to $PHNOMHELIX $PHNOMHELIY $PHNOMHELIZ speed 19
-$PhnomHelisGone = 1 
+$PHNOMFIXEDHELI1 = Car.Create(#SEASPAR, -60.662, 898.0049, 43.6645)
+Car.Health($PHNOMFIXEDHELI1) = 500
+0129: $PHNOMHELIGUY1 = create_actor 4 #SGA in_car $PHNOMFIXEDHELI1 driverseat 
+04A2: heli $PHNOMFIXEDHELI1 fly_to $PHNOMHELIX $PHNOMHELIY $PHNOMHELIZ speed 20 
+$PHNOMFIXEDHELI2 = Car.Create(#SPARROW, -10.662, 948.0049, 34.1145)
+0129: $PHNOMHELIGUY2 = create_actor 4 #SGA in_car $PHNOMFIXEDHELI2 driverseat 
+04A2: heli $PHNOMFIXEDHELI2 fly_to $PHNOMHELIX $PHNOMHELIY $PHNOMHELIZ speed 19 
+$PHNOMHELISGONE = 1 // integer values 
 
-:BARON2_OkayWereThere
-if
-80F7:   not player $PLAYER_CHAR sphere 0 near_point_in_car 63.9584 1092.3954 35.1849 radius 300.0 300.0 100.0 
-jf @BARON2_4833
+:BARON2_3385
+if 
+80F7:   not player $PLAYER_CHAR sphere 0 near_point_in_car 63.9584 1092.395 35.1849 radius 300.0 300.0 100.0 
+jf @BARON2_4754 
 
-:BARON2_3519
+:BARON2_3433
 if 
   $38 == 0 // integer values 
-else_jump @BARON2_3690 
+jf @BARON2_3604 
 if 
   $33 == 0 // integer values 
-else_jump @BARON2_3593 
+jf @BARON2_3507 
 03CF: load_wav 'COK2_1' as 1 
 03CF: load_wav 'COK2_2' as 2 
 $33 = 1 // integer values 
-jump @BARON2_3600 
+jump @BARON2_3514 
 
-:BARON2_3593
-gosub @BARON2_10366 
+:BARON2_3507
+gosub @BARON2_13592 
 
-:BARON2_3600
+:BARON2_3514
 if 
   $34 == 1 // integer values 
-else_jump @BARON2_3690 
+jf @BARON2_3604 
 03D1: play_wav 1 
 00BC: text_highpriority 'COK2_1' 5000 ms 2  // One thing puzzling me, What's with 'Quentin!?
 if 
 03D2:   wav 1 ended 
-else_jump @BARON2_3690 
+jf @BARON2_3604 
 wait 500 
 03D1: play_wav 2 
 00BC: text_highpriority 'COK2_2' 5000 ms 2  // I dunno, I always kinda liked it...Quentin Vance...
 $38 = 1 // integer values 
-gosub @BARON2_10394 
+gosub @BARON2_13620 
 
-:BARON2_3690
+:BARON2_3604
 if and
   $38 == 1 // integer values 
   $39 == 0 // integer values 
   17@ > 3000 // integer values 
-else_jump @BARON2_3876 
+jf @BARON2_3790 
 if 
   $33 == 0 // integer values 
-else_jump @BARON2_3779 
+jf @BARON2_3693 
 03CF: load_wav 'COK2_3' as 1 
 03CF: load_wav 'COK2_4' as 2 
 $33 = 1 // integer values 
-jump @BARON2_3786 
+jump @BARON2_3700 
 
-:BARON2_3779
-gosub @BARON2_10366 
+:BARON2_3693
+gosub @BARON2_13592 
 
-:BARON2_3786
+:BARON2_3700
 if 
   $34 == 1 // integer values 
-else_jump @BARON2_3876 
+jf @BARON2_3790 
 03D1: play_wav 1 
 00BC: text_highpriority 'COK2_3' 5000 ms 2  // Vance? Your name's Lance Vance?
 if 
 03D2:   wav 1 ended 
-else_jump @BARON2_3876 
+jf @BARON2_3790 
 wait 500 
 03D1: play_wav 2 
 00BC: text_highpriority 'COK2_4' 5000 ms 2  // Hey! I got enough of that at school!
 $39 = 1 // integer values 
-gosub @BARON2_10394 
+gosub @BARON2_13620 
 
-:BARON2_3876
+:BARON2_3790
 if and
   $39 == 1 // integer values 
   $40 == 0 // integer values 
   17@ > 3000 // integer values 
-else_jump @BARON2_4076 
+jf @BARON2_3990 
 if 
   $33 == 0 // integer values 
-else_jump @BARON2_3965 
+jf @BARON2_3879 
 03CF: load_wav 'COK2_8D' as 1 
 03CF: load_wav 'COK2_7B' as 2 
 $33 = 1 // integer values 
-jump @BARON2_3972 
+jump @BARON2_3886 
 
-:BARON2_3965
-gosub @BARON2_10366 
+:BARON2_3879
+gosub @BARON2_13592 
 
-:BARON2_3972
+:BARON2_3886
 if 
   $34 == 1 // integer values 
-else_jump @BARON2_4076 
+jf @BARON2_3990 
 03D1: play_wav 1 
 00BC: text_highpriority 'COK2_13' 4000 ms 2  // Lance Vance. Poor bastard.
 if 
 03D2:   wav 1 ended 
-else_jump @BARON2_4076 
+jf @BARON2_3990 
 if 
   17@ > 6000 // integer values 
-else_jump @BARON2_4076 
+jf @BARON2_3990 
 03D1: play_wav 2 
 00BC: text_highpriority 'COK2_8' 4000 ms 2  // Where the hell are we headed anyway?
 $40 = 1 // integer values 
-gosub @BARON2_10394 
+gosub @BARON2_13620 
 
-:BARON2_4076
+:BARON2_3990
 if and
   $40 == 1 // integer values 
   $41 == 0 // integer values 
   17@ > 2000 // integer values 
-else_jump @BARON2_4276 
+jf @BARON2_4190 
 if 
   $33 == 0 // integer values 
-else_jump @BARON2_4165 
+jf @BARON2_4079 
 03CF: load_wav 'COK2_7C' as 1 
 03CF: load_wav 'COK2_5' as 2 
 $33 = 1 // integer values 
-jump @BARON2_4172 
+jump @BARON2_4086 
 
-:BARON2_4165
-gosub @BARON2_10366 
+:BARON2_4079
+gosub @BARON2_13592 
 
-:BARON2_4172
+:BARON2_4086
 if 
   $34 == 1 // integer values 
-else_jump @BARON2_4276 
+jf @BARON2_4190 
 03D1: play_wav 1 
 00BC: text_highpriority 'COK2_9' 5000 ms 2  // Prawn Island.
 if 
 03D2:   wav 1 ended 
-else_jump @BARON2_4276 
+jf @BARON2_4190 
 if 
   17@ > 4000 // integer values 
-else_jump @BARON2_4276 
+jf @BARON2_4190 
 03D1: play_wav 2 
 00BC: text_highpriority 'COK2_5' 5000 ms 2  // You ever fired one of those from a whirly?
 $41 = 1 // integer values 
-gosub @BARON2_10394 
+gosub @BARON2_13620 
 
-:BARON2_4276
+:BARON2_4190
 if and
   $41 == 1 // integer values 
   $42 == 0 // integer values 
   17@ > 3000 // integer values 
-else_jump @BARON2_4475 
+jf @BARON2_4389 
 if 
   $33 == 0 // integer values 
-else_jump @BARON2_4365 
+jf @BARON2_4279 
 03CF: load_wav 'COK2_6' as 1 
 03CF: load_wav 'COK2_9' as 2 
 $33 = 1 // integer values 
-jump @BARON2_4372 
+jump @BARON2_4286 
 
-:BARON2_4365
-gosub @BARON2_10366 
+:BARON2_4279
+gosub @BARON2_13592 
 
-:BARON2_4372
+:BARON2_4286
 if 
   $34 == 1 // integer values 
-else_jump @BARON2_4475 
+jf @BARON2_4389 
 03D1: play_wav 1 
 00BC: text_highpriority 'COK2_6' 3000 ms 2  // No. I'll get a bit of practice on the way though.
 if 
 03D2:   wav 1 ended 
-else_jump @BARON2_4475 
+jf @BARON2_4389 
 if 
 04A3:   $PHNOMCP2TRIGGERED == 1 // == constant 
-else_jump @BARON2_4475 
+jf @BARON2_4389 
 03D1: play_wav 2 
 00BC: text_highpriority 'COK2_14' 5000 ms 2  // Ok, we're almost there.
 $42 = 1 // integer values 
-gosub @BARON2_10394 
+gosub @BARON2_13620 
 
-:BARON2_4475
+:BARON2_4389
 if and
   $42 == 1 // integer values 
   $43 == 0 // integer values 
   17@ > 2000 // integer values 
-else_jump @BARON2_4661 
+jf @BARON2_4575 
 if 
   $33 == 0 // integer values 
-else_jump @BARON2_4564 
+jf @BARON2_4478 
 03CF: load_wav 'COK210A' as 1 
 03CF: load_wav 'COK210B' as 2 
 $33 = 1 // integer values 
-jump @BARON2_4571 
+jump @BARON2_4485 
 
-:BARON2_4564
-gosub @BARON2_10366 
+:BARON2_4478
+gosub @BARON2_13592 
 
-:BARON2_4571
+:BARON2_4485
 if 
   $34 == 1 // integer values 
-else_jump @BARON2_4661 
+jf @BARON2_4575 
 03D1: play_wav 1 
 00BC: text_highpriority 'COK2_15' 5000 ms 2  // We'll make a couple of passes.
 if 
 03D2:   wav 1 ended 
-else_jump @BARON2_4661 
+jf @BARON2_4575 
 wait 500 
 03D1: play_wav 2 
 00BC: text_highpriority 'COK2_16' 5000 ms 2  // So take out as many guns as you can.
 $43 = 1 // integer values 
-gosub @BARON2_10394 
+gosub @BARON2_13620 
 
-:BARON2_4661
+:BARON2_4575
 if and
   $43 == 1 // integer values 
   14@ == 0 // integer values 
   17@ > 2500 // integer values 
-else_jump @BARON2_4826 
+jf @BARON2_4740 
 if 
   $33 == 0 // integer values 
-else_jump @BARON2_4738 
+jf @BARON2_4652 
 03CF: load_wav 'COK210C' as 1 
 $33 = 1 // integer values 
-jump @BARON2_4760 
+jump @BARON2_4674 
 
-:BARON2_4738
+:BARON2_4652
 if 
 03D0:   wav 1 loaded 
-else_jump @BARON2_4760 
+jf @BARON2_4674 
 $34 = 1 // integer values 
 
-:BARON2_4760
+:BARON2_4674
 if 
   $34 == 1 // integer values 
-else_jump @BARON2_4826 
+jf @BARON2_4740 
 03D1: play_wav 1 
 00BC: text_highpriority 'COK2_17' 4000 ms 2  // Then I'll set you down and you're on your way.
 if 
 03D2:   wav 1 ended 
-else_jump @BARON2_4826 
+jf @BARON2_4740 
 14@ = 1 // integer values 
-gosub @BARON2_10394 
+gosub @BARON2_13620 
 
-:BARON2_4826
-jump @BARON2_3106 
+:BARON2_4740
+jump @BARON2_3039 
+gosub @BARON2_13436 
 
-:BARON2_5601
-gosub @BARON2_10301
-
-:BARON2_4833
-Marker.Disable($PhnomWereThere)
+:BARON2_4754
+Marker.Disable($PHNOMWERETHERE)
 Car.Destroy($2840)
 Car.Destroy($2841)
 Car.Destroy($2842)
 Car.Destroy($2852)
 Car.Destroy($2827)
-Car.Destroy($PhnomFixedHeli1)
-Car.Destroy($PhnomFixedHeli2)
+Car.Destroy($PHNOMFIXEDHELI1)
+Car.Destroy($PHNOMFIXEDHELI2)
 Model.Destroy(#SPARROW)
 Model.Destroy(#MARQUIS)
 Model.Destroy(#RIO)
@@ -826,23 +819,23 @@ Actor.DestroyInstantly($2830)
 $2828 = Actor.Create(Gang3, #SGA, 70.9, 1106.4, 32.6)
 $PHNOMMARKER2828 = Marker.CreateAboveActor($2828)
 0084: $PHNOMGROUP1 = $2828 // integer values and handles 
-gosub @BARON2_5360 
+gosub @BARON2_5366 
 $2829 = Actor.Create(Gang3, #SGB, 75.0, 1106.9, 32.6)
 $PHNOMMARKER2829 = Marker.CreateAboveActor($2829)
 0084: $PHNOMGROUP1 = $2829 // integer values and handles 
-gosub @BARON2_5360 
+gosub @BARON2_5366 
 $2830 = Actor.Create(Gang3, #SGA, 71.5, 1099.0, 32.6)
 $PHNOMMARKER2830 = Marker.CreateAboveActor($2830)
 0084: $PHNOMGROUP1 = $2830 // integer values and handles 
-gosub @BARON2_5360 
+gosub @BARON2_5366 
 $2831 = Actor.Create(Gang3, #SGB, 78.4, 1101.6, 32.6)
 $PHNOMMARKER2831 = Marker.CreateAboveActor($2831)
 0084: $PHNOMGROUP1 = $2831 // integer values and handles 
-gosub @BARON2_5360 
+gosub @BARON2_5366 
 $2832 = Actor.Create(Gang3, #SGA, 76.0, 1095.6, 32.6)
 $PHNOMMARKER2832 = Marker.CreateAboveActor($2832)
 0084: $PHNOMGROUP1 = $2832 // integer values and handles 
-gosub @BARON2_5360 
+gosub @BARON2_5366 
 $2858 = Object.Create(#BARREL4, 65.6, 1104.6, 31.5)
 $2859 = Object.Create(#BARREL4, 65.7, 1107.5, 31.5)
 $2860 = Object.Create(#BARREL4, 86.7, 1114.3, 31.5)
@@ -852,252 +845,252 @@ $2860 = Object.Create(#BARREL4, 86.7, 1114.3, 31.5)
 $PHNOMCONVERSATIONBIT = 0 // integer values 
 $PHNOMACCURACY = 0.65 // floating-point values 
 
-:BARON2_5185
+:BARON2_5175
 wait 0 
-if
-8118:   not actor $LANCE_VANCE dead 
-jf @BARON2_9183
 if 
    not Actor.Dead($LANCE_VANCE)
-else_jump @BARON2_9183 
-gosub @BARON2_8478 
+jf @BARON2_12313 
+if 
+   not Actor.Dead($LANCE_VANCE)
+jf @BARON2_12313 
+gosub @BARON2_11504 
 if 
    Actor.Dead($2828)
-else_jump @BARON2_5233 
+jf @BARON2_5239 
 Marker.Disable($PHNOMMARKER2828)
 
-:BARON2_5233
+:BARON2_5239
 if 
    Actor.Dead($2829)
-else_jump @BARON2_5254 
+jf @BARON2_5260 
 Marker.Disable($PHNOMMARKER2829)
 
-:BARON2_5254
+:BARON2_5260
 if 
    Actor.Dead($2830)
-else_jump @BARON2_5275 
+jf @BARON2_5281 
 Marker.Disable($PHNOMMARKER2830)
 
-:BARON2_5275
+:BARON2_5281
 if 
    Actor.Dead($2831)
-else_jump @BARON2_5296 
+jf @BARON2_5302 
 Marker.Disable($PHNOMMARKER2831)
 
-:BARON2_5296
+:BARON2_5302
 if 
    Actor.Dead($2832)
-else_jump @BARON2_5317 
+jf @BARON2_5323 
 Marker.Disable($PHNOMMARKER2832)
 
-:BARON2_5317
+:BARON2_5323
 if and
    Actor.Dead($2828)
    Actor.Dead($2829)
    Actor.Dead($2830)
    Actor.Dead($2831)
    Actor.Dead($2832)
-else_jump @BARON2_5185 
-jump @BARON2_5416 
+jf @BARON2_5175 
+jump @BARON2_5415 
 
-:BARON2_5360
+:BARON2_5366
 0243: set_actor $PHNOMGROUP1 ped_stats_to 16 
 0350: set_actor $PHNOMGROUP1 maintain_position_when_attacked 1 
-011A: set_actor $PHNOMGROUP1 search_threat $PhnomThreatSearchBinary 
+011A: set_actor $PHNOMGROUP1 search_threat $PHNOMTHREATSEARCHBINARY 
 022D: set_actor $PHNOMGROUP1 to_look_at_player $PLAYER_CHAR 
 01B2: give_actor $PHNOMGROUP1 weapon 22 ammo 30000 // Load the weapon model before using this 
 Actor.Health($PHNOMGROUP1) = 50
 return 
 
-:BARON2_5416
+:BARON2_5415
 Actor.DestroyInstantly($2828)
 Actor.DestroyInstantly($2829)
 Actor.DestroyInstantly($2830)
 Actor.DestroyInstantly($2831)
-Actor.DestroyInstantly($2832)                 
+Actor.DestroyInstantly($2832)
 if 
    not Car.Wrecked($2821)
-else_jump @BARON2_9193 
+jf @BARON2_12343 
 $2828 = Actor.Create(Gang3, #SGA, 59.0, 1117.7, 17.7)
 $PHNOMMARKER2828 = Marker.CreateAboveActor($2828)
 0243: set_actor $2828 ped_stats_to 16 
-011A: set_actor $2828 search_threat $PhnomThreatSearchBinary 
+011A: set_actor $2828 search_threat $PHNOMTHREATSEARCHBINARY 
 022D: set_actor $2828 to_look_at_player $PLAYER_CHAR 
 01B2: give_actor $2828 weapon 22 ammo 30000 // Load the weapon model before using this 
 Actor.Health($2828) = 50
 $2829 = Actor.Create(Gang3, #SGB, 64.7, 1089.8, 17.7)
 $PHNOMMARKER2829 = Marker.CreateAboveActor($2829)
 0243: set_actor $2829 ped_stats_to 16 
-011A: set_actor $2829 search_threat $PhnomThreatSearchBinary 
+011A: set_actor $2829 search_threat $PHNOMTHREATSEARCHBINARY 
 022D: set_actor $2829 to_look_at_player $PLAYER_CHAR 
 01B2: give_actor $2829 weapon 22 ammo 30000 // Load the weapon model before using this 
 Actor.Health($2829) = 50
 $2830 = Actor.Create(Gang3, #SGA, 61.0, 1091.1, 24.4)
 $PHNOMMARKER2830 = Marker.CreateAboveActor($2830)
 0243: set_actor $2830 ped_stats_to 16 
-011A: set_actor $2830 search_threat $PhnomThreatSearchBinary 
+011A: set_actor $2830 search_threat $PHNOMTHREATSEARCHBINARY 
 022D: set_actor $2830 to_look_at_player $PLAYER_CHAR 
 01B2: give_actor $2830 weapon 22 ammo 30000 // Load the weapon model before using this 
 Actor.Health($2830) = 50
 $2831 = Actor.Create(Gang3, #SGB, 58.2, 1118.7, 24.4)
 $PHNOMMARKER2831 = Marker.CreateAboveActor($2831)
 0243: set_actor $2831 ped_stats_to 16 
-011A: set_actor $2831 search_threat $PhnomThreatSearchBinary 
+011A: set_actor $2831 search_threat $PHNOMTHREATSEARCHBINARY 
 022D: set_actor $2831 to_look_at_player $PLAYER_CHAR 
 01B2: give_actor $2831 weapon 22 ammo 30000 // Load the weapon model before using this 
 Actor.Health($2831) = 50
 $2832 = Actor.Create(Gang3, #SGA, 64.9, 1119.0, 24.4)
 $PHNOMMARKER2832 = Marker.CreateAboveActor($2832)
 0243: set_actor $2832 ped_stats_to 16 
-011A: set_actor $2832 search_threat $PhnomThreatSearchBinary 
+011A: set_actor $2832 search_threat $PHNOMTHREATSEARCHBINARY 
 022D: set_actor $2832 to_look_at_player $PLAYER_CHAR 
 01B2: give_actor $2832 weapon 22 ammo 30000 // Load the weapon model before using this 
 Actor.Health($2832) = 50
 $PHNOMACCURACY = 0.7 // floating-point values 
 
-:BARON2_5787
+:BARON2_5826
 wait 0 
-if
-8118:   not actor $LANCE_VANCE dead 
-jf @BARON2_9183
-gosub @BARON2_8478 
+if 
+   not Actor.Dead($LANCE_VANCE)
+jf @BARON2_12313 
+gosub @BARON2_11504 
 if 
    not Actor.Dead($2828)
-else_jump @BARON2_6026 
+jf @BARON2_6057 
 if 
 00FE:   actor $2828 0 59.0 1117.7 17.7 radius 1.0 1.0 5.0 
-else_jump @BARON2_5893 
+jf @BARON2_5932 
 0239: actor $2828 run_to 89.7 1118.1 
 
-:BARON2_5893
+:BARON2_5932
 if 
 00FE:   actor $2828 0 89.7 1118.1 17.7 radius 1.0 1.0 5.0 
-else_jump @BARON2_5956 
+jf @BARON2_5995 
 0239: actor $2828 run_to 94.7 1107.1 
 
-:BARON2_5956
+:BARON2_5995
 if 
 00FE:   actor $2828 0 94.7 1107.1 17.7 radius 1.0 1.0 5.0 
-else_jump @BARON2_6026 
+jf @BARON2_6057 
 0243: set_actor $2828 ped_stats_to 16 
 0350: set_actor $2828 maintain_position_when_attacked 1 
 
-:BARON2_6026
+:BARON2_6057
 if 
    not Actor.Dead($2829)
-else_jump @BARON2_6238 
+jf @BARON2_6261 
 if 
 00FE:   actor $2829 0 64.7 1089.8 17.7 radius 1.0 1.0 5.0 
-else_jump @BARON2_6105 
+jf @BARON2_6136 
 0239: actor $2829 run_to 90.1 1090.1 
 
-:BARON2_6105
+:BARON2_6136
 if 
 00FE:   actor $2829 0 90.1 1090.1 17.7 radius 1.0 1.0 5.0 
-else_jump @BARON2_6168 
+jf @BARON2_6199 
 0239: actor $2829 run_to 91.1 1097.8 
 
-:BARON2_6168
+:BARON2_6199
 if 
 00FE:   actor $2829 0 91.1 1097.8 17.7 radius 1.0 1.0 5.0 
-else_jump @BARON2_6238 
+jf @BARON2_6261 
 0243: set_actor $2829 ped_stats_to 16 
 0350: set_actor $2829 maintain_position_when_attacked 1 
 
-:BARON2_6238
+:BARON2_6261
 if 
    not Actor.Dead($2830)
-else_jump @BARON2_6450 
+jf @BARON2_6465 
 if 
 00FE:   actor $2830 0 61.0 1091.1 24.4 radius 1.0 1.0 5.0 
-else_jump @BARON2_6317 
+jf @BARON2_6340 
 0239: actor $2830 run_to 89.4 1091.0 
 
-:BARON2_6317
+:BARON2_6340
 if 
 00FE:   actor $2830 0 89.4 1091.0 24.4 radius 1.0 1.0 5.0 
-else_jump @BARON2_6380 
+jf @BARON2_6403 
 0239: actor $2830 run_to 94.5 1100.5 
 
-:BARON2_6380
+:BARON2_6403
 if 
 00FE:   actor $2830 0 94.5 1100.5 24.4 radius 1.0 1.0 5.0 
-else_jump @BARON2_6450 
+jf @BARON2_6465 
 0243: set_actor $2830 ped_stats_to 16 
 0350: set_actor $2830 maintain_position_when_attacked 1 
 
-:BARON2_6450
+:BARON2_6465
 if 
    not Actor.Dead($2831)
-else_jump @BARON2_6662 
+jf @BARON2_6669 
 if 
 00FE:   actor $2831 0 58.2 1118.7 24.4 radius 1.0 1.0 5.0 
-else_jump @BARON2_6529 
+jf @BARON2_6544 
 0239: actor $2831 run_to 90.0 1118.8 
 
-:BARON2_6529
+:BARON2_6544
 if 
 00FE:   actor $2831 0 90.0 1118.8 24.4 radius 1.0 1.0 5.0 
-else_jump @BARON2_6592 
+jf @BARON2_6607 
 0239: actor $2831 run_to 94.5 1099.9 
 
-:BARON2_6592
+:BARON2_6607
 if 
 00FE:   actor $2831 0 94.5 1099.9 24.4 radius 1.0 1.0 5.0 
-else_jump @BARON2_6662 
+jf @BARON2_6669 
 0243: set_actor $2831 ped_stats_to 16 
 0350: set_actor $2831 maintain_position_when_attacked 1 
 
-:BARON2_6662
+:BARON2_6669
 if 
    not Actor.Dead($2832)
-else_jump @BARON2_6874 
+jf @BARON2_6873 
 if 
 00FE:   actor $2832 0 64.9 1119.0 24.4 radius 1.0 1.0 5.0 
-else_jump @BARON2_6741 
+jf @BARON2_6748 
 0239: actor $2832 run_to 89.1 1117.9 
 
-:BARON2_6741
+:BARON2_6748
 if 
 00FE:   actor $2832 0 89.1 1117.9 24.4 radius 1.0 1.0 5.0 
-else_jump @BARON2_6804 
+jf @BARON2_6811 
 0239: actor $2832 run_to 93.0 1110.0 
 
-:BARON2_6804
+:BARON2_6811
 if 
 00FE:   actor $2832 0 93.0 1110.0 24.4 radius 1.0 1.0 5.0 
-else_jump @BARON2_6874 
+jf @BARON2_6873 
 0243: set_actor $2832 ped_stats_to 16 
 0350: set_actor $2832 maintain_position_when_attacked 1 
 
-:BARON2_6874
+:BARON2_6873
 if 
    Actor.Dead($2828)
-else_jump @BARON2_6895 
+jf @BARON2_6894 
 Marker.Disable($PHNOMMARKER2828)
 
-:BARON2_6895
+:BARON2_6894
 if 
    Actor.Dead($2829)
-else_jump @BARON2_6916 
+jf @BARON2_6915 
 Marker.Disable($PHNOMMARKER2829)
 
-:BARON2_6916
+:BARON2_6915
 if 
    Actor.Dead($2830)
-else_jump @BARON2_6937 
+jf @BARON2_6936 
 Marker.Disable($PHNOMMARKER2830)
 
-:BARON2_6937
+:BARON2_6936
 if 
    Actor.Dead($2831)
-else_jump @BARON2_6958 
+jf @BARON2_6957 
 Marker.Disable($PHNOMMARKER2831)
 
-:BARON2_6958
+:BARON2_6957
 if 
    Actor.Dead($2832)
-else_jump @BARON2_5787 
+jf @BARON2_5826 
 Marker.Disable($PHNOMMARKER2832)
 if and
    Actor.Dead($2828)
@@ -1105,7 +1098,7 @@ if and
    Actor.Dead($2830)
    Actor.Dead($2831)
    Actor.Dead($2832)
-else_jump @BARON2_5787 
+jf @BARON2_5826 
 $2840 = Car.Create(#BOBCAT, 19.8, 1213.4, -100.0)
 Car.Angle($2840) = 233.7
 $2841 = Car.Create(#BOBCAT, -12.1, 1207.3, -100.0)
@@ -1123,13 +1116,13 @@ Actor.DestroyInstantly($2831)
 Actor.DestroyInstantly($2832)
 if 
    not Car.Wrecked($2821)
-else_jump @BARON2_9193 
+jf @BARON2_12343 
 $2828 = Actor.Create(Gang3, #SGA, 17.8, 1212.0, 20.9)
 $PHNOMMARKER2828 = Marker.CreateAboveActor($2828)
 0243: set_actor $2828 ped_stats_to 16 
 0350: set_actor $2828 maintain_position_when_attacked 1 
-011A: set_actor $2828 search_threat $PhnomThreatSearchBinary 
-011A: set_actor $2828 search_threat $PhnomThreatSearchPlayer 
+011A: set_actor $2828 search_threat $PHNOMTHREATSEARCHBINARY 
+011A: set_actor $2828 search_threat $PHNOMTHREATSEARCHPLAYER 
 022D: set_actor $2828 to_look_at_player $PLAYER_CHAR 
 01B2: give_actor $2828 weapon 22 ammo 30000 // Load the weapon model before using this 
 Actor.Health($2828) = 50
@@ -1141,8 +1134,8 @@ $PHNOMMARKER2829 = Marker.CreateAboveActor($2829)
 01B2: give_actor $2829 weapon 22 ammo 30000 // Load the weapon model before using this 
 Actor.Health($2829) = 50
 022D: set_actor $2829 to_look_at_player $PLAYER_CHAR 
-011A: set_actor $2829 search_threat $PhnomThreatSearchBinary 
-011A: set_actor $2829 search_threat $PhnomThreatSearchPlayer 
+011A: set_actor $2829 search_threat $PHNOMTHREATSEARCHBINARY 
+011A: set_actor $2829 search_threat $PHNOMTHREATSEARCHPLAYER 
 Car.DriveTo($2824, 38.8, 1198.0, 20.8)
 04E0: car $2824 abandon_path_radius 100 
 04BA: set_car $2824 speed_instantly 10.0 
@@ -1151,8 +1144,8 @@ $2830 = Actor.Create(Gang3, #SGA, 19.3, 1196.2, 19.0)
 $PHNOMMARKER2830 = Marker.CreateAboveActor($2830)
 0243: set_actor $2830 ped_stats_to 16 
 0350: set_actor $2830 maintain_position_when_attacked 1 
-011A: set_actor $2830 search_threat $PhnomThreatSearchBinary 
-011A: set_actor $2830 search_threat $PhnomThreatSearchPlayer 
+011A: set_actor $2830 search_threat $PHNOMTHREATSEARCHBINARY 
+011A: set_actor $2830 search_threat $PHNOMTHREATSEARCHPLAYER 
 022D: set_actor $2830 to_look_at_player $PLAYER_CHAR 
 01B2: give_actor $2830 weapon 22 ammo 30000 // Load the weapon model before using this 
 Actor.Health($2830) = 50
@@ -1160,8 +1153,8 @@ $2831 = Actor.Create(Gang3, #SGB, -11.8, 1208.5, 22.5)
 $PHNOMMARKER2831 = Marker.CreateAboveActor($2831)
 0243: set_actor $2831 ped_stats_to 16 
 0350: set_actor $2831 maintain_position_when_attacked 1 
-011A: set_actor $2831 search_threat $PhnomThreatSearchBinary 
-011A: set_actor $2831 search_threat $PhnomThreatSearchPlayer 
+011A: set_actor $2831 search_threat $PHNOMTHREATSEARCHBINARY 
+011A: set_actor $2831 search_threat $PHNOMTHREATSEARCHPLAYER 
 022D: set_actor $2831 to_look_at_player $PLAYER_CHAR 
 01B2: give_actor $2831 weapon 22 ammo 30000 // Load the weapon model before using this 
 Actor.Health($2831) = 50
@@ -1169,8 +1162,8 @@ $2832 = Actor.Create(Gang3, #SGA, -22.9, 1198.6, 22.1)
 $PHNOMMARKER2832 = Marker.CreateAboveActor($2832)
 0243: set_actor $2832 ped_stats_to 16 
 0350: set_actor $2832 maintain_position_when_attacked 1 
-011A: set_actor $2832 search_threat $PhnomThreatSearchBinary 
-011A: set_actor $2832 search_threat $PhnomThreatSearchPlayer 
+011A: set_actor $2832 search_threat $PHNOMTHREATSEARCHBINARY 
+011A: set_actor $2832 search_threat $PHNOMTHREATSEARCHPLAYER 
 022D: set_actor $2832 to_look_at_player $PLAYER_CHAR 
 01B2: give_actor $2832 weapon 22 ammo 30000 // Load the weapon model before using this 
 Actor.Health($2832) = 50
@@ -1178,8 +1171,8 @@ $2833 = Actor.Create(Gang3, #SGB, -34.7, 1202.3, 20.4)
 $PHNOMMARKER2833 = Marker.CreateAboveActor($2833)
 0243: set_actor $2833 ped_stats_to 16 
 0350: set_actor $2833 maintain_position_when_attacked 1 
-011A: set_actor $2833 search_threat $PhnomThreatSearchBinary 
-011A: set_actor $2833 search_threat $PhnomThreatSearchPlayer 
+011A: set_actor $2833 search_threat $PHNOMTHREATSEARCHBINARY 
+011A: set_actor $2833 search_threat $PHNOMTHREATSEARCHPLAYER 
 022D: set_actor $2833 to_look_at_player $PLAYER_CHAR 
 01B2: give_actor $2833 weapon 22 ammo 30000 // Load the weapon model before using this 
 Actor.Health($2833) = 50
@@ -1187,8 +1180,8 @@ $2834 = Actor.Create(Gang3, #SGB, -40.5, 1195.1, 20.4)
 $PHNOMMARKER2834 = Marker.CreateAboveActor($2834)
 0243: set_actor $2834 ped_stats_to 16 
 0350: set_actor $2834 maintain_position_when_attacked 1 
-011A: set_actor $2834 search_threat $PhnomThreatSearchBinary 
-011A: set_actor $2834 search_threat $PhnomThreatSearchPlayer 
+011A: set_actor $2834 search_threat $PHNOMTHREATSEARCHBINARY 
+011A: set_actor $2834 search_threat $PHNOMTHREATSEARCHPLAYER 
 022D: set_actor $2834 to_look_at_player $PLAYER_CHAR 
 01B2: give_actor $2834 weapon 22 ammo 30000 // Load the weapon model before using this 
 Actor.Health($2834) = 50
@@ -1196,8 +1189,8 @@ $2835 = Actor.Create(Gang3, #SGA, -22.3, 1218.0, 20.4)
 $PHNOMMARKER2835 = Marker.CreateAboveActor($2835)
 0243: set_actor $2835 ped_stats_to 16 
 0350: set_actor $2835 maintain_position_when_attacked 1 
-011A: set_actor $2835 search_threat $PhnomThreatSearchBinary 
-011A: set_actor $2835 search_threat $PhnomThreatSearchPlayer 
+011A: set_actor $2835 search_threat $PHNOMTHREATSEARCHBINARY 
+011A: set_actor $2835 search_threat $PHNOMTHREATSEARCHPLAYER 
 022D: set_actor $2835 to_look_at_player $PLAYER_CHAR 
 01B2: give_actor $2835 weapon 22 ammo 30000 // Load the weapon model before using this 
 Actor.Health($2835) = 50
@@ -1205,8 +1198,8 @@ $2836 = Actor.Create(Gang3, #SGA, 27.3, 1196.4, 19.6)
 $PHNOMMARKER2836 = Marker.CreateAboveActor($2836)
 0243: set_actor $2836 ped_stats_to 16 
 0350: set_actor $2836 maintain_position_when_attacked 1 
-011A: set_actor $2836 search_threat $PhnomThreatSearchBinary 
-011A: set_actor $2836 search_threat $PhnomThreatSearchPlayer 
+011A: set_actor $2836 search_threat $PHNOMTHREATSEARCHBINARY 
+011A: set_actor $2836 search_threat $PHNOMTHREATSEARCHPLAYER 
 022D: set_actor $2836 to_look_at_player $PLAYER_CHAR 
 01B2: give_actor $2836 weapon 22 ammo 30000 // Load the weapon model before using this 
 Actor.Health($2836) = 50
@@ -1214,105 +1207,103 @@ $2837 = Actor.Create(Gang3, #SGA, 0.8, 1212.9, 20.4)
 $PHNOMMARKER2837 = Marker.CreateAboveActor($2837)
 0243: set_actor $2837 ped_stats_to 16 
 0350: set_actor $2837 maintain_position_when_attacked 1 
-011A: set_actor $2837 search_threat $PhnomThreatSearchBinary 
-011A: set_actor $2837 search_threat $PhnomThreatSearchPlayer 
+011A: set_actor $2837 search_threat $PHNOMTHREATSEARCHBINARY 
+011A: set_actor $2837 search_threat $PHNOMTHREATSEARCHPLAYER 
 022D: set_actor $2837 to_look_at_player $PLAYER_CHAR 
 01B2: give_actor $2837 weapon 22 ammo 30000 // Load the weapon model before using this 
 Actor.Health($2832) = 50
 $PHNOMACCURACY = 0.65 // floating-point values 
 
-:BARON2_8096
+:BARON2_8183
 wait 0 
-if
-8118:   not actor $LANCE_VANCE dead 
-jf @BARON2_9183
-gosub @BARON2_8478 
+if 
+   not Actor.Dead($LANCE_VANCE)
+jf @BARON2_12313 
+gosub @BARON2_11504 
 if 
    not Car.Wrecked($2821)
-else_jump @BARON2_9193 
+jf @BARON2_12343 
 if 
 00FE:   actor $2829 0 38.8 1198.0 20.8 radius 4.0 4.0 4.0 
-else_jump @BARON2_8189 
+jf @BARON2_8292 
 Car.SetMaxSpeed($2824, 0.0)
 01D3: actor $2829 leave_car $2824 
 
-:BARON2_8189
+:BARON2_8292
 if 
    Actor.Dead($2828)
-else_jump @BARON2_8210 
+jf @BARON2_8313 
 Marker.Disable($PHNOMMARKER2828)
 
-:BARON2_8210
+:BARON2_8313
 if 
    Actor.Dead($2829)
-else_jump @BARON2_8231 
+jf @BARON2_8334 
 Marker.Disable($PHNOMMARKER2829)
 
-:BARON2_8231
+:BARON2_8334
 if 
    Actor.Dead($2830)
-else_jump @BARON2_8252 
+jf @BARON2_8355 
 Marker.Disable($PHNOMMARKER2830)
 
-:BARON2_8252
+:BARON2_8355
 if 
    Actor.Dead($2831)
-else_jump @BARON2_8273 
+jf @BARON2_8376 
 Marker.Disable($PHNOMMARKER2831)
 
-:BARON2_8273
+:BARON2_8376
 if 
    Actor.Dead($2832)
-else_jump @BARON2_8294 
+jf @BARON2_8397 
 Marker.Disable($PHNOMMARKER2832)
 
-:BARON2_8294
+:BARON2_8397
 if 
    Actor.Dead($2833)
-else_jump @BARON2_8315 
+jf @BARON2_8418 
 Marker.Disable($PHNOMMARKER2833)
 
-:BARON2_8315
+:BARON2_8418
 if 
    Actor.Dead($2834)
-else_jump @BARON2_8336 
+jf @BARON2_8439 
 Marker.Disable($PHNOMMARKER2834)
 
-:BARON2_8336
+:BARON2_8439
 if 
    Actor.Dead($2835)
-else_jump @BARON2_8357 
+jf @BARON2_8460 
 Marker.Disable($PHNOMMARKER2835)
 
-:BARON2_8357
+:BARON2_8460
 if 
    Actor.Dead($2836)
-else_jump @BARON2_8378 
+jf @BARON2_8481 
 Marker.Disable($PHNOMMARKER2836)
 
-:BARON2_8378
+:BARON2_8481
 if 
    Actor.Dead($2837)
-else_jump @BARON2_8399 
+jf @BARON2_8502 
 Marker.Disable($PHNOMMARKER2837)
 
-:BARON2_8399
+:BARON2_8502
 if and
    Actor.Dead($2828)
    Actor.Dead($2829)
    Actor.Dead($2830)
    Actor.Dead($2831)
    Actor.Dead($2832)
-else_jump @BARON2_8096 
+jf @BARON2_8183 
 if and
    Actor.Dead($2833)
    Actor.Dead($2834)
    Actor.Dead($2835)
    Actor.Dead($2836)
    Actor.Dead($2837)
-else_jump @BARON2_8096 
-
-:BARON2_Group4Start
+jf @BARON2_8183 
 wait 500 
 Actor.DestroyInstantly($2828)
 Actor.DestroyInstantly($2829)
@@ -1326,185 +1317,179 @@ Actor.DestroyInstantly($2836)
 Actor.DestroyInstantly($2837)
 if 
    not Car.Wrecked($2821)
-else_jump @BARON2_9193 
+jf @BARON2_12343 
 $2828 = Actor.Create(Gang3, #SGB, -41.4, 1114.4, -100.0)
-$PhnomMarker2828 = Marker.CreateAboveActor($2828)
+$PHNOMMARKER2828 = Marker.CreateAboveActor($2828)
 0243: set_actor $2828 ped_stats_to 16 
 0350: set_actor $2828 maintain_position_when_attacked 1 
-011A: set_actor $2828 search_threat $PhnomThreatSearchBinary 
+011A: set_actor $2828 search_threat $PHNOMTHREATSEARCHBINARY 
 022D: set_actor $2828 to_look_at_player $PLAYER_CHAR 
 01B2: give_actor $2828 weapon 22 ammo 30000 // Load the weapon model before using this 
 Actor.Health($2828) = 50
 $2829 = Actor.Create(Gang3, #SGA, -59.3, 1113.0, -100.0)
-$PhnomMarker2829 = Marker.CreateAboveActor($2829)
+$PHNOMMARKER2829 = Marker.CreateAboveActor($2829)
 0243: set_actor $2829 ped_stats_to 16 
 0350: set_actor $2829 maintain_position_when_attacked 1 
 01D9: actor $2829 destroy_car $2821 
-011A: set_actor $2829 search_threat $PhnomThreatSearchBinary 
+011A: set_actor $2829 search_threat $PHNOMTHREATSEARCHBINARY 
 022D: set_actor $2829 to_look_at_player $PLAYER_CHAR 
 01B2: give_actor $2829 weapon 22 ammo 30000 // Load the weapon model before using this 
 Actor.Health($2829) = 50
 $2830 = Actor.Create(Gang3, #SGB, -57.8, 1121.4, -100.0)
-0173: set_actor $2829 z_angle_to 130 
-$PhnomMarker2830 = Marker.CreateAboveActor($2830)
+Actor.Angle($2829) = 130
+$PHNOMMARKER2830 = Marker.CreateAboveActor($2830)
 0243: set_actor $2830 ped_stats_to 16 
 0350: set_actor $2830 maintain_position_when_attacked 1 
-011A: set_actor $2830 search_threat $PhnomThreatSearchBinary 
+011A: set_actor $2830 search_threat $PHNOMTHREATSEARCHBINARY 
 022D: set_actor $2830 to_look_at_player $PLAYER_CHAR 
 01B2: give_actor $2830 weapon 22 ammo 30000 // Load the weapon model before using this 
 Actor.Health($2830) = 50
 $2831 = Actor.Create(Gang3, #SGA, -44.4, 1119.6, -100.0)
-0173: set_actor $2829 z_angle_to 130 
-$PhnomMarker2831 = Marker.CreateAboveActor($2831)
+Actor.Angle($2829) = 130
+$PHNOMMARKER2831 = Marker.CreateAboveActor($2831)
 0243: set_actor $2831 ped_stats_to 16 
 0350: set_actor $2831 maintain_position_when_attacked 1 
-011A: set_actor $2831 search_threat $PhnomThreatSearchBinary 
+011A: set_actor $2831 search_threat $PHNOMTHREATSEARCHBINARY 
 022D: set_actor $2831 to_look_at_player $PLAYER_CHAR 
 01B2: give_actor $2831 weapon 22 ammo 30000 // Load the weapon model before using this 
 Actor.Health($2831) = 50
 $2832 = Actor.Create(Gang3, #SGB, -45.0, 1123.6, -100.0)
-$PhnomMarker2832 = Marker.CreateAboveActor($2832)
+$PHNOMMARKER2832 = Marker.CreateAboveActor($2832)
 0243: set_actor $2832 ped_stats_to 16 
 0350: set_actor $2832 maintain_position_when_attacked 1 
-011A: set_actor $2832 search_threat $PhnomThreatSearchBinary 
+011A: set_actor $2832 search_threat $PHNOMTHREATSEARCHBINARY 
 022D: set_actor $2832 to_look_at_player $PLAYER_CHAR 
 01B2: give_actor $2832 weapon 22 ammo 30000 // Load the weapon model before using this 
 Actor.Health($2832) = 50
 $2833 = Actor.Create(Gang3, #SGB, 14.6, 1145.4, -100.0)
-$PhnomMarker2833 = Marker.CreateAboveActor($2833)
+$PHNOMMARKER2833 = Marker.CreateAboveActor($2833)
 0243: set_actor $2833 ped_stats_to 16 
 0350: set_actor $2833 maintain_position_when_attacked 1 
-011A: set_actor $2833 search_threat $PhnomThreatSearchBinary 
+011A: set_actor $2833 search_threat $PHNOMTHREATSEARCHBINARY 
 022D: set_actor $2833 to_look_at_player $PLAYER_CHAR 
 01B2: give_actor $2833 weapon 22 ammo 30000 // Load the weapon model before using this 
 Actor.Health($2833) = 50
 $2834 = Actor.Create(Gang3, #SGA, 21.9, 1146.7, -100.0)
-$PhnomMarker2834 = Marker.CreateAboveActor($2834)
+$PHNOMMARKER2834 = Marker.CreateAboveActor($2834)
 0243: set_actor $2834 ped_stats_to 16 
 0350: set_actor $2834 maintain_position_when_attacked 1 
-011A: set_actor $2834 search_threat $PhnomThreatSearchBinary 
+011A: set_actor $2834 search_threat $PHNOMTHREATSEARCHBINARY 
 022D: set_actor $2834 to_look_at_player $PLAYER_CHAR 
 01B2: give_actor $2834 weapon 22 ammo 30000 // Load the weapon model before using this 
 Actor.Health($2834) = 50
 $2835 = Actor.Create(Gang3, #SGA, 11.3, 1147.0, 22.5)
-$PhnomMarker2835 = Marker.CreateAboveActor($2835)
+$PHNOMMARKER2835 = Marker.CreateAboveActor($2835)
 0243: set_actor $2835 ped_stats_to 16 
 0350: set_actor $2835 maintain_position_when_attacked 1 
-011A: set_actor $2835 search_threat $PhnomThreatSearchBinary 
+011A: set_actor $2835 search_threat $PHNOMTHREATSEARCHBINARY 
 022D: set_actor $2835 to_look_at_player $PLAYER_CHAR 
 01B2: give_actor $2835 weapon 22 ammo 30000 // Load the weapon model before using this 
 Actor.Health($2835) = 50
 $2836 = Actor.Create(Gang3, #SGA, 28.9, 1146.3, 20.5)
-$PhnomMarker2836 = Marker.CreateAboveActor($2836)
+$PHNOMMARKER2836 = Marker.CreateAboveActor($2836)
 0243: set_actor $2836 ped_stats_to 16 
 0350: set_actor $2836 maintain_position_when_attacked 1 
-011A: set_actor $2836 search_threat $PhnomThreatSearchBinary 
+011A: set_actor $2836 search_threat $PHNOMTHREATSEARCHBINARY 
 022D: set_actor $2836 to_look_at_player $PLAYER_CHAR 
 01B2: give_actor $2836 weapon 22 ammo 30000 // Load the weapon model before using this 
 Actor.Health($2836) = 50
 $2837 = Actor.Create(Gang3, #SGB, 15.9, 1145.5, 22.5)
-$PhnomMarker2837 = Marker.CreateAboveActor($2837)
+$PHNOMMARKER2837 = Marker.CreateAboveActor($2837)
 0243: set_actor $2837 ped_stats_to 16 
 0350: set_actor $2837 maintain_position_when_attacked 1 
-011A: set_actor $2837 search_threat $PhnomThreatSearchBinary 
+011A: set_actor $2837 search_threat $PHNOMTHREATSEARCHBINARY 
 022D: set_actor $2837 to_look_at_player $PLAYER_CHAR 
 01B2: give_actor $2837 weapon 22 ammo 30000 // Load the weapon model before using this 
 Actor.Health($2837) = 50
-
-:BARON2_10198
 $2861 = Object.Create(#BARREL4, -41.1, 1106.3, 29.9)
 $2862 = Object.Create(#BARREL4, -60.8, 1102.7, 29.9)
 0@ = Object.Create(#BARREL4, -46.6, 1118.5, 29.9)
 
-:BARON2_LoopStartGroup4
-wait 0
-if
-8118:   not actor $LANCE_VANCE dead 
-jf @BARON2_9183
-gosub @BARON2_8478 
+:BARON2_9525
+wait 0 
+if 
+   not Actor.Dead($LANCE_VANCE)
+jf @BARON2_12313 
+gosub @BARON2_11504 
 if 
    not Car.Wrecked($2821)
-else_jump @BARON2_9193 
-
-:BARON2_KillGroup4
+jf @BARON2_12343 
 if 
    Actor.Dead($2828)
-else_jump @BARON2_Kill2829Group4 
+jf @BARON2_9589 
 Marker.Disable($PHNOMMARKER2828)
 
-:BARON2_Kill2829Group4
+:BARON2_9589
 if 
    Actor.Dead($2829)
-else_jump @BARON2_Kill2830Group4 
+jf @BARON2_9610 
 Marker.Disable($PHNOMMARKER2829)
 
-:BARON2_Kill2830Group4
+:BARON2_9610
 if 
    Actor.Dead($2830)
-else_jump @BARON2_Kill2831Group4 
+jf @BARON2_9631 
 Marker.Disable($PHNOMMARKER2830)
 
-:BARON2_Kill2831Group4
+:BARON2_9631
 if 
    Actor.Dead($2831)
-else_jump @BARON2_Kill2832Group4 
+jf @BARON2_9652 
 Marker.Disable($PHNOMMARKER2831)
 
-:BARON2_Kill2832Group4
+:BARON2_9652
 if 
    Actor.Dead($2832)
-else_jump @BARON2_Kill2833Group4 
+jf @BARON2_9673 
 Marker.Disable($PHNOMMARKER2832)
 
-:BARON2_Kill2833Group4
+:BARON2_9673
 if 
    Actor.Dead($2833)
-else_jump @BARON2_Kill2834Group4 
+jf @BARON2_9694 
 Marker.Disable($PHNOMMARKER2833)
 
-:BARON2_Kill2834Group4
+:BARON2_9694
 if 
    Actor.Dead($2834)
-else_jump @BARON2_Kill2835Group4 
+jf @BARON2_9715 
 Marker.Disable($PHNOMMARKER2834)
 
-:BARON2_Kill2835Group4
+:BARON2_9715
 if 
    Actor.Dead($2835)
-else_jump @BARON2_Kill2836Group4 
+jf @BARON2_9736 
 Marker.Disable($PHNOMMARKER2835)
 
-:BARON2_Kill2836Group4
+:BARON2_9736
 if 
    Actor.Dead($2836)
-else_jump @BARON2_Kill2837Group4 
+jf @BARON2_9757 
 Marker.Disable($PHNOMMARKER2836)
 
-:BARON2_Kill2837Group4
+:BARON2_9757
 if 
    Actor.Dead($2837)
-else_jump @BARON2_LoopStartGroup4 
+jf @BARON2_9525 
 Marker.Disable($PHNOMMARKER2837)
-
-:BARON2_TallyDeadGroup4
 if and
    Actor.Dead($2828)
    Actor.Dead($2829)
    Actor.Dead($2830)
    Actor.Dead($2831)
    Actor.Dead($2832)
-else_jump @BARON2_LoopStartGroup4
+jf @BARON2_9525 
 if and
    Actor.Dead($2833)
    Actor.Dead($2834)
    Actor.Dead($2835)
    Actor.Dead($2836)
    Actor.Dead($2837)
-else_jump @BARON2_LoopStartGroup4 
+jf @BARON2_9525 
 
-:BARON2_Group5TheBait
-Player.CanMove($PLAYER_CHAR, False)
-Car.LockInCurrentPosition($2821, True)
+:BARON2_9850
+Player.CanMove($PLAYER_CHAR) = False
+Car.LockInCurrentPosition($2821) = True
 fade 0 500 
 wait 500 
 Actor.DestroyInstantly($2828)
@@ -1516,168 +1501,156 @@ Actor.DestroyInstantly($2833)
 Actor.DestroyInstantly($2834)
 Actor.DestroyInstantly($2835)
 Actor.DestroyInstantly($2836)
-Actor.DestroyInstantly($2837)                              
+Actor.DestroyInstantly($2837)
 if 
    not Car.Wrecked($2821)
-else_jump @BARON2_9193 
+jf @BARON2_12343 
 $2845 = Actor.Create(Special, #SPECIAL05, 68.7, 1098.2, 31.7)
 01B2: give_actor $2845 weapon 27 ammo 30000 // Load the weapon model before using this 
 Actor.Health($2845) = 100
 Actor.Angle($2845) = 90.0
 $2828 = Actor.Create(Gang3, #SGB, 62.8, 1098.2, 31.7)
-0173: set_actor $2828 z_angle_to 85
+Actor.Angle($2828) = 85
 0350: set_actor $2828 maintain_position_when_attacked 1 
 01CA: actor $2828 kill_player $PLAYER_CHAR 
 022D: set_actor $2828 to_look_at_player $PLAYER_CHAR 
 01B2: give_actor $2828 weapon 27 ammo 30000 // Load the weapon model before using this 
 Actor.Health($2828) = 50
 $2829 = Actor.Create(Gang3, #SGB, 66.6, 1093.7, 31.7)
-0173: set_actor $2829 z_angle_to 85 
+Actor.Angle($2829) = 85
 0350: set_actor $2829 maintain_position_when_attacked 1 
 01CA: actor $2829 kill_player $PLAYER_CHAR 
 022D: set_actor $2829 to_look_at_player $PLAYER_CHAR 
 01B2: give_actor $2829 weapon 27 ammo 30000 // Load the weapon model before using this 
 Actor.Health($2829) = 50
-
-:BARON2_TheSwitch
-0151: remove_status_text $PhnomBalance 
-fade 1 500
-if
+0151: remove_status_text $PHNOMBALANCE 
+fade 1 500 
+if 
 80F7:   not player $PLAYER_CHAR sphere 1 near_point_in_car 68.7 1098.2 31.7 radius 40.0 40.0 100.0 
-jf @BARON2_TheChase
-if
-82B3:   not player $PLAYER_CHAR in_cube 51.5882 1083.9705 70.0 100.9407 1125.3948 14.5 radius 2.5 sphere 0 
-jf @BARON2_TheChase
+jf @BARON2_10321 
+if 
+82B3:   not player $PLAYER_CHAR in_cube 51.5882 1083.97 70.0 100.9407 1125.395 14.5 radius 2.5 sphere 0 
+jf @BARON2_10321 
 041D: set_camera_near_clip 0.5 
-Camera.SetPosition(45.1895, 1094.1688, 44.4594, 0.0, 0.0, 0.0)
-Camera.PointAt(87.8653, 1099.6125, 33.058, 2)                          
-0239: actor $2845 run_to 87.8653 1099.6125
+Camera.SetPosition(45.1895, 1094.169, 44.4594, 0.0, 0.0, 0.0)
+Camera.PointAt(87.8653, 1099.613, 33.058, 2)
+0239: actor $2845 run_to 87.8653 1099.613 
 
-:BARON2_TheChase
-wait 3000
-Car.Create($PhnomGetawayVehicle, #DINGHY, 112.0199, 1103.4331, 6.6478)
+:BARON2_10321
+wait 3000 
+$PHNOMGETAWAYVEHICLE = Car.Create(#DINGHY, 112.0199, 1103.433, 6.6478)
 011C: actor $2845 clear_objective 
-00A1: put_actor $2845 at 104.0199 1103.4331 25.0
+Actor.PutAt($2845, 104.0199, 1103.433, 25.0)
 041D: set_camera_near_clip 0.1 
-Camera.SetPosition(113.0199, 1103.4331, 8.5, 0.0, 0.0, 0.0)
-Camera.PointAt(104.0199, 1103.4331, 25.0, 2)
-
-:BARON2_IsInDinghy
-wait 1300
-036A: put_actor $2845 in_car $PhnomGetawayVehicle 
-02DB: set_boat $PhnomGetawayVehicle speed_to 30.0 
-02D3: boat $PhnomGetawayVehicle drive_to_point 129.4419 866.868 6.0
-
-:BARON2_BaitAndSwitchCutsceneOvah
+Camera.SetPosition(113.0199, 1103.433, 8.5, 0.0, 0.0, 0.0)
+Camera.PointAt(104.0199, 1103.433, 25.0, 2)
+wait 1300 
+036A: put_actor $2845 in_car $PHNOMGETAWAYVEHICLE 
+02DB: set_boat $PHNOMGETAWAYVEHICLE speed_to 30.0 
+02D3: boat $PHNOMGETAWAYVEHICLE drive_to 129.4419 866.868 6.0 
 wait 3500 
-$PhnomMarkerSP = Marker.CreateAboveActor($2845)
-Player.CanMove($PLAYER_CHAR, True)
+$PHNOMMARKERSP = Marker.CreateAboveActor($2845)
+Player.CanMove($PLAYER_CHAR) = True
 Camera.Restore_WithJumpCut
-Car.LockInCurrentPosition($2821, False)
-03C4: set_status_text_to $PhnomBalance 1 'COK2_24' 
-00BC: text_highpriority 'GETAWAY' 5000 ms 1
+Car.LockInCurrentPosition($2821) = False
+03C4: set_status_text_to $PHNOMBALANCE 1 'COK2_24'  // Balance:
+00BC: text_highpriority 'GETAWAY' 10000 ms 1  // ~g~Don't let him get away with the product!
 
-:BARON2_DinghyCheckpoints                                          
-wait 0
-if
-8118:   not actor $LANCE_VANCE dead 
-jf @BARON2_9183
-0407: create_coordinate $PhnomBoatx $PhnomBoaty $PhnomBoatz from_car $PhnomGetawayVehicle offset 0.0 0.0 0.0 
-if
-80FE:   not actor $LANCE_VANCE 0 $PhnomBoatx $PhnomBoaty $PhnomBoatz radius 5.0 5.0 4.0
-jf @BARON2_BigJumps
-gosub @BARON2_8478
-if
-01AD:   car $PhnomGetawayVehicle sphere 0 near_point 129.4419 866.868 radius 3.0 3.0
-jf @BARON2_DinghyCheckpoints
-02D3: boat $PhnomGetawayVehicle drive_to_point -417.9848 520.9728 6.0
+:BARON2_10534
+wait 0 
+if 
+   not Actor.Dead($LANCE_VANCE)
+jf @BARON2_12313 
+0407: create_coordinate $PHNOMBOATX $PHNOMBOATY $PHNOMBOATZ from_car $PHNOMGETAWAYVEHICLE offset 0.0 0.0 0.0 
+if 
+80FE:   not actor $LANCE_VANCE 0 $PHNOMBOATX $PHNOMBOATY $PHNOMBOATZ radius 5.0 5.0 4.0 
+jf @BARON2_11039 
+gosub @BARON2_11504 
+if 
+01AD:   car $PHNOMGETAWAYVEHICLE sphere 0 near_point 129.4419 866.868 radius 3.0 3.0 
+jf @BARON2_10534 
+02D3: boat $PHNOMGETAWAYVEHICLE drive_to -417.9848 520.9728 6.0 
 
-:BARON2_DinghyCheckpoint2
-wait 0
-if
-8118:   not actor $LANCE_VANCE dead 
-jf @BARON2_9183
-0407: create_coordinate $PhnomBoatx $PhnomBoaty $PhnomBoatz from_car $PhnomGetawayVehicle offset 0.0 0.0 0.0 
-if
-80FE:   not actor $LANCE_VANCE 0 $PhnomBoatx $PhnomBoaty $PhnomBoatz radius 5.0 5.0 4.0
-jf @BARON2_BigJumps
-gosub @BARON2_8478
-if
-01AD:   car $PhnomGetawayVehicle sphere 0 near_point -417.9848 520.9728 radius 3.0 3.0
-jf @BARON2_DinghyCheckpoint2
-02D3: boat $PhnomGetawayVehicle drive_to_point -82.6824 84.2173 6.598
+:BARON2_10690
+wait 0 
+if 
+   not Actor.Dead($LANCE_VANCE)
+jf @BARON2_12313 
+0407: create_coordinate $PHNOMBOATX $PHNOMBOATY $PHNOMBOATZ from_car $PHNOMGETAWAYVEHICLE offset 0.0 0.0 0.0 
+if 
+80FE:   not actor $LANCE_VANCE 0 $PHNOMBOATX $PHNOMBOATY $PHNOMBOATZ radius 5.0 5.0 4.0 
+jf @BARON2_11039 
+gosub @BARON2_11504 
+if 
+01AD:   car $PHNOMGETAWAYVEHICLE sphere 0 near_point -417.9848 520.9728 radius 3.0 3.0 
+jf @BARON2_10690 
+02D3: boat $PHNOMGETAWAYVEHICLE drive_to -82.6824 84.2173 6.598 
 
-:BARON2_PlayerIsGarbage
-wait 0
-if
-8118:   not actor $LANCE_VANCE dead 
-jf @BARON2_9183
-0407: create_coordinate $PhnomBoatx $PhnomBoaty $PhnomBoatz from_car $PhnomGetawayVehicle offset 0.0 -1.0 0.0 
-if
-80FE:   not actor $LANCE_VANCE 0 $PhnomBoatx $PhnomBoaty $PhnomBoatz radius 5.0 5.0 4.0
-jf @BARON2_BigJumps
-gosub @BARON2_8478
-if
-01AD:   car $PhnomGetawayVehicle sphere 0 near_point -82.6824 84.2173 radius 3.0 3.0
-jf @BARON2_PlayerIsGarbage
-Car.Destroy($PhnomGetawayVehicle)
-Marker.Disable($PhnomMarkerSP)
-00BA: text_styled 'GARBO' 5000 ms 1 //YOU'RE GARBAGE
-wait 5000
-00BA: text_styled 'BUT...' 2000 ms 1 //but I'll pass you I guess...
-wait 2000
-jump @BARON2_9210
+:BARON2_10846
+wait 0 
+if 
+   not Actor.Dead($LANCE_VANCE)
+jf @BARON2_12313 
+0407: create_coordinate $PHNOMBOATX $PHNOMBOATY $PHNOMBOATZ from_car $PHNOMGETAWAYVEHICLE offset 0.0 -1.0 0.0 
+if 
+80FE:   not actor $LANCE_VANCE 0 $PHNOMBOATX $PHNOMBOATY $PHNOMBOATZ radius 5.0 5.0 4.0 
+jf @BARON2_11039 
+gosub @BARON2_11504 
+if 
+01AD:   car $PHNOMGETAWAYVEHICLE sphere 0 near_point -82.6824 84.2173 radius 3.0 3.0 
+jf @BARON2_10846 
+Car.Destroy($PHNOMGETAWAYVEHICLE)
+Marker.Disable($PHNOMMARKERSP)
+00BA: text_styled 'GARBO' 5000 ms 1  // YOU'RE GARBAGE
+wait 5000 
+00BA: text_styled 'BUT...' 2000 ms 1  // but I'll let you pass anyway I guess...
+wait 2000 
+jump @BARON2_12360 
 
-:BARON2_BigJumps
-Player.CanMove($PLAYER_CHAR, False) 
-Car.LockInCurrentPosition($2821, True)
+:BARON2_11039
+Player.CanMove($PLAYER_CHAR) = False
+Car.LockInCurrentPosition($2821) = True
 015D: set_gamespeed 0.3 
-04BA: set_car $PhnomGetawayVehicle speed_instantly 5.0 
+04BA: set_car $PHNOMGETAWAYVEHICLE speed_instantly 5.0 
 04D8: set_actor $LANCE_VANCE drown 0 
 01C9: actor $LANCE_VANCE kill_actor $2845 
 0350: set_actor $LANCE_VANCE maintain_position_when_attacked 1 
 01B9: set_actor $LANCE_VANCE armed_weapon_to 0 
 0465: remove_actor $LANCE_VANCE from_turret_mode 
 Actor.DestroyInstantly($LANCE_VANCE)
-00AB: put_car $PhnomGetawayVehicle at -433.472 282.2309 6.5371
-0407: create_coordinate $PhnomJumpLancex $PhnomJumpLancey $PhnomJumpLancez from_car $PhnomGetawayVehicle offset 0.0 -0.5 3.0
-$LANCE_VANCE = Actor.Create(CivMale, #SPECIAL04, $PhnomJumpLancex, $PhnomJumpLancey, $PhnomJumpLancez)
-0174: $PhnomBoatAngle = car $PhnomGetawayVehicle z_angle 
-0173: set_actor $LANCE_VANCE z_angle_to $PhnomBoatAngle 
-0407: create_coordinate $PhnomJumpHelix $PhnomJumpHeliy $PhnomJumpHeliz from_car $2821 offset 0.0 0.0 6.0
-00AB: put_car $2821 at $PhnomJumpHelix $PhnomJumpHeliy $PhnomJumpHeliz
-0407: create_coordinate $PhnomJumpCamx $PhnomJumpCamy $PhnomJumpCamz from_car $PhnomGetawayVehicle offset 4.3 10.0 2.5
+Car.PutAt($PHNOMGETAWAYVEHICLE, -433.472, 282.2309, 6.5371)
+0407: create_coordinate $PHNOMJUMPLANCEX $PHNOMJUMPLANCEY $PHNOMJUMPLANCEZ from_car $PHNOMGETAWAYVEHICLE offset 0.0 -0.4 2.4 
+$LANCE_VANCE = Actor.Create(CivMale, #SPECIAL04, $PHNOMJUMPLANCEX, $PHNOMJUMPLANCEY, $PHNOMJUMPLANCEZ)
+$PHNOMBOATANGLE = Car.Angle($PHNOMGETAWAYVEHICLE)
+Actor.Angle($LANCE_VANCE) = $PHNOMBOATANGLE
+0407: create_coordinate $PHNOMJUMPHELIX $PHNOMJUMPHELIY $PHNOMJUMPHELIZ from_car $PHNOMGETAWAYVEHICLE offset 0.0 0.0 4.0 
+Car.PutAt($2821, $PHNOMJUMPHELIX, $PHNOMJUMPHELIY, $PHNOMJUMPHELIZ)
+0407: create_coordinate $PHNOMJUMPCAMX $PHNOMJUMPCAMY $PHNOMJUMPCAMZ from_car $PHNOMGETAWAYVEHICLE offset 10.0 23.0 2.7 
 041D: set_camera_near_clip 0.3 
-015F: set_camera_position $PhnomJumpCamx $PhnomJumpCamy $PhnomJumpCamz 0.0 rotation 0.0 0.0 
+Camera.SetPosition($PHNOMJUMPCAMX, $PHNOMJUMPCAMY, $PHNOMJUMPCAMZ, 0.0, 0.0, 0.0)
 Camera.OnPed($LANCE_VANCE, 15, 2)
-wait 1300
-
-:BARON2_BigFlops
-02DB: set_boat $PhnomGetawayVehicle speed_to 20.0 
-0407: create_coordinate $PhnomFlopGuyx $PhnomFlopGuyy $PhnomFlopGuyz from_car $PhnomGetawayVehicle offset 3.5 0.0 3.0
+wait 2000 
+//02DB: set_boat $PHNOMGETAWAYVEHICLE speed_to 20.0 
+0407: create_coordinate $PHNOMFLOPGUYX $PHNOMFLOPGUYY $PHNOMFLOPGUYZ from_car $PHNOMGETAWAYVEHICLE offset 3.5 0.0 3.0 
 03E2: actor $2845 exit_car 
-0407: create_coordinate $PhnomJumpLancex $PhnomJumpLancey $PhnomJumpLancez from_car $PhnomGetawayVehicle offset 0.0 0.0 3.0
-00A1: put_actor $LANCE_VANCE at $PhnomJumpLancex $PhnomJumpLancey $PhnomJumpLancez 
-00A1: put_actor $2845 at $PhnomFlopGuyx $PhnomFlopGuyy $PhnomFlopGuyz
-wait 1000
-Car.LockInCurrentPosition($2821, False)                 
-015D: set_gamespeed 1.0
-
-:BARON2_LanceReturnToDiaz
-036A: put_actor $LANCE_VANCE in_car $PhnomGetawayVehicle 
+0407: create_coordinate $PHNOMJUMPLANCEX $PHNOMJUMPLANCEY $PHNOMJUMPLANCEZ from_car $PHNOMGETAWAYVEHICLE offset 0.0 0.0 3.0 
+//Actor.PutAt($LANCE_VANCE, $PHNOMJUMPLANCEX, $PHNOMJUMPLANCEY, $PHNOMJUMPLANCEZ)
+Actor.PutAt($2845, $PHNOMFLOPGUYX, $PHNOMFLOPGUYY, $PHNOMFLOPGUYZ)
+//wait 1000 
+036A: put_actor $LANCE_VANCE in_car $PHNOMGETAWAYVEHICLE 
+015D: set_gamespeed 1.0 
 04D8: set_actor $LANCE_VANCE drown 1 
-02D3: boat $PhnomGetawayVehicle drive_to -378.5 -551.3 6.0
-wait 2000
-
-:BARON2_WonLegit
-Marker.Disable($PhnomMarkerSP)
-Car.Destroy($PhnomGetawayVehicle)
-Player.CanMove($PLAYER_CHAR, True)
+02D3: boat $PHNOMGETAWAYVEHICLE drive_to -378.5 -551.3 6.0 
+wait 5000 
+Car.LockInCurrentPosition($2821) = False
+Marker.Disable($PHNOMMARKERSP)
+Car.Destroy($PHNOMGETAWAYVEHICLE)
+Player.CanMove($PLAYER_CHAR) = True
 041D: set_camera_near_clip 0.1 
-Camera.Restore_WithJumpCut() 
-jump @BARON2_9210
+Camera.Restore_WithJumpCut
+jump @BARON2_12360 
 
-:BARON2_8478
+:BARON2_11504
 $PHNOMSETMINBALANCE = 82.5 // floating-point values 
 0407: create_coordinate $PHNOMNOREF1 $PHNOMNOREF2 $PHNOMZTESTZ from_car $2821 offset 0.0 0.0 100.0 
 0407: create_coordinate $PHNOMLEANX $PHNOMLEANY $PHNOMLEANZ from_car $2821 offset 0.0 0.0 0.0 
@@ -1686,15 +1659,15 @@ $PHNOMSETMINBALANCE = 82.5 // floating-point values
 0061: $PHNOMLEANZ -= $PHNOMSETMINBALANCE // floating-point values 
 if 
   $PHNOMLANCEHASFALLEN == 0 // integer values 
-else_jump @BARON2_8730
+jf @BARON2_11848 
 if or
 8442:   not player $PLAYER_CHAR in_car $2821 
 80E1:   not player 0 pressed_button 18 
-jf @BARON2_TabPressed 
+jf @BARON2_11726 
 if 
   $PHNOMLEANZ > 0.0 // floating-point values 
-else_jump @BARON2_8666 
-$PHNOMLEANZ *= 5.71428571429 // floating-point values 
+jf @BARON2_11717 
+$PHNOMLEANZ *= 5.714286 // floating-point values 
 008C: $PHNOMLEANZ = float_to_integer $PHNOMLEANZ 
 0084: $PHNOMBALANCE = $PHNOMLEANZ // integer values and handles 
 008D: $PHNOMLEANZ = integer_to_float $PHNOMLEANZ 
@@ -1703,91 +1676,89 @@ $PHNOMLEANZ *= 5.71428571429 // floating-point values
 02E2: set_actor $LANCE_VANCE weapon_accuracy_to $PHNOMLEANZ 
 return 
 
-:BARON2_8666
-gosub @BARON2_8675 
+:BARON2_11717
+gosub @BARON2_11733 
 return 
 
-:BARON2_TabPressed
-$PhnomTabPressed = 1
+:BARON2_11726
+$PHNOMTABPRESSED = 1 // integer values 
 
-:BARON2_8675
+:BARON2_11733
 0465: remove_actor $LANCE_VANCE from_turret_mode 
 0151: remove_status_text $PHNOMBALANCE 
 02E2: set_actor $LANCE_VANCE weapon_accuracy_to 80 
-$PhnomLanceMarker = Marker.CreateAboveActor($LANCE_VANCE)
-Marker.SetColor($PhnomLanceMarker, 5)
+$PHNOMLANCEMARKER = Marker.CreateAboveActor($LANCE_VANCE)
+Marker.SetColor($PHNOMLANCEMARKER, 5)
 $PHNOMLANCEHEALTH = Actor.Health($LANCE_VANCE)
 $PHNOMLANCEHEALTH /= 10.0 // floating-point values 
 03C4: set_status_text_to $PHNOMLANCEHEALTH 1 'BUD1'  // Lances Health:
 wait 1000 
+if 
+  $PHNOMTABPRESSED == 0 // integer values 
+jf @BARON2_11838 
+03E5: text_box 'DROPPED'  // You dropped Lance! Fly nearby and pick him up!
+jump @BARON2_11848 
 
-:BARON2_NotTabbed
-if
-0038:   $PhnomTabPressed == 0 // integer values 
-jf @BARON2_Tabbed
-03E5: text_box 'DROPPED'
-jump @BARON2_8730
-
-:BARON2_Tabbed
+:BARON2_11838
 03E5: text_box 'HELPCK' 
 
-:BARON2_8730
-gosub @BARON2_9118 
+:BARON2_11848
+gosub @BARON2_12248 
 $PHNOMLANCEHASFALLEN = 1 // integer values 
 0407: create_coordinate $PHNOMHELIX $PHNOMHELIY $PHNOMHELIZ from_car $2821 offset 2.5 0.0 0.0 
 if 
 0102:   actor $LANCE_VANCE stopped_near_point_on_foot $PHNOMHELIX $PHNOMHELIY $PHNOMHELIZ radius 2.0 2.5 2.0 sphere 0 
-else_jump @BARON2_8854 
+jf @BARON2_11972 
 0464: put_actor $LANCE_VANCE into_turret_on_car $2821 at_car_offset 1.4 0.7 -0.1 position 3 angle 180.0 with_weapon 32 
-jump @BARON2_9067 
+jump @BARON2_12185 
 
-:BARON2_8854
+:BARON2_11972
 0407: create_coordinate $PHNOMHELIX $PHNOMHELIY $PHNOMHELIZ from_car $2821 offset -2.5 0.0 0.0 
 if 
 0102:   actor $LANCE_VANCE stopped_near_point_on_foot $PHNOMHELIX $PHNOMHELIY $PHNOMHELIZ radius 2.0 2.5 2.0 sphere 0 
-else_jump @BARON2_8964 
+jf @BARON2_12082 
 0464: put_actor $LANCE_VANCE into_turret_on_car $2821 at_car_offset -1.4 0.7 -0.1 position 1 angle 180.0 with_weapon 32 
-jump @BARON2_9067 
+jump @BARON2_12185 
 
-:BARON2_8964
+:BARON2_12082
 0407: create_coordinate $PHNOMHELIX $PHNOMHELIY $PHNOMHELIZ from_car $2821 offset 0.0 5.5 0.0 
 if 
 0102:   actor $LANCE_VANCE stopped_near_point_on_foot $PHNOMHELIX $PHNOMHELIY $PHNOMHELIZ radius 2.0 2.0 2.0 sphere 0 
-else_jump @BARON2_10299 
+jf @BARON2_13434 
 0464: put_actor $LANCE_VANCE into_turret_on_car $2821 at_car_offset 0.0 3.5 0.0 position 0 angle 270.0 with_weapon 32 
 
-:BARON2_9067
+:BARON2_12185
 02AB: set_actor $LANCE_VANCE immunities BP 1 FP 0 EP 0 CP 0 MP 0 
 0350: set_actor $LANCE_VANCE maintain_position_when_attacked 1 
 0151: remove_status_text $PHNOMLANCEHEALTH 
-Marker.Disable($PhnomLanceMarker)
+Marker.Disable($PHNOMLANCEMARKER)
 03C4: set_status_text_to $PHNOMBALANCE 1 'COK2_24'  // Balance:
 $PHNOMLANCEHASFALLEN = 0 // integer values 
-$PhnomTabPressed = 0
+$PHNOMTABPRESSED = 0 // integer values 
 return 
 
-:BARON2_9118
+:BARON2_12248
 $PHNOMLANCEHEALTH = Actor.Health($LANCE_VANCE)
 $PHNOMLANCEHEALTH /= 10 // integer values 
 02AB: set_actor $LANCE_VANCE immunities BP 0 FP 0 EP 0 CP 0 MP 0 
 0350: set_actor $LANCE_VANCE maintain_position_when_attacked 1 
 if 
   $PHNOMCONVERSATIONBIT == 1 // integer values 
-else_jump @BARON2_10299 
+jf @BARON2_13434 
 020F: actor $LANCE_VANCE look_at_player $PLAYER_CHAR 
 return 
 
-:BARON2_9183
+:BARON2_12313
 00BC: text_highpriority 'COK2_26' 5500 ms 1  // ~r~You killed Lance!
 wait 500 
-Actor.DestroyWithFade($LANCE_VANCE) 
+Actor.DestroyWithFade($LANCE_VANCE)
 Actor.DestroyInstantly($2845)
 
-:BARON2_9193
+:BARON2_12343
 00BA: text_styled 'M_FAIL' 5000 ms 1  // MISSION FAILED!
 return 
 
-:BARON2_9210
+:BARON2_12360
 $PASSED_COK2_PHNOM_PENH_86 = 1 // integer values 
 0394: play_music 1 
 01E3: text_1number_styled 'M_PASS' number 2000 time 5000 style 1  // MISSION PASSED! $~1~
@@ -1835,7 +1806,7 @@ $41 = 0 // integer values
 create_thread @BAR3 
 return 
 
-:BARON2_9917
+:BARON2_13067
 $ONMISSION = 0 // integer values 
 01BD: $CURRENT_TIME_IN_MS = current_time_in_ms 
 Model.Destroy(#SPARROW)
@@ -1883,8 +1854,8 @@ Actor.DestroyWithFade($2834)
 Actor.DestroyWithFade($2835)
 Actor.DestroyWithFade($2836)
 Actor.DestroyWithFade($2837)
-Car.Destroy($PHNOMFixedHeli1)
-Car.Destroy($PHNOMFixedHeli2)
+Car.Destroy($PHNOMFIXEDHELI1)
+Car.Destroy($PHNOMFIXEDHELI2)
 Car.RemoveReferences($2821)
 04E2: set_player $PLAYER_CHAR suspend_heavy_police_reinforcements 0 
 0151: remove_status_text $PHNOMBALANCE 
@@ -1907,10 +1878,10 @@ mission_cleanup
 01F0: set_max_wanted_level_to 5 
 return 
 
-:BARON2_10299
+:BARON2_13434
 return 
 
-:BARON2_10301
+:BARON2_13436
 17@ = 0 // integer values 
 $2822 = 0 // integer values 
 $2847 = 0 // integer values 
@@ -1935,122 +1906,122 @@ $42 = 0 // integer values
 $43 = 0 // integer values 
 return 
 
-:BARON2_10366
+:BARON2_13592
 if and
 03D0:   wav 1 loaded 
 03D0:   wav 2 loaded 
-else_jump @BARON2_10392 
+jf @BARON2_13618 
 $34 = 1 // integer values 
 
-:BARON2_10392
+:BARON2_13618
 return 
 
-:BARON2_10394
+:BARON2_13620
 $33 = 0 // integer values 
 $34 = 0 // integer values 
 17@ = 0 // integer values 
 return 
 if 
   $2847 == 0 // integer values 
-else_jump @BARON2_10465 
+jf @BARON2_13691 
 if 
    Actor.Dead($2828)
-else_jump @BARON2_10465 
+jf @BARON2_13691 
 $2822 += 1 // integer values 
 $2847 = 1 // integer values 
 
-:BARON2_10465
+:BARON2_13691
 if 
   $2848 == 0 // integer values 
-else_jump @BARON2_10513 
+jf @BARON2_13739 
 if 
    Actor.Dead($2829)
-else_jump @BARON2_10513 
+jf @BARON2_13739 
 $2822 += 1 // integer values 
 $2848 = 1 // integer values 
 
-:BARON2_10513
+:BARON2_13739
 if 
   $2849 == 0 // integer values 
-else_jump @BARON2_10561 
+jf @BARON2_13787 
 if 
    Actor.Dead($2830)
-else_jump @BARON2_10561 
+jf @BARON2_13787 
 $2822 += 1 // integer values 
 $2849 = 1 // integer values 
 
-:BARON2_10561
+:BARON2_13787
 if 
   $2850 == 0 // integer values 
-else_jump @BARON2_10609 
+jf @BARON2_13835 
 if 
    Actor.Dead($2831)
-else_jump @BARON2_10609 
+jf @BARON2_13835 
 $2822 += 1 // integer values 
 $2850 = 1 // integer values 
 
-:BARON2_10609
+:BARON2_13835
 if 
   $2851 == 0 // integer values 
-else_jump @BARON2_10657 
+jf @BARON2_13883 
 if 
    Actor.Dead($2832)
-else_jump @BARON2_10657 
+jf @BARON2_13883 
 $2822 += 1 // integer values 
 $2851 = 1 // integer values 
 
-:BARON2_10657
+:BARON2_13883
 if 
   5@ == 1 // integer values 
-else_jump @BARON2_10915 
+jf @BARON2_14141 
 if 
   $2853 == 0 // integer values 
-else_jump @BARON2_10723 
+jf @BARON2_13949 
 if 
    Actor.Dead($2833)
-else_jump @BARON2_10723 
+jf @BARON2_13949 
 $2822 += 1 // integer values 
 $2853 = 1 // integer values 
 
-:BARON2_10723
+:BARON2_13949
 if 
   $2854 == 0 // integer values 
-else_jump @BARON2_10771 
+jf @BARON2_13997 
 if 
    Actor.Dead($2834)
-else_jump @BARON2_10771 
+jf @BARON2_13997 
 $2822 += 1 // integer values 
 $2854 = 1 // integer values 
 
-:BARON2_10771
+:BARON2_13997
 if 
   $2855 == 0 // integer values 
-else_jump @BARON2_10819 
+jf @BARON2_14045 
 if 
    Actor.Dead($2835)
-else_jump @BARON2_10819 
+jf @BARON2_14045 
 $2822 += 1 // integer values 
 $2855 = 1 // integer values 
 
-:BARON2_10819
+:BARON2_14045
 if 
   $2856 == 0 // integer values 
-else_jump @BARON2_10867 
+jf @BARON2_14093 
 if 
    Actor.Dead($2836)
-else_jump @BARON2_10867 
+jf @BARON2_14093 
 $2822 += 1 // integer values 
 $2856 = 1 // integer values 
 
-:BARON2_10867
+:BARON2_14093
 if 
   $2857 == 0 // integer values 
-else_jump @BARON2_10915 
+jf @BARON2_14141 
 if 
    Actor.Dead($2837)
-else_jump @BARON2_10915 
+jf @BARON2_14141 
 $2822 += 1 // integer values 
 $2857 = 1 // integer values 
 
-:BARON2_10915
+:BARON2_14141
 return
