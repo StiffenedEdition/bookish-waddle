@@ -280,7 +280,9 @@ Model.Destroy(#YT_GANGPLNK_TMP)
 04E3: unknown_player $PLAYER_CHAR 0 60000 
 Model.Load(#CADDY)
 Model.Load(#PCJ600)
+Model.Load(#POLMAV)
 Model.Load(#COLT45)
+Model.Load(#M4)
 Model.Load(#UZI)
 023C: load_special_actor 1 'FSFA' 
 023C: load_special_actor 2 'COURIER' 
@@ -291,6 +293,8 @@ Model.Load(#UZI)
 :COL2_1525
 if or
    not Model.Available(#CADDY)
+   not Model.Available(#M4)
+   not Model.Available(#POLMAV)
    not Model.Available(#PCJ600)
    not Model.Available(#COLT45)
    not Model.Available(#UZI)
@@ -342,7 +346,7 @@ jf @COL2_2009
 if 
   $2277 == 0 // integer values 
 jf @COL2_2009 
-Player.SetMinWantedLevel($PLAYER_CHAR, 2)
+Player.SetMinWantedLevel($PLAYER_CHAR, 3)
 $2277 = 1 // integer values 
 
 :COL2_2009
@@ -550,13 +554,13 @@ $2607 = 0 // integer values
 011A: set_actor 7@ search_threat 1 
 01B2: give_actor 7@ weapon 17 ammo 999 // Load the weapon model before using this 
 01CA: actor 7@ kill_player $PLAYER_CHAR 
-8@ = Actor.Create(CivMale, #SPECIAL01, -10.2667, -937.9695, 9.4077)
+8@ = Actor.Create(CivMale, #SPECIAL01, -15.225, -949.0593, 18.072)
 0291: set_actor 8@ attack_when_provoked 1 
 0243: set_actor 8@ ped_stats_to 16 
 011A: set_actor 8@ search_threat 1 
 01B2: give_actor 8@ weapon 17 ammo 999 // Load the weapon model before using this 
 01CA: actor 8@ kill_player $PLAYER_CHAR 
-9@ = Actor.Create(CivMale, #SPECIAL01, -9.9934, -939.7717, 9.4492)
+9@ = Actor.Create(CivMale, #SPECIAL01, -15.225, -949.0593, 18.072)
 0291: set_actor 9@ attack_when_provoked 1 
 0243: set_actor 9@ ped_stats_to 16 
 011A: set_actor 9@ search_threat 1 
@@ -591,21 +595,11 @@ jf @COL2_3579
 if 
    not Actor.Dead(3@)
 jf @COL2_3634 
-0291: set_actor 3@ attack_when_provoked 1 
-0243: set_actor 3@ ped_stats_to 16 
-011A: set_actor 3@ search_threat 1 
-01B2: give_actor 3@ weapon 17 ammo 999 // Load the weapon model before using this 
-01CA: actor 3@ kill_player $PLAYER_CHAR 
 
 :COL2_3634
 if 
    not Actor.Dead(4@)
 jf @COL2_3689 
-0291: set_actor 4@ attack_when_provoked 1 
-0243: set_actor 4@ ped_stats_to 16 
-011A: set_actor 4@ search_threat 1 
-01B2: give_actor 4@ weapon 17 ammo 999 // Load the weapon model before using this 
-01CA: actor 4@ kill_player $PLAYER_CHAR 
 
 :COL2_3689
 if 
@@ -710,14 +704,6 @@ $2278 = 10 // integer values
 if 
   $2278 == 8 // integer values 
 jf @COL2_4570 
-3@ = Actor.Create(CivMale, #SPECIAL01, 2.5231, -924.9479, 9.3967)
-4@ = Actor.Create(CivMale, #SPECIAL01, 5.3188, -924.7693, 9.3965)
-0411: set_actor 3@ use_pednode_seek 0 
-0211: actor 3@ walk_to 2.7139 -936.8358 
-0411: set_actor 3@ use_pednode_seek 0 
-0411: set_actor 4@ use_pednode_seek 0 
-0211: actor 4@ walk_to 4.6123 -937.3372 
-0411: set_actor 4@ use_pednode_seek 0 
 $2278 = 9 // integer values 
 
 :COL2_4570
@@ -851,7 +837,7 @@ if
 jf @COL2_5713 
 if 
 00FC:   player $PLAYER_CHAR 0 0@ on_foot radius 3.0 3.0 2.0 
-jf @COL2_5713                                              //blanked temporarily
+jf @COL2_5713                                              
 Marker.Disable($2272)
 Player.CanMove($PLAYER_CHAR) = False
 03BF: set_player $PLAYER_CHAR ignored_by_everyone_to 1 
@@ -962,7 +948,15 @@ jf @COL2_DumbCam
 0411: set_actor 0@ use_pednode_seek 1 
 01D5: actor 0@ go_to_and_drive_car 5@ 
 $2280 = 7 // integer values
+03CF: load_wav 'LIFTRUN' as 1 
 $MallShootoutDumbCamActive=1
+
+:COL2_WAV
+if 
+83D0:   not wav 1 loaded 
+jf @COL2_DumbCam 
+wait 0 
+jump @COL2_WAV 
 
 :COL2_DumbCam
 if 
@@ -973,16 +967,34 @@ if
 jf @COL2_ResetCam
 Camera.SetPosition(3.8137, -937.9289, 16.116,0.0,0.0,0.0)
 Camera.PointAt(4.3994, -937.9895, 16.116, 2)
-$MallShootoutDumbCamActive=0
-$MallShootoutCamReset = 1
+$MallShootoutDumbCamActive=2
 
 :COL2_ResetCam
 if
-  $MallShootoutCamReset == 1 // integer values 
-jf @COL2_6348
+  $MallShootoutDumbCamActive == 2 // integer values 
+jf @COL2_DropBois
 if
 01AD:   car 5@ sphere 1 near_point 60.2608 -862.4913 radius 3.0 3.0  
-jf @COL2_6348
+jf @COL2_DropBois
+03D1: play_wav 1
+wait 5000 
+$MallShootoutHeli = Car.Create(#POLMAV, 2.5112, -890.5284, 32.2403)
+04A2: heli $MallShootoutHeli fly_to 2.5112 -890.5284 32.2403 speed 30 
+00A1: put_actor 8@ at -10.2667 -937.9695 9.4077 
+00A1: put_actor 9@ at -9.9934 -939.7717 9.4492 
+3@ = Actor.Create(CivMale, #SPECIAL01, 2.5231, -924.9479, 9.3967)
+4@ = Actor.Create(CivMale, #SPECIAL01, 5.3188, -924.7693, 9.3965)
+0291: set_actor 3@ attack_when_provoked 1 
+0243: set_actor 3@ ped_stats_to 16 
+011A: set_actor 3@ search_threat 1 
+01B2: give_actor 3@ weapon 17 ammo 999 // Load the weapon model before using this 
+01CA: actor 3@ kill_player $PLAYER_CHAR 
+0291: set_actor 4@ attack_when_provoked 1 
+0243: set_actor 4@ ped_stats_to 16 
+011A: set_actor 4@ search_threat 1 
+01B2: give_actor 4@ weapon 17 ammo 999 // Load the weapon model before using this 
+01CA: actor 4@ kill_player $PLAYER_CHAR 
+Car.LockInCurrentPosition($MallShootoutHeli,1)
 Player.CanMove($PLAYER_CHAR) = True
 01BE: set_actor $PLAYER_ACTOR to_look_at_spot -2.3434 -939.0732 15.4658 
 03BF: set_player $PLAYER_CHAR ignored_by_everyone_to 0 
@@ -990,7 +1002,28 @@ Player.CanMove($PLAYER_CHAR) = True
 03F4: set_all_vehicles_apply_damage_rules 1 
 Camera.SetBehindPlayer
 Camera.Restore_WithJumpCut
-$MallShootoutCamReset = 0
+$MallShootoutDumbCamActive = 3
+
+:COL2_DropBois
+if
+  $MallShootoutDumbCamActive == 3 // integer values 
+jf @COL2_6348
+if
+00ED:   actor $PLAYER_ACTOR 0 3.9127 -920.4974 radius 7.0 0.5 
+jf @COL2_6348
+$MallShootoutDrop1 = Actor.Create(CivMale, #SPECIAL01, 6.567, -892.8835, 16.4112)
+0291: set_actor $MallShootoutDrop1 attack_when_provoked 1 
+0243: set_actor $MallShootoutDrop1 ped_stats_to 16 
+011A: set_actor $MallShootoutDrop1 search_threat 1 
+01B2: give_actor $MallShootoutDrop1 weapon 26 ammo 9999 // Load the weapon model before using this 
+01CA: actor $MallShootoutDrop1 kill_player $PLAYER_CHAR 
+$MallShootoutDrop2 = Actor.Create(CivMale, #SPECIAL01, 1.3349, -892.5843, 16.4112)
+0291: set_actor $MallShootoutDrop2 attack_when_provoked 1 
+0243: set_actor $MallShootoutDrop2 ped_stats_to 16 
+011A: set_actor $MallShootoutDrop2 search_threat 1 
+01B2: give_actor $MallShootoutDrop2 weapon 26 ammo 9999 // Load the weapon model before using this 
+01CA: actor $MallShootoutDrop2 kill_player $PLAYER_CHAR 
+$MallShootoutDumbCamActive = 4
 
 :COL2_6348
 if 
