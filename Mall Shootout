@@ -849,9 +849,9 @@ $2278 = 2 // integer values
 if 
   $2278 == 0 // integer values 
 jf @COL2_5713 
-{if 
+if 
 00FC:   player $PLAYER_CHAR 0 0@ on_foot radius 3.0 3.0 2.0 
-jf @COL2_5713}                                              //blanked temporarily
+jf @COL2_5713                                              //blanked temporarily
 Marker.Disable($2272)
 Player.CanMove($PLAYER_CHAR) = False
 03BF: set_player $PLAYER_CHAR ignored_by_everyone_to 1 
