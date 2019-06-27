@@ -936,37 +936,18 @@ $2280 = 6 // integer values
 :COL2_6247
 if 
   $2280 == 6 // integer values 
-jf @COL2_DumbCam 
+jf @COL2_ResetCam 
 if 
 00ED:   actor 0@ 0 40.2117 -897.6254 radius 1.0 1.0 
-jf @COL2_DumbCam 
+jf @COL2_ResetCam 
 if 
    not Car.Wrecked(5@)
-jf @COL2_DumbCam 
+jf @COL2_ResetCam 
 0055: put_player $PLAYER_CHAR at 4.3994 -937.9895 16.116 
 0319: set_actor 0@ running 1 
 0411: set_actor 0@ use_pednode_seek 1 
 01D5: actor 0@ go_to_and_drive_car 5@ 
 $2280 = 7 // integer values
-03CF: load_wav 'LIFTRUN' as 1 
-$MallShootoutDumbCamActive=1
-
-:COL2_WAV
-if 
-83D0:   not wav 1 loaded 
-jf @COL2_DumbCam 
-wait 0 
-jump @COL2_WAV 
-
-:COL2_DumbCam
-if 
-  $MallShootoutDumbCamActive == 1 // integer values 
-jf @COL2_ResetCam 
-if
-   Actor.InCar(0@, 5@)
-jf @COL2_ResetCam
-Camera.SetPosition(3.8137, -937.9289, 16.116,0.0,0.0,0.0)
-Camera.PointAt(4.3994, -937.9895, 16.116, 2)
 $MallShootoutDumbCamActive=2
 
 :COL2_ResetCam
@@ -976,10 +957,8 @@ jf @COL2_DropBois
 if
 01AD:   car 5@ sphere 1 near_point 60.2608 -862.4913 radius 3.0 3.0  
 jf @COL2_DropBois
-03D1: play_wav 1
-wait 5000 
-$MallShootoutHeli = Car.Create(#POLMAV, 2.5112, -890.5284, 32.2403)
-04A2: heli $MallShootoutHeli fly_to 2.5112 -890.5284 32.2403 speed 30 
+$MallShootoutHeli = Car.Create(#POLMAV, 2.5112, -890.5284, 30.2403)
+04A2: heli $MallShootoutHeli fly_to 2.5112 -890.5284 30.2403 speed 30 
 00A1: put_actor 8@ at -10.2667 -937.9695 9.4077 
 00A1: put_actor 9@ at -9.9934 -939.7717 9.4492 
 3@ = Actor.Create(CivMale, #SPECIAL01, 2.5231, -924.9479, 9.3967)
