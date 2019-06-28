@@ -19,6 +19,7 @@ $3972 = 0 // integer values
 :BANKJO2_67
 increment_mission_attempts 
 $ONMISSION = 1 // integer values 
+$ShootistTargetSpeed=1.0
 $986 = 0 // integer values 
 $3677 = 121000 // integer values 
 $3674 = 0 // integer values 
@@ -267,6 +268,9 @@ $3937 = 0 // integer values
 $3938 = 0 // integer values 
 $3939 = 0 // integer values 
 $3940 = 0 // integer values 
+$ShootistPlayerWep=0
+$ShootistAmmo=0
+$ShootistModel=0
 $3941 = 0 // integer values 
 $3942 = 0 // integer values 
 $3943 = 0 // integer values 
@@ -572,7 +576,7 @@ jf @BANKJO2_3970
 03BD: destroy_sphere $3966 
 
 :BANKJO2_3970
-jump @BANKJO2_3865 
+jump @BANKJO2_3865
 
 :BANKJO2_3977
 03BD: destroy_sphere $3966 
@@ -983,6 +987,8 @@ Model.Load(#MALE01)
 Model.Load(#TAR_GUN1)
 Model.Load(#TAR_GUN2)
 Model.Load(#COLT45)
+Model.Load(#PYTHON)
+Model.Load(#ROCKETLA)
 Model.Load(#TAR_FRAME)
 Model.Load(#TAR_DOWNLEFT)
 Model.Load(#TAR_DOWNRIGHT)
@@ -1022,6 +1028,8 @@ jump @BANKJO2_6307
 if or
    not Model.Available(#FAKETARGET)
    not Model.Available(#TAR_GUN2)
+   not Model.Available(#PYTHON)
+   not Model.Available(#ROCKETLA)
 jf @BANKJO2_6390 
 wait 0 
 jump @BANKJO2_6359 
@@ -1045,10 +1053,11 @@ $3946 = Object.Init(#FAKETARGET, -677.75, 1272.03, 9.81)
 Object.RemoveFromMissionCleanupList($3946)
 Object.Angle($3946) = 0.0
 04B8: get_weapon_data_from_player $PLAYER_ACTOR slot 4 weapon $3938 ammo $3939 model $3940 
-04F4: put_actor $PLAYER_ACTOR into_turret_on_object $3944 at_object_offset 0.0 -2.0 1.0 position 0 shooting_angle 60.0 with_weapon 17 
+04B8: get_weapon_data_from_player $PLAYER_ACTOR slot 8 weapon $ShootistPlayerWep ammo $ShootistAmmo model $ShootistModel 
+04F4: put_actor $PLAYER_ACTOR into_turret_on_object $3944 at_object_offset 0.0 -2.0 1.0 position 0 shooting_angle 60.0 with_weapon 18 
 01B9: set_actor $PLAYER_ACTOR armed_weapon_to 0 
-01B9: set_actor $PLAYER_ACTOR armed_weapon_to 17 
-017A: set_player $PLAYER_CHAR weapon 17 ammo_to 100 
+01B9: set_actor $PLAYER_ACTOR armed_weapon_to 18 
+017A: set_player $PLAYER_CHAR weapon 18 ammo_to 50 
 $3911 = 100 // integer values 
 0169: set_fade_color 0 0 0 
 wait 500 
@@ -1582,7 +1591,7 @@ jump @BANKJO2_27097
 
 :BANKJO2_9784
 Player.ClearWantedLevel($PLAYER_CHAR)
-0419: $3680 = player $PLAYER_CHAR weapon 17 ammo 
+0419: $3680 = player $PLAYER_CHAR weapon 18 ammo 
 if or
   $3677 == 0 // integer values 
   $3680 == 0 // integer values 
@@ -1675,7 +1684,7 @@ $3705 = 1 // integer values
 jump @BANKJO2_10394 
 
 :BANKJO2_10384
-007E: $3703 -= frame_delta_time * 0.06 // floating-point values 
+007E: $3703 -= frame_delta_time * 0.09 // floating-point values 
 
 :BANKJO2_10394
 jump @BANKJO2_10446 
@@ -1688,7 +1697,7 @@ $3705 = 0 // integer values
 jump @BANKJO2_10446 
 
 :BANKJO2_10436
-0078: $3703 += frame_delta_time * 0.06 // floating-point values 
+0078: $3703 += frame_delta_time * 0.09 // floating-point values 
 
 :BANKJO2_10446
 jump @BANKJO2_10556 
@@ -1729,6 +1738,7 @@ if and
   $3691 == 1 // integer values 
   $3692 == 1 // integer values 
 jf @BANKJO2_10687 
+$ShootistTargetSpeed+=3.0
 $3989 += 1 // integer values 
 $3674 += 1 // integer values 
 $3968 += 1 // integer values 
@@ -1876,7 +1886,7 @@ $3725 = 1 // integer values
 jump @BANKJO2_11513 
 
 :BANKJO2_11503
-007E: $3723 -= frame_delta_time * 0.04 // floating-point values 
+007E: $3723 -= frame_delta_time * 0.09 // floating-point values 
 
 :BANKJO2_11513
 jump @BANKJO2_11565 
@@ -1889,7 +1899,7 @@ $3725 = 0 // integer values
 jump @BANKJO2_11565 
 
 :BANKJO2_11555
-0078: $3723 += frame_delta_time * 0.04 // floating-point values 
+0078: $3723 += frame_delta_time * 0.09 // floating-point values 
 
 :BANKJO2_11565
 jump @BANKJO2_11675 
@@ -1930,6 +1940,7 @@ if and
   $3711 == 1 // integer values 
   $3712 == 1 // integer values 
 jf @BANKJO2_11820 
+$ShootistTargetSpeed+=2.0
 $3989 += 1 // integer values 
 $3674 += 1 // integer values 
 $3674 += 1 // integer values 
@@ -2079,7 +2090,9 @@ $3745 = 1 // integer values
 jump @BANKJO2_12646 
 
 :BANKJO2_12636
-007E: $3743 -= frame_delta_time * 0.02 // floating-point values  slowest target
+0011: $ShootistTargetSpeed *= 0.005 // floating-point values 
+007E: $3743 -= frame_delta_time * $ShootistTargetSpeed // floating-point values  nearest target
+0011: $ShootistTargetSpeed *= 200.0 // floating-point values 
 
 :BANKJO2_12646
 jump @BANKJO2_12698 
@@ -2092,7 +2105,9 @@ $3745 = 0 // integer values
 jump @BANKJO2_12698 
 
 :BANKJO2_12688
-0078: $3743 += frame_delta_time * 0.02 // floating-point values 
+0011: $ShootistTargetSpeed *= 0.005 // floating-point values 
+007E: $3743 -= frame_delta_time * $ShootistTargetSpeed // floating-point values  nearest target
+0011: $ShootistTargetSpeed *= 200.0 // floating-point values 
 
 :BANKJO2_12698
 jump @BANKJO2_12808 
@@ -2133,6 +2148,7 @@ if and
   $3731 == 1 // integer values 
   $3732 == 1 // integer values 
 jf @BANKJO2_12967 
+$ShootistTargetSpeed+=1.0
 $3989 += 1 // integer values 
 $3674 += 1 // integer values 
 $3674 += 1 // integer values 
@@ -2331,8 +2347,9 @@ jf @BANKJO2_14069
 jump @BANKJO2_27097 
 
 :BANKJO2_14069
-04F4: put_actor $PLAYER_ACTOR into_turret_on_object $3945 at_object_offset 0.0 0.0 1.0 position 0 shooting_angle 60.0 with_weapon 17 
-017A: set_player $PLAYER_CHAR weapon 17 ammo_to 50 
+04F4: put_actor $PLAYER_ACTOR into_turret_on_object $3945 at_object_offset 0.0 0.0 1.0 position 0 shooting_angle 60.0 with_weapon 18 
+01B8: set_player $PLAYER_CHAR armed_weapon_to 18 
+017A: set_player $PLAYER_CHAR weapon 18 ammo_to 50 
 $3913 = 50 // integer values 
 Object.Destroy($3693)
 Object.Destroy($3694)
@@ -3158,7 +3175,7 @@ jump @BANKJO2_27097
 
 :BANKJO2_18747
 Player.ClearWantedLevel($PLAYER_CHAR)
-0419: $3748 = player $PLAYER_CHAR weapon 17 ammo 
+0419: $3748 = player $PLAYER_CHAR weapon 18 ammo 
 if or
   $3918 == 0 // integer values 
   $3748 == 0 // integer values 
@@ -3269,8 +3286,9 @@ jf @BANKJO2_19517
 jump @BANKJO2_27097 
 
 :BANKJO2_19517
-04F4: put_actor $PLAYER_ACTOR into_turret_on_object $3946 at_object_offset 0.0 0.0 1.0 position 0 shooting_angle 50.0 with_weapon 17 
-017A: set_player $PLAYER_CHAR weapon 17 ammo_to 30 
+04F4: put_actor $PLAYER_ACTOR into_turret_on_object $3946 at_object_offset 0.0 0.0 1.0 position 0 shooting_angle 50.0 with_weapon 18 
+01B8: set_player $PLAYER_CHAR armed_weapon_to 18 
+017A: set_player $PLAYER_CHAR weapon 18 ammo_to 99999 
 $3915 = 30 // integer values 
 03D6: remove_styled_text 'BJM2_6'  // SCORE ROUND TWO: ~1~
 Object.Destroy($3754)
@@ -4101,7 +4119,7 @@ jump @BANKJO2_27097
 
 :BANKJO2_24032
 Player.ClearWantedLevel($PLAYER_CHAR)
-0419: $3836 = player $PLAYER_CHAR weapon 17 ammo 
+0419: $3836 = player $PLAYER_CHAR weapon 18 ammo 
 if or
   $3919 == 0 // integer values 
   $3836 == 0 // integer values 
@@ -4634,6 +4652,7 @@ Model.Load($3940)
 :BANKJO2_27402
 038B: load_requested_models 
 01B1: give_player $PLAYER_CHAR weapon $3938 ammo $3939 // Load the weapon model before using this 
+01B1: give_player $PLAYER_CHAR weapon $ShootistPlayerWep ammo $ShootistAmmo // Load the weapon model before using this 
 Model.Destroy($3940)
 $ONMISSION = 0 // integer values 
 $995 = 0 // integer values 
@@ -4653,6 +4672,8 @@ Marker.Disable($3907)
 014F: stop_timer $3919 
 Model.Destroy(#MALE01)
 Model.Destroy(#COLT45)
+Model.Destroy(#ROCKETLA)
+Model.Destroy(#PYTHON)
 Model.Destroy(#TAR_GUN1)
 Model.Destroy(#TAR_GUN2)
 Model.Destroy(#TAR_FRAME)
