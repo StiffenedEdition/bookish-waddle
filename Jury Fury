@@ -22,6 +22,8 @@ wait 0
 9@ = 0 // integer values 
 8@ = 0 // integer values 
 10@ = 0 // integer values 
+$JuryFBIActive = 0 
+$JuryCarSpawned=0
 $2151 = 0 // integer values 
 $2160 = 0 // integer values 
 $2150 = 0 // integer values 
@@ -292,7 +294,8 @@ Model.Destroy(#CUTOBJ04)
 Model.Load(#HMORI)
 Model.Load(#BMYBU)
 Model.Load(#ADMIRAL)
-Model.Load(#BFYBE)
+Model.Load(#FBI)
+Model.Load(#CHROMEGUN)
 Model.Load(#SPAND)
 Model.Load(#GLENDALE)
 Model.Load(#HMYAP)
@@ -313,7 +316,7 @@ $2153 = 0 // integer values
 if or
    not Model.Available(#HMORI)
    not Model.Available(#ADMIRAL)
-   not Model.Available(#BFYBE)
+   not Model.Available(#FBI)
    not Model.Available(#SPAND)
    not Model.Available(#GLENDALE)
    not Model.Available(#BMYBU)
@@ -323,6 +326,7 @@ jump @LAWYER3_1611
 
 :LAWYER3_1660
 if or
+   not Model.Available(#CHROMEGUN)
    not Model.Available(#HMYAP)
    not Model.Available(#SENTINEL)
    not Model.Available(#WMOGO)
@@ -341,10 +345,6 @@ Player.CanMove($PLAYER_CHAR) = False
 fade 1 1000 
 Camera.SetPosition(110.714, -816.945, 14.589, 0.0, 0.0, 0.0)
 Camera.PointAt(111.238, -817.658, 14.123, 2)
-0395: clear_area 1 at 95.8 -843.2 range 10.0 20.0 
-0@ = Car.Create(#GLENDALE, 95.8, -843.2, 10.0)
-0129: 15@ = create_actor 4 #WMOGO in_car 0@ driverseat 
-Car.Angle(0@) = 316.0
 0395: clear_area 1 at 113.7 -825.0 range 9.7 10.0 
 1@ = Actor.Create(CivMale, #HMYAP, 113.7, -825.0, 9.7)
 Actor.Angle(1@) = 67.0
@@ -366,14 +366,20 @@ jf @LAWYER3_2005
 0211: actor 1@ walk_to 104.0 -819.8 
 
 :LAWYER3_2005
-if 
-   not Car.Wrecked(0@)
+if
+0038:   $JuryCarSpawned == 0 // integer values 
 jf @LAWYER3_2076 
-Car.SetMaxSpeed(0@, 40.0)
+0395: clear_area 1 at 95.8 -843.2 range 10.0 20.0 
+0@ = Car.Create(#GLENDALE, 95.8, -843.2, 10.0)
+0129: 15@ = create_actor 4 #WMOGO in_car 0@ driverseat 
+Car.Angle(0@) = 316.0
 00AE: set_vehicle 0@ traffic_behavior_to 3 
-04BA: set_car 0@ speed_instantly 20.0 
 Actor.StorePos(1@, $2171, $2172, $2173)
 02C2: car 0@ drive_to_point $2171 $2172 $2173 
+wait 1500
+Car.SetMaxSpeed(0@, 40.0)
+04BA: set_car 0@ speed_instantly 80.0
+$JuryCarSpawned=1 
 
 :LAWYER3_2076
 16@ = 0 // integer values 
@@ -472,7 +478,9 @@ Car.Angle($2159) = 261.0
 020A: set_car $2159 door_status_to 3 
 01EC: make_car $2159 very_heavy 1 
 053F: set_car $2159 tires_vulnerable 0 
-$2149 = Actor.Create(CivMale, #BFYBE, 191.6, -1028.0, 9.4)
+$2149 = Actor.Create(CivMale, #FBI, 191.6, -1028.0, 9.4)
+01B2: give_actor $2149 weapon 19 ammo 2 // Load the weapon model before using this 
+01B9: set_actor $2149 armed_weapon_to 0 
 0243: set_actor $2149 ped_stats_to 39 
 01ED: clear_actor $2149 threat_search 
 0395: clear_area 1 at 536.4 217.4 range 13.6 4.0 
@@ -518,6 +526,19 @@ gosub @LAWYER3_8310
 16@ = 0 // integer values 
 
 :LAWYER3_2975
+if
+0038:   $JuryFBIActive == 0 // integer values 
+jf @LAWYER3_OriginalStart
+if
+8185:   not car $2159 health >= 990 
+jf @LAWYER3_OriginalStart
+01B9: set_actor $2149 armed_weapon_to 19 
+0243: set_actor $2149 ped_stats_to 16 
+02E2: set_actor $2149 weapon_accuracy_to 1 
+011A: set_actor $2149 search_threat 1
+$JuryFBIActive = 1 
+
+:LAWYER3_OriginalStart
 if 
    not $2153 == 2 // integer values 
 jf @LAWYER3_8042 
@@ -578,7 +599,7 @@ if
    Actor.InCar($2147, $2159)
 jf @LAWYER3_4978 
 if 
-8185:   not car $2159 health >= 700 
+8185:   not car $2159 health >= 950 
 jf @LAWYER3_3338 
 01D3: actor $2147 leave_car $2159 
 020A: set_car $2159 door_status_to 1 
@@ -618,19 +639,20 @@ Camera.SetPosition(183.803, -1029.408, 11.956, 0.0, 0.0, 0.0)
 Camera.PointAt(184.615, -1029.963, 11.78, 2)
 0395: clear_area 1 at 189.3 -1033.0 range 10.2 10.0 
 0395: clear_area 1 at 208.8 -1008.1 range 9.5 10.0 
-$2161 = Car.Create(#SPAND, 208.8, -1008.1, 9.5)
+$2161 = Car.Create(#SPAND, 219.3972, -985.8721, 10.4685)
 0129: 11@ = create_actor 4 #SPECIAL04 in_car $2161 driverseat 
 0243: set_actor 11@ ped_stats_to 14 
-Car.Angle($2161) = 165.0
-Car.SetMaxSpeed($2161, 40.0)
-04BA: set_car $2161 speed_instantly 19.0 
+Car.Angle($2161) = 162.6
+Car.SetMaxSpeed($2161, 100.0)
 00AE: set_vehicle $2161 traffic_behavior_to 3 
-Car.DriveTo($2161, 203.5, -1037.7, 10.1)
+Car.DriveTo($2161, 201.7661, -1039.7878, 10.5461)
 01EC: make_car $2161 very_heavy 1 
 0395: clear_area 1 at 202.8 -1035.7 range 10.1 10.0 
 Car.DriveTo($2159, 202.8, -1035.7, 10.1)
 Car.SetMaxSpeed($2159, 50.0)
 00AE: set_vehicle $2159 traffic_behavior_to 3 
+wait 750
+04BA: set_car $2161 speed_instantly 50.0 
 17@ = 0 // integer values 
 
 :LAWYER3_3805
@@ -674,6 +696,9 @@ if
    not Car.Wrecked($2161)
 jf @LAWYER3_4015 
 Car.SetMaxSpeed($2161, 0.0)
+020B: explode_car $2161 
+03F5: set_vehicle $2159 apply_damage_rules 1 
+020B: explode_car $2159 
 
 :LAWYER3_4015
 17@ = 0 // integer values 
@@ -1319,9 +1344,10 @@ Car.PutAt($2166, 541.7, 196.0, 13.8)
 $2148 = Actor.Create(CivMale, #BMYBU, 551.8, 194.5, 13.6)
 Actor.Angle($2148) = 35.0
 Marker.Disable($2158)
-Camera.SetPosition(553.126, 190.922, 15.789, 0.0, 0.0, 0.0)
-Camera.PointAt(552.636, 191.782, 15.65, 2)
-0211: actor $PLAYER_ACTOR walk_to 551.8 194.5 
+Camera.SetPosition(553.126, 190.922, 14.789, 0.0, 0.0, 0.0)
+Camera.PointAt(542.0, 207.8, 13.8, 2)
+01B8: set_player $PLAYER_CHAR armed_weapon_to 0 
+0502: unknown_actor $PLAYER_ACTOR sprint_to 551.2033 193.3188 
 
 :LAWYER3_7529
 if 
@@ -1451,7 +1477,8 @@ Marker.Disable($2158)
 Marker.Disable($2165)
 Model.Destroy(#HMORI)
 Model.Destroy(#ADMIRAL)
-Model.Destroy(#BFYBE)
+Model.Destroy(#FBI)
+Model.Destroy(#CHROMEGUN)
 Model.Destroy(#SPAND)
 Model.Destroy(#GLENDALE)
 Model.Destroy(#BMYBU)
