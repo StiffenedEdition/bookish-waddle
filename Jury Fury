@@ -298,9 +298,9 @@ Model.Load(#FBI)
 Model.Load(#CHROMEGUN)
 Model.Load(#SPAND)
 Model.Load(#GLENDALE)
-Model.Load(#HMYAP)
-Model.Load(#HAMMER)
-Model.Load(#SENTINEL)
+Model.Load(#BMOTR)
+Model.Load(#MOLOTOV)
+Model.Load(#RHINO)
 Model.Load(#WMOGO)
 023C: load_special_actor 4 'SPANDXA' 
 $2154 = 0 // integer values 
@@ -327,8 +327,8 @@ jump @LAWYER3_1611
 :LAWYER3_1660
 if or
    not Model.Available(#CHROMEGUN)
-   not Model.Available(#HMYAP)
-   not Model.Available(#SENTINEL)
+   not Model.Available(#BMOTR)
+   not Model.Available(#RHINO)
    not Model.Available(#WMOGO)
 jf @LAWYER3_1695 
 wait 0 
@@ -346,7 +346,7 @@ fade 1 1000
 Camera.SetPosition(110.714, -816.945, 14.589, 0.0, 0.0, 0.0)
 Camera.PointAt(111.238, -817.658, 14.123, 2)
 0395: clear_area 1 at 113.7 -825.0 range 9.7 10.0 
-1@ = Actor.Create(CivMale, #HMYAP, 113.7, -825.0, 9.7)
+1@ = Actor.Create(CivMale, #BMOTR, 113.7, -825.0, 9.7)
 Actor.Angle(1@) = 67.0
 01ED: clear_actor 1@ threat_search 
 0372: set_actor 1@ anim 3 wait_state_time 3000 ms 
@@ -397,7 +397,7 @@ if
 jf @LAWYER3_2190 
 Actor.StoreDeadActorPos(1@, $2174, $2175, $2176)
 $2176 += 0.5 // floating-point values 
-3@ = Pickup.Create(#HAMMER, 3, $2174, $2175, $2176)
+032B: 3@ = create_weapon_pickup #MOLOTOV 4 ammo 3 at $2174 $2175 $2176 
 4@ = 1 // integer values 
 
 :LAWYER3_2190
@@ -461,7 +461,7 @@ jump @LAWYER3_2463
 :LAWYER3_2489
 Model.Destroy(#GLENDALE)
 Model.Destroy(#WMOGO)
-Model.Destroy(#HMYAP)
+Model.Destroy(#BMOTR)
 Actor.RemoveReferences(15@)
 0395: clear_area 1 at 191.4 -1026.7 range 9.4 2.0 
 $2147 = Actor.Create(CivMale, #HMORI, 191.4, -1026.7, 9.4)
@@ -479,12 +479,12 @@ Car.Angle($2159) = 261.0
 01EC: make_car $2159 very_heavy 1 
 053F: set_car $2159 tires_vulnerable 0 
 $2149 = Actor.Create(CivMale, #FBI, 191.6, -1028.0, 9.4)
-01B2: give_actor $2149 weapon 19 ammo 2 // Load the weapon model before using this 
+01B2: give_actor $2149 weapon 19 ammo 1 // Load the weapon model before using this 
 01B9: set_actor $2149 armed_weapon_to 0 
 0243: set_actor $2149 ped_stats_to 39 
 01ED: clear_actor $2149 threat_search 
 0395: clear_area 1 at 536.4 217.4 range 13.6 4.0 
-$2166 = Car.Create(#SENTINEL, 536.4, 217.4, 13.6)
+$2166 = Car.Create(#RHINO, 536.4, 217.4, 13.6)
 Car.Angle($2166) = 270.0
 020A: set_car $2166 door_status_to 3 
 $2158 = Marker.CreateAboveCar($2166)
@@ -529,12 +529,14 @@ gosub @LAWYER3_8310
 if
 0038:   $JuryFBIActive == 0 // integer values 
 jf @LAWYER3_OriginalStart
-if
-8185:   not car $2159 health >= 990 
+046F: store_player $PLAYER_CHAR currently_armed_weapon_to $JuryArmedWepCheck 
+if and
+0018:   $JuryArmedWepCheck > 11 // integer values
+00FC:   player $PLAYER_CHAR 0 $2147 on_foot radius 20.0 20.0 20.0 
 jf @LAWYER3_OriginalStart
 01B9: set_actor $2149 armed_weapon_to 19 
 0243: set_actor $2149 ped_stats_to 16 
-02E2: set_actor $2149 weapon_accuracy_to 1 
+02E2: set_actor $2149 weapon_accuracy_to 85 
 011A: set_actor $2149 search_threat 1
 $JuryFBIActive = 1 
 
@@ -599,7 +601,7 @@ if
    Actor.InCar($2147, $2159)
 jf @LAWYER3_4978 
 if 
-8185:   not car $2159 health >= 950 
+8185:   not car $2159 health >= 700 
 jf @LAWYER3_3338 
 01D3: actor $2147 leave_car $2159 
 020A: set_car $2159 door_status_to 1 
@@ -902,6 +904,7 @@ if
 01FC:   player $PLAYER_CHAR near_car $2159 radius 20.0 20.0 0 
 jf @LAWYER3_5221 
 if or
+0038:   $JuryFBIActive == 1 // integer values 
 02DF:   player $PLAYER_CHAR aggressive 
 8184:   not actor $2147 health >= 299 
 0457:   player $PLAYER_CHAR aiming_at_actor $2147 
@@ -920,7 +923,6 @@ Actor.Health($2147) = 300
 if 
    not Actor.Dead($2149)
 jf @LAWYER3_5214 
-0239: actor $2149 run_to 227.2 -1040.8 
 10@ = 1 // integer values 
 
 :LAWYER3_5214
@@ -1103,7 +1105,6 @@ if or
 8184:   not actor $2149 health >= 99 
   5@ == 1 // integer values 
 jf @LAWYER3_6177 
-0239: actor $2149 run_to 227.2 -1040.8 
 if 
    not Actor.Dead($2147)
 jf @LAWYER3_6170 
@@ -1316,7 +1317,6 @@ Player.CanMove($PLAYER_CHAR) = False
 if 
    not Car.Wrecked($2166)
 jf @LAWYER3_7229 
-020A: set_car $2166 door_status_to 1 
 
 :LAWYER3_7229
 0395: clear_area 1 at 542.0 207.8 range 13.8 1.0 
@@ -1344,10 +1344,10 @@ Car.PutAt($2166, 541.7, 196.0, 13.8)
 $2148 = Actor.Create(CivMale, #BMYBU, 551.8, 194.5, 13.6)
 Actor.Angle($2148) = 35.0
 Marker.Disable($2158)
-Camera.SetPosition(553.126, 190.922, 14.789, 0.0, 0.0, 0.0)
-Camera.PointAt(542.0, 207.8, 13.8, 2)
+Camera.SetPosition(553.126, 190.922, 15.789, 0.0, 0.0, 0.0)
+Camera.PointAt(552.636, 191.782, 15.65, 2)
+0211: actor $PLAYER_ACTOR walk_to 551.8 194.5
 01B8: set_player $PLAYER_CHAR armed_weapon_to 0 
-0502: unknown_actor $PLAYER_ACTOR sprint_to 551.2033 193.3188 
 
 :LAWYER3_7529
 if 
@@ -1482,9 +1482,9 @@ Model.Destroy(#CHROMEGUN)
 Model.Destroy(#SPAND)
 Model.Destroy(#GLENDALE)
 Model.Destroy(#BMYBU)
-Model.Destroy(#HAMMER)
-Model.Destroy(#HMYAP)
-Model.Destroy(#SENTINEL)
+Model.Destroy(#MOLOTOV)
+Model.Destroy(#BMOTR)
+Model.Destroy(#RHINO)
 Model.Destroy(#WMOGO)
 Car.RemoveReferences(0@)
 Car.RemoveReferences($2159)
